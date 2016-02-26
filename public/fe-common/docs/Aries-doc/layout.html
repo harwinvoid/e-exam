@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ariesDoc-index</title>    
+    <link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css">
+    <link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/doc.css" />
+</head>
+<body>
+  <header class="menu-top">
+  	 <a href="#" class="aries-brand">Aries-Doc</a>
+  	 <nav>
+  	 	<ul>
+        <li><a href="index.html">全局 CSS 样式</a></li>
+        <li><a href="component.html">组件</a></li>
+        <li><a href="#">JavaScript 插件</a></li>
+        <li class="current"><a href="layout.html">布局</a></li>
+      </ul>
+  	 </nav>
+  </header>	
+  <div class="menu-left">
+  <ul>
+  	<li>
+  		<a href="#">删格系统</a>
+  		<ul class="sub-menu">
+  			<li><a href="#bs-prod">简介</a></li> 
+        <li><a href="#grid-options">栅格参数</a></li> 
+        <li><a href="#bs-moreCol">多余的列</a></li>
+  			<li><a href="#bs-offset">列偏移</a></li>
+  			<li><a href="#bs-insert">嵌套列</a></li>
+  		</ul>
+  	</li>
+  	<li>
+  		<a href="#">hbox布局</a>
+  		<ul class="sub-menu">
+  			<li><a href="#hbox">hbox布局</a></li>
+  		</ul>
+  	</li>  	
+  	<li>
+  		<a href="#">常用布局</a>
+  		<ul class="sub-menu">
+  			<li><a href="#commLayout">常用布局</a></li>
+  		</ul>
+  	</li>
+  </ul>  
+</div><!-- menu-left end -->
+<div class="main-content m-r">
+  <h2 class="b-b padder-v-sm">删格系统</h2>
+  <p>
+    Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。
+  </p>
+  <h3 class="b-b padder-v-sm" id="bs-prod">简介</h3>
+  <p>栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。下面就介绍一下 Bootstrap 栅格系统的工作原理：</p>
+  <ul class="bs-doc-section">
+    <li>“行（row）”必须包含在 <code>.container</code> （固定宽度）或 <code>.container-fluid</code> （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。</li>
+    <li>通过“行（row）”在水平方向创建一组“列（column）”。</li>
+    <li>你的内容应当放置于“列（column）”内，并且，只有“列（column）”可以作为行（row）”的直接子元素。</li>
+    <li>类似 <code>.row</code> 和 <code>.col-xs-4</code> 这种预定义的类，可以用来快速创建栅格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。</li>
+    <!--<li>通过为“列（column）”设置 <code>padding</code> 属性，从而创建列与列之间的间隔（gutter）。通过为 <code>.row</code> 元素设置负值 <code>margin</code> 从而抵消掉为 <code>.container</code> 元素设置的 <code>padding</code>，也就间接为“行（row）”所包含的“列（column）”抵消掉了<code>padding</code>。</li>
+     <li>负值的 margin就是下面的示例为什么是向外突出的原因。在栅格列中的内容排成一行。</li>
+    <li>栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个  <code>.col-xs-4</code> 来创建。</li> -->
+    <li>如果一“行（row）”中包含了的“列（column）”大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。</li>
+    <!-- <li>栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 <code>.col-md-*</code> 栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 <code>.col-lg-*</code> 不存在， 也影响大屏幕设备。</li> -->
+  </ul>
+  <h3 class="b-b padder-v-sm" id="grid-options">栅格参数</h3>
+  <p>通过下表可以详细查看 Bootstrap 的栅格系统是如何在多种屏幕设备上工作的。</p>
+  <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            超小屏幕
+            <small>手机 (&lt;768px)</small>
+          </th>
+          <th>
+            小屏幕
+            <small>平板 (≥768px)</small>
+          </th>
+          <th>
+            中等屏幕
+            <small>桌面显示器 (≥992px)</small>
+          </th>
+          <th>
+            大屏幕
+            <small>大桌面显示器 (≥1200px)</small>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="text-nowrap" scope="row">栅格系统行为</th>
+          <td>总是水平排列</td>
+          <td colspan="3">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row"><code>.container</code> 最大宽度</th>
+          <td>None （自动）</td>
+          <td>750px</td>
+          <td>970px</td>
+          <td>1170px</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">类前缀</th>
+          <td><code>.col-xs-</code></td>
+          <td><code>.col-sm-</code></td>
+          <td><code>.col-md-</code></td>
+          <td><code>.col-lg-</code></td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">列（column）数</th>
+          <td colspan="4">12</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">最大列（column）宽</th>
+          <td class="text-muted">自动</td>
+          <td>~62px</td>
+          <td>~81px</td>
+          <td>~97px</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">槽（gutter）宽</th>
+          <td colspan="4">30px （每列左右均有 15px）</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">可嵌套</th>
+          <td colspan="4">是</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">偏移（Offsets）</th>
+          <td colspan="4">是</td>
+        </tr>
+        <tr>
+          <th class="text-nowrap" scope="row">列排序</th>
+          <td colspan="4">是</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="row bg-gray b-b">
+            <div class="col-xs-12 col-sm-6 col-md-8 b-r wrapper-sm">.col-xs-12 .col-sm-6 .col-md-8</div>
+            <div class="col-xs-6 col-md-4 wrapper-sm">.col-xs-6 .col-md-4</div>
+          </div>
+          <div class="row bg-gray">
+            <div class="col-xs-6 col-sm-4 b-r wrapper-sm">.col-xs-6 .col-sm-4</div>
+            <div class="col-xs-6 col-sm-4 b-r wrapper-sm">.col-xs-6 .col-sm-4</div>
+            <!-- Optional: clear the XS cols if their content doesn't match in height -->
+            <div class="clearfix visible-xs-block"></div>
+            <div class="col-xs-6 col-sm-4 wrapper-sm">.col-xs-6 .col-sm-4</div>
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-12 col-sm-6 col-md-8"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-xs-12 col-sm-6 col-md-8</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-6 col-md-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-xs-6 col-md-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-6 col-sm-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-xs-6 col-md-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-6 col-md-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-xs-6 col-md-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li class="text-gray">//Optional: clear the XS cols if their content doesn't match in height</li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"clearfix visible-xs-block"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-6 col-md-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-xs-6 col-md-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+        </ol>
+     </div>
+  </div><!-- hbox end -->
+  <h3 class="b-b padder-v-sm" id="bs-moreCol">多余的列（column）将另起一行排列</h3>
+  <p>如果在一个 .row 内包含的列（column）大于12个，包含多余列（column）的元素将作为一个整体单元被另起一行排列。</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="row">
+            <div class="col-xs-9 wrapper-sm bg-gray b-b">.col-xs-9</div>
+            <div class="col-xs-4 wrapper-sm bg-gray b-b b-r">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+            <div class="col-xs-6 wrapper-sm bg-gray">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+        </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-9"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-xs-9</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-xs-4
+Since 9 + 4 = 13 > 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-6"</span>
+              <span class="tag">&gt;</span>
+               <span class="pln">.col-xs-6
+Subsequent columns continue along the new line.</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- hbox end -->
+
+  <h3 class="b-b padder-v-sm" id="bs-offset">列偏移</h3>
+  <p>使用 <code>.col-md-offset-*</code> 类可以将列向右侧偏移。这些类实际是通过使用 <code>*</code> 选择器为当前元素增加了左侧的边距（margin）。例如，<code>.col-md-offset-4</code> 类将 <code>.col-md-4</code> 元素向右侧偏移了4个列（column）的宽度。</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="row m-b">
+            <div class="col-md-4 b-a bg-gray wrapper-sm">.col-md-4</div>
+            <div class="col-md-4 col-md-offset-4 b-a bg-gray wrapper-sm">.col-md-4 .col-md-offset-4</div>
+          </div>
+          <div class="row m-b">
+            <div class="col-md-3 col-md-offset-3 b-a bg-gray wrapper-sm">.col-md-3 .col-md-offset-3</div>
+            <div class="col-md-3 col-md-offset-3 b-a bg-gray wrapper-sm">.col-md-3 .col-md-offset-3</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 b-a bg-gray wrapper-sm">.col-md-6 .col-md-offset-3</div>
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-md-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">col-md-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-md-4 col-md-offset-4"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-md-4 .col-md-offset-4</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-md-3 col-md-offset-3"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-md-3 .col-md-offset-3</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-md-3 col-md-offset-3"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-md-3 .col-md-offset-3</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li> 
+
+            <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-md-6 col-md-offset-3"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">.col-md-6 .col-md-offset-3</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li> 
+
+        </ol>
+     </div>
+  </div><!-- hbox end -->
+
+  <h3 class="b-b padder-v-sm" id="bs-insert">嵌套列</h3>
+  <p>为了使用内置的栅格系统将内容再次嵌套，可以通过添加一个新的 <code>.row</code> 元素和一系列 <code>.col-sm-*</code> 元素到已经存在的 <code>.col-sm-*</code> 元素内。被嵌套的行（row）所包含的列（column）的个数不能超过12（其实，没有要求你必须占满12列）。</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="row">
+            <div class="col-sm-9 b-a bg-gray wrapper-sm">
+              Level 1: .col-sm-9
+              <div class="row">
+                <div class="col-xs-8 col-sm-6 b-a bg-gray wrapper-sm">
+                  Level 2: .col-xs-8 .col-sm-6
+                </div>
+                <div class="col-xs-4 col-sm-6 b-a bg-gray wrapper-sm">
+                  Level 2: .col-xs-4 .col-sm-6
+                </div>
+              </div>
+            </div>
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-sm-9"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> Level 1: .col-sm-9</span>
+            </li>
+           <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"row"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-8 col-sm-6"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> Level 2: .col-xs-8 .col-sm-6</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col-xs-4 col-sm-6"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">Level 2: .col-xs-4 .col-sm-6</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li> 
+            <li>  
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- hbox end -->
+
+
+
+
+  <h3 class="b-b padder-v-sm" id="hbox">hbox布局</h3>
+  <p class="b-b padder-v-sm">水平方向一列固定一列跟随窗口自动</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="mini-layout hbox">
+              <div class="col w bg-light lt">
+              </div>
+              <div class="col bg-light lter">
+              </div> 
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"hbox"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col w"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- hbox end -->
+  <!-- <h3 class="b-b padder-v-sm">垂直方向一行固定一行自动</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+          <div class="mini-layout hbox">
+              <div class="tabs-body bg-light lt">
+              </div>
+              <div class="row-row w bg-light lter">
+                  <div class="cell">
+                    <div class="cell-inner"></div>
+                  </div>
+              </div>
+               
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"hbox"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col w"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"col"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>  
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div> --><!-- hbox end -->
+   <h3 class="b-b padder-v-sm" id="commLayout">常用布局</h3>
+   <div class="row">
+     <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/left-right.html" target="_blank"><img src="img/left-right.jpg"></a>
+            <div class="caption">             
+              <p>
+                布局一
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/right-left.html" target="_blank"><img src="img/right-left.jpg"></a>
+            <div class="caption">             
+              <p>
+                布局二
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/block.html" target="_blank"><img src="img/block.jpg"></a>
+            <div class="caption">             
+              <p>
+                布局三
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/form.html" target="_blank"><img src="img/form2.jpg"></a>
+            <div class="caption">             
+              <p>
+                表单示例
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/form2.html" target="_blank"><img src="img/form.jpg"></a>
+            <div class="caption">             
+              <p>
+                表单示例2
+              </p>
+            </div>
+          </div>
+        </div>
+
+       <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="example/list.html" target="_blank"><img src="img/list.jpg"></a>
+            <div class="caption">             
+              <p>
+                列表示例
+              </p>
+            </div>
+          </div>
+        </div>
+
+   </div>     
+
+
+
+
+
+
+  <!-- <h3 class="b-b padder-v-sm">常用布局一</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper bg-gray">
+         <div class="hbox">
+      <div class="col w">
+        <div class="m-r-md">
+          <button class="btn btn-block btn-lg btn-info"><i class="md">add</i>Add Segment</button>
+          <ul class="nav nav-xs m-t-md padder-v-sm bg-white b-a r-sm">
+            <li class="active"><a href="#">Draft</a></li>
+            <li><a href="#">All segment</a></li>
+            <li><a href="#">Bookmark</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="col">
+
+        <div class="panel panel-default">
+          <div class="wrapper bg-light ltest b-b list-toolbar">
+            <div class="pull-right">
+              <button class="btn btn-default v-middle m-r-xs"><i class="md">view_list</i></button>
+              <button class="btn btn-default v-middle" id="load"><i class="md m-r-xs">filter_list</i>All filter</button>
+            </div>
+            <div class="inline-block v-middle m-r-xs">
+              <div class="input-group w-md">
+                <input type="text" class="form-control" maxlength="3">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"><i class="md">search</i></button>
+                </span>
+              </div>
+            </div>
+            <div class="w-sm inline-block v-middle m-r-xs">
+              <div class="input-group">
+                <input type="text" class="form-control" maxlength="3" value="this week">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"><i class="md">expand_more</i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="mini-layout">
+              <span class="text-3x">内容区</span>
+          </div>
+      </div>
+    </div>
+  </div>
+     </div>
+     
+  </div> --><!-- ex1 end -->
+
+  <!-- <h3 class="b-b padder-v-sm">常用布局二</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper bg-gray">
+    
+    <div class="m-b m-t clearfix top-fixed">
+      
+      <button class="btn btn-default m-r-sm"><i class="md">keyboard_arrow_left</i>Back</button>
+
+     
+      <h3 class="h3 font-normal inline-block v-middle">Ticket Detail</h3>
+
+      
+      <div class="pull-right">
+
+          <div class="btn-group">
+              <button class="btn btn-default "><i class="md">assignment_turned_in</i> Handel </button>
+              <button class="btn btn-default "><i class="md">send</i> Transfer </button>
+          </div>
+          <div class="btn-group">
+              <button class="btn btn-default hide"> Claim </button>
+              <button class="btn btn-default"> Modify </button>
+              <button class="btn btn-default"> Comment </button>
+          </div>          
+          <div class="btn-group m-r-none">
+              <button class="btn btn-default" type="button"> <i class="md">expand_more</i></button>
+              <button class="btn btn-default" type="button"> <i class="md">expand_less</i></button>
+          </div>
+
+      </div>
+
+    </div>
+
+    <div class="hbox">
+      <div class="col">
+        <div class="panel panel-default">
+          <div class="mini-layout">
+               <span class="text-3x">内容区</span>
+          </div>
+        </div>
+      </div>
+      <div class="col w-lg">
+        <div class="panel panel-default m-l-sm">
+          <div class="mini-layout">
+                   <span class="text-3x">内容区</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+     
+  </div> --><!-- ex2 end -->
+
+
+</div>
+
+ <!-- go-top -->
+ <a href="#" class="go-top">
+    <i class="arrow_up_bold"></i>
+ </a>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/left-menu.js"></script>
+<script type="text/javascript" src="js/go-top.js"></script>
+</html>

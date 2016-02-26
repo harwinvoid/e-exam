@@ -1,0 +1,3262 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ariesDoc-index</title>
+    
+    <link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css">
+    <link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/doc.css" />
+</head>
+<body>
+  <header class="menu-top">
+  	 <a href="#" class="aries-brand">Aries-Doc</a>
+  	 <nav>
+  	 	<ul>
+  	 		<li class="current"><a href="index.html">全局 CSS 样式</a></li>
+  	 		<li><a href="component.html">组件</a></li>
+  	 		<li><a href="#">JavaScript 插件</a></li>
+  	 		<li><a href="layout.html">布局</a></li>
+  	 	</ul>
+  	 </nav>
+  </header>	
+  <div class="menu-left">
+  <ul>
+  	<li>
+  		<a href="#">文本</a>
+  		<ul class="sub-menu">
+  			<li><a href="#textColor">文字颜色</a></li>
+        <li><a href="#bgColor">背景颜色</a></li>   			
+  			<li><a href="#fontSize">文字大小</a></li>
+        <li><a href="#lineHeight">行高</a></li>
+        <li><a href="#fontWeight">字重</a></li>
+        <li><a href="#fontStyle">文字样式</a></li>
+        <li><a href="#textAlign">文字对齐</a></li>
+  		</ul>
+  	</li>
+    <li>
+      <a href="#">排版</a>
+      <ul class="sub-menu">
+        <li><a href="#position">定位</a></li>
+        <li><a href="#float">浮动</a></li>
+        <li><a href="#margin">外边距</a></li>
+        <li><a href="#padding">内填充</a></li>
+        <li><a href="#boxShadow">盒阴影</a></li>
+        <li><a href="#border">边框</a></li>
+        <li><a href="#borderRadius">css3圆角</a></li>        
+        <li><a href="#width-height">宽高尺寸</a></li>
+        <li><a href="#display">隐藏 显示</a></li>
+      </ul>
+    </li>
+  	<li>
+  		<a href="#">辅助类</a>
+  		<ul class="sub-menu">
+  			<!-- <li><a href="#arrow">箭头</a></li> -->
+        <li><a href="#badge">徽章</a></li>
+        <li><a href="#label">标签</a></li>
+        <li><a href="#line">分割线</a></li>
+        <li><a href="#thumb">缩略图</a></li>
+        <li><a href="#thumb-horizontal">水平缩略图</a></li>
+        <li><a href="#avatar">头像</a></li>
+  		</ul>
+  	</li>  	
+  	<!-- <li>
+  		<a href="#">图片</a>
+  		<ul class="sub-menu">
+  			<li><a href="#">响应式图片</a></li>
+  			<li><a href="#">图片形状</a></li>
+  		</ul>
+  	</li>  	
+  	<li>
+  		<a href="#">动画</a>
+  	</li> -->
+  </ul><!-- 全局 CSS 样式 -->
+</div><!-- menu-left end -->
+<div class="main-content m-r">
+  <h2 class="b-b padder-v-sm">文本</h2>
+  <h3 class="b-b padder-v-sm m-b" id="textColor">文字颜色</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+     <p class="text-primary">主色</p>
+     <p class="text-info">强调色-信息提示</p>
+     <p class="text-success">强调色 - 成功</p>
+     <p class="text-warning">强调色 - 警告</p>
+     <p class="text-danger">强调色 - 危险</p>
+     <p class="text-dark">标准色 - 黑色</p>
+     <p class="text-light">辅助色 - 灰色</p>
+     <p class="text-muted">辅助色 - 灰色</p>
+     <p class="text-white bg-primary">辅助色 - 白色(为了突显文字加了个背景)</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">主色</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-success"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">强调色-成功</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+               <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">强调色-危险</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-dark"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">标准色-黑色</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-light"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">辅助色-灰色</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-muted"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">辅助色-灰色</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-white"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">辅助色-白色(为了突显文字加了个背景)</span>
+              <span class="tag">&lt;/p&gt;</span>  
+            </li>
+        </ol>
+     </div>
+  </div><!-- text-color end -->
+  <h3 class="b-b padder-v-sm m-b" id="bgColor">背景颜色</h3>
+   <p class="text-gray">提供 灰、白、蓝、绿、橙、红六个背景颜色。其中灰色提供 8 个度值，其他提供 3 个度值<br>使用方法：各颜色的基类（bg-light | bg-white | bg-primary | bg-success | bg-info | bg-waring | bg-danger）+ 度值</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example container-fluid">
+         <div class="row m-b m-t-lg">
+            <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow"> 
+                 <div class="clear">
+                   <div class="pull-left bg-light ltest"><span class="text-lt">bg-light ltest</span></div>
+                   <div class="pull-left bg-gray"><span class="text-lt">bg-gray</span></div>
+                   <div class="pull-right bg-light lter"><span class="text-lt">bg-light lter</span></div>
+                 </div>
+                 <div class="padder m-t-sm">
+                   <strong class="m-t-xs">LIGHTEST GRAY</strong>
+                 </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                   <div class="pull-left bg-light lt"><span class="text-lt">bg-light lt</span></div>
+                   <div class="pull-left bg-light light"><span class="text-lt">bg-light light</span></div> 
+                   <div class="pull-right bg-light dk"><span class="text-lt">bg-light dk</span></div>
+                  </div>
+                  <div class="padder m-t-sm">
+                 <strong>LIGHTER GRAY</strong>
+               </div>
+                </div>
+            </div>
+           <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                 <div class="clear">
+                   <div class="pull-left bg-light dker"><span class="text-muted">bg-light dker</span></div>
+                   <div class="pull-left bg-light dkest"><span class="text-muted">bg-light dkest</span></div>
+                   <div class="pull-right bg-white"><span class="text-lt">bg-white</span></div>
+                 </div>
+                  <div class="padder m-t-sm">
+                 <strong>LIGHT GRAY</strong>
+               </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                 <div class="pull-left bg-primary lt"><span class="text-lt">bg-primary lt</span></div> 
+                 <div class="pull-left bg-primary"><span class="text-lt">bg-primary</span></div>
+                 <div class="pull-right bg-primary dk"><span class="text-lt">bg-primary dk</span></div>
+               </div>
+               <div class="padder m-t-sm">
+                 <strong>PRIMARY</strong>
+               </div>
+                </div>
+            </div>            
+          </div>
+         <div class="row m-b-lg">
+           <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                 <div class="pull-left bg-success lt"><span class="text-lt">bg-success lt</span></div>
+                 <div class="pull-left bg-success"><span class="text-lt">bg-success</span></div>
+                 <div class="pull-right bg-success dk"><span class="text-lt">bg-success dk</span></div>
+               </div>
+               <div class="padder m-t-sm">
+                 <strong>SUCCESS</strong>
+               </div>
+                </div>
+            </div>
+           <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                 <div class="pull-left bg-info lt"><span class="text-lt">bg-info lt</span></div> 
+                 <div class="pull-left bg-info"><span class="text-lt">bg-info</span></div>
+                 <div class="pull-right bg-info dk"><span class="text-lt">bg-info dk</span></div>
+               </div>
+               <div class="padder m-t-sm">
+                 <strong>INFO</strong>
+               </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                 <div class="pull-left bg-warning lt"><span class="text-lt">bg-warning lt</span></div>
+                 <div class="pull-left bg-warning"><span class="text-lt">bg-warning</span></div>
+                 <div class="pull-right bg-warning dk"><span class="text-lt">bg-warning dk</span></div>
+               </div>
+               <div class="padder m-t-sm">
+                 <strong>WARNING</strong>
+                </div> 
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="color-swatches b-a r box-shadow">
+                  <div class="clear">
+                 <div class="pull-left bg-danger lt"><span class="text-lt">bg-danger lt</span></div>
+                 <div class="pull-left bg-danger"><span class="text-lt">bg-danger</span></div>
+                 <div class="pull-right bg-danger dk"><span class="text-lt">bg-danger dk</span></div>
+               </div>
+               <div class="padder m-t-sm">
+                 <strong>DANGER</strong>
+               </div>
+                </div>
+            </div>
+          </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="text-gray">&lt; -- 灰 -- &gt;</span>
+           </li>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light ltest"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>             
+            </li>
+            <li>
+               <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-gray"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light lter"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light light"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light dker"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-light dkest"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li><span class="text-gray">&lt; -- 白色 -- &gt;</span></li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-white"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+
+            <li>
+              <span class="text-gray">&lt; -- 主色背景 -- &gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-primary lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-primary dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+
+            <li><span class="text-gray">&lt; -- 强调色-成功 -- &gt;</span></li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-success lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-success"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+              
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-success dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li><span class="text-gray">&lt; -- 强调色-信息提示 -- &gt;</span></li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-info lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-info"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-info dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            
+            <li><span class="text-gray">&lt; -- 强调色-警告 -- &gt;</span></li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-warning lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-warning"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>              
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-warning dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+             <li><span class="text-gray">&lt; -- 强调色-危险 -- &gt;</span></li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-danger lt"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bg-danger dk"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"></span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+ <!-- bgColor end -->
+  <h3 id="fontSize" class="b-b padder-v-sm m-b">文字大小</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <p class="text-xs">11px字体</p>
+        <p class="text-sm">12px字体</p>
+        <p class="text-base">14px字体</p>
+        <p class="text-md">16px字体</p>
+        <p class="text-lg">18px字体</p>
+        <p class="text-1x5">1.5em字体</p>
+        <p class="text-2x">2em字体</p>
+        <p class="text-2x5">2.5em字体</p>
+        <p class="text-3x">3em字体</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-xs"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">11px字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-sm"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">12px字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-base"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">14px字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-md"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">16px字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-lg"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">18px字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-1x5"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">1.5em字体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-2x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">2em字体</span>
+              <span class="tag">&lt;/p&gt;</span>  
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-2x5"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">2.5em字体</span>
+              <span class="tag">&lt;/p&gt;</span>  
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-3x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">3em字体</span>
+              <span class="tag">&lt;/p&gt;</span>  
+            </li>
+        </ol>
+     </div>
+  </div><!-- font-size end -->  
+  <h3 id="lineHeight" class="b-b padder-v-sm m-b">行高</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <p class="l-h b-a m-b">默认行高</p>
+        <p class="l-h-1x b-a m-b">1倍行高</p>
+        <p class="l-h-2x b-a m-b">2倍行高</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"l-h"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">默认行高</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"l-h-1x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">1倍行高</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"l-h-2x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">2倍行高</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- line-height end -->   
+  <h3 id="fontWeight" class="b-b padder-v-sm m-b">字重</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper fontWeight">
+        <p class="font-thin">thin</p>
+        <p class="font-light">light</p>
+        <p class="font-demilight">demilight</p>
+        <p class="font-normal">nomal</p>
+        <p class="font-medium">medium</p>
+        <p class="font-bold">bold</p>
+        <p class="font-black">black</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-thin"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">thin</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-light"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">light</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-demilight"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">demilight</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-normal"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">normal</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-medium"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">medium</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-bold"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">bold</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-black"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">black</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- font-weight end -->
+  <h3 id="fontStyle" class="b-b padder-v-sm m-b">文字样式</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <p class="text-u-c">aries大写字母</p>
+        <p class="text-l-c">ARIES小写字母</p>
+        <p class="text-c-c">aries首字母大写字母</p>
+        <p class="text-u-l">带下划线的文本</p>
+        <p class="text-l-t">带删除线的文本</p>
+        <p class="font-italic">斜体</p>
+         <p class="text-ellipsis w">文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)文字截断(超过限定宽度后截断)</p>
+        <p class="control-content w">文字自动换行(超过限定宽度后换行)文字自动换行</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-u-c"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">aries大写字母</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-l-c"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">ARIES小写字母</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-c-c"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">aries首字母大写</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-u-l"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">带下划线的文本</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-l-t"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">带删除线的文本</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"font-italic"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">斜体</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-ellipsis"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">文字截断</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"control-content"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">文字自动换行(超过限定宽度后换行)</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- font-style end -->
+  <h3 id="textAlign" class="b-b padder-v-sm m-b">文字对齐</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <p class="text-left">文字居左</p>
+        <p class="text-center">文字居中</p>
+        <p class="text-right">文字居右</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-left"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">文字居左</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-center"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">文字居中</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"text-right"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">文字居右</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- text-align end -->
+  <h2 class="b-b padder-v">排版</h2>
+  <h3 id="position" class="b-b padder-v-sm m-b">定位</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <p>.pos-rlt：相对定位，.pos-stc：默认值、没有定位，.pos-abt：绝对定位，.pos-fix：固定</p>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"pos-rlt | pos-stc | pos-abt | pos-fix"</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- position end -->
+  <h3 id="float" class="b-b padder-v-sm m-b">浮动</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper clear">       
+        <p class="pull-left">左浮动</p>
+        <p class="pull-right">右浮动</p>
+
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"clear"</span>
+              <span class="tag">&gt;</span>
+           </li>
+           <li> 
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"pull-left"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">左浮动</span>
+              <span class="tag">&lt;/p&gt;</span>
+           </li>
+           <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"pull-right"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">右浮动</span>
+              <span class="tag">&lt;/p&gt;</span>            
+
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+        </ol>        
+     </div>     
+  </div>
+  <p class="m-t m-b">.pull-left:左浮动，.pull-right:左浮动，.clear:清除浮动,.padding-none:清除浮动</p><!-- float end -->
+  <h3 id="margin" class="b-b padder-v-sm m-b">外边距</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <p class="b-b b-danger padder-v">参考线</p>
+        <div class="bg-primary m-t wrapper">蓝色div，距上面红色线条15像素</div>
+          <table class="table table-bordered table-condensed m-t">
+            <thead>
+              <tr>
+                <th><strong></strong></th>
+                <th><strong>1px/-1px</strong>(xxs)</th>
+                <th><strong>5px/-5px</strong>(xs)</th>
+                <th><strong>10px/-10px</strong>(sm)</th>
+                <th><strong>15px/-15px</strong></th>
+                <th><strong>20px/-20px</strong>(md)</th>
+                <th><strong>30px/-30px</strong>(lg)</th>
+                <th><strong>40px/-40px</strong>(xl)</th>
+                <th><strong>50px/-50px</strong>(xxl)</th>                
+                <th><strong>0(清除对应边距)</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>全局外边距 </strong>class="m-</td>
+                <td>.m-xxs</td>
+                <td>.m-xs</td>
+                <td>.m-sm</td>
+                <td>.m</td>
+                <td>.m-md</td>
+                <td>.m-lg</td>
+                <td>.m-xl</td>
+                <td>.m-auto(水平方向居中)</td>                
+                <td>.no-margin</td>
+              </tr>
+              <tr>
+                <td><strong>左外边距 </strong>class="m-l-</td>
+                <td>.m-l-xxs</td>
+                <td>.m-l-xs</td>
+                <td>.m-l-sm</td>
+                <td>.m-l</td>
+                <td>.m-l-md</td>
+                <td>.m-l-lg</td>
+                <td>.m-l-xl</td>
+                <td>.m-l-xxl</td>
+                <td>.no-m-l</td>
+              </tr>
+               <tr>
+                <td><strong>负左外边距 </strong>class="m-l-n-</td>
+                <td>.m-l-n-xxs</td>
+                <td>.m-l-n-xs</td>
+                <td>.m-l-n-sm</td>
+                <td>.m-l-n</td>
+                <td>.m-l-n-md</td>
+                <td>.m-l-n-lg</td>
+                <td>.m-l-n-xl</td>
+                <td>.m-l-n-xxl</td>
+                <td>.no-m-l</td>
+              </tr>
+              <tr>
+                <td><strong>右外边距 </strong>class="m-r-</td>
+                <td>.m-r-xxs</td>
+                <td>.m-r-xs</td>
+                <td>.m-r-sm</td>
+                <td>.m-r</td>
+                <td>.m-r-md</td>
+                <td>.m-r-lg</td>
+                <td>.m-r-xl</td>
+                <td>.m-r-xxl</td>
+                <td>.no-m-r</td>
+              </tr>
+               <tr>
+                <td><strong>负右外边距 </strong>class="m-r-n-</td>
+                <td>.m-r-n-xxs</td>
+                <td>.m-r-n-xs</td>
+                <td>.m-r-n-sm</td>
+                <td>.m-r-n</td>
+                <td>.m-r-n-md</td>
+                <td>.m-r-n-lg</td>
+                <td>.m-r-n-xl</td>
+                <td>.m-r-n-xxl</td>
+                <td>.no-m-r</td>
+              </tr>
+              <tr>
+                <td><strong>上外边距 </strong>class="m-t-</td>
+                <td>.m-t-xxs</td>
+                <td>.m-t-xs</td>
+                <td>.m-t-sm</td>
+                <td>.m-t</td>
+                <td>.m-t-md</td>
+                <td>.m-t-lg</td>
+                <td>.m-t-xl</td>
+                <td>.m-t-xxl</td>
+                <td>.no-m-t</td>
+              </tr>
+              <tr>
+                <td><strong>负上外边距 </strong>class="m-t-n-</td>
+                <td>.m-t-n-xxs</td>
+                <td>.m-t-n-xs</td>
+                <td>.m-t-n-sm</td>
+                <td>.m-t-n</td>
+                <td>.m-t-n-md</td>
+                <td>.m-t-n-lg</td>
+                <td>.m-t-n-xl</td>
+                <td>.m-t-n-xxl</td>
+                <td>.no-m-t</td>
+              </tr>
+              <tr>
+                <td><strong>下外边距 </strong>class="m-b-</td>
+                <td>.m-b-xxs</td>
+                <td>.m-b-xs</td>
+                <td>.m-b-sm</td>
+                <td>.m-b</td>
+                <td>.m-b-md</td>
+                <td>.m-b-lg</td>
+                <td>.m-b-xl</td>
+                <td>.m-b-xxl</td>
+                <td>.no-m-b</td>
+              </tr>
+              <tr>
+                <td><strong>负下外边距 </strong>class="m-b-n-</td>
+                <td>.m-b-n-xxs</td>
+                <td>.m-b-n-xs</td>
+                <td>.m-b-n-sm</td>
+                <td>.m-b-n</td>
+                <td>.m-b-n-md</td>
+                <td>.m-b-n-lg</td>
+                <td>.m-b-n-xl</td>
+                <td>.m-b-n-xxl</td>
+                <td>.no-m-b</td>
+              </tr>
+             
+            </tbody>
+          </table>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"m-t"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">蓝色div，距上面红色线条15像素</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- margin end -->
+  <h3 id="padding" class="b-b padder-v-sm m-b">内填充</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <div class="bg-gray wrapper"><div class="bg-white">15像素填充</div></div>
+          <table class="table table-bordered table-condensed fixed-table-container m-t">
+            <thead>
+              <tr>
+                <th><strong></strong></th>
+                <th><strong>5px</strong>(xs)</th>
+                <th><strong>10px</strong>(sm)</th>
+                <th><strong>15px</strong></th>
+                <th><strong>20px</strong>(md)</th>
+                <th><strong>30px</strong>(lg)</th>
+                <th><strong>50px</strong>(xl)</th>
+                <th><strong>0(清除)</strong></th>   
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>全局内填充</strong> class="wrapper-</td>
+                <td>.wrapper-xs</td>
+                <td>.wrapper-sm</td>
+                <td>.wrapper</td>
+                <td>.wrapper-md</td>
+                <td>.wrapper-lg</td>
+                <td>.wrapper-xl</td>
+                <td>.no-padder</td>
+              </tr>
+              <tr>
+                <td><strong>水平方向内填充</strong> class="padder-</td>
+                <td>.padder-xs</td>
+                <td>.padder-sm</td>
+                <td>.padder</td>
+                <td>.padder-md</td>
+                <td>.padder-lg</td>
+                <td>.padder-xl</td>
+                <td></td>
+              </tr>
+               <tr>
+                <td><strong>垂直方向内填充</strong> class="padder-v-</td>
+                <td>.padder-v-xs</td>
+                <td>.padder-v-sm</td>
+                <td>.padder-v</td>
+                <td>.padder-v-md</td>
+                <td>.padder-v-lg </td>
+                <td>.padder-v-xl</td>
+                <td></td>
+              </tr>             
+            </tbody>
+          </table>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"wrapper"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">15像素填充</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- padding end -->
+
+  <h3 id="boxShadow" class="b-b padder-v-sm m-b">盒阴影</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <div class="b-a wrapper box-shadow m-t">class="box-shadow" 阴影效果</div>
+        <div class="b-a wrapper box-shadow-md m-t">class="box-shadow-md " 阴影效果</div>
+        <div class="b-a wrapper box-shadow-lg m-t">class="box-shadow-lg" 阴影效果</div>
+        <div class="b-a wrapper box-shadow-lg no-shadow m-t">清除阴影</div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"box-shadow"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">class="box-shadow" 阴影效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"box-shadow-md"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">class="box-shadow-md " 阴影效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"box-shadow-lg"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">class="box-shadow-lg" 阴影效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"box-shadow-lg no-shadow"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">清除阴影</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- box-shadow end -->
+
+
+  <h3 id="border" class="b-b padder-v-sm m-b">边框</h3>
+  <p class="m-t">边框颜色示例：</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">        
+        <div class="wrapper m-b b b-danger ">
+           设置四周红色          
+        </div>      
+        <div class="wrapper m-b b b-t-warning ">
+           设置上边黄色          
+        </div>
+        <div class="wrapper m-b b b-l-success "> 
+          设置左边绿色          
+        </div>
+        <table class="table-condensed table-bordered fixed-table-container m-t">
+            <tbody>
+              <tr>
+                <td><strong>边框颜色</strong></td>
+                <td>.b-*-light(浅灰)</td>
+                <td>.b-*-gray(灰)</td>
+                <td>.b-*-dark(深灰)</td>
+                <td>.b-*-black(黑)</td>
+                <td>.b-*-primary</td>
+                <td>.b-*-success</td>
+                <td>.b-*-info</td>
+                <td>.b-*-warning</td>
+                <td>.b-*-danger</td>
+                <td>.b-*-white</td>
+                <td>.b-*-primary</td>              
+              </tr>   
+            </tbody>
+          </table> 
+          <p class="m-t">* 号通配上边、左边。<p>         
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置四周红色</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-t-warning"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置上边黄色</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-l-success"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置左边绿色</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p class="m-t">边框大小示例：</p>
+  <div class="docs-example  b-a r m-b">
+
+    <div class="example wrapper"> 
+        
+        <div class="wrapper m-b b b-2x ">
+           设置四周边框大小为2px          
+        </div>      
+        <div class="wrapper m-b b b-t-3x ">
+           设置上边框大小为3px         
+        </div>
+        <div class="wrapper m-b b b-l-4x "> 
+          设置左边框大小为4px          
+        </div>
+        <table class="table-condensed table-bordered fixed-table-container m-t">
+            <tbody>
+              <tr>
+                <td><strong>边框大小</strong></td>
+                <td>.b-*-2x</td>
+                <td>.b-*-3x</td>
+                <td>.b-*-4x</td>
+                <td>.b-*-5x</td>
+              </tr>   
+            </tbody>
+          </table> 
+          <p class="m-t">* 号通配上边、左边。<p>         
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-2x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置四周边框大小为2px </span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-t-3x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置上边框大小为3px</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-l-4x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置左边框大小为4px</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+  
+  <p class="m-t">边框样式示例：</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">        
+        <div class="wrapper m-b b b-2x b-dashed">
+           设置四周边框为虚线框          
+        </div>      
+        <div class="wrapper m-b b b-2x b-dotted">
+           设置四周边框为点线框          
+        </div>        
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-2x b-dashed"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置四周边框为虚线框 </span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-2x b-dotted"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置四周边框为点线框</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p>清除边框</p>
+  <div class="docs-example  b-a r m-b">    
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+              <li>
+              <span class="tag">
+                <span class="atn">.no-border,</span>
+              </span>
+            </li>
+            <li>
+              <span class="tag">
+              <span class="atn">.no-borders</span> {border-color: transparent; border-width: 0;}               
+              </span>
+              <span class="text-gray">//边框透明</span>
+            </li>
+            <li>
+              <span class="tag">
+                <span class="atn">.b-n</span>{border: 0 none;}               
+              </span>
+               <span class="text-gray">//去掉边框</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- border-clear end -->
+  <!-- border end -->
+
+  <h3 id="borderRadius" class="b-b padder-v-sm m-b">css3边框圆角</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <div class="wrapper b rounded">class="rounded" 四周圆角效果</div>
+        <div class="wrapper m-t b r-l">左侧2px圆角效果</div>
+        <div class="wrapper m-t b r-r-2x">右侧4px圆角效果</div>
+        <div class="wrapper m-t b r-t-3x">上侧6px圆角效果</div>
+        <div class="wrapper m-t b r-b-3x">下侧6px圆角效果</div>
+        <table class="table table-bordered table-condensed fixed-table-container table-striped m-t">
+            <tbody>
+              <tr>
+                <td><strong>四周圆角</strong></td>
+                <td>.r-xs</td>
+                <td>.r-sm</td>
+                <td>.r</td>
+                <td>.r-md</td>
+                <td>.r-lg</td>
+                <td>.rounded</td>
+                <td>.no-radius</td>               
+              </tr>
+              <tr>
+                <td><strong>左侧圆角</strong></td>
+                <td>.r-l</td>
+                <td>.r-l-2x</td>
+                <td>.r-l-3x</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+               <tr>
+                <td><strong>右侧圆角</strong></td>
+                <td>.r-r</td>
+                <td>.r-r-2x</td>
+                <td>.r-r-3x</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>  
+              <tr>
+                <td><strong>上边圆角</strong></td>
+                <td>.r-t</td>
+                <td>.r-t-2x</td>
+                <td>.r-t-3x</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr> 
+              <tr>
+                <td><strong>下边圆角</strong></td>
+                <td>.r-b</td>
+                <td>.r-b-2x</td>
+                <td>.r-b-3x</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>      
+            </tbody>
+          </table>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b rounded"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">class="rounded" 四周圆角效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b r-l"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">左侧2px圆角效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b r-r-2x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">右侧4px圆角效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b r-t-3x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">上侧6px圆角效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b r-b-3x"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">下侧6px圆角效果</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- border-radius end -->  
+
+  <h3 id="width-height" class="b-b padder-v-sm m-b">宽高尺寸</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">       
+        <p class="bg-gray wrapper m-b w-md">
+             设置宽度为 class="w-md" 
+        </p>
+        <table class="table-condensed table-bordered fixed-table-container m-t">
+            <tbody>
+              <tr>
+                <td><strong>宽度</strong></td>
+                <td>.w-xxs<br>(迷你 60px)</td>
+                <td>.w-xs<br>(微 80px)</td>
+                <td>.w-sm<br>(小 150px)</td>
+                <td>.w<br>(正常 200px)</td>
+                <td>.w-md<br>(中 250px)</td>
+                <td>.w-lg<br>(稍大 280px)</td>
+                <td>.w-xl<br>(大 320px)</td>
+                <td>.w-xxl<br>(加大 360px)</td>
+                <td>.w-xxxl<br>(超大 400px)</td>
+                <td>.w-full<br>(与父元素同宽 100%)</td>
+                <td>.w-auto<br>(自动 auto)</td>             
+              </tr>
+              <tr>
+                <td><strong>高度</strong></td>
+                <td>.h-auto<br>(自动 auto)</td>
+                <td>.h-full<br>(与父元素同高 100%)</td>
+                <td colspan="10"></td>
+              </tr> 
+            </tbody>
+          </table>          
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"w-md"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">设置宽度为 class="w-md"</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+  <!-- width-height end -->
+  <h3 id="display" class="b-b padder-v-sm m-b">隐藏 显示</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper"> 
+      display:这个属性用于定义建立布局时元素生成的显示框类型          
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">
+                <span class="atn">.inline-block</span> {display: inline-block;}               
+              </span>
+               <span class="text-gray">//行内块元素</span>
+            </li>
+             <li>
+              <span class="tag">
+                <span class="atn">.block</span> {display: block !important;}               
+              </span>
+               <span class="text-gray">//此元素将显示为块级元素，此元素前后会带有换行符</span>
+            </li>
+             <li>
+              <span class="tag">
+                <span class="atn">.cell</span> {display: table-cell;}               
+              </span>
+               <span class="text-gray">//此元素会作为一个表格单元格显示（类似 td 和 th）</span>
+            </li>
+            <li>
+              <span class="tag">
+                <span class="atn">.none</span> {display: none;}               
+              </span>
+               <span class="text-gray">//此元素不会被显示</span>
+            </li>
+            <li>
+              <span class="tag">
+                <span class="atn">.transparent</span> {opacity: 0}               
+              </span>
+               <span class="text-gray">//透明度为0 不可见，但占据文档位置</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- display end -->
+  
+  <h2 class="b-b padder-v">辅助类</h2>
+  <!-- <h3 id="arrow" class="b-b padder-v-sm m-b">箭头</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper"> 
+       <div class="arrow-example">   
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-primary"></span>
+             <span class="arrow right pull-right arrow-primary"></span>
+             <span class="arrow bottom pull-bottom arrow-primary"></span>
+             <span class="arrow left pull-left arrow-primary"></span>
+        </p>
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-info"></span>
+             <span class="arrow right pull-right arrow-info"></span>
+             <span class="arrow bottom pull-bottom arrow-info"></span>
+             <span class="arrow left pull-left arrow-info"></span>
+        </p>
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-success"></span>
+             <span class="arrow right pull-right arrow-success"></span>
+             <span class="arrow bottom pull-bottom arrow-success"></span>
+             <span class="arrow left pull-left arrow-success"></span>
+        </p>
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-danger"></span>
+             <span class="arrow right pull-right arrow-danger"></span>
+             <span class="arrow bottom pull-bottom arrow-danger"></span>
+             <span class="arrow left pull-left arrow-danger"></span>
+        </p>
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-warning"></span>
+             <span class="arrow right pull-right arrow-warning"></span>
+             <span class="arrow bottom pull-bottom arrow-warning"></span>
+             <span class="arrow left pull-left arrow-warning"></span>
+        </p>
+         <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-light"></span>
+             <span class="arrow right pull-right arrow-light"></span>
+             <span class="arrow bottom pull-bottom arrow-light"></span>
+             <span class="arrow left pull-left arrow-light"></span>
+        </p>
+         <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-dark"></span>
+             <span class="arrow right pull-right arrow-dark"></span>
+             <span class="arrow bottom pull-bottom arrow-dark"></span>
+             <span class="arrow left pull-left arrow-dark"></span>
+        </p>
+        <p class="wrapper m-b w-xs pos-rlt pull-left">
+             <span class="arrow top pull-top arrow-black"></span>
+             <span class="arrow right pull-right arrow-black"></span>
+             <span class="arrow bottom pull-bottom arrow-black"></span>
+             <span class="arrow left pull-left arrow-black"></span>
+        </p>
+                <div class="popover top">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Popover top</h3>
+                  <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                  </div>
+                </div>
+
+                <div class="popover right">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Popover right</h3>
+                  <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                  </div>
+                </div>
+
+                <div class="popover bottom">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Popover bottom</h3>
+                  <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                  </div>
+                </div>
+
+                <div class="popover left">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Popover left</h3>
+                  <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                  </div>
+                </div>
+        </div>        
+        <table class="table-condensed table-bordered fixed-table-container">
+            <tbody>
+              <tr>
+                <td><strong>箭头颜色</strong></td>
+                <td>.arrow-primary <br>(蓝色)</td>
+                <td>.arrow-info <br>(绿色)</td>
+                <td>.arrow-success <br>(红色)</td>
+                <td>.arrow-danger <br>(橙色)</td>
+                <td>.arrow-light <br>(浅灰)</td>
+                <td>.arrow-light <br>(深灰)</td>
+                <td>.arrow-dark <br>(深灰)</td>
+                <td>arrow-black <br>(黑色)</td>             
+              </tr>
+              <tr>
+                <td><strong>箭头方向</strong></td>
+                <td>.top (向上)</td>
+                <td>.right (向右)</td>
+                <td>.bottom (向下)</td>
+                <td>.left (向左)</td>
+                <td colspan="4"></td>
+              </tr>
+              <tr>
+                <td><strong>定位</strong></td>
+                <td>.pull-top (居上)</td>
+                <td>.pull-right (居右)</td>
+                <td>.pull-bottom (居下)</td>
+                <td>.pull-left (居左)</td>
+                <td colspan="4"></td>
+              </tr>  
+            </tbody>
+          </table>          
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"arrow top pull-top arrow-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"arrow right pull-right arrow-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"arrow bottom pull-bottom arrow-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"arrow left pull-left arrow-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+  <p class="text-gray"><mark>使用方法：</mark>class="arrow+箭头朝向+箭头定位+箭头颜色"<p> -->
+    <!-- arrow end -->
+
+  <h3 id="badge" class="b-b padder-v-sm m-b">徽章</h3>
+  <p>给链接、导航等元素嵌套 <code>&lt;span class="badge"&gt;</code> 元素，可以很醒目的展示新的或未读的信息条目。</p>
+  <div class="docs-example  b-a r m-b">
+
+    <div class="example wrapper">
+        <p>
+          <a href="#">Inbox <span class="badge">42</span></a>
+        </p>
+        <p>
+          <button class="btn btn-primary" type="button">
+          Messages <span class="badge">4</span>
+        </button>
+      </p>  
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;a</span>
+              <span class="pln"> </span>
+              <span class="atn">href</span>
+              <span class="pun">=</span>
+              <span class="atv">"#"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;Inbox</span>
+            </li>  
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">42</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/a&gt;</span>
+            </li>
+
+            <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;Messages</span>
+            </li>  
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">4</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/button&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p>用下面的任何一个类即可改变徽章的外观。</p>
+  <div class="docs-example  b-a r m-b">
+
+    <div class="example wrapper">
+        <p class="padder m-b">
+             <span class="badge bg-primary">primary</span>
+             <span class="badge bg-danger">danger</span>
+             <span class="badge bg-warning">warning</span>
+             <span class="badge bg-success">success</span>
+             <span class="badge bg-info">info</span>
+             <span class="badge bg-white">white(默认颜色)</span>
+             <span class="badge badge-empty m-r">empty</span>
+             <!-- <span class="badge badge-empty up">居上</span> -->
+        </p>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">primary</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">danger</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-warning"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">warning</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-success"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">success</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-info"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">info</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-white"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">white(默认颜色)</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-empty"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">empty</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p>增加<code class="m-xs">up</code>类定位在上边</p>
+  <div class="docs-example badge-example  b-a r m-b">
+
+    <div class="example wrapper">
+           <div>
+            <img src="img/x_Jenny.png" class="b b-gray rounded"/>
+             <span class = "badge up">5</span>
+          </div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"b b-gray rounded"</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge up"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">5</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p>提供两种尺寸</p>
+  <div class="docs-example  b-a r m-b">
+
+    <div class="example wrapper">
+        <p class="padder m-b">
+             <span class="badge badge-sm">badge-sm(默认尺寸)</span>
+        </p>
+        <p class="padder m-b">
+             <span class="badge badge-md">badge-md</span>
+        </p>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-sm"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">badge-sm(默认尺寸)</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"badge badge-md"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">badge-md</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- badge end -->
+
+  <h3 id="label" class="b-b padder-v-sm m-b">标签</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <h1>Example heading <span class="label label-default">New</span></h1>
+        <h2>Example heading <span class="label label-default">New</span></h2>
+        <h3>Example heading <span class="label label-default">New</span></h3>
+        <h4>Example heading <span class="label label-default">New</span></h4>
+        <h5>Example heading <span class="label label-default">New</span></h5>
+        <h6>Example heading <span class="label label-default">New</span></h6>     
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;h1</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;Example heading</span>
+            </li>  
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label label-default"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">New</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/h1&gt;</span>
+            </li>
+
+            <li>
+              <span class="tag">&lt;h2</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;Example heading</span>
+            </li>  
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label label-default"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">New</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/h2&gt;</span>
+            </li>
+            <li>...</li>
+            <li>
+              <span class="tag">&lt;h6</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;Example heading</span>
+            </li>  
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label label-default"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">New</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/h6&gt;</span>
+            </li>
+
+        </ol>
+     </div>
+  </div>
+  
+  <p>用下面的任何一个类即可改变标签的外观</p> 
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <p class="padder m-b">
+             <span class="label bg-primary">primary</span>
+             <span class="label bg-danger">danger</span>
+             <span class="label bg-warning">warning</span>
+             <span class="label bg-success">success</span>
+             <span class="label bg-info">info</span>
+             <span class="label bg-white">white</span>
+             <span class="label badge-empty">empty</span>
+        </p>      
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">primary</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">danger</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-warning"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">warning</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-success"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">success</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-info"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">info</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"label bg-empty"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">empty</span>
+              <span class="tag">&lt;/span&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- badge label end -->
+
+
+    <h3 id="line" class="b-b padder-v-sm m-b">分割线</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+       <p class="line thin"></p>
+       <p class="line"></p> 
+       <p class="line line-dashed"></p>
+       <p class="m-t">可配合使用border-top-color属性改变分割线的颜色,如下示例:</p>
+       <p class="line b-t-danger"></p>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"line thin"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"line"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"line line-dashed"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;p</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"line b-t-danger"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- line end -->
+
+    <h3 id="thumb" class="b-b padder-v-sm m-b">缩略图</h3>    
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUxYWVlOGQ2Y2EgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTFhZWU4ZDZjYSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                <div class="caption">
+                  <h3>Thumbnail label</h3>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUxYWVlOGNkMDcgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTFhZWU4Y2QwNyI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                <div class="caption">
+                  <h3>Thumbnail label</h3>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUxYWVlOGNiYTQgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTFhZWU4Y2JhNCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NTE1NjI1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                <div class="caption">
+                  <h3>Thumbnail label</h3>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumbnail"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="atn">alt</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"caption"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">Thumbnail label</span>
+              <span class="tag">&lt;/h3&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">......</span>
+              <span class="tag">&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a</span>
+              <span class="pln"> </span>
+              <span class="atn">href</span>
+              <span class="pun">=</span>
+              <span class="atv">"#"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="atn">role</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">Button</span>
+              <span class="tag">&lt;/a&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a</span>
+              <span class="pln"> </span>
+              <span class="atn">href</span>
+              <span class="pun">=</span>
+              <span class="atv">"#"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default"</span>
+              <span class="atn">role</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">Button</span>
+              <span class="tag">&lt;/a&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- thumb end -->
+
+  <h3 id="thumb-horizontal" class="b-b padder-v-sm m-b">水平缩略图</h3>
+  <p class="text-gray">提供.thumb-primary | .thumb-success | .thumb-info | .thumb-warning | .thumb-danger 五种背景色；.thumb-rounded 圆背景；.thumb-moreLine 多行内容<p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper clearfix">
+        
+        <div class="thumb-horizontal thumb-primary pull-left m-b">
+            <div class="thumb-img">
+                <span class="thumb-img-bg">
+                  <i class="local_post_office"></i>
+                </span>
+            </div>
+            <div class="thumb-caption">
+                <h5>TRAVER</h5>
+                <small>Anyone, GPRS more</small>
+            </div>
+         </div><!-- primary -->
+
+        <div class="thumb-horizontal thumb-success pull-left m-b">
+            <div class="thumb-img">
+                <span class="thumb-img-bg">
+                  Long
+                </span>
+            </div>
+            <div class="thumb-caption">
+                <h5>TRAVER</h5>
+                <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+            </div>
+         </div><!-- success -->
+
+         <div class="thumb-horizontal thumb-info pull-left m-b">
+            <div class="thumb-img">
+                <span class="thumb-img-bg">
+                  <i class="local_post_office"></i>
+                </span>
+            </div>
+            <div class="thumb-caption">
+                <h5><span class="m-r-xs text-1x5">125</span>TRAVER</h5>
+                <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+            </div>
+         </div><!-- info -->
+
+         <div class="thumb-horizontal thumb-warning thumb-rounded pull-left m-b">
+            <div class="thumb-img">
+                <span class="thumb-img-bg">
+                  <i class="local_post_office"></i>
+                </span>
+            </div>
+            <div class="thumb-caption">
+                <h5><span class="m-r-xs text-1x5">125</span>TRAVER</h5>
+                <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+            </div>
+         </div><!-- warning rounded -->
+
+         <div class="thumb-horizontal thumb-danger thumb-moreLine pull-left m-b">
+            <div class="thumb-img">
+                <span class="thumb-img-bg">
+                  <i class="local_post_office"></i>
+                </span>
+            </div>
+            <div class="thumb-caption">                
+                <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+                <h5>Anyone know the GPRS Anyone know the</h5>
+            </div>
+         </div><!-- danger moreLine -->
+
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+
+            <li>
+              <span class="gray-text">&lt;!--蓝色背景--&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-horizontal thumb-primary"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img-bg"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"local_post_office"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+              <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-caption"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> </span>
+              <span class="pln">TRAVER</span>
+              <span class="tag">&lt;/h5&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">Anyone, GPRS more</span>
+              <span class="tag">&lt;/small&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="gray-text">&lt;!--绿色背景，圆角矩形内为文本内容 --&gt;</span>
+            </li> 
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-horizontal thumb-warning thumb-rounded"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img-bg"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="pln">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+              <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-caption"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">TRAVER</span>
+              <span class="tag">&lt;/h5&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> </span>
+              <span class="pln">
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span> 
+                Anyone, 
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span>
+                GPRS more
+              </span>
+              <span class="tag">&lt;/small&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            
+            <li>
+              <span class="gray-text">&lt;!--黄色背景，圆形 --&gt;</span>
+            </li> 
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-horizontal thumb-warning thumb-rounded"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img-bg"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"local_post_office"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+              <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-caption"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"m-r-xs text-1x5"</span>
+              <span class="tag">&gt;</span>
+              <span class="pln">125</span>
+              <span class="tag">&lt;/span&gt;</span>
+              <span class="pln">TRAVER</span>
+              <span class="tag">&lt;/h5&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> </span>
+              <span class="pln">
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span> 
+                Anyone, 
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span>
+                GPRS more
+              </span>
+              <span class="tag">&lt;/small&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            
+            <li>
+              <span class="gray-text">&lt;!-- 红色背景，多行内容 --&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-horizontal thumb-danger thumb-moreLine"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-img-bg"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"local_post_office"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+              <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"thumb-caption"</span>
+              <span class="tag">&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;small</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> </span>
+              <span class="pln">
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span> 
+                <span class="pln">Anyone,</span> 
+                <span class="tag">&lt;b</span>
+                <span class="tag">&gt;</span>
+                <span class="pln"> </span>
+                <span class="pln">5</span>
+                <span class="tag">&lt;/b&gt;</span>
+                <span class="pln">GPRS more</span>
+              </span>
+              <span class="tag">&lt;/small&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h5</span>
+              <span class="tag">&gt;</span>
+              <span class="pln"> Anyone know the GPRS Anyone know the</span>
+              <span class="tag">&lt;/h5&gt;</span>
+            </li>
+            
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+
+     </div>
+  </div>  
+    <!-- thumb-horizontal end -->
+   
+   <!-- avatar -->
+  <h3 id="avatar" class="b-b padder-v-sm m-b">头像</h3>
+  <p>提供三种尺寸 <code>.thumb-md</code> <code>.thumb-sm</code> <code>.thumb-xs</code></p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper clear">       
+       <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i></i>
+        </div>
+        <div class="avatar thumb-sm pull-left">
+            <img src="img/x_Jenny.png" />
+            <i></i>
+        </div>
+        <div class="avatar thumb-xs pull-left">
+            <img src="img/x_Jenny.png" />
+            <i></i>
+        </div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="text-gray">&lt;-- thumb-md -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- thumb-sm -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-sm"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- thumb-xs -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-xs"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+  <p>提供三种定位<code class="m-xs">left</code><code class="m-xs">right</code><code class="m-xs">bottom</code></p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper clear">       
+       <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="left"></i>
+        </div>
+        <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="right"></i>
+        </div>
+        <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="bottom"></i>
+        </div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="text-gray">&lt;-- left -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"left"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- right -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"right"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- bottom -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"bottom"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+
+
+  <p>四种状态<code class="m-xs">on</code><code class="m-xs">off</code><code class="m-xs">busy</code><code class="m-xs">away</code></p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper clear">       
+       <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="on"></i>
+        </div>
+        <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="off"></i>
+        </div>
+        <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="busy"></i>
+        </div>
+        <div class="avatar thumb-md pull-left">
+            <img src="img/x_Jenny.png" />
+            <i class="away"></i>
+        </div>
+     </div>
+      
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="text-gray">&lt;-- on -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"on"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- off -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"off"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- busy -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"busy"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- off -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"off"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+
+            <li>
+              <span class="text-gray">&lt;-- away -- &gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"avatar thumb-md"</span>
+              <span class="tag">&gt;</span>
+            </li>
+             <li>
+              <span class="tag">&lt;img</span>
+              <span class="pln"> </span>
+              <span class="atn">src</span>
+              <span class="pun">=</span>
+              <span class="atv">"..."</span>
+              <span class="tag">/&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"away"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div>
+    <!-- avatar end -->    
+
+  
+
+</div>
+  <!-- go-top -->
+ <a href="#" class="go-top">
+    <i class="arrow_up_bold"></i>
+ </a>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/left-menu.js"></script>
+<script type="text/javascript" src="js/go-top.js"></script>
+<!-- <script type="text/javascript">
+    function resetTabs(){
+        $(".menu-left > ul").hide(); 
+        $(".menu-top li").removeClass("current");      
+    }
+    $(function(){       
+        $(".menu-top li:first a").addClass("current"); 
+        $(".menu-left > ul").hide();
+        $(".menu-left > ul:first").fadeIn(); 
+        
+        $(".menu-top li").on("click",function(e) {
+            e.preventDefault();
+            if ($(this).attr("className") == "current"){
+             return       
+            }
+            else{             
+            resetTabs();
+            var idx = $(this).index();
+            $(this).addClass("current");
+            $(".menu-left > ul").eq(idx).fadeIn();
+            }
+        });
+    }) 
+
+</script>-->
+
+
+</html>

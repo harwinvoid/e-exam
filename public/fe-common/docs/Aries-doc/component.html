@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ariesDoc-index</title>
+    
+    <link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css">
+    <link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/doc.css" />
+    
+</head>
+<body>
+  <header class="menu-top">
+  	 <a href="#" class="aries-brand">Aries-Doc</a>
+  	 <nav>
+  	 	<ul>
+        <li><a href="index.html">全局 CSS 样式</a></li>
+        <li class="current"><a href="component.html">组件</a></li>
+        <li><a href="#">JavaScript 插件</a></li>
+        <li><a href="layout.html">布局</a></li>
+      </ul>
+  	 </nav>
+  </header>	
+  <div class="menu-left">
+  <ul>
+    <li>
+      <a href="#">图标</a>
+      <ul class="sub-menu">
+        <li><a href="#icon">图标</a></li>        
+      </ul>
+    </li>
+   <li>
+  		<a href="#">表格</a>
+  		<ul class="sub-menu">
+  			<li><a href="#table-base">基本实例</a></li>
+  			<li><a href="#table-striped">条纹状表格</a></li>
+  			<li><a href="#table-bordered">带边框的表格</a></li>
+        <li><a href="#table-condensed">紧缩表格</a></li>
+        <!-- <li><a href="#fixed-table-container">可排序表格</a></li> -->
+  		</ul>
+  	</li>
+  	<li>
+  		<a href="#">表单</a>
+  		<ul class="sub-menu">
+  			<li><a href="#btn">按钮</a></li>
+        <li><a href="#btn-group">按钮组</a></li>
+        <li><a href="#dropdown-menu">下拉按钮</a></li>
+        <!--<li><a href="#input">输入框</a></li>
+         <li><a href="#">数值输入框</a></li>
+        <li><a href="#">单选框/复选框</a></li>
+        <li><a href="#">日期</a></li>
+        <li><a href="#">下拉框</a></li>
+        <li><a href="#">附件上传</a></li>
+        <li><a href="#">附件下载</a></li>
+        <li><a href="#">弹出框</a></li>
+        <li><a href="#">进度条</a></li>
+  			<li><a href="#">控件状态</a></li>
+        <li><a href="#">表单校验</a></li>
+  			<li><a href="#">控件尺寸</a></li>
+  			<li><a href="#">水平排列表单</a></li> -->
+  		</ul>
+  	</li>
+    <!-- <li>
+      <a href="#">导航菜单</a>
+      <ul class="sub-menu">
+        <li><a href="#">多级菜单</a></li>
+        <li><a href="#">菜单树</a></li>
+        <li><a href="#">路径导航</a></li>
+        <li><a href="#">分页</a></li>
+      </ul>
+    </li> -->
+  </ul><!-- 组件 end -->
+</div><!-- menu-left end -->
+<div class="main-content m-r">
+  <h3 class="b-b padder-v-sm" id="icon">图标</h3>
+   <p class="text-danger">所有字体图标必须放在&lt;i&gt;标签上，图标类只能应用在不包含任何文本内容或子元素的标签上;可设置font-size属性改变图标的大小</p>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <i class="md-search"></i>
+        <i class="md-search icon-sm"></i>
+        <i class="md-search icon-md"></i> 
+        <i class="md-search icon-lg"></i> 
+        <i class="md-search icon-xl"></i> 
+        <p class="m-t">增加 icon-sm、icon-md、icon-lg、icon-xl中任何一个类可改变图标大小</p>        
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"search"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>             
+            </li>
+             <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"search icon-sm"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>             
+            </li>
+             <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"search icon-md"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>             
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"search icon-lg"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>             
+            </li>
+            <li>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"search icon-xl"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>             
+            </li>
+        </ol>
+     </div>
+  </div>
+  <p class="m-t">更多图标请点击<a href="Material-Design-Icon/demo.html" target="_blank" class="text-info">查看所有字体图标</a></p>
+  <!-- icon-font end -->
+   <h2 class="b-b padder-v-sm">表格</h2>
+    <h3 class="b-b padder-v-sm" id="table-base">基本实例</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <table class="table">
+          <caption>为任意 <code>&lt;table&gt;</code> 标签添加 <code>.table</code> 类可以为其赋予基本的样式 — 少量的内补（padding）和水平方向的分隔线。</caption>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;table</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"table"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">...</span>
+              <span class="tag">&lt;/table&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- table end -->
+  <h3 class="b-b padder-v-sm" id="table-striped">条纹状表格</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <table class="table table-striped">
+          <caption>通过 <code>.table-striped</code> 类可以给 <code>&lt;tbody&gt;</code> 之内的每一行增加斑马条纹样式。</caption>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;table</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"table table-striped"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">...</span>
+              <span class="tag">&lt;/table&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- table-striped end -->
+  <h3 class="b-b padder-v-sm" id="table-bordered">带边框的表格</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <table class="table table-bordered">
+          <caption>添加 <code>.table-bordered</code> 类为表格和其中的每个单元格增加边框。</caption>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;table</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"table table-bordered"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">...</span>
+              <span class="tag">&lt;/table&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- table-bordered end -->
+  <h3 class="b-b padder-v-sm" id="table-condensed">紧缩表格</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <table class="table table-condensed">
+          <caption>通过添加 <code>.table-condensed</code> 类可以让表格更加紧凑，单元格中的内补（padding）均会减小。</caption>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;table</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"table table-condensed"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">...</span>
+              <span class="tag">&lt;/table&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- table-condensed end -->
+  <!-- <h3 class="b-b padder-v-sm" id="fixed-table-container">可排序表格</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+         <div class="fixed-table-container">
+         <table class="table">
+          <caption>将任何 <code>.table</code> 元素包裹在 <code>.fixed-table-container</code> 然后再thead下需要排序的th增加<code>&lt;span class="sortable"&gt;</code>即可创建可排序表格</caption>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name<span class="sortable"></span></th>
+              <th>Last Name</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+             <span class="tag">&lt;div</span>
+             <span class="atn">class</span>
+             <span class="pun">=</span>
+              <span class="atv">"fixed-table-container"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;table</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"table"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">...</span>
+              <span class="tag">&lt;/table&gt;</span>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+        </ol>
+     </div>
+  </div> --><!-- fixed-table-container end -->
+  
+  <h2 class="b-b padder-v-sm">表单元素</h2>
+  <h3 class="b-b padder-v-sm" id="btn">按钮</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example wrapper">
+        <p>
+          <button class="btn btn-default" type="button">default</button>
+          <button class="btn btn-primary" type="button">primary</button>
+          <button class="btn btn-success" type="button">success</button>
+          <button class="btn btn-info" type="button">info</button>
+          <button class="btn btn-warning" type="button">warning</button>
+          <button class="btn btn-danger" type="button">danger</button>
+          <button class="btn btn-dark" type="button">dark</button>
+          <button class="btn btn-black" type="button">black</button>
+        </p>        
+        <p>
+          <button class="btn btn-default disabled" type="button">default 禁用</button>
+          <button class="btn btn-primary disabled" type="button">primary 禁用</button>
+          <button class="btn btn-success disabled" type="button">success 禁用</button>
+          <button class="btn btn-info disabled" type="button">info 禁用</button>
+          <button class="btn btn-warning disabled" type="button">warning 禁用</button>
+          <button class="btn btn-danger disabled" type="button">danger 禁用</button>
+          <button class="btn btn-dark disabled" type="button">dark 禁用</button>
+          <button class="btn btn-black disabled" type="button">black 禁用</button>
+        </p>
+        <p>
+          <button class="btn btn-default btn-icon btn-sm" type="button"><i class="crown"></i></button>
+           <button class="btn btn-default btn-icon btn-lg" type="button"><i class="crown"></i></button>
+        </p>
+        <p>
+        <button class="btn btn-default btn-rounded" type="button">圆角按钮</button>
+        <button class="btn btn-default btn-rounded btn-lg" type="button">圆角按钮</button>
+        </p>
+        <p>
+          <button class="btn btn-default btn-block" type="button"><i class="crown pull-left"></i>全长按钮，占一行</button>
+           <button class="btn btn-default btn-block" type="button"><i class="crown pull-right"></i>全长按钮，占一行</button>
+        </p>
+        <p>
+        <button class="btn btn-link" type="button">link</button>
+         </p>
+        
+        
+        
+        
+     </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//默认状态</span>
+            </li>
+            <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//重要状态</span>
+            </li>
+             <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary disabled"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//禁用状态</span>
+            </li>
+             <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default btn-icon"</span>              
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"crown"</span>
+               <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//图标按钮</span>
+            </li>
+             <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default btn-rounded"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//圆角按钮</span>
+            </li>
+             <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default btn-rounded btn-lg"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//圆角按钮大号</span>
+            </li>
+             <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default btn-block"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//全长按钮</span>
+            </li>
+            <li>
+              <span class="tag">&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-link"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/button&gt;</span>
+              <span class="text-gray">//链接</span>
+            </li>
+        </ol>
+     </div>
+  </div><!-- btn end -->
+
+  <h3 class="b-b padder-v-sm" id="btn-group">按钮组</h3>
+  <div class="docs-example doc-btn-group  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+      <div class="row">
+        <div class="col-md-6">
+        <div class="row">
+          <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-default"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-default"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-default"><i class="format_align_right"></i></button>
+          </div>  
+          <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-primary"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="format_align_right"></i></button>
+          </div> 
+          <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-success"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-success"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-success"><i class="format_align_right"></i></button>
+          </div>
+          </div>
+          <div class="row"> 
+           <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-info"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-info"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-info"><i class="format_align_right"></i></button>
+          </div>
+          <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-warning"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-warning"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-warning"><i class="format_align_right"></i></button>
+          </div> 
+           <div class="btn-group col-md-4 m-b">
+                  <button type="button" class="btn btn-danger"><i class="format_align_left"></i></button>
+                  <button type="button" class="btn btn-danger"><i class="format_align_center"></i></button>
+                  <button type="button" class="btn btn-danger"><i class="format_align_right"></i></button>
+          </div>
+        </div>
+         <div class="row"> 
+           <div class="btn-group col-md-4">
+                  <button type="button" class="btn btn-default btn-addon"><i class="home"></i>图文组合</button>
+          </div>
+          <div class="btn-group col-md-4 btn-group-sm">
+               <button type="button" class="btn btn-primary btn-addon btn-sm"><i class="home pull-right"></i>图文组合</button>
+          </div> 
+           <div class="btn-group col-md-4 btn-group-lg">
+               <button type="button" class="btn btn-warning btn-addon btn-lg"><i class="home"></i>图文组合</button>
+          </div>
+        </div>
+        </div>
+         <div class="col-md-6">
+           <div class="row">
+             <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-default"><i class="home"></i></button>
+                  <button type="button" class="btn btn-default"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-default"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-primary"><i class="home"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-primary"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-success"><i class="home"></i></button>
+                  <button type="button" class="btn btn-success"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-success"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-info"><i class="home"></i></button>
+                  <button type="button" class="btn btn-info"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-info"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-warning"><i class="home"></i></button>
+                  <button type="button" class="btn btn-warning"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-warning"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-danger"><i class="home"></i></button>
+                  <button type="button" class="btn btn-danger"><i class="chat"></i></button>
+                  <button type="button" class="btn btn-danger"><i class="headset_dock"></i></button>
+                </div>
+              </div>
+           </div>
+
+         </div>
+        
+     </div>
+   </div>
+     <div class="code wrapper bg-light ltest b-t">
+        <ol>
+           <li>
+              <span class="text-gray">&lt;!--水平按钮组--&gt;</span>
+            </li>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn-group"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"format_align_left"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"format_align_left"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-default"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"format_align_left"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>
+            </li>
+          
+
+           <li><span class="text-gray">&lt;!-- 垂直按钮组 --&gt;</span></li>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn-group-vertical"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"home"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"chat"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-primary"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"headset_dock"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+
+           <li><span class="text-gray">&lt;!-- 图标文字组合超大按钮 --&gt;</span></li>
+           <li>
+              <span class="tag">&lt;div</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn-group btn-group-lg"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;button</span>
+              <span class="pln"> </span>
+              <span class="atn">type</span>
+              <span class="pun">=</span>
+              <span class="atv">"button"</span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"btn btn-warning btn-addon btn-lg"</span>
+              <span class="tag">&gt;</span>              
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i</span>
+              <span class="pln"> </span>
+              <span class="atn">class</span>
+              <span class="pun">=</span>
+              <span class="atv">"home"</span>
+              <span class="tag">&gt;</span>
+              <span class="tag">&lt;/i&gt;</span>  
+              <span class="pln">图文组合</span>            
+            </li>
+            <li>
+              <span class="tag">&nbsp;&nbsp;&nbsp;&lt;/button&gt;</span>
+            </li>
+            <li>
+              <span class="tag">&lt;/div&gt;</span>              
+            </li>
+        </ol>
+
+     </div>
+  </div>
+  </div>
+  <!-- btn-group end -->
+
+  <h3 class="b-b padder-v-sm" id="dropdown-menu">下拉按钮</h3>
+  <div class="docs-example doc-dropdown-menu  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+          <p>单按钮下拉菜单：</p>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">default</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- default -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              primary <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- primary -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+              success <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- success -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+              info <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- info -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+              warning <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- danger -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+              danger <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- danger -->
+          <p class="m-t">分裂式按钮下拉菜单:</p>
+          <div class="btn-group">
+              <button type="button" class="btn btn-default">Default</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- default -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary">primary</button>
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- primary -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success">success</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- success -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-info">info</button>
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- info -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-warning">warning</button>
+              <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- warning -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger">danger</button>
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- danger -->
+            <p class="m-t">向上弹出式菜单:</p>
+            <div class="btn-group dropup">
+            <button type="button" class="btn btn-default">Dropup</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- Dropup -->
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-primary">Right dropup</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- Dropup -->
+          <p class="m-t">尺寸:</p>
+          <div class="btn-group">
+              <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Large button <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- btn-lg -->
+            <div class="btn-group">
+              <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Small button <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- btn-sm -->
+            <div class="btn-group">
+              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Extra small button <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div><!-- btn-xs -->
+
+       </div>
+     <div class="code wrapper bg-light ltest b-t">
+          <!-- 示例代码区域 -->
+            <div class="highlight">
+                <pre>
+                  <code class="html">
+                     &lt;!-- 单按钮下拉菜单 --&gt;
+                     &lt;div class="btn-group">
+                      &lt;button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Action &lt;span class="caret">&lt;/span>
+                      &lt;/button>
+                      &lt;ul class="dropdown-menu">
+                        &lt;li>&lt;a href="#">default&lt;/a>&lt;/li>
+                        &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+                        &lt;li>&lt;a href="#">Something else here&lt;/a></li>
+                        &lt;li role="separator" class="divider">&lt;/li>
+                        &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+                      &lt;/ul>
+                    &lt;/div>
+
+                      &lt;!-- 分裂式按钮下拉菜单 --&gt;
+                      &lt;div class="btn-group">
+                        &lt;button type="button" class="btn btn-primary">primary&lt;/button>
+                        &lt;button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &lt;span class="caret">&lt;/span>
+                          &lt;span class="sr-only">Toggle Dropdown&lt;/span>
+                        &lt;/button>
+                        &lt;ul class="dropdown-menu">
+                          &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+                          &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+                          &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+                          &lt;li role="separator" class="divider">&lt;/li>
+                          &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+                        &lt;/ul>
+                    &lt;/div>
+
+                    &lt;!-- 向上弹出式菜单 --&gt;
+                    &lt;div class="btn-group dropup">
+                      &lt;button type="button" class="btn btn-default">Dropup&lt;/button>
+                      &lt;button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        &lt;span class="caret">&lt;/span>
+                        &lt;span class="sr-only">Toggle Dropdown&lt;/span>
+                      &lt;/button>
+                      &lt;ul class="dropdown-menu">
+                        &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+                        &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+                        &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+                        &lt;li role="separator" class="divider">&lt;/li>
+                        &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+                      &lt;/ul>
+                    &lt;/div>
+
+                     &lt;!-- 向右上弹出式菜单 --&gt;
+                     &lt;div class="btn-group dropup">
+                        &lt;button type="button" class="btn btn-primary">Right dropup&lt;/button>
+                        &lt;button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          &lt;span class="caret">&lt;/span>
+                          &lt;span class="sr-only">Toggle Dropdown&lt;/span>
+                        &lt;/button>
+                        &lt;ul class="dropdown-menu dropdown-menu-right">
+                          &lt;li>&lt;a href="#">Action&lt;/a>&lt;/li>
+                          &lt;li>&lt;a href="#">Another action&lt;/a>&lt;/li>
+                          &lt;li>&lt;a href="#">Something else here&lt;/a>&lt;/li>
+                          &lt;li role="separator" class="divider">&lt;/li>
+                          &lt;li>&lt;a href="#">Separated link&lt;/a>&lt;/li>
+                        &lt;/ul>
+                      &lt;/div>
+                  </code>
+               </pre>
+    </div>
+     </div>
+  </div>
+  </div>
+  <!-- drop-down-btn end -->
+  <!-- <h3 class="b-b padder-v-sm" id="input">输入框</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+
+         <div class="row  m-b">
+            <div class="col-md-6">
+              <label class="text-muted">普通输入框</label>
+              <input aetype="aeTextfield" aeid="firstName" aeinit="false" class="form-control" placeholder="-input the value!-">
+            </div>
+            <div class="col-md-6">
+              <label class="text-muted">密码输入框</label>
+              <input aetype="aeTextfield" aeid="password" aeinit="false" class="form-control" type="password" placeholder="-Please select the password!-">
+            </div>
+           </div>
+
+           <div class="row m-b">
+            <div class="col-md-6">
+              <label class="text-muted">多行输入框</label>
+              <textarea aetype="aeTextarea" aeid="remarks" aeinit="false" class="form-control" rows="3"></textarea>
+            </div>
+             <div class="col-md-6">
+                 <div class="row">
+                  <div class="col-md-12 m-b-xs">
+                    <label class="text-muted">输入框组</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="text" class="form-control">
+                      <span class="input-group-addon">.00</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="input-group">
+                      <input type="text" class="form-control">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default" data-type="last"><i class="search"></i></button>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+            </div>
+
+           <div class="row m-b"> 
+            <div class="col-md-6">
+              <label class="text-muted">数值输入框</label>
+              <div class="input-group">
+                <input aetype="aeFlip" aeid="productNumber" aeinit="false" class="form-control">
+                <div class="input-group-btn-vertical">
+                  <button type="button" class="btn btn-default" data-flip="up">
+                    <i class="fa fa-caret-up"></i>
+                  </button>
+                  <button type="button" class="btn btn-default" data-flip="down">
+                    <i class="fa fa-caret-down"></i></button>
+                  </div>
+                </div>
+            </div>
+           </div>
+
+           <div class="row">
+              <div class="col-md-4">
+                <div class="form-group has-success has-feedback">
+                  <label class="control-label" for="inputSuccess2">Input with success</label>
+                  <input type="text" class="form-control" id="inputSuccess2">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group has-warning has-feedback">
+                  <label class="control-label" for="inputWarning2">Input with warning</label>
+                  <input type="text" class="form-control" id="inputWarning2">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group has-error has-feedback">
+                  <label class="control-label" for="inputError2">Input with error</label>
+                  <input type="text" class="form-control" id="inputError2">
+                </div>
+              </div>
+            </div>
+         
+       </div>
+     <div class="code wrapper bg-light ltest b-t"> -->
+          <!-- 示例代码区域 -->
+            <!-- <div class="highlight">
+                <pre>
+                  <code class="html">
+                       &lt;!-- 普通输入框 --&gt;
+                       &lt;input aeType="aeTextfield" id="firstName" aeInit="true" emptyText="-input the value!-" showClear="true"> &lt;/input>
+
+                        &lt;!-- 密码输入框 --&gt;
+                       &lt;input aetype="aeTextfield" aeid="password" aeinit="false" class="form-control" type="password" 
+                       placeholder="-Please select the password!-">
+
+                        &lt;!-- 多行输入框 --&gt;
+                        &lt;textarea aetype="aeTextarea" aeid="remarks" aeinit="false" class="form-control" rows="3">&lt;/textarea>
+
+                        &lt;!-- 输入框组 --&gt;
+                        &lt;div class="input-group">
+                          &lt;span class="input-group-addon">$&lt;/span>
+                          &lt;input type="text" class="form-control">
+                          &lt;span class="input-group-addon">.00&lt;/span>
+                        &lt;/div>
+
+                        &lt;div class="input-group">
+                          &lt;input type="text" class="form-control">
+                          &lt;span class="input-group-btn">
+                            &lt;button type="submit" class="btn btn-default" data-type="last"><i class="search"></i>&lt;/button>
+                          &lt;/span>
+                        &lt;/div>
+
+                        &lt;!-- 数值输入框 --&gt;
+                        &lt;div class="input-group">
+                          &lt;input aetype="aeFlip" aeid="productNumber" aeinit="false" class="form-control">
+                          &lt;div class="input-group-btn-vertical">
+                            &lt;button type="button" class="btn btn-default" data-flip="up">
+                              &lt;i class="fa fa-caret-up">&lt;/i>
+                            &lt;/button>
+                            &lt;button type="button" class="btn btn-default" data-flip="down">
+                              &lt;i class="fa fa-caret-down">&lt;/i>&lt;/button>
+                            &lt;/div>
+                          &lt;/div>
+                        
+                        &lt;!-- input with success --&gt;
+                        &lt;div class="form-group has-success has-feedback">
+                          &lt;input type="text" class="form-control" id="inputSuccess2">
+                        &lt;/div>
+
+                        &lt;!-- input with warning --&gt;
+                        &lt;div class="form-group has-warning has-feedback">
+                          &lt;input type="text" class="form-control" id="inputWarning2">
+                        &lt;/div>
+
+                         &lt;!-- input with error --&gt;
+                        &lt;div class="form-group has-error has-feedback">
+                          &lt;input type="text" class="form-control" id="inputError2">
+                        &lt;/div>
+
+                  </code>
+               </pre>
+    </div>
+     </div>
+  </div>
+  </div> -->
+  <!-- input end -->
+
+  <!-- <h3 class="b-b padder-v-sm">下拉框</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+
+         <div class="row  m-b">
+            <div class="col-md-6">
+              <label class="text-muted">普通下拉框</label>
+              <span aeType="aeCombo" id="formOfAddress" aeInit="true" optionField="codeName" valueField="codeValue" emptyText="-Please select the value!-" showClear="true"></span>
+            </div>
+            <div class="col-md-6">
+              <label class="text-muted">多选下拉框</label>
+              <span aeType="aeCombo" id="certificate" aeInit="true" multi="true" emptyText="-Please select the certificate!-" optionField="certificateType" valueField="certificateValue" ></span>
+            </div>
+           </div>
+
+           <div class="row m-b">
+            <div class="col-md-6">
+              <label class="text-muted">级联下拉框</label>
+              <div class="form-horizontal">
+                 <div class="form-group">
+                    <div class="col-md-6">    
+                       <span aeType="aeCombo" id="countryName" aeInit="true" emptyText="-Please select the country!-" onValueChange="getValueChange"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <span aeType="aeCombo" id="provinceName" aeInit="true" emptyText="-Please select the province!-"></span>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            </div>
+       </div>
+     <div class="code wrapper bg-light ltest b-t"> -->
+          <!-- 示例代码区域 -->
+            <!-- <div class="highlight">
+                <pre>
+                  <code class="html">
+                       &lt;!-- 普通下拉框 --&gt;
+                      &lt;span aeType="aeCombo" id="formOfAddress" aeInit="true" optionField="codeName" valueField="codeValue" 
+                      emptyText="-Please select the value!-" showClear="true">&lt;/span>
+
+                        &lt;!-- 多选下拉框 --&gt;
+                        &lt;span aeType="aeCombo" id="certificate" aeInit="true" multi="true" emptyText="-Please select the certificate!-" 
+                        optionField="certificateType" valueField="certificateValue" >&lt;/span>
+
+                        &lt;!-- 级联下拉框 --&gt;
+                        &lt;span aeType="aeCombo" id="countryName" aeInit="true" emptyText="-Please select the country!-" 
+                        onValueChange="getValueChange">&lt;/span>
+                        &lt;span aeType="aeCombo" id="provinceName" aeInit="true" emptyText="-Please select the province!-">&lt;/span>
+
+                        &lt;!-- 数值输入框 --&gt;
+                        &lt;span aeType="aeFlip" id="productNumber" aeInit="true">&lt;/span>
+
+                  </code>
+               </pre>
+    </div>
+     </div>
+  </div>
+  </div> -->
+  <!-- select end -->
+
+  <!-- <h3 class="b-b padder-v-sm">单选框/复选框</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+         <p>
+          <label class="text-muted m-r">单选框:</label>
+          <span aeType="aeRadio" id="customerRadio" aeInit="true" labelField="codeName" valueField="codeValue" onSelect="checkIsExistCustomer()"></span>
+        </p>
+         
+         <p>
+          <label class="text-muted m-r">复选框:</label>
+          <span aeType="aeCheckbox" id="plan" aeInit="true" labelField="codeName" valueField="codeValue"></span>
+         </p>
+
+       </div>
+     <div class="code wrapper bg-light ltest b-t"> -->
+          <!-- 示例代码区域 -->
+            <!-- <div class="highlight">
+                <pre>
+                  <code class="html">
+                       &lt;!-- 单选框 --&gt;
+                      &lt;span aeType="aeRadio" id="customerRadio" aeInit="true" labelField="codeName" valueField="codeValue" 
+                      onSelect="checkIsExistCustomer()">&lt;/span>
+
+                        &lt;!-- 复选框 --&gt;
+                        &lt;span aeType="aeCheckbox" id="plan" aeInit="true" labelField="codeName" valueField="codeValue">&lt;/span>
+                  </code>
+               </pre>
+    </div>
+     </div>
+  </div>
+  </div> -->
+  <!-- Checkboxes and Radios end -->
+
+  <!-- <h3 class="b-b padder-v-sm">日历</h3>
+  <div class="docs-example  b-a r m-b">
+    <div class="example">
+      <div class=" wrapper m-b">
+         <p>
+          <label class="text-muted m-r">年月日展示:</label>
+          <span aeType="aeCalendar" id="expiryDate" aeInit="true" width="300" showClear="true"></span>
+        </p>
+         
+         <p>
+          <label class="text-muted m-r">时分秒展示:</label>
+          <span aeType="aeCalendar" id="validDate" aeInit="true" showTime="true" width="300" showClear="true"></span>
+         </p>
+       </div>
+     <div class="code wrapper bg-light ltest b-t">
+          <!-- 示例代码区域 -->
+            <!-- <div class="highlight">
+                <pre>
+                  <code class="html">
+                       &lt;!-- 年月日展示 --&gt;
+                      &lt;span aeType="aeCalendar" id="expiryDate" aeInit="true" width="300" showClear="true">&lt;/span>
+
+                        &lt;!-- 时分秒展示 --&gt;
+                        &lt;span aeType="aeCalendar" id="validDate" aeInit="true" showTime="true" width="300" showClear="true">&lt;/span>
+                  </code>
+               </pre>
+    </div>
+     </div>
+  </div>
+  </div> -->
+  <!-- Checkboxes and Radios end -->
+
+</div>
+
+ <!-- go-top -->
+ <a href="#" class="go-top">
+    <i class="arrow_up_bold"></i>
+ </a>
+</body>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/left-menu.js"></script>
+<script type="text/javascript" src="js/go-top.js"></script>
+<script src="/ARIESRES/assets/aries/main/sea.js" type="text/javascript"></script>
+<script type="text/javascript">
+seajs.use('aries-main',function(){
+  //普通下拉框
+  // var formOfAddress  = '[{"codeName":"gentlemen","codeValue":"1"},{"codeName":"lady","codeValue":"2"}]';
+  // $("#formOfAddress").aeCombo('reload',$.parseJSON(formOfAddress));
+  //下拉多选框
+  // var certificate  = '[{"certificateType":"身份证","certificateValue":"1"},{"certificateType":"学生证","certificateValue":"2"},{"certificateType":"军官证","certificateValue":"3"},'+
+  //                    '{"certificateType":"护照","certificateValue":"4"},{"certificateType":"其他证件","certificateValue":"5"}]';
+  // $("#certificate").aeCombo('reload',$.parseJSON(certificate));
+  //级联
+  // var countryName  = '[{"text":"中国","value":"China"},{"text":"美国","value":"America"}]';
+  // $("#countryName").aeCombo('reload',$.parseJSON(countryName)); 
+  //单选
+  // var customerRadio = '[{"codeValue":"existCustomer","codeName":"Existing Customer","checked":"true"},{"codeValue":"newCustomer","codeName":"New Customer"}]';
+  //   $("#customerRadio").aeRadio('reload',$.parseJSON(customerRadio));
+  //复选框
+  // var plan = '[{"codeName":"plan1","codeValue":"1","checked":"checked"},'+
+  //            '{"codeName":"plan2","codeValue":"2"},'+
+  //            '{"codeName":"plan3","codeValue":"3"},'+
+  //            '{"codeName":"plan4","codeValue":"4"},'+
+  //            '{"codeName":"plan5","codeValue":"5"},'+
+  //            '{"codeName":"plan6","codeValue":"6"},'+
+  //            '{"codeName":"plan7","codeValue":"7"}]';
+  // $("#plan").aeCheckbox('reload',$.parseJSON(plan));  
+});
+
+</script>
+</html>

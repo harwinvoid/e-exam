@@ -1,0 +1,690 @@
+/**
+ * 1.define styles:
+ * 	1) drag icon on "sidebar"			(use "sidebar" icon name with word "Sidebar")
+ * 	2) node icon and graph container	(use "sidebar" icon type name)
+ * 	3) click icon on "toolbar"			(use "toolbar" function name with word "Toolbar")
+ * 	4) "sidebar" container style		(use "sidebar" icon type name)
+ *	5) other part on graph container
+ *
+ * 2.noun description:
+ *	1) "businessflow" means all parts on "businessflow.html" page
+ *	2) "sidebar" is a menu list can be drag on left side of "businessflow" page
+ *	3) "toolbar" is a menu list can be click on top of "businessflow" page
+ **/
+
+@CHARSET "UTF-8";
+/**
+ * define 1.1 & 1.2
+ **/
+.mx-node{
+	width: 150px;
+	height: 80px;
+}
+/* segment */
+/*.marketingSegment { width: 240px; height: 64px; background-color: #efcdfd; border: 1px solid #d87bfd; border-radius: 5px; }*/
+/*.marketingSegment div:nth-child(1) { background-image: url('../images/flow chart_circle_purple.png'); background-repeat: no-repeat; background-color: #efcdfd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.marketingSegment div img { padding-top: 15px; }*/
+/*.marketingSegment div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.marketingSegment div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.marketingSegment div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.marketingSegment div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.marketingSegmentSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.marketingSegmentSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.marketingSegmentSidebar div img {  }*/
+/*.marketingSegmentSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.marketingSegmentSidebar div span { width: 65px; }*/
+/*.marketingSegmentSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #d87bdf; }*/
+/*.marketingSegmentSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.marketingSegmentSidebar_over div img {  }*/
+/*.marketingSegmentSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.marketingSegmentSidebar_over div span { width: 65px; }*/
+
+/*.customerEvent { width: 240px; height: 64px; background-color: #efcdfd; border: 1px solid #d87bfd; border-radius: 5px; }*/
+/*.customerEvent div:nth-child(1) { background-image: url('../images/flow chart_circle_purple.png'); background-repeat: no-repeat; background-color: #efcdfd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.customerEvent div img { padding-top: 15px; }*/
+/*.customerEvent div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.customerEvent div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.customerEvent div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.customerEvent div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.customerEventSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.customerEventSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.customerEventSidebar div img {  }*/
+/*.customerEventSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.customerEventSidebar div span { width: 65px; }*/
+/*.customerEventSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #d87bdf; }*/
+/*.customerEventSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.customerEventSidebar_over div img {  }*/
+/*.customerEventSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.customerEventSidebar_over div span { width: 65px; }*/
+
+/*/!* channel *!/*/
+/*.Mannual { width: 240px; height: 64px; background-color: #e8f087; border: 1px solid #a0c12c; border-radius: 5px; }*/
+/*.Mannual div:nth-child(1) { background-image: url('../images/flow chart_circle_green.png'); background-repeat: no-repeat; background-color: #e8f087; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.Mannual div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.Mannual div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.Mannual div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.Mannual div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.Mannual div img { padding-top: 15px; }*/
+/*.MannualSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.MannualSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.MannualSidebar div img {  }*/
+/*.MannualSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.MannualSidebar div span { width: 65px; }*/
+/*.MannualSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #a0c12c; }*/
+/*.MannualSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.MannualSidebar_over div img {  }*/
+/*.MannualSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.MannualSidebar_over div span { width: 65px; }*/
+
+/*.email { width: 240px; height: 64px; background-color: #e8f087; border: 1px solid #a0c12c; border-radius: 5px; }*/
+/*.email div:nth-child(1) { background-image: url('../images/flow chart_circle_green.png'); background-repeat: no-repeat; background-color: #e8f087; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.email div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.email div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.email div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.email div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.email div img { padding-top: 15px; }*/
+/*.emailSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.emailSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.emailSidebar div img {  }*/
+/*.emailSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.emailSidebar div span { width: 65px; }*/
+/*.emailSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #a0c12c; }*/
+/*.emailSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.emailSidebar_over div img {  }*/
+/*.emailSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.emailSidebar_over div span { width: 65px; }*/
+
+/*.sms { width: 240px; height: 64px; background-color: #e8f087; border: 1px solid #a0c12c; border-radius: 5px; }*/
+/*.sms div:nth-child(1) { background-image: url('../images/flow chart_circle_green.png'); background-repeat: no-repeat; background-color: #e8f087; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.sms div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.sms div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.sms div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sms div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sms div img { padding-top: 15px; }*/
+/*.smsSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.smsSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.smsSidebar div img {  }*/
+/*.smsSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.smsSidebar div span { width: 65px; }*/
+/*.smsSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #a0c12c; }*/
+/*.smsSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.smsSidebar_over div img {  }*/
+/*.smsSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.smsSidebar_over div span { width: 65px; }*/
+
+/*.twitter { width: 240px; height: 64px; background-color: #e8f087; border: 1px solid #a0c12c; border-radius: 5px; }*/
+/*.twitter div:nth-child(1) { background-image: url('../images/flow chart_circle_green.png'); background-repeat: no-repeat; background-color: #e8f087; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.twitter div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.twitter div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.twitter div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.twitter div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.twitter div img { padding-top: 15px; }*/
+/*.twitterSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.twitterSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.twitterSidebar div img {  }*/
+/*.twitterSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.twitterSidebar div span { width: 65px; }*/
+/*.twitterSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #a0c12c; }*/
+/*.twitterSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.twitterSidebar_over div img {  }*/
+/*.twitterSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.twitterSidebar_over div span { width: 65px; }*/
+
+/*/!* decision *!/*/
+/*/!*manual work running*!/*/
+/*.mannualWorkRunning { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.mannualWorkRunning div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.mannualWorkRunning div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.mannualWorkRunning div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.mannualWorkRunning div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.mannualWorkRunning div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.mannualWorkRunning div img { padding-top: 15px; }*/
+/*.mannualWorkRunningSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.mannualWorkRunningSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.mannualWorkRunningSidebar div img {  }*/
+/*.mannualWorkRunningSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.mannualWorkRunningSidebar div span { width: 65px; }*/
+/*.mannualWorkRunningSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.mannualWorkRunningSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.mannualWorkRunningSidebar_over div img {  }*/
+/*.mannualWorkRunningSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.mannualWorkRunningSidebar_over div span { width: 65px; }*/
+
+/*/!*manual work completed*!/*/
+/*.mannualWorkCompleted { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.mannualWorkCompleted div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.mannualWorkCompleted div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.mannualWorkCompleted div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.mannualWorkCompleted div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.mannualWorkCompleted div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.mannualWorkCompleted div img { padding-top: 15px; }*/
+/*.mannualWorkCompletedSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.mannualWorkCompletedSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.mannualWorkCompletedSidebar div img {  }*/
+/*.mannualWorkCompletedSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.mannualWorkCompletedSidebar div span { width: 65px; }*/
+/*.mannualWorkCompletedSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.mannualWorkCompletedSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.mannualWorkCompletedSidebar_over div img {  }*/
+/*.mannualWorkCompletedSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.mannualWorkCompletedSidebar_over div span { width: 65px; }*/
+
+/*.clickedEmail { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.clickedEmail div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.clickedEmail div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.clickedEmail div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.clickedEmail div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.clickedEmail div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.clickedEmail div img { padding-top: 15px; }*/
+/*.clickedEmailSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.clickedEmailSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.clickedEmailSidebar div img {  }*/
+/*.clickedEmailSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.clickedEmailSidebar div span { width: 65px; }*/
+/*.clickedEmailSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.clickedEmailSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.clickedEmailSidebar_over div img {  }*/
+/*.clickedEmailSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.clickedEmailSidebar_over div span { width: 65px; }*/
+
+/*.opendEmail { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.opendEmail div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.opendEmail div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.opendEmail div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.opendEmail div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.opendEmail div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.opendEmail div img { padding-top: 15px; }*/
+/*.opendEmailSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.opendEmailSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.opendEmailSidebar div img {  }*/
+/*.opendEmailSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.opendEmailSidebar div span { width: 65px; }*/
+/*.opendEmailSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.opendEmailSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.opendEmailSidebar_over div img {  }*/
+/*.opendEmailSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.opendEmailSidebar_over div span { width: 65px; }*/
+
+/*.sendEmail { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.sendEmail div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.sendEmail div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.sendEmail div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.sendEmail div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sendEmail div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sendEmail div img { padding-top: 15px; }*/
+/*.sendEmailSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.sendEmailSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.sendEmailSidebar div img {  }*/
+/*.sendEmailSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.sendEmailSidebar div span { width: 65px; }*/
+/*.sendEmailSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.sendEmailSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.sendEmailSidebar_over div img {  }*/
+/*.sendEmailSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.sendEmailSidebar_over div span { width: 65px; }*/
+
+/*.sendSms { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.sendSms div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.sendSms div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.sendSms div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.sendSms div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sendSms div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.sendSms div img { padding-top: 15px; }*/
+/*.sendSmsSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.sendSmsSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.sendSmsSidebar div img {  }*/
+/*.sendSmsSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.sendSmsSidebar div span { width: 65px; }*/
+/*.sendSmsSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.sendSmsSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.sendSmsSidebar_over div img {  }*/
+/*.sendSmsSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.sendSmsSidebar_over div span { width: 65px; }*/
+
+/*.repliedSms { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.repliedSms div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.repliedSms div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.repliedSms div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.repliedSms div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.repliedSms div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.repliedSms div img { padding-top: 15px; }*/
+/*.repliedSmsSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.repliedSmsSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.repliedSmsSidebar div img {  }*/
+/*.repliedSmsSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.repliedSmsSidebar div span { width: 65px; }*/
+/*.repliedSmsSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.repliedSmsSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.repliedSmsSidebar_over div img {  }*/
+/*.repliedSmsSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.repliedSmsSidebar_over div span { width: 65px; }*/
+
+/*.frequency { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.frequency div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.frequency div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.frequency div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.frequency div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.frequency div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.frequency div img { padding-top: 15px; }*/
+/*.frequencySidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.frequencySidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.frequencySidebar div img {  }*/
+/*.frequencySidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.frequencySidebar div span { width: 65px; }*/
+/*.frequencySidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.frequencySidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.frequencySidebar_over div img {  }*/
+/*.frequencySidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.frequencySidebar_over div span { width: 65px; }*/
+
+/*.communicationLimit { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.communicationLimit div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.communicationLimit div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.communicationLimit div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.communicationLimit div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.communicationLimit div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.communicationLimit div img { padding-top: 15px; }*/
+/*.communicationLimitSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.communicationLimitSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.communicationLimitSidebar div img {  }*/
+/*.communicationLimitSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.communicationLimitSidebar div span { width: 65px; }*/
+/*.communicationLimitSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.communicationLimitSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.communicationLimitSidebar_over div img {  }*/
+/*.communicationLimitSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.communicationLimitSidebar_over div span { width: 65px; }*/
+
+/*.isOwing { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.isOwing div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.isOwing div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.isOwing div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.isOwing div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.isOwing div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.isOwing div img { padding-top: 15px; }*/
+/*.isOwingSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.isOwingSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.isOwingSidebar div img {  }*/
+/*.isOwingSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.isOwingSidebar div span { width: 65px; }*/
+/*.isOwingSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.isOwingSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.isOwingSidebar_over div img {  }*/
+/*.isOwingSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.isOwingSidebar_over div span { width: 65px; }*/
+
+/*.isInBlackList { width: 240px; height: 64px; background-color: #fde393; border: 1px solid #fecd32; border-radius: 5px; }*/
+/*.isInBlackList div:nth-child(1) { background-image: url('../images/flow chart_circle_yellow.png'); background-repeat: no-repeat; background-color: #fde393; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.isInBlackList div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.isInBlackList div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.isInBlackList div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.isInBlackList div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.isInBlackList div img { padding-top: 15px; }*/
+/*.isInBlackListSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.isInBlackListSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.isInBlackListSidebar div img {  }*/
+/*.isInBlackListSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.isInBlackListSidebar div span { width: 65px; }*/
+/*.isInBlackListSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #fecd32; }*/
+/*.isInBlackListSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.isInBlackListSidebar_over div img {  }*/
+/*.isInBlackListSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.isInBlackListSidebar_over div span { width: 65px; }*/
+
+/*/!* action *!/*/
+/*.subscribeAnOffer { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.subscribeAnOffer div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.subscribeAnOffer div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.subscribeAnOffer div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.subscribeAnOffer div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.subscribeAnOffer div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.subscribeAnOffer div img { padding-top: 15px; }*/
+/*.subscribeAnOfferSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.subscribeAnOfferSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.subscribeAnOfferSidebar div img {  }*/
+/*.subscribeAnOfferSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.subscribeAnOfferSidebar div span { width: 65px; }*/
+/*.subscribeAnOfferSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.subscribeAnOfferSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.subscribeAnOfferSidebar_over div img {  }*/
+/*.subscribeAnOfferSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.subscribeAnOfferSidebar_over div span { width: 65px; }*/
+
+/*.giveAnPresent { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.giveAnPresent div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.giveAnPresent div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.giveAnPresent div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.giveAnPresent div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.giveAnPresent div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.giveAnPresent div img { padding-top: 15px; }*/
+/*.giveAnPresentSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.giveAnPresentSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.giveAnPresentSidebar div img {  }*/
+/*.giveAnPresentSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.giveAnPresentSidebar div span { width: 65px; }*/
+/*.giveAnPresentSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.giveAnPresentSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.giveAnPresentSidebar_over div img {  }*/
+/*.giveAnPresentSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.giveAnPresentSidebar_over div span { width: 65px; }*/
+
+/*.addToCampaign { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.addToCampaign div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.addToCampaign div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.addToCampaign div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.addToCampaign div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToCampaign div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToCampaign div img { padding-top: 15px; }*/
+/*.addToCampaignSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.addToCampaignSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToCampaignSidebar div img {  }*/
+/*.addToCampaignSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToCampaignSidebar div span { width: 65px; }*/
+/*.addToCampaignSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.addToCampaignSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToCampaignSidebar_over div img {  }*/
+/*.addToCampaignSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToCampaignSidebar_over div span { width: 65px; }*/
+
+/*.wait { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.wait div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.wait div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.wait div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.wait div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.wait div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.wait div img { padding-top: 15px; }*/
+/*.waitSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.waitSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.waitSidebar div img {  }*/
+/*.waitSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.waitSidebar div span { width: 65px; }*/
+/*.waitSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.waitSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.waitSidebar_over div img {  }*/
+/*.waitSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.waitSidebar_over div span { width: 65px; }*/
+
+/*.addToSharedList { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.addToSharedList div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.addToSharedList div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.addToSharedList div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.addToSharedList div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToSharedList div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToSharedList div img { padding-top: 15px; }*/
+/*.addToSharedListSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.addToSharedListSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToSharedListSidebar div img {  }*/
+/*.addToSharedListSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToSharedListSidebar div span { width: 65px; }*/
+/*.addToSharedListSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.addToSharedListSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToSharedListSidebar_over div img {  }*/
+/*.addToSharedListSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToSharedListSidebar_over div span { width: 65px; }*/
+
+/*.addToDisturbList { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.addToDisturbList div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.addToDisturbList div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.addToDisturbList div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.addToDisturbList div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToDisturbList div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.addToDisturbList div img { padding-top: 15px; }*/
+/*.addToDisturbListSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.addToDisturbListSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToDisturbListSidebar div img {  }*/
+/*.addToDisturbListSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToDisturbListSidebar div span { width: 65px; }*/
+/*.addToDisturbListSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.addToDisturbListSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.addToDisturbListSidebar_over div img {  }*/
+/*.addToDisturbListSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.addToDisturbListSidebar_over div span { width: 65px; }*/
+
+/*.createALead { width: 240px; height: 64px; background-color: #a4e8fd; border: 1px solid #46b3d4; border-radius: 5px; }*/
+/*.createALead div:nth-child(1) { background-image: url('../images/flow chart_circle_blue.png'); background-repeat: no-repeat; background-color: #a4e8fd; background-position: center; float: left; width: 67px; height: 62px; border-radius: 5px; }*/
+/*.createALead div:nth-child(2) { float: left; height: 62px; width: 170px; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -khtml-user-select: none; }*/
+/*.createALead div ul { list-style-type: none; padding-left: 0px; padding-top: 8px; text-align: left; width: 100%; }*/
+/*.createALead div ul li:nth-child(1) { font-size: 14px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.createALead div ul li:nth-child(2) { font-size: 12px; text-overflow: ellipsis; white-space:nowrap; overflow:hidden; }*/
+/*.createALead div img { padding-top: 15px; }*/
+/*.createALeadSidebar { float: left; width: 75px; height: 70px; cursor: pointer; }*/
+/*.createALeadSidebar div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.createALeadSidebar div img {  }*/
+/*.createALeadSidebar div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.createALeadSidebar div span { width: 65px; }*/
+/*.createALeadSidebar_over { float: left; width: 75px; height: 70px; cursor: pointer; background-color: #46b3d4; }*/
+/*.createALeadSidebar_over div:nth-child(1) { text-align: center; width: 100%; }*/
+/*.createALeadSidebar_over div img {  }*/
+/*.createALeadSidebar_over div:nth-child(2) { text-align: center; width: 100%; word-wrap: break-word; word-break: normal; font-size: 12px; }*/
+/*.createALeadSidebar_over div span { width: 65px; }*/
+
+/**
+ * define 1.3
+ **/
+.backToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.backToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.img_noneToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.img_noneToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.unableToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.unableToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.sumitToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.sumitToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.exportToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.exportToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.settingToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.settingToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.deleteToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.deleteToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.checkToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.checkToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.tempToolbar { height: 28px; width: 28px; text-align: center; float: right; }
+.tempToolbar img { width: 24px; height: 24px; margin-top: 2px; }
+.activeSwitchToolbar { margin-top: -2px; float: left; }
+.activeSwitchTextToolbar div { padding-left: 15px; font-size: 18px; height: 24px; width: 200px; float: left; }
+
+/**
+ * define 1.4
+ **/
+.audience {
+	border-left-color: #DE42F8;
+	background-color: #FBEDFA;
+	min-height: 76px;
+	border-width: 1px 1px 1px 4px;
+}
+.audienceContainer {
+	max-height: 76px;
+}
+.audience_over {
+	border-left-color: #DE42F8;
+	background-color: #FBEDFA;
+	min-height: 76px;
+	border-width: 1px 1px 1px 6px;
+}
+
+.channel {
+	border-left-color: #7EB324;
+	background-color: #F3F5E6;
+	min-height: 76px;
+	border-width: 1px 1px 1px 4px;
+}
+.channelContainer {
+	max-height: 76px;
+}
+.channel_over {
+	border-left-color: #7EB324;
+	background-color: #F3F5E6;
+	min-height: 76px;
+	border-width: 1px 1px 1px 6px;
+}
+
+.decision {
+	border-left-color: #FFBF00;
+	background-color: #FEF6E6;
+	min-height: 220px;
+	border-width: 1px 1px 1px 4px;
+}
+.decisionContainer {
+	min-height: 220px;
+}
+.decision_over {
+	border-left-color: #FFBF00;
+	background-color: #FEF6E6;
+	min-height: 76px;
+	border-width: 1px 1px 1px 6px;
+}
+
+.action {
+	border-left-color: #00A2C8;
+	background-color: #E9F4F5;
+	min-height: 76px;
+	border-width: 1px 1px 1px 4px;
+}
+.actionContainer {
+	min-height: 220px;
+}
+.action_over {
+	border-left-color: #00A2C8;
+	background-color: #E9F4F5;
+	min-height: 76px;
+	border-width: 1px 1px 1px 6px;
+}
+
+/**
+ * define 1.5
+ **/
+.dragElement {
+	border: dashed black 1px;
+	width: 150px;
+	height: 80px;
+}
+
+.spacer {
+	display: inline;
+	padding: 8px;
+}
+
+.panel {
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 2px;
+}
+
+.bs-callout {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    margin: 0px 0;
+    padding: 0px;
+}
+
+.panel-heading {
+	padding: 5px 15px;
+}
+
+.panel-body {
+	padding: 5px;
+}
+
+.panel-body-inner-center {
+	padding-left: 20px;
+}
+
+.panel-body-inner-left-audience {
+	float: left;
+	margin-top: 12px;
+	margin-left: -4px;
+	cursor: pointer;
+}
+.panel-body-inner-right-audience {
+	float: right;
+	margin-top: 12px;
+	margin-right: -6px;
+	cursor: pointer;
+}
+
+.panel-body-inner-left-channel {
+	float: left;
+	margin-top: 12px;
+	margin-left: -4px;
+	cursor: pointer;
+}
+.panel-body-inner-right-channel {
+	float: right;
+	margin-top: 12px;
+	margin-right: -6px;
+	cursor: pointer;
+}
+
+.panel-body-inner-left-decision {
+	float: left;
+	margin-top: 90px;
+	margin-left: -4px;
+	cursor: pointer;
+}
+.panel-body-inner-right-decision {
+	float: right;
+	margin-top: -50px;
+	margin-right: -6px;
+	cursor: pointer;
+}
+
+.panel-body-inner-left-action {
+	float: left;
+	margin-top: 90px;
+	margin-left: -4px;
+	cursor: pointer;
+}
+.panel-body-inner-right-action {
+	float: right;
+	margin-top: -50px;
+	margin-right: -6px;
+	cursor: pointer;
+}
+
+.domNodeLeft {
+	position: absolute;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.domNodeLeft div {
+	cursor: pointer;
+	height: 22px;
+	padding-top: 1px;
+	padding-right: 1px;
+	min-width: 22px;
+	border: 1px solid #FB2357;
+	border-radius: 5px;
+	opacity: 0.75;
+	background-color: #FF0057;
+	font-size: 12px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.domNodeRight {
+	position: absolute;
+	white-space: nowrap;
+}
+
+.domNodeRight div {
+	cursor: pointer;
+	height: 22px;
+	padding-top: 1px;
+	padding-right: 1px;
+	min-width: 22px;
+	border: 1px solid #FB2357;
+	border-radius: 5px;
+	opacity: 0.75;
+	background-color: #FF0057;
+	font-size: 12px;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}

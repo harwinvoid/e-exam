@@ -1,0 +1,79 @@
+//Created by Harwin on 2016/2/18.
+extends ../layout
+block content
+  div.panel.panel-default.m-t-md.bg-white(style='width:968px;height:420px;margin-right:auto;margin-left:auto')
+    div.panel-heading
+      h4 用户注册或导入
+    div.panel-body
+      div.block
+        div.btn-group.m-l-md.m-t-md
+          button#uploadListXls.btn.btn-primary.m-r-md 导入学生
+          a.btn.btn-default(href='files/stuInfoTemplate.xlsx')
+            i.md-file-download(title='下载模版')
+      form.form-horizontal.m-t-lg.m-l-md(action='/signup' method='post')
+        div.form-group.m-b-md.text-center
+          label.col-md-3.col-sm-4.col-xs-12.headline 姓名
+          div.col-md-3.col-sm-4.col-xs-12
+            input.form-control(name='name',placeholder='请输入学生姓名')
+        div.form-group.m-b-md.text-center
+          label.col-md-3.col-sm-4.col-xs-12.headline 学号
+          div.col-md-3.col-sm-4.col-xs-12
+            input.form-control(name='stno'  placeholder='请输入学生学号')
+        div.form-group.m-b-md.text-center
+          label.col-md-3.col-sm-4.col-xs-12.headline 身份证号
+          div.col-md-3.col-sm-4.col-xs-12
+            input.form-control(name='sid' placeholder='请输入学生身份证号')
+        div.form-group.m-b-lg.text-center
+          label.col-md-3.col-sm-4.col-xs-12.headline 专业
+          div.col-md-3.col-sm-4.col-xs-12
+            input.form-control(name='major' placeholder='请输入所在专业')
+        div.form-group.m-b-md
+          div.col-md-7.col-sm-7.col-xs-12.text-center
+            button.btn.btn-primary(type='submit') 注册
+  script(src='/fe-common/webuploader/Q.js')
+  script(src='/fe-common/webuploader/Q.Uploader.js')
+  script(src='/fe-common/webuploader/Q.Uploader.UI.js')
+  script(type='text/javascript').
+    seajs.use('aries-main', function () {
+      function initUploader() {
+         var Uploader = Q.Uploader;
+         var uploader = new Uploader({
+         target: $("#uploadListXls")[0],
+         allows: '.xlsx',
+         url: '/importStu',
+         on: {
+         add: function (task) {
+         console.log(task);
+         if (task.disabled) return alert("允许上传的文件格式为：" + this.ops.allows);
+         console.log(task.name + ": 已添加!");
+         },
+         remove: function (task) {
+         log(task.name + ": 已移除!");
+         },
+         //上传之前触发
+         upload: function (task) {
+         //exe文件可以添加，但不会上传
+         if (task.ext == ".exe") return false;
+         //可针对单独的任务配置参数(POST方式)
+         task.data = {name: task.name + "_" + Date.now()};
+         },
+         //上传完成后触发
+         complete: function (task) {
+         if (task.state != Uploader.COMPLETE) return console.log(task.name + ": " + Uploader.getStatusText(task.state) + "!");
+         var json = task.json;
+         if (!json) return log(task.name + ": 服务器未返回正确的数据");
+         console.log("服务器返回:  " + (task.response || ""));
+         console.log();
+         }
+         }
+         });
+      }
+
+      initUploader();
+    });
+
+
+
+
+
+

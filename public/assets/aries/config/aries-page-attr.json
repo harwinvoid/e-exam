@@ -1,0 +1,12 @@
+{"pageAttr" : {
+	"/demo/bizflow/custInfo.html" : {
+		"event" : [{"attr" : "id", "value" : "nextBtn", "type" : "onclick","event" : "choiceProduct", "desc" : "Choice Product"}],
+		"data" : [{"io" : "out", "value" : "cust", "type" : "js", "desc" : "Selected Cust"}]
+	},
+	"/demo/bizflow/choiceProduct.html" : {
+		"event" : [{"attr" : "name", "value" : "prod_choiceNumber", "type" : "onclick", "event" : "choiceNumber", "desc" : "Choice Number"},
+		         {"attr" : "name", "value" : "prod_choiceCard", "type" : "onclick", "event" : "choiceCard", "desc" : "Choice Card"}],
+		"data" : [{"io" : "in", "value" : "demoGrid", "type" : "dom", "desc" : "Cust Info"},
+		        {"io" : "out", "value" : "product", "type" : "js", "desc" : ""}]
+	}
+}}

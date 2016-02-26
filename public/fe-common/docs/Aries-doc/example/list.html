@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ariesDoc-index</title>
+    
+    <link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css">
+    <link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/doc.css" />
+</head>
+<body>
+
+
+   <div class="container padder-v-lg">
+   <div class="hbox">
+
+      <!--left-->
+      <div class="col w">
+        <div class="m-r-md">
+          <button class="btn btn-block btn-lg btn-info"><i class="md">add</i>Add Segment</button>
+          <ul class="nav nav-xs m-t-md padder-v-sm bg-white b-a r-sm">
+            <li class="active"><a href="#">Draft</a></li>
+            <li><a href="#">All segment</a></li>
+            <li><a href="#">Bookmark</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!--right-->
+      <div class="col">
+        <div class="panel panel-default">
+                           <!-- list s -->
+                                  <div class="wrapper bg-light ltest b-b">
+                                    <!-- 搜索框s -->
+                                      <div class="inline-block m-r-xs ">
+                                          <div class="input-group w-md"> 
+                                              <input type="text" class="form-control" placeholder="Search by name">
+                                                  <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default">
+                                                        <i class="md-search icon-sm"></i>
+                                                      </button>
+                                                  </span>
+                                          </div>
+                                      </div>
+                                      <!-- 搜索框e -->
+                                      <!-- 右侧按钮s -->
+                                      <div class="pull-right v-middle">
+                                          <button id="btn-add-parameter" class="btn btn-primary padder-sm">
+                                            <i class="md md-add-circle-outline"></i>
+                                            New Parameter
+                                          </button>
+                                      </div>
+                                      <!-- 右侧按钮e -->
+                                  </div> <!-- top end -->
+                                  <!-- 列表标题s -->
+                                  <div class="padder font-medium text-light b-b b-2x">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-md-6">
+                                              <div class="m-b-sm m-t-md padder-xs">Parameter Name</div>
+                                          </div>
+                                          <div class="col-xs-6 col-md-6">
+                                              <div class="m-b-sm m-t-md padder-xs">Sample Data</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!-- 列表标题e -->
+                                    <div aetype="aeBlocklist" aeinit="false" class="block-list-tb block-list" showempty="true" showexception="true" aeid="parameter-blocklist" role="list">
+                                      <!--空数据s -->
+                                      <div style="opacity: 1; display: none;" data-role="emptyBrand" class="text-center padder-v-lg m-t-xl m-b-lg bg-white text-muted"> 
+                                      <i class="md-error icon-xl"></i>
+                                      <p class="text-md">No data yet.</p>
+                                      </div>
+                                      <!--空数据e --> 
+                                      <div class="list-item">
+                                        <div class="col-xs-6 col-md-6 padder">
+                                            <div class="thumb-horizontal thumb-warning">
+                                                  <div class="thumb-img">
+                                                      <span class="thumb-img-bg">
+                                                        Long
+                                                      </span>
+                                                  </div>
+                                                  <div class="thumb-caption">
+                                                      <h5><a href="#">TRAVER</a></h5>
+                                                      <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+                                                  </div>
+                                               </div>
+                                        </div>
+                                        <div class="col-xs-5 col-md-5 hidden-sm hidden-xs v-middle">
+                                            <div class="m-r text-ellipsis">1111111111,22222222,222244444</div>
+                                        </div>
+                                        <div class="col-xs-hidden col-md-1 hidden-sm hidden-xs v-middle text-right">
+                                            <div class="m-r-sm fx-item-delete hidden">
+                                                <a href="javascript:" class="text-light" title="Delete"><i class="md-highlight-off"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item">
+                                        <div class="col-xs-6 col-md-6 padder">
+                                            <div class="thumb-horizontal thumb-danger">
+                                                  <div class="thumb-img">
+                                                      <span class="thumb-img-bg">
+                                                        <i class="local_post_office"></i>
+                                                      </span>
+                                                  </div>
+                                                  <div class="thumb-caption">
+                                                      <h5><a href="#">TRAVER</a></h5>
+                                                      <small><b class="m-r-xs">5</b>Anyone, <b class="m-r-xs">5</b>GPRS</small>
+                                                  </div>
+                                               </div>
+                                        </div>
+                                        <div class="col-xs-5 col-md-5 hidden-sm hidden-xs v-middle">
+                                            <div class="m-r text-ellipsis">asdfasdfasfdasfd,asfdasdfsadddsdd</div>
+                                        </div>
+                                        <div class="col-xs-hidden col-md-1 hidden-sm hidden-xs v-middle text-right">
+                                            <div class="m-r-sm fx-item-delete hidden">
+                                                <a href="javascript:" class="text-light" title="Delete"><i class="md-highlight-off"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div><!-- list end -->
+                        </div>                             
+
+     </div>
+</body>
+</html>

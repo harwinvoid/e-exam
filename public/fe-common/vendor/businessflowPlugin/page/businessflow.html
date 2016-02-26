@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../businessflowPlugin/src/css/businessflowModel.css"/>
+        <link rel="stylesheet" href="../businessflowPlugin/src/css/businessflowUtil.css"/>
+	</head>
+    <script>
+        mxBasePath = "../businessflowPlugin/src";
+        function getRootPath() {
+            var curWwwPath = window.document.location.href;
+            var pathName = window.document.location.pathname;
+            var pos = curWwwPath.indexOf(pathName);
+            var localhostPaht = curWwwPath.substring(0, pos);
+            var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+            return (localhostPaht + projectName);
+        };
+    </script>
+	<!-- Page passes the container for the graph to the program -->
+	<body>
+        <div  onresize="resizePage();" id="businessflowBody">
+            <!-- Creates a container for the sidebar -->
+            <div id="toolbarContainer" class="toolbarContainer"></div>
+            <!-- Creates a container for the toolboox -->
+            <div id="sidebarContainer" class="sidebarContainer"></div>
+            <!-- Creates a container for the graph -->
+            <div id="graphContainer" class="graphContainer"></div>
+            <!-- Creates a container for the outline -->
+            <div id="outlineContainer" class="outlineContainer"></div>
+            <div id="popUp"></div>
+            <div class="b-a pos-abt b-black" style="top:180px;width:200px;height:100px;right:0px;"></div>
+        </div>
+		<!-- Creates a container for the splash screen -->
+		<div id="splash" class="splash">
+			<center>
+				<img src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/images/loading.gif">
+			</center>
+		</div>
+
+
+
+        <!--<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/jquery/jquery-1.11.2.min.js"></script>-->
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/json2/json2.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/mxGraph/mxClient.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/mxGraph/mxClientExtends.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowConstant.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowModel.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowPolicyStyle.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowPolicyAction.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowPolicyDrop.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowToolbarAction.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowDataSource.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowConstitution.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/language.js"></script>
+        <script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowUtil.js"></script>
+	</body>
+</html>

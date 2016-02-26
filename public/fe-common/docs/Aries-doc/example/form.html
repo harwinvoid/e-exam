@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ariesDoc-index</title>
+    
+    <link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css">
+    <link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/doc.css" />
+</head>
+<body>
+    <div class="container padder-v-lg">
+
+    <!-- 顶部操作栏 start -->
+    <div class="m-b m-t clearfix top-fixed">
+      <!--返回按钮-->
+      <button class="btn btn-default m-r-sm"><i class="md">keyboard_arrow_left</i>Back</button>
+
+      <!--标题-->
+      <h3 class="h3 font-normal inline-block v-middle">Ticket Detail</h3>
+
+      <!--右侧工具栏-->
+      <div class="pull-right">
+
+          <div class="btn-group">
+              <button class="btn btn-default "><i class="md">assignment_turned_in</i> Handel </button>
+              <button class="btn btn-default "><i class="md">send</i> Transfer </button>
+          </div>
+          <div class="btn-group">
+              <button class="btn btn-default hide"> Claim </button>
+              <button class="btn btn-default"> Modify </button>
+              <button class="btn btn-default"> Comment </button>
+          </div>          
+          <div class="btn-group m-r-none">
+              <button class="btn btn-default" type="button"> <i class="md">expand_more</i></button>
+              <button class="btn btn-default" type="button"> <i class="md">expand_less</i></button>
+          </div>
+
+      </div>
+
+    </div><!-- top end -->
+
+    <div class="hbox">
+
+       <!-- left -->
+      <div class="col">
+        <div class="panel panel-default">
+          <!-- 自定义内容区s -->
+             <div class="form-horizontal wrapper m-t-md">
+
+                  <div class="form-group m-b-md">
+                      <label class="col-md-3 col-sm-3 col-xs-12 headline">Ticket Type</label>
+                      <div class="col-md-9 col-md-9 col-xs-12">
+                          <input aetype="aeTextfield" aeinit="false" class="form-control" placeholder="-Please Enter the Originating Number!-">
+                      </div>
+                  </div>
+
+                  <div class="form-group m-b-md">
+                      <label class="col-md-3 col-sm-3 col-xs-12 headline">Hierarchy</label>
+                      <div class="col-md-5 col-sm-5 col-xs-12">
+                          <input aetype="aeTextfield" aeinit="false" class="form-control" placeholder="-Please Enter the Originating Number!-" class="form-control">
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-12">                        
+                          <div class="input-group"> 
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default">
+                                        <i class="md-link"></i>
+                                    </button>
+                                </span>
+                                <input type="text" class="form-control" placeholder="url">
+                          </div>  
+                      </div>
+                  </div>
+
+                  <div class="form-group m-b-md">
+                      <label class="col-md-3 col-sm-3 col-xs-12 headline">Origin Number</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input aetype="aeTextfield" aeinit="false" class="form-control" placeholder="-Please Enter the Originating Number!-">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-md-3 col-sm-3 col-xs-12 headline">Related Customers</label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                         <button class="btn btn-default form-control"><i class="md-group-add icon-sm"></i></button>
+                      </div>
+                  </div>
+
+             </div>
+             <div class="line thin"></div>
+            <div class="form-horizontal wrapper">
+
+                  <div class="form-group m-b-md">
+                      <label class="ccol-md-3 col-sm-3 col-xs-12 headline">Title</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input aetype="aeTextfield" aeinit="false" class="form-control" placeholder="-Please Enter the Title!-">
+                      </div>
+                  </div>
+
+                  <div class="form-group m-b-md">
+                      <label class="ccol-md-3 col-sm-3 col-xs-12 headline">Attachments</label>
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                         <button class="btn btn-default form-control"><i class="add"></i></button>
+                      </div>
+                  </div>
+             </div>
+
+             <div class="form-horizontal padder-v-lg bg-light ltest">
+             <div class="form-group">
+                  <div class="col-xs-6 col-xs-offset-3">
+                     <button class="btn btn-info disabled">
+                        Submit Ticket
+                    </button>
+                    <button class="btn btn-default  disabled m-l-md">
+                        Direct Answer
+                    </button>
+                  </div>
+                  <div class="col-xs-3">
+                     <button class="btn btn-default">Cancel</button>
+                  </div>  
+              </div>
+            </div>
+
+          <!-- 自定义内容区e -->
+        </div>
+      </div>
+
+      <!-- right-->
+      <div class="col w-lg">
+        <div class="panel panel-default m-l-sm">
+          <!-- 自定义内容区s -->
+          <div class="mini-layout">
+               <span class="text-3x">内容区</span>
+          </div>
+          <!-- 自定义内容区e -->
+        </div>
+      </div>
+
+
+    </div><!-- hbox end -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/**
+ * 1.define styles:
+ * 	1) "toolbarContainer"
+ * 	2) "sidebarContainer"
+ * 	3) "graphContainer"
+ * 	4) "outlineContainer"
+ *
+ * 2.noun description:
+ *	1) "toolbarContainer" is a container on top of "businessflow" page to show operate button
+ *	2) "sidebarContainer" is a container on left side of "businessflow" page to show menu of "businessflow"
+ *	3) "graphContainer" is a container on center of "businessflow" page to show "businessflow" node
+ *	4) "outlineContainer" is a container on top right corner to navigate "graphContainer"
+ **/
+
+@CHARSET "UTF-8";
+
+body {
+	font-family: Arial;
+}
+
+H1 {
+	font-size: 18px;
+}
+
+H2 {
+	font-size: 16px;
+}
+
+.splash {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: white;
+	z-index: 1;
+	text-align: center;
+}
+
+.toolbarContainer {
+	position: absolute;
+	white-space: nowrap;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	mix-height: 16.42857px;
+	right: 0px;
+	/*background-color: #F8F8F7;*/
+	border-bottom:1px solid #e5e5e5;
+	padding: 12px 15px;
+	line-height: 1.1;
+}
+
+
+.sidebarContainer {
+	position: absolute !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/*max-width: 340px;*/
+	width: 220px;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	margin: 0px;
+	/*box-shadow: #666 0px 0px 5px;*/
+}
+
+.graphContainer {
+	position: absolute !important;
+	overflow: hidden;
+	top: 0px;
+	left: 220px;
+	bottom: 0px;
+	right: 0px;
+	background-image: url('../images/grid.gif');
+	cursor: default;
+}
+
+.outlineContainer {
+	overflow: hidden;
+	width: 270px;
+	height: 140px;
+	background: transparent;
+}

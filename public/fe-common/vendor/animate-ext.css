@@ -1,0 +1,12 @@
+.animated.fast {
+    -webkit-animation-duration: .75s;
+    animation-duration: .75s;
+}
+.animated.faster {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+.animated.fastest {
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+}

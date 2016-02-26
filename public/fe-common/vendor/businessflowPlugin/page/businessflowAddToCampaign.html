@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/css/doc.css">
+		<link rel="stylesheet" type="text/css" href="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/css/businessflowModel.css">
+		<link rel="stylesheet" type="text/css" href="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/css/businessflowUtil.css">
+		
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/jquery/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/json2/json2.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/mxGraph/mxClient.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/plugin/mxGraph/mxClientExtends.js"></script>
+		
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowConstant.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowModel.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowDataSource.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowConstitution.js"></script>
+		<script type="text/javascript" src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/js/businessflowAddToCampaign.js"></script>
+		
+		<style type="text/css">
+			.addToCampaignSplash {
+				padding-top: 150px;
+			}
+		</style>
+	</head>
+	<body onpagehide="addNodesToCampaignClose()" onload="addToCampaign()" style="overflow: hidden;">
+		
+		<div id="addToCampaignSplash" class="addToCampaignSplash">
+			<center>
+				<img src="http://localhost:63342/Veris72/html_new/veris-bj-dist/crm-bj/fe-common/vendor/businessflowPlugin/src/images/loading.gif">
+			</center>
+		</div>
+		
+		<div id="addToCampaignGraphContainer" class="addToCampaignGraphContainer"></div>
+	</body>
+</html>

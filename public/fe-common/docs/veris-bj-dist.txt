@@ -1,0 +1,64 @@
+veris-bj-dist					//Veris72前端构建包根目录
+├── assets						//aries前端框架资源
+│   ├── aries 					//aries前端框架
+│   │   ├── config
+│   │   ├── css
+│   │   │   └── base
+│   │   │       ├── font
+│   │   │       └── img
+│   │   ├── lib
+│   │   └── main
+│   └── i18n					//aries前端框架i18n
+├── docs 						//aries前端框架文档
+│   ├── css
+│   │   ├── font
+│   │   │   └── font
+│   │   ├── fonts
+│   │   └── images
+│   │       └── verisImg
+│   ├── js
+│   └── symbols
+│       ├── charts
+│       ├── demo
+│       ├── desc
+│       ├── example
+│       ├── explain
+│       ├── function
+│       ├── html
+│       ├── i18n
+│       └── style
+└── veris72-bj					//Veris72北京侧产品目录
+    ├── campaign				//营销子系统（名字待定）
+    │   ├── frequency
+    │   ├── main
+    │   ├── overview
+    │   └── segment
+    ├── fe-common				//前端公共
+    │   ├── css                 //样式
+    │   ├── docs                //前端文档（字体图标示例、字体示例）
+    │   ├── fonts               //字体文件
+    │   │   ├── CN
+    │   │   ├── EN
+    │   │   ├── icon-fa
+    │   │   ├── icon-gly
+    │   │   ├── icon-ico
+    │   │   ├── icon-ion
+    │   │   └── icon-md
+    │   ├── js
+    │   ├── lib					//核心库
+    │   └── vendor				//第三方
+    │       ├── echart
+    │       ├── fullcalendar
+    │       │   └── lang
+    │       ├── jBox
+    │       │   ├── audio
+    │       │   └── themes
+    │       └── summernote
+    │           └── lang
+    ├── mock-data				//模拟数据
+    └── push-c					//Push Communication 子系统
+        ├── business-type-config
+        ├── channel-config
+        ├── message-list
+        │   └── js
+        └── send-msg

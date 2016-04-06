@@ -1,3 +1,11 @@
-//Created by Harwin on 2016/2/18.
-div.w-auto.text-center.bg-white
-  img(src='/images/baner.jpg')
+//Created by Harwin on 2016/2/18
+div.container.m-t-sm
+  img(src='/images/baner.jpg').inline-block
+  div(style='line-height:89px;background-color:#ACDDFB').inline-block.padder-sm
+      a(href='#').w-auto
+        span.avatar.thumb-sm.pull-left
+          img(src='../fe-common/images/avatar/male.png')
+        b.m-l-xs.m-r #{name}
+        span.caret
+
+

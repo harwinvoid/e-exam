@@ -4,11 +4,11 @@ var passport = require('passport'),
 
 module.exports = function () {
     passport.use('local',new LocalStrategy({
-      usernameField :"stno",
+      usernameField :"uno",
       passwordField :"pwd",
     },function (username, password, done) {
         User.findOne({
-            stno: username
+            uno: username
         }, function (err, user) {
             console.log('success');
             if (err) {

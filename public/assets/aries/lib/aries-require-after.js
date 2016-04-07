@@ -2,6 +2,7 @@ define(function(require, exports, modules) {
 	"require:nomunge,exports:nomunge,modules:nomunge";
 	require('./aries-base.min');
 	require('./aries-ui.min');
+	require('./bootstrap-treeview.min');
 	require("../../../fe-common/js/extend");
 
 	//浏览器版本是否低于IE8

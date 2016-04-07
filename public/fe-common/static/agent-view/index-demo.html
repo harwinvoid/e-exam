@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 组件框架样式 -->
+	<link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css"/>
+	<link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+	<link href="/ARIESRES/crm-bj/fe-common/static/agent-view/css/agent-view-frame.css" rel="stylesheet" type="text/css">
+    <!-- 公告 -->
+    <link href="/ARIESRES/crm-bj/fe-common/static/agent-view/css/announcement.css" rel="stylesheet" type="text/css">
+    <!-- /公告 -->
+    
+    <!-- 360视图 -->
+    <link href="/ARIESRES/crm-bj/fe-common/static/agent-view/css/customerView.css" rel="stylesheet" type="text/css">
+    <!-- /360视图 -->
+
+    <!-- 在线客服 -->
+    <link href="/ARIESRES/crm-bj/fe-common/static/online-service/css/online-service.css" rel="stylesheet" type="text/css">
+    <!-- /在线客服 --> 
+   
+</head>
+<body class="bg-light ltest">
+  <!-- nav start -->
+  <div class="top-nav-bar navbar navbar-md bg-white no-radius">
+		<div class="container-fluid">
+		  <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#navbar-4" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <i class="menu"></i>
+		  </button><!-- navbar-toggle end -->
+
+		   <div class="navbar-header">		       
+				<a href="#" class="navbar-brand text-dark  m-r-md">
+					<img src="images/logo.png" class="inline-block m-r-xs"/>
+					Veris
+				</a>
+			</div> 
+      <!-- navbar-brand end -->
+			
+			<ul class="nav pull-right">
+              <li class="nav-item global-search">               
+                <div class="input-group">  
+                  <i class="search"></i>               
+                  <input type="text" class="r-l quick-search-input" />
+                  <ul class="search-list none">
+                    <li>
+                      <a href="#">
+                        <i class="account_box text-primary"></i>
+                        search <ins class="text-md m-l-xs m-r-xs text-normal"></ins> in customer
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="code_not_equal"></i>
+                        search <ins class="text-md m-l-xs m-r-xs text-normal"></ins> in Trouble Ticket
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="book_multiple_variant text-warning"></i>
+                        search <ins class="text-md m-l-xs m-r-xs text-normal"></ins> in Knowlege Base
+                      </a>
+                    </li>
+                  </ul>
+                  <a class="input-group-addon advance-search" id="advance-search-btn" tabindex="0" role="button" data-toggle="popover" data-trigger="click">
+                     <i class="list"></i>
+                  </a>
+                </div>
+              </li>
+              <li class="nav-item" id="notice-btn">
+               <a href="#"><i class="pencil_box_outline"></i></a>
+              </li>
+			        <!-- <li class="nav-item" id="calendar-btn">
+				        <a href="#">
+				        <span class="have-new-notice">
+				        <i class="today"></i>
+				        <em class="badge up badge-danger b b-2x b-white"> </em>
+				        </span>
+				        </a>
+			        </li>	 -->	
+              <li class="nav-item" id="announce-btn">
+                <a href="#">
+                <span class="have-new-notice">
+                  <i class="bullhorn"></i>
+                  <em class="badge up badge-danger b b-2x b-white"> </em>
+                </span>
+                </a>                
+              </li>	        
+			        <li class="nav-item" id="notifications-btn">
+			          <a href="#">
+			          <span class="have-new-notice">
+				          <i class="notifications_none"></i>
+				          <em class="badge up badge-danger b b-2x b-white"> </em>
+			          </span>
+			          </a>			          
+			        </li>
+			        <li class="nav-item user-info" id="user-info-btn">
+			          <a href="#" class="w-auto">
+			          	  <span class="avatar thumb-sm pull-left">
+			          	  <img src="../../../fe-common/images/avatar/female.png" alt="...">          	  
+			          	  </span>
+			          	  <b class="m-l-xs m-r">Jennifer</b>
+			          	  <span class="caret"></span>
+			          </a>
+			        </li>
+              <li class="nav-item">
+                <a href="#">
+                <span class="have-new-notice">
+                  <i class="headset_mic"></i>
+                  <em class="badge up badge-danger b b-2x b-white"> </em>
+                </span>
+                <span class="caret"></span>
+                </a>
+              </li>
+			</ul><!-- user-info end -->
+
+			<div class="collapse navbar-collapse navbar-toggleable-sm" id="navbar-4">
+			      <ul class="nav">
+			        <li class="nav-item" id="agentview-menu-btn">
+			        	<a href="#" ><i class="apps"></i></a>
+			        </li>              
+			        <!-- <li class="nav-item dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="add_circle"></i></a>
+                <ul class="dropdown-menu dropdown-menu-icon">
+                  <li><a href="#"><i class="package"></i>new campaign</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><i class="code_not_equal"></i>new trouble ticket</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><i class="sale"></i>new lead</a></li>
+                  <li class="no-icon"><a href="#">new optunity</a></li>
+                  <li class="no-icon"><a href="#">new proposal</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><i class="today"></i>new activity</a></li>
+                </ul>
+			        </li> -->
+              <!-- <li class="nav-item disabled" id="overOiew-btn">
+                <a href="#"><i class="person"></i></a>
+              </li> -->
+              <!-- <li class="nav-item pipe none-xs">|</li> -->
+			        
+			      </ul>			      
+		    </div><!-- collapse end -->    
+
+		</div><!-- container-fluid end -->
+	</div>
+  <!-- navbar end -->
+
+  <!-- tab start -->
+    <!-- <div id="agent-view-main-tabs" aeType="aeTabs" class="agent-view-main-tabs" aeInit="true" theme="2" >
+      <ul>
+          <li src="#agent_view_home" class="agent-view-main-tabs-home"><a><i class="md-home icon"></i></a></li>
+      </ul>
+      <div id="agent_view_home">
+          <div class="mainframe">
+              <iframe name="mainIframe" id="mainframe" src="" width="100%" scrolling="auto" frameborder="0"></iframe>
+          </div>
+      </div>
+    </div> -->
+  <!-- tab end -->
+
+  <!-- agent-menu -->
+  <div class="agentview-menu-drop box-shadow-xl over-hidden">
+      <ul class="history-menu">
+          <li>
+            <a href="#">
+               <i class="package bg-danger lt"></i>
+               <P class="text-muted text-c-c">campaigns</P>
+               <P class="text-dark text-md text-c-c">campaigns dashboard</P>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+               <i class="code_not_equal bg-purple lt"></i>               
+               <P class="text-muted text-c-c">trouble ticket</P>
+               <P class="text-dark text-md text-c-c">shared list</P>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+               <i class="package bg-danger lt"></i>
+               <P class="text-muted text-c-c">campaigns</P>
+               <P class="text-dark text-md text-c-c">campaigns dashboard</P>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+               <i class="code_not_equal bg-purple lt"></i>               
+               <P class="text-muted text-c-c">trouble ticket</P>
+               <P class="text-dark text-md text-c-c">shared list</P>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+               <i class="package bg-danger lt"></i>
+               <P class="text-muted text-c-c">campaigns</P>
+               <P class="text-dark text-md text-c-c">campaigns dashboard</P>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+               <i class="code_not_equal bg-purple lt"></i>               
+               <P class="text-muted text-c-c">trouble ticket</P>
+               <P class="text-dark text-md text-c-c">shared list</P>
+            </a>
+          </li>
+      </ul>
+      <div class="all-menu">
+          <h3 class="bg-light ltest">VIEW ALL MENU</h3>
+          <ul>
+                <li>
+                    <a href="#">                          
+                      <i class="package bg-danger lt"></i>
+                      campaigns
+                      <i class="keyboard_arrow_right"></i>                          
+                    </a>
+                   <div class="sub-menu">
+                     <ul>
+                      <li><a href="#">campaigns dashboard</a></li>
+                      <li><a href="#">campaigns</a></li>
+                      <li><a href="#">shared list</a></li>
+                      <li><a href="#">Marketing segment</a></li>
+                      <li><a href="#">Frequency</a></li>
+                     </ul>
+                   </div>                        
+                </li>
+                <li>
+                    <a href="#">
+                      <i class="code_not_equal bg-purple lt"></i>
+                      shared list
+                      <i class="keyboard_arrow_right"></i>
+                    </a>
+                    <div class="sub-menu">
+                      <ul>
+                        <li><a href="#">campaigns dashboard2</a></li>
+                        <li><a href="#">campaigns</a></li>
+                        <li><a href="#">shared list</a></li>
+                        <li><a href="#">Marketing segment</a></li>
+                        <li><a href="#">Frequency</a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                       <i class="package bg-danger lt"></i>
+                       campaigns
+                       <i class="keyboard_arrow_right"></i>
+                    </a>
+                    <div class="sub-menu">
+                      <ul>
+                        <li><a href="#">campaigns dashboard3</a></li>
+                        <li><a href="#">campaigns</a></li>
+                        <li><a href="#">shared list</a></li>
+                        <li><a href="#">Marketing segment</a></li>
+                        <li><a href="#">Frequency</a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                       <i class="code_not_equal bg-purple lt"></i>
+                       shared list
+                       <i class="keyboard_arrow_right"></i>
+                    </a>
+                    <div class="sub-menu">
+                      <ul>
+                        <li><a href="#">campaigns dashboard4</a></li>
+                        <li><a href="#">campaigns</a></li>
+                        <li><a href="#">shared list</a></li>
+                        <li><a href="#">Marketing segment</a></li>
+                        <li><a href="#">Frequency</a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                      <i class="package bg-danger lt"></i>
+                      campaigns
+                      <i class="keyboard_arrow_right"></i>
+                    </a>
+                    <div class="sub-menu">
+                      <ul>
+                        <li><a href="#">campaigns dashboard5</a></li>
+                        <li><a href="#">campaigns</a></li>
+                        <li><a href="#">shared list</a></li>
+                        <li><a href="#">Marketing segment</a></li>
+                        <li><a href="#">Frequency</a></li>
+                      </ul>
+                    </div>
+                </li>
+          </ul>
+      </div>          
+  </div>
+<!-- agent-menu end -->
+
+  <!-- notifications start -->
+  <div id="notifications"></div>
+	<!-- notifications end -->
+
+   <!-- note&todo start -->
+   <div class="notice-drop box-shadow-xl">
+    <h3 class="text-u-c bg-info wrapper text-md font-medium text-center no-margin text-white">
+        note & todo
+    </h3>
+    <textarea class="w-full padder m-t-sm no-border thin-scroll" autofocus style="resize:none; height:200px;"></textarea>
+    <div class="todo">
+        <ul class="todo-tab-menu  bg-light ltest clear" role="tablist">
+            <li class="active text-u-c ">
+                <a href="#todo-doing" class="font-medium" aria-controls="todo-doing" role="tab" data-toggle="tab">
+                    to do
+                    <span class = "badge badge-danger badge-round m-l-sm" > 13 </span>
+                </a>
+            </li>
+            <li class="text-u-c">
+                <a href="#todo-done" aria-controls="todo-done" role="tab" data-toggle="tab" class="font-medium">
+                    done
+                </a>
+            </li>
+        </ul>
+        <div class="todo-tab-con tab-content">
+            <div class="tab-pane thin-scroll  active" id="todo-doing">
+                <ul class="no-m-b">
+                    <li>
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                        <span class="b b-danger r-xs b-2x inline-block v-middle" >
+                        </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, ullam?</p>
+                                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                        <span class="b b-warning r-xs b-2x inline-block v-middle" >
+                        </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>Lorem ipsum dolor sit amet</p>
+                                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                        <span class="b b-warning r-xs b-2x inline-block v-middle" >
+                        </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>Lorem ipsum dolor sit amet</p>
+                                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                        <span class="b b-success r-xs b-2x inline-block v-middle" >
+                        </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>Lorem ipsum dolor sit amet</p>
+                                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                        <span class="b b-success r-xs b-2x inline-block v-middle" >
+                        </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>Lorem ipsum dolor sit amet</p>
+                                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="add-todo-input">
+                        <div class = "thumb-horizontal thumb-moreLine" >
+                            <div class = "thumb-img" >
+                            <span class="b b-success r-xs b-2x inline-block v-middle none" >
+                            </span>
+                            </div>
+                            <div class = "thumb-caption" >
+                                <p>
+                                    <textarea class="w-full  no-border thin-scroll" autofocus="" rows="2" style="resize:none"></textarea>
+                                </p>
+                                <a tabindex="0" id="select-todo-type" role="button" data-toggle="popover" data-trigger="focus" class="none">
+                                    <i class="more_vert text-md none"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- to do end -->
+            <div class="tab-pane thin-scroll" id="todo-done">
+                <div class="done-filter padder padder-v-sm l-h-2x">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">
+                            last month <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">last-week</a></li>
+                            <li><a href="#">last-day</a></li>
+                        </ul>
+                    </div>
+                    <span>5 has been completed</span>
+                </div>
+                <ul>
+                    <li>
+                        <div class="thumb-horizontal thumb-moreLine">
+                            <div class="thumb-img">
+                                <i class="done bg-danger r-xs b-2x inline-block v-middle"></i>
+                            </div>
+                            <div class="thumb-caption">
+                                <p class="text-l-t text-muted">Lorem ipsum dolor sit amet.</p>
+                                <i class="delete text-md none"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumb-horizontal thumb-moreLine">
+                            <div class="thumb-img">
+                                <i class="done bg-success r-xs b-2x inline-block v-middle"></i>
+                            </div>
+                            <div class="thumb-caption">
+                                <p class="text-l-t text-muted">Eos ipsum commodi, ex quia?</p>
+                                <i class="delete text-md none"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumb-horizontal thumb-moreLine">
+                            <div class="thumb-img">
+                                <i class="done bg-success r-xs b-2x inline-block v-middle"></i>
+                            </div>
+                            <div class="thumb-caption">
+                                <p class="text-l-t text-muted">Accusantium rerum reprehenderit, commodi fuga.</p>
+                                <i class="delete text-md none"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumb-horizontal thumb-moreLine">
+                            <div class="thumb-img">
+                                <i class="done bg-warning r-xs b-2x inline-block v-middle"></i>
+                            </div>
+                            <div class="thumb-caption">
+                                <p class="text-l-t text-muted">Debitis sit repellat, cum exercitationem.</p>
+                                <i class="delete text-md none"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="thumb-horizontal thumb-moreLine">
+                            <div class="thumb-img">
+                                <i class="done bg-warning r-xs b-2x inline-block v-middle"></i>
+                            </div>
+                            <div class="thumb-caption">
+                                <p class="text-l-t text-muted">Autem dolor nisi, dicta non.</p>
+                                <i class="delete text-md none"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- done end -->
+        </div>
+        <div class="wrapper clear bg-light ltest text-center todo-footer">
+            <a href="#">
+                <i class="add_circle text-1x5 text-primary m-r-xs"></i>
+             <span class="text-md text-primary  inline-block v-middle font-medium">
+                Add a todo
+             </span>
+            </a>
+        </div>
+    </div>
+</div>
+   <!-- notice end -->
+
+   <!-- calendar-drop -->
+      <div class = "calendar-drop hbox">
+         <div class = "col calendar-drop-sidebar bg-light ltest">
+              <button class="btn btn-primary btn-lg btn-block text-c-c" type="button">
+              <i class="add inline-block v-middle text-md"></i>
+              add a new activity
+              </button>
+              <dl id="calendar-drop-type">
+                <dt class="text-c-c text-dark">
+                  labels                  
+                </dt>
+                <dd class="line thin b-gray"></dd>
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="checkbox_blank_circle text-primary m-r"></i>
+                   campaign
+                </dd>  
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="checkbox_blank_circle m-r"></i>
+                   trouble ticket
+                </dd>
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="checkbox_blank_circle text-warning m-r"></i>
+                   sale case
+                </dd>
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="checkbox_blank_circle text-success m-r"></i>
+                   customer
+                </dd> 
+                <dd class="line thin b-gray"></dd>               
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="person_outline m-r"></i>
+                   owned by me
+                   </dd>
+                <dd class="line thin b-gray"></dd>
+                <dd class="clear">
+                   <i class="check pull-right none text-primary"></i>
+                   <i class="access_alarms m-r"></i>
+                   remind
+                </dd>
+              </dl>
+         </div>
+         <div class = "col">
+           <div id="calendar" class="bg-white thin-scroll"></div>
+         </div>
+      </div>
+   <!-- calendar-drop  end-->
+      
+   <!-- overView-drop start -->
+      <div class = "overView-drop">
+      </div>
+   <!-- overView-drop end -->
+
+   <!-- announce-drop start -->
+      <div class = "announce-drop">
+          <div class="announce-tab-menu">
+           <h4 class="text-u-c text-md no-m-t b-b b-b-light text-center text-muted">annouce</h4>
+          <!-- Nav tabs -->
+            <ul class="nav nav-pills nav-stacked " role="tablist">
+              <li class="active"><a href="#annouce-receive" aria-controls="annouce-receive" role="tab" data-toggle="tab"><i class="inbox"></i>receive <span class = "badge badge-round badge-danger" > 42 </span></a></li>
+              <li><a href="#annouce-sent" aria-controls="annouce-sent" role="tab" data-toggle="tab"><i class="send"></i>sent</a></li>
+              <li><p  class = "line thin b-t-light"></p> </li>
+              <li><a href="#annouce-letter" aria-controls="annouce-letter" role="tab" data-toggle="tab"><i class="speaker_notes"></i>personal letter <span class = "badge badge-round badge-warning" >99</span></a></li>
+            </ul>
+           </div>
+            <!-- Tab panes -->
+            <div class="tab-content announce-tab-content">
+              <div role="tabpanel" class="tab-pane active" id="annouce-receive">
+                  <!-- left -->
+                    <div class="pull-left bg-white b-l b-l-light announce-list">
+                         <h4 class="text-c-c text-md no-margin b-b b-2x b-b-light text-dark clear">
+                         <div class="pull-right">
+                           <button class="btn btn-default btn-icon btn-sm m-r-xs" type="button">
+                             <i class="delete text-lg"></i>
+                           </button>
+                           <button class="btn btn-primary btn-icon btn-sm" type="button" onClick="popupNewNoticeDiv()">
+                             <i class="add text-2x"></i>
+                           </button>
+                         </div>
+                         receive
+                         </h4>
+                         <ul class="notice-list thin-scroll">
+                           <li class="current"> 
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                         </ul>
+                    </div>
+                    <!-- left end -->
+                    <!-- right-->
+                    <div class="pull-right bg-white b-l b-l-light announce-detail">
+                         <h4 class="text-md no-margin b-2x b-b b-b-light"><ins class="text-normal text-muted text-base pull-right">2015-08-18 14:21:10</ins>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                         <div class="notice-detail thin-scroll">
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur tempora voluptates molestiae, perferendis officia saepe totam modi nulla. Neque nisi sequi architecto maiores eius inventore omnis, sint voluptatibus molestiae.</p>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis asperiores, nostrum suscipit omnis voluptatum impedit sequi, eum provident molestiae ea, libero illum! Quasi sapiente, laborum atque. Id, temporibus excepturi ut.</p>
+                           <p><img class="img-responsive w-full" src="../../../fe-common/images/avatar/unknown.png" alt=""></p>
+                         </div>
+                    </div>
+                    <!-- right end-->
+
+
+              </div>
+              <div role="tabpanel" class="tab-pane" id="annouce-sent">
+                 <!-- left -->
+                    <div class="pull-left bg-white b-l b-l-light announce-list">
+                         <h4 class="text-c-c text-md no-margin b-b b-2x b-b-light text-dark clear">
+                         <div class="pull-right">
+                           <button class="btn btn-default btn-icon btn-sm m-r-xs" type="button">
+                             <i class="delete text-lg"></i>
+                           </button>
+                           <button class="btn btn-primary btn-icon btn-sm" type="button" onClick="popupNewNoticeDiv()">
+                             <i class="add text-2x"></i>
+                           </button>
+                         </div>
+                         sent
+                         </h4>
+                         <ul class="notice-list thin-scroll">
+                           <li class="current"> 
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                           <li> 
+                              <div class="new-notice-icon">
+                                  <em class="badge badge-danger badge-xs b b-2x b-white"> </em>
+                              </div>
+                              <div class="notic-con">
+                                <h5>
+                                  Troble Ticket
+                                  <ins class="pull-right">14:21</ins>
+                                </h5>
+                                <p class="text-light text-sm no-m-b m-r-md">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus accusantium hic in!
+                                </p>
+                              </div>
+                           </li>
+                         </ul>
+                    </div>
+                    <!-- left end -->
+                    <!-- right-->
+                    <div class="pull-right bg-white b-l b-l-light announce-detail">
+                         <h4 class="text-md no-margin b-2x b-b b-b-light"><ins class="text-normal text-muted text-base pull-right">2015-08-18 14:21:10</ins>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                         <div class="notice-detail thin-scroll">
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur tempora voluptates molestiae, perferendis officia saepe totam modi nulla. Neque nisi sequi architecto maiores eius inventore omnis, sint voluptatibus molestiae.</p>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis asperiores, nostrum suscipit omnis voluptatum impedit sequi, eum provident molestiae ea, libero illum! Quasi sapiente, laborum atque. Id, temporibus excepturi ut.</p>
+                           <p><img class="img-responsive w-full" src="../../../fe-common/images/avatar/unknown.png" alt=""></p>
+                         </div>
+                    </div>
+                    <!-- right end-->
+              </div>
+              <div role="tabpanel" class="tab-pane personal-letter" id="annouce-letter">
+                  <!-- left -->
+                    <div class="pull-left bg-white b-l b-l-light announce-list">
+                         <h4 class="text-c-c text-md no-margin b-b b-2x b-b-light text-dark clear">
+                         <div class="pull-right">
+                           <button class="btn btn-default btn-icon btn-sm m-r-xs" type="button">
+                             <i class="delete text-lg"></i>
+                           </button>
+                           <button class="btn btn-primary btn-icon btn-sm" type="button" onClick="popupNewLetterDiv()">
+                             <i class="add text-2x"></i>
+                           </button>
+                         </div>
+                         personal letter
+                         </h4>
+                         <ul class="notice-list thin-scroll">
+                           <li class="current"> 
+                              <div class = "thumb-horizontal" >
+                                   <div class = "thumb-img" >
+                                      <div class = "avatar thumb-sm" >
+                                        <img src = "../../../fe-common/images/avatar/female.png" />
+                                        <span class="badge badge-round badge-warning badge-up">1</span>
+                                      </div>
+                                   </div>
+                                   <div class = "thumb-caption" >
+                                      <h5> Dr.Gerald Jeffers</h5>
+                                      <small>Lorem ipsum dolor sit amet?</small>
+                                   </div>
+                                </div>
+                           </li>
+                           <li> 
+                                <div class = "thumb-horizontal" >
+                                   <div class = "thumb-img" >
+                                      <div class = "avatar thumb-sm" >
+                                        <img src = "../../../fe-common/images/avatar/female.png" />
+                                        <span class="badge badge-round badge-warning badge-up">1</span>
+                                      </div>
+                                   </div>
+                                   <div class = "thumb-caption" >
+                                      <h5> Dr.Gerald Jeffers</h5>
+                                      <small>Lorem ipsum dolor sit amet?</small>
+                                   </div>
+                                </div>
+                           </li>
+                           <li>
+                                 <div class = "thumb-horizontal" >
+                                     <div class = "thumb-img" >
+                                      <div class = "avatar thumb-sm" >
+                                        <img src = "../../../fe-common/images/avatar/female.png" />
+                                        <span class="badge badge-round badge-warning badge-up">1</span>
+                                      </div>
+                                   </div>
+                                   <div class = "thumb-caption" >
+                                      <h5> Dr.Gerald Jeffers</h5>
+                                      <small>Lorem ipsum dolor sit amet?</small>
+                                   </div>
+                                  </div>
+                           </li>
+                           <li>
+                                 <div class = "thumb-horizontal" >
+                                     <div class = "thumb-img" >
+                                      <div class = "avatar thumb-sm" >
+                                        <img src = "../../../fe-common/images/avatar/female.png" />
+                                        <span class="badge badge-round badge-warning badge-up">1</span>
+                                      </div>
+                                   </div>
+                                   <div class = "thumb-caption" >
+                                      <h5> Dr.Gerald Jeffers</h5>
+                                      <small>Lorem ipsum dolor sit amet?</small>
+                                   </div>
+                                  </div>
+                           </li>
+                           <li> 
+                               <div class = "thumb-horizontal" >
+                                   <div class = "thumb-img" >
+                                      <div class = "avatar thumb-sm" >
+                                        <img src = "../../../fe-common/images/avatar/female.png" />
+                                        <span class="badge badge-round badge-warning badge-up">1</span>
+                                      </div>
+                                   </div>
+                                   <div class = "thumb-caption" >
+                                      <h5> Dr.Gerald Jeffers</h5>
+                                      <small>Lorem ipsum dolor sit amet?</small>
+                                   </div>
+                                </div>
+                           </li>
+                         </ul>
+                    </div>
+                    <!-- left end -->
+                    <!-- right-->
+                    <div class="pull-right bg-white b-l b-l-light announce-detail">
+                         <h4 class="text-md no-margin b-2x b-b b-b-light">
+                             <div class = "avatar thumb-sm pull-left m-r-sm" >
+                              <img src = "../../../fe-common/images/avatar/male.png" />
+                              </div>
+                              Dr.Gerald Jeffers
+                         </h4>
+                         <div class="notice-detail chat-detail thin-scroll">
+                            <div class="single-message other-messages">
+                                <div class = "avatar thumb-xs" >
+                                 <img src = "../../../fe-common/images/avatar/male.png" />
+                                </div>                                
+                                <div class="message-con r">
+                                   <span class="arrowBg"></span>
+                                   Lorem ipsum dolor sit amet, consectetur.
+                                </div>
+                            </div>
+                            <div class="single-message mine-messages">
+                                <div class = "avatar thumb-xs" >
+                                 <img src = "../../../fe-common/images/avatar/female.png" />
+                                </div>
+                                <div class="message-con r">
+                                   <span class="arrowBg"></span>
+                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia odio, alias amet veritatis ullam ipsa eos et sequi minima sit.
+                                </div>
+                            </div>
+                            <div class="single-message other-messages">
+                                <div class = "avatar thumb-xs" >
+                                 <img src = "../../../fe-common/images/avatar/male.png" />
+                                </div>
+                                <div class="message-con r">
+                                   <span class="arrowBg"></span>
+                                   Lorem ipsum dolor sit amet, consectetur.
+                                </div>
+                            </div>
+                            <div class="single-message mine-messages">
+                                <div class = "avatar thumb-xs" >
+                                 <img src = "../../../fe-common/images/avatar/female.png" />
+                                </div>
+                                <div class="message-con r">
+                                   <span class="arrowBg"></span>
+                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia odio, alias amet veritatis ullam ipsa eos et sequi minima sit.
+                                </div>
+                            </div>
+                         </div>
+                         <div class="b-t b-2x b-t-lightest chat-sent">
+                            <textarea class="w-full no-border m-t-md thin-scroll" autofocus rows="3" style="resize:none" placeholder="Say something"></textarea>
+                            <p class="text-right no-margin"><button class="btn btn-primary" type="button">Sent</button></p>
+                         </div>
+                    </div>
+                    <!-- right end-->
+              </div>
+            </div>
+      </div>
+   <!-- announce-drop end -->
+
+   <!-- user-info-drop start -->
+      <div class="user-info-drop">
+         <ul>
+           <li><a href="javascript:openNewTab('personalSettings','personalSettings.html')"><i class="md-settings"></i>Option</a></li>
+           <li><a href="#"><i class="logout"></i>Log Out</a></li>
+         </ul>
+      </div>
+   <!-- user-info-drop end -->
+
+
+<!-- select-todo-type popover template -->
+<div id="select-todo-type-popover-content" class="none">
+  <label class="todo-type">
+     <i class="checkbox_blank b b-primary r-xs text-success text-md"></i>
+      low
+  </label> 
+  <label class="todo-type">
+     <i class="checkbox_blank b b-light r-xs text-warning text-md"></i>
+     middle
+  </label> 
+  <label class="todo-type">
+      <i class="checkbox_blank b b-light r-xs text-danger text-md"></i>
+       </b>
+       hight
+  </label>                             
+</div><!-- select-todo-type popover template end -->
+
+<!-- todo-oprate-popover-template --> 
+<div id="todo-oprate-popover-content" class="none">
+  <div class="todo-oprate-popover">
+    <div class="todo-delete text-center text-medium text-dark b-b b-light m-l-n m-r-n m-t-n-sm wrapper-sm">
+    <i class="delete m-r-xs"></i>
+    Delete
+    </div>
+    <label class="todo-type">
+        <i class="checkbox_blank b b-light r-xs text-success text-md"></i>
+         low
+    </label>
+    <label class="todo-type">
+        <i class="checkbox_blank b b-light r-xs text-warning text-md"></i>
+         middle
+    </label>
+    <label class="todo-type">
+        <i class="checkbox_blank b b-light r-xs text-danger text-md"></i>
+         hight
+    </label>
+  </div>
+</div><!-- todo-oprate-popover-template end --> 
+
+<!-- advance-search-popover s -->
+<div id="advance-search-popover" class="none">
+     <div class="advance-search-popover-content">
+         <ul class="b-b b-b-light clear" role="tablist" id="myTabs">
+           <li class="active">
+             <a href="#s-b-cus" aria-controls="s-b-cus" role="tab" data-toggle="tab" class="text-u-c font-bold">
+               <i class="account_box"></i>
+               Customer
+             </a>
+           </li>
+           <li>
+              <a href="#s-b-kb" aria-controls="s-b-kb" role="tab" data-toggle="tab" class="text-u-c font-bold">
+                <i class="book_multiple_variant"></i>
+                Konwlege Base
+              </a>
+            </li>
+         </ul> 
+         <div class="advance-search-popover-body tab-content clear">
+          <div class="tab-pane active" id="s-b-cus" role="tabpanel">
+           <div class = "hbox">
+               <ul class = "col bg-light ltest" role="tablist" id="subMenu-tabs">
+                   <li class="active">
+                     <a href="#s-cus" aria-controls="s-cus" role="tab" data-toggle="tab">
+                       Search Customer
+                     </a>
+                    </li>
+                   <li>
+                     <a href="#s-b-addr" aria-controls="s-b-addr" role="tab" data-toggle="tab">
+                        Search by address
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#s-b-sup" aria-controls="s-b-sup" role="tab" data-toggle="tab">
+                         Search by subscription
+                     </a>
+                   </li>
+                   <li>
+                     <a href="#s-b-acc" aria-controls="s-b-acc" role="tab" data-toggle="tab">
+                         Search by accout
+                     </a>
+                   </li>
+               </ul>
+               <div class = "col bg-white">
+                  <div class="filter-form thin-scroll padder-lg padder-v tab-content">
+                        <div class="tab-pane active" role="tabpanel"  id="s-cus">
+                         <div class="row m-b-sm connect-input">
+                              <div class="col-xs-12 col-md-12">
+                                  <span class="pull-left">
+                                   <label>first name</label>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w100">
+                                  </span>
+                                  <span class="pull-left">
+                                        <label>last name</label>
+                                        <input aetype="aeTextfield" aeinit="false" class="form-control w160">
+                                  </span>
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">                            
+                              <div class="col-xs-12 col-md-12">
+                                  <label class="text-u-c">cpr</label>                        
+                              </div>
+                              <div class="col-xs-12 col-md-12">
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w40 inline-block">
+                                  <span class="padder-xs">/</span>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w40 inline-block">
+                                  <span class="padder-xs">/</span>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w-xxs inline-block">
+                                   <span class="padder-xs">-</span>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w-xxs inline-block">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>company name</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>                              
+                         </div>
+                         <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>company registeration number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">                            
+                              <div class="col-xs-12 col-md-12">
+                                  <label class="text-u-c">cvr</label>                        
+                              </div>
+                              <div class="col-xs-12 col-md-12">
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control inline-block w40">
+                                  <span class="padder-xs">-</span>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control inline-block w40">
+                                  <span class="padder-xs">-</span>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control inline-block w40">
+                                   <span class="padder-xs">-</span>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control inline-block w40">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>KOB number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>contract number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>circuit number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                         </div>
+                         <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>customer ID/OLD customer ID</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                         </div>
+                         </div><!-- search customer end -->
+                         <div role="tabpanel" class="tab-pane" id="s-b-addr">
+                             <h5 class="b-b b-b-light l-h-2x no-m-t font-bold">Address</h5>
+                             <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>address</label>
+                                  <input aetype="aeTextfield" aeinit="false" placeholder="Street name" class="form-control" width="328">
+                              </div>                              
+                             </div>
+                             <div class="row m-b-sm connect-input">
+                              <div class="col-xs-12 col-md-12">
+                                  <span class="pull-left">
+                                  <label>house NO.</label>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w80">
+                                  </span>
+                                  <span class="pull-left">
+                                        <label>door NO.</label>
+                                        <input aetype="aeTextfield" aeinit="false" class="form-control w80">
+                                  </span>
+                                  <span class="pull-left">
+                                        <label>house letter</label>
+                                        <input aetype="aeTextfield" aeinit="false" class="form-control w80">
+                                  </span>
+                                  <span class="pull-left">
+                                        <label>floor.</label>
+                                        <input aetype="aeTextfield" aeinit="false" class="form-control w80">
+                                  </span>
+                              </div>
+                            </div>
+                            <div class="row m-b-sm connect-input">
+                              <div class="col-xs-12 col-md-12">
+                                  <span class="pull-left">
+                                  <label> house NO.</label>
+                                   <input aetype="aeTextfield" aeinit="false" class="form-control w105">
+                                  </span>
+                                  <span class="pull-left">
+                                        <label>door NO.</label>
+                                        <input aetype="aeTextfield" placeholder="City name" aeinit="false" class="form-control w224">
+                                  </span>
+                                </div>
+                            </div> 
+                            <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                              <label>Country</label>
+                                <span aeType="aeCombo" id="formOfCountry" aeInit="true" optionField="codeName" valueField="codeValue" emptyText="Denmark" width="170" showClear="true"></span>                                
+                              </div>
+                            </div>
+                            <h5 class="b-b b-b-light l-h-2x font-bold">Foreign Address</h5>
+                            <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>international street</label>
+                                  <input aetype="aeTextfield" aeinit="false" placeholder="Street name" class="form-control w260">
+                              </div>                              
+                             </div>
+                             <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                                  <label>international ZIP</label>
+                                  <input aetype="aeTextfield" aeinit="false" placeholder="ZIP code" class="form-control w260">
+                              </div>                              
+                             </div>
+                             <div class="row m-b-sm">
+                              <div class="col-xs-12 col-md-12">
+                              <label>Country</label>
+                                <span aeType="aeCombo" id="formOfForeignCountry" aeInit="true" optionField="codeName" valueField="codeValue" emptyText="Denmark" width="170" showClear="true"></span>                                
+                              </div>
+                            </div>
+
+                         </div>
+                         <div role="tabpanel" class="tab-pane" id="s-b-sup">
+                           <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>DSL numbel</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>phone number(GSM.VOIP,CDA,Contact)</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>VOL number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>IMEI</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>ICC/SIM card number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                         </div>
+                         <div role="tabpanel" class="tab-pane" id="s-b-acc">
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>BAN/old BAN number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>invoice number(ID)</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>bill ID(invoice number/ID)</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                            <div class="row m-b-sm">
+                               <div class="col-xs-12 col-md-12">
+                                  <label>major account number</label>
+                                  <input aetype="aeTextfield" aeinit="false" class="form-control w260">
+                              </div>
+                            </div>
+                         </div>
+
+                         </div><!-- tab-content end --> 
+               </div><!-- col end -->
+            </div><!-- hbox end -->
+          </div><!-- search by customer end --> 
+          <div class="tab-pane" id="s-b-kb" role="tabpanel">2</div>
+       </div><!-- advance-search-popover-body end -->
+     
+     <div class="advance-search-popover-footer text-right padder-md padder-v-sm b-t b-t-light">
+         <button class="btn btn-default disabled" type="button">Reset</button>
+         <button class="btn btn-primary disabled" type="button">Search</button>
+     </div><!-- advance-search-popover-footer end -->
+</div><!-- advance-search-popover-content end -->
+</div>
+<!-- advance-search-filter template e -->
+
+
+<!-- new notice modal start -->
+  <div class="new-notice-modal none" id="new-notice-modal">
+      <label><span>To</span> <input type="text" class="form-control b-n no-radius"></label>
+      <label class="m-b"><span>Subject</span> <input type="text" class="form-control b-n no-radius"></label>
+      <div id="new-notice-summernote"></div>
+  </div>
+<!-- new notice modal end -->
+
+<!-- notifications settings modal start -->
+ <div class="none notific-setting notific-setting-modal" id="notific-setting-modal">
+        <div class="form-horizontal">
+            <div class="form-group b-b b-lightest">
+                <label class="col-md-4 col-sm-4 col-xs-12 text-base"><i class="today text-lg m-r-xs"></i>calendar</label>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                   <div class="row parent">
+                        <div class="col-md-7"> 
+                        <span class="text-sm">push this message?</span>
+                        </div>
+                       <div class="col-md-5">
+                          <div aeType="aeToggle" onOff="on" aeInit="true" class="v-middle"></div>
+                       </div>
+                    </div>
+                    <div class="row m-t parent">
+                       <div class="col-md-7"> 
+                        <span class="text-sm">allow the popover window?</span>
+                       </div>
+                       <div class="col-md-5">
+                        <div aeType="aeToggle" id="calenderToggle" onOff="on" aeInit="true" class="v-middle" textOn="Yes" textOff="No" ></div>
+                        <!--<span aeType="aeRadio" id="calenderRadio" aeInit="true" labelField="codeName" valueField="codeValue" class="pull-right"></span>-->
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group b-b b-lightest">
+                <label class="col-md-4 col-sm-4 col-xs-12 text-base"><i class="package text-lg m-r-xs"></i>campaign</label>
+                <div class="col-md-8 col-sm-8 col-xs-12 ">
+                   <div class="row">
+                        <div class="col-md-7 parent">
+                        <span class="text-sm">push this message?</span>
+                        </div>
+                       <div class="col-md-5">
+                          <div aeType="aeToggle" onOff="off" aeInit="true" class="v-middle"></div>
+                       </div>
+                    </div>
+                    <div class="row none m-t parent">
+                       <div class="col-md-7"> 
+                        <span class="text-sm">allow the popover window?</span>
+                       </div>
+                       <div class="col-md-5">
+                           <div aeType="aeToggle" id="campagignToggle" onOff="on" aeInit="true" class="v-middle" textOn="Yes" textOff="No" ></div>
+                        <!--<span aeType="aeRadio" id="campagignRadio" aeInit="true" labelField="codeName" valueField="codeValue" class="pull-right"></span>-->
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group b-b b-lightest">
+                <label class="col-md-4 col-sm-4 col-xs-12 text-base"><i class="code_not_equal text-lg m-r-xs"></i>trouble ticket</label>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                   <div class="row">
+                        <div class="col-md-7"> 
+                        <span class="text-sm">push this message?</span>
+                        </div>
+                       <div class="col-md-5">
+                          <div aeType="aeToggle" onOff="off" aeInit="true" class="v-middle"></div>
+                       </div>
+                    </div>
+                    <div class="row none m-t">                                    
+                       <div class="col-md-7"> 
+                        <span class="text-sm">allow the popover window?</span>
+                       </div>
+                       <div class="col-md-5">
+                        <div aeType="aeToggle" id="ttToggle" onOff="on" aeInit="true" class="v-middle" textOn="Yes" textOff="No" ></div>
+                        <!--<span aeType="aeRadio" id="ttRadio" aeInit="true" labelField="codeName" valueField="codeValue" class="pull-right"></span>-->
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group b-b b-lightest">
+                <label class="col-md-4 col-sm-4 col-xs-12 text-base"><i class="sale text-lg m-r-xs"></i>sales</label>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                   <div class="row">
+                        <div class="col-md-7"> 
+                        <span class="text-sm">push this message?</span>
+                        </div>
+                       <div class="col-md-5">
+                          <div aeType="aeToggle" onOff="off" aeInit="true" class="v-middle"></div>
+                       </div>
+                    </div>
+                    <div class="row none m-t">                                    
+                       <div class="col-md-7"> 
+                        <span class="text-sm">allow the popover window?</span>
+                       </div>
+                       <div class="col-md-5">
+                           <div aeType="aeToggle" id="salesToggle" onOff="on" aeInit="true" class="v-middle" textOn="Yes" textOff="No" ></div>
+                        <!--<span aeType="aeRadio" id="salesRadio" aeInit="true" labelField="codeName" valueField="codeValue" class="pull-right"></span>-->
+                       </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+  </div>  
+  <!-- notifications settings modal end -->
+
+  <!-- node-selection modal start -->
+  <div class="node-selection none" id="node-selection-modal">
+      <div class="node-selection-search">
+         <i class="close_circle pull-right none"></i>
+         <i class="search"></i>
+         <input type="text" class="node-search-input">
+      </div>
+      <ul class="node-selection-result none">
+         <li>
+           <div class="result-name">
+             <i class="check_box_outline_blank"></i>
+             <i class="folder"></i>
+             <label for="" class="text-c-c">team name</label>
+           </div>
+           <div class="result-route">
+             <a href="#">organization1</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization2</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization3</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization4</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization5</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization6</a>
+             <i class="chevron_right"></i>
+             <a href="#">departmentname1</a>
+           </div>
+         </li>
+         <li class="active">
+           <div class="result-name">
+             <i class="check_box"></i>
+             <i class="folder"></i>
+             <label for="" class="text-c-c">team name</label>
+           </div>
+           <div class="result-route">
+             <a href="#">organization1</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization2</a>
+             <i class="chevron_right"></i>
+             <a href="#">departmentname2</a>
+           </div>
+         </li>
+         <li>
+           <div class="result-name">
+             <i class="check_box_outline_blank"></i>
+             <img src = "../../../fe-common/images/avatar/male.png" class="rounded" width="18" height="18"/>
+             <label for="" class="text-c-c">team name</label>
+           </div>
+           <div class="result-route">
+             <a href="#">organization1</a>
+             <i class="chevron_right"></i>
+             <a href="#">organization2</a>
+             <i class="chevron_right"></i>
+             <a href="#">departmentname1</a>
+           </div>
+         </li>
+      </ul>
+      <div class="node-selection-tree">
+        <div class="main-column">
+           <div class="node-selection-tree-column thin-scroll">
+              <h5 class="column-name">title name</h5>
+              <ul>
+                <li>
+                  <i class="check_box_outline_blank"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                   <i class="check_box_outline_blank"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                   <i class="check_box_outline_blank"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                   <i class="check_box_outline_blank"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+              </ul>
+           </div>
+         </div><!-- main-column end -->
+         <div class="branch-columns">
+            <div class="node-selection-tree-column thin-scroll">
+              <h5 class="column-name">title name</h5>
+              <ul>
+                <li>
+                  <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                   <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                  <i class="check_box"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li class="active">
+                  <i class="indeterminate_check_box"></i>
+                  <i class="folder"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+              </ul>
+           </div>
+           <div class="node-selection-tree-column thin-scroll">
+              <h5 class="column-name">title name</h5>
+              <ul>
+                <li>
+                  <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li class="active">
+                  <i class="check_box"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+              </ul>
+           </div>
+           <div class="node-selection-tree-column thin-scroll">
+              <h5 class="column-name">title name</h5>
+              <ul>
+                <li>
+                  <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li>
+                   <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+              </ul>
+           </div>
+           <div class="node-selection-tree-column thin-scroll">
+              <h5 class="column-name">title name</h5>
+              <ul>
+                <li>
+                  <i class="check_box_outline_blank"></i>
+                  <i class="folder"></i>
+                  <label for="" class="text-c-c">team name</label>
+                </li>
+                <li class="active">
+                   <img src="../../../fe-common/images/avatar/male.png" class="rounded m-l-xs m-r-xs" width="18" height="18">
+                   <label for="" class="text-c-c">team name</label>
+                </li>
+              </ul>
+           </div>
+         </div><!-- branch-columns end -->
+      </div><!-- node-selection-tree end -->
+      <div class="node-selection-footer">
+         <button class="btn btn-primary pull-right" type="button">Select</button>
+         <button class="btn btn-default pull-right m-r-sm" type="button">cancle</button>         
+         <span class="node-selection-selected-num">
+           You have selected
+           <a tabindex="0" role="button" data-toggle="popover" data-trigger="click" id="have-selected-btn" class="text-primary font-medium">13</a> 
+           options
+         </span>
+         <div class="have-selected-popover none">
+             <i class="window_close"></i>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+             <span class = "label label-primary" >
+               the option name 
+               <i class="window_close"></i>
+             </span>
+         </div>
+      </div>
+  </div>
+<!-- node-selection modal end -->
+
+
+<!-- online-service start -->
+ <div class="online-service online-service-dark online-service-off online-service-mini">
+     <div class="online-service-sidebar">
+       <div class="service-state-exchange">
+        <a href="#"><i class="comment_multiple_outline"></i></a>
+        <a href="#" class="check-switch"><i class="account_headphone account_headphone_outline"></i></a>
+        <a href="#"><i class="account_headphone_outline"></i><em class="badge down off badge-xs"> </em></a>
+       </div>
+       <div class="chat-list-collapsing">
+        <i class="chevron_left_circle_outline"></i>
+         <ul class="thin-scroll">
+          <li class = "avatar" >
+            <img src = "../../../fe-common/images/avatar/male.png"/>
+          </li>
+          <li class = "avatar accept-new-customer" >
+            <img src = "../../../fe-common/images/avatar/female.png"/>
+            <div class="accept-btn">
+             <i class="close_circle_outline"></i>
+              <span class="accept-btn-bg" style="width:60%"></span>
+              <span class="accept-btn-text">Accept</span>
+            </div>
+          </li>
+          <li class = "avatar accept-new-customer" >
+            <img src = "../../../fe-common/images/avatar/female.png"/>
+            <div class="accept-btn">
+              <i class="close_circle_outline"></i>
+              <span class="accept-btn-bg" style="width:100%"></span>
+              <span class="accept-btn-text">Accept</span>
+            </div>
+          </li>
+          <li class = "avatar" >
+            <img src = "../../../fe-common/images/avatar/male.png"/>
+            <span class="badge badge-round badge-danger badge-up">1</span>
+          </li>
+          <li class = "avatar accept-new-customer off-line" >
+            <i class="close_circle_outline"></i>
+            <img src = "../../../fe-common/images/avatar/male.png"/>
+          </li>
+          </ul>
+       </div>
+     </div>
+     <div class="online-service-detail">
+     <div class="online-active-chat">
+       <h4>
+       <i class="account_box text-white m-r-xs"></i>
+       Active Chat
+       <div class="pull-right">
+         <i class="chevron_right_circle_outline"></i>
+       </div>
+       </h4>
+       <div class="chat-list thin-scroll">
+           <dl>
+             <dt>
+                <img src="../../../fe-common/images/avatar/male.png" alt="">
+                <i class="close_circle_outline"></i>
+             </dt>
+             <dd class="customer-name">
+               Kendall Jenner
+             </dd>
+             <dd>
+               <ins class="chat-time">3:13:52"</ins>
+               <i class="wechat_outline"></i>
+               <span class="pipe">|</span>
+               <i class="person_outline"></i>
+             </dd>
+           </dl>
+           <dl class="accept-new-customer">
+             <dt>
+                <img src="../../../fe-common/images/avatar/female.png" alt="">
+                <i class="close_circle_outline"></i>
+             </dt>
+             <dd class="customer-name">
+               Anna hadid
+             </dd>
+             <dd>
+               <i class="personal_video"></i>
+               <span class="pipe">|</span>
+               <i class="star_border"></i>
+             </dd>
+             <dd class="accept-btn">
+                <span class="accept-btn-bg" style="width:60%"></span>
+                <span class="accept-btn-text">Accept</span>
+             </dd>
+           </dl>
+           <dl class="accept-new-customer">
+             <dt>
+                <img src="../../../fe-common/images/avatar/female.png" alt="">
+                <i class="close_circle_outline"></i>
+             </dt>
+             <dd class="customer-name">
+               Chole Maxa
+             </dd>
+             <dd>
+               <i class="wechat_outline"></i>
+               <span class="pipe">|</span>
+               <i class="diamond"></i>
+             </dd>
+             <dd class="accept-btn">
+                <span class="accept-btn-bg" style="width:100%"></span>
+                <span class="accept-btn-text">Accept</span>
+             </dd>
+           </dl>
+           <dl>
+             <dt>
+                <img src="../../../fe-common/images/avatar/male.png" alt="">
+                <i class="close_circle_outline"></i>
+             </dt>
+             <dd class="customer-name">
+               <span class="badge badge-round badge-danger pull-right">12</span> Kendall Jenner
+             </dd>
+             <dd>
+               <ins class="chat-time">3:13:52"</ins>
+               <i class="wechat_outline"></i>
+               <span class="pipe">|</span>
+               <i class="person_outline"></i>
+             </dd>
+           </dl>
+           <dl class="off-line">
+             <dt>
+                <img src="../../../fe-common/images/avatar/male.png" alt="">
+                <i class="close_circle_outline"></i>
+             </dt>
+             <dd class="customer-name">
+              Kendall Jenner
+             </dd>
+             <dd>
+               <ins class="chat-time">off-line 12:52"</ins>
+               <i class="wechat_outline"></i>
+               <span class="pipe">|</span>
+               <i class="person_outline"></i>
+             </dd>
+           </dl>
+       </div>
+       <ul class="online-active-chat-footer">
+          <li>
+             <i class="settings_applications"></i>
+             <div class="online-service-set">
+               <ul>
+                 <li>
+                  <i class="subject" onclick="popupCommonTerm()"></i>
+                  <p class="line thin"></p>
+                 </li>
+                 <li>
+                   <i class="color_lens"></i>
+                   <div class="exchange-color none">
+                     <ul>
+                       <li><span class="bg-light dkest"></span></li>
+                       <li><span class="bg-primary"></span></li>
+                     </ul>
+                   </div>
+                  </li>
+               </ul>
+             </div>
+          </li>
+          <li><i class="perm_contact_calendar" onclick="popupChatHistory()"></i></li>
+          <li>
+            <i class="account_line_outline" onclick="popupWaitingList()"></i>
+            <span class="badge badge-round badge-danger badge-down">10</span>
+          </li>
+       </ul>
+     </div>
+     <div class="online-chat-window">
+        <h4>
+         <span class="avatar thumb-xs pull-left m-r-sm">
+             <img src="../../../fe-common/images/avatar/male.png" alt="">
+         </span>
+         Kendall Jenner
+       <div class="pull-right">
+         <i class="close_circle_outline"></i>
+       </div>
+       </h4>
+       <div class="online-chat-con thin-scroll clear">
+          <div class="single-message">
+              <p class="message-send-time">2016-01-08</p>
+              <div class="single-message-detail">
+                 <p class="send-person">Kendall Jenner</p>
+                 <p class="send-con"><span class="arrowBg"></span>I have a question</p>
+                 
+              </div>
+          </div>
+          <div class="single-message service-message">
+              <p class="message-send-time">2016-01-08</p>
+              <div class="single-message-detail">
+                 <p class="send-person">2016</p>
+                 <p class="send-con"><span class="arrowBg"></span>I have a question</p>
+                 
+              </div>
+          </div>
+          <div class="single-message">
+              <p class="message-send-time">2016-01-08</p>
+              <div class="single-message-detail">
+                 <p class="send-person">Kendall Jenner</p>
+                 <p class="send-con"><span class="arrowBg"></span>I have a question</p>
+                 
+              </div>
+          </div>
+          <div class="single-message service-message">
+              <p class="message-send-time">2016-01-08</p>
+              <div class="single-message-detail">
+                 <p class="send-person">2016</p>
+                 <p class="send-con"><span class="arrowBg"></span>I have a question</p>
+
+              </div>
+          </div>
+       </div><!-- online-chat-con end -->
+       <div class="online-chat-input">
+          <div class="chat-input-toolbar">
+            <a role="button" data-toggle="popover" data-trigger="hover" data-content="Smilies" data-placement="top">
+              <i class="tag_faces"></i>
+            </a>
+            <a role="button" data-toggle="popover" data-trigger="hover" data-content="transfer pictures" data-placement="top">
+              <i class="crop_original"></i>
+            </a>           
+            <a class="m-r-lg" role="button" data-toggle="popover" data-trigger="hover" data-content="transfer files" data-placement="top">
+               <i class="folder_outline"></i>
+            </a>
+
+            <a role="button" data-toggle="popover" data-trigger="hover" data-content="common terms" data-placement="top">
+               <i class="subject"></i>
+            </a>
+            <a class="m-r-lg" role="button" data-toggle="popover" data-trigger="hover" data-content="one click to create a ticket" data-placement="top">
+              <i class="code_not_equal"></i>
+            </a>
+              
+
+            <a role="button" data-toggle="popover" data-trigger="hover" data-content="transfer to another agent" data-placement="top">
+              <i class="account_import_outline" onclick="popupTransferChat()"></i>
+            </a>
+            <a class="m-r-lg" role="button" data-toggle="popover" data-trigger="hover" data-content="start a conference with other agents" data-placement="top">  
+               <i class="people_outline" onclick="popupJoinChat()"></i>
+            </a>
+
+             <a role="button" class="m-r-xxl" data-toggle="popover" data-trigger="hover" data-content="edit customer information" data-placement="top">
+                <i class="account_edit_outline"></i>
+             </a>
+
+             <a  role="button" data-toggle="popover" data-trigger="hover" data-content="close current session" data-placement="top">
+              <i class="account_remove_outline"></i>
+            </a>
+             <ol class="common-phrase thin-scroll">
+                  <li>online service</li>
+                  <li>online customer</li>
+                  <li>online buy</li>
+              </ol>
+              <ul class="common-phrase-filter thin-scroll">
+                  <li>online service</li>
+                  <li>online customer</li>
+                  <li>online buy</li>
+              </ul> 
+              <ul class="user-edit-option thin-scroll">
+                  <li>DND list</li>
+              </ul>  
+          </div>
+          <textarea class="w-full wrapper-sm no-border thin-scroll" autofocus style="resize:none; height:160px;"></textarea>
+       </div>
+     </div><!-- online-chat-window end -->
+     </div><!-- online-chat-detail end -->
+ </div>
+<!-- online-service end -->
+
+   
+
+<!-- 组件框架js -->
+<script src="/ARIESRES/assets/aries/lib/jquery.js" type="text/javascript"></script>
+<script src="/ARIESRES/assets/aries/main/sea.js" type="text/javascript"></script>
+<script src="/ARIESRES/crm-bj/fe-common/vendor/seajs-text.js"></script>
+<!-- agent-view-frame js -->
+<script type="text/javascript" src="/ARIESRES/crm-bj/agentview/js/index-demo.js"></script>
+</body>
+</html>

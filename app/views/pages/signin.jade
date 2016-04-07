@@ -78,7 +78,7 @@ html
         } else if (pwd === 'Password') {
           $('#passWord').focus();
         } else {
-          var param = 'stno=' + userName + '&pwd=' + pwd;
+          var param = 'uno=' + userName + '&pwd=' + pwd;
           $.post('/signin', param, function () {
 
           }, function (errCode, errorInfo) {

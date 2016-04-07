@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>客户360视图</title>
+	<!-- 组件框架样式 -->
+	<link href="/ARIESRES/assets/aries/css/base/aries-base.css" rel="stylesheet" type="text/css"/>
+	<link href="/ARIESRES/crm-bj/fe-common/css/extend.min.css" rel="stylesheet" type="text/css">
+	<link href="css/customerView.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg-light ltest">
+	<div class="customer-person-info">
+	    <div class="cpi-con">	   
+			<dl>
+				<dt class="m-r-md">
+					<img src="../../../fe-common/images/avatar/female.png" alt="" class="r box-shadow-md">
+				</dt>
+				<dd class="customer-name">
+					<span class="text-1x5 text-dark">Mary shidy</span>
+					<span class="text-md m-l-sm customer-number">(2010199388)</span>
+				</dd>
+				<dd class="text-lg m-b-xs customer-lever">
+					Indivdual Customer
+				</dd>
+				<dd class="labels m-b-md">
+					<label class="bg-danger lt r m-r-sm">VIP</label><label class="bg-green r">ACTIVE</label>
+				</dd>
+				<dd>
+					<table class="cpi-table">
+						<tr>
+							<th>GENDER</th>
+							<th>AGE</th>
+							<th>ID TYPE</th>
+							<th>CPR NUMBER</th>
+							<th>EMAIL</th>
+							<th>ADDRESS</th>
+						</tr>
+						<tr>
+							<td>Female</td>
+							<td>24</td>
+							<td>CPR</td>
+							<td>10245****</td>
+							<td>MaryShidy@asiainfo.com</td>
+							<td>3 Edgar Building,George Street,Bath,BA1 2FJ</td>
+						</tr>
+					</table>
+				</dd>
+			</dl>
+		</div>
+		<div class="window-oprate">
+                <i class="window_minimize"></i>
+                <!--<i class="fullscreen"></i>-->
+                <i class="window_close"></i>
+            </div>
+	</div>
+	<div class="customer-person-info-oprate">
+            <button class="btn btn-success btn-icon btn-lg m-r-sm customer-view-btn" type="button"><i class="desktop_windows text-lg text-white"></i></button>
+            <div class="btn-group no-m-r">
+                <button type="button" class="btn btn-primary dropdown-toggle  btn-lg" data-toggle="dropdown">
+                    I WANT <span class="caret"></span>
+                </button>
+                <ul id="ag-360view-i-want-dropdown" class="dropdown-menu ">
+                </ul>
+            </div>
+        </div>
+	<!-- customer info end -->
+	<div class="customer-over-info">
+	  <!-- Nav tabs -->
+	  <ul class="tab-nav" role="tablist">
+	    <li role="presentation" class="active"><a href="#overView" role="tab" data-toggle="tab">Overview</a></li>
+	    <li role="presentation"><a href="#information" role="tab" data-toggle="tab">Information</a></li>
+	    <li role="presentation"><a href="#ticketTrack" role="tab" data-toggle="tab">Ticket Track</a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content clear">
+	    <div role="tabpanel" class="tab-pane active" id="overView">
+	        <!-- subscription start -->
+	    	<div class="panel panel-default w370 h370 pull-left">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Subscription</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">FRI+15 GB</p>
+	                 <p class="no-m-b">135768</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-md">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">effective type</label>
+	            		<p class="text-dark text-c-c text-md font-medium">immediately</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">effective date</label>
+	            		<p class="text-dark text-c-c text-md font-medium">2015-12-22</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row m-t-md">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-dark text-c-c text-md font-medium">postpaid</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">product spacification</label>
+	            		<p class="text-dark text-c-c text-md font-medium">GSM product spec</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">status</label>
+	            		<p class="text-dark text-c-c text-md font-medium">suspension</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">iccid</label>
+	            		<p class="text-dark text-c-c text-md font-medium">98976778909</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- subscription end -->
+			<!-- account start -->
+	    	<div class="panel panel-default w370 h370 pull-left m-l-25">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Account</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">Aller Subsidiary A/S</p>
+	                 <p class="no-m-b">1025 3345 34534</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-md">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">accout type</label>
+	            		<p class="text-dark text-c-c text-md font-medium">normal</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payment method</label>
+	            		<p class="text-dark text-c-c text-md font-medium">bank transfer</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row m-t-md">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-dark text-c-c text-md font-medium">Aller Subsidiary A/S</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's address</label>
+	            		<p class="text-dark text-c-c text-md font-medium">havnelohm 12343 koble vdname</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- account end -->
+
+			<!-- customer interation start -->
+	    	<div class="panel panel-default w370 pull-right customer-interation thin-scroll">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Customer Interation</h4>
+			    <ul class="timeline">
+			        <li class="tl-item">
+			          <span class = "tl-data-head label label-default" >2016-01-25</span>
+			          <div class="tl-wrap b-info">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			        </li>
+			        <li class="tl-item">
+			          <span class = "tl-data-head label label-default" >2016-01-26</span>
+			          <div class="tl-wrap b-success">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			        </li>
+			        <li class="tl-item">
+			          <span class = "tl-data-head label label-default" >2016-01-27</span>
+			          <div class="tl-wrap b-success">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			        </li>
+			        <li class="tl-item">
+			          <span class = "tl-data-head label label-default" >2016-01-27</span>
+			          <div class="tl-wrap b-success">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			          <div class="tl-wrap b-success">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			          <div class="tl-wrap b-success">
+			            <span class="tl-date text-muted">14:15 <p class="text-sm no-m-b">AM</p></span>
+			            <div class="tl-content">
+			              <p class="no-m-b text-dark text-md font-medium">OTT New connection</p>
+			              <p class="no-m-b text-muted">10000|tanqing</p>
+			            </div>
+			          </div>
+			        </li>
+			    </ul>    
+			  </div>
+			</div>
+			<!-- customer interation end -->
+
+
+			<!-- troble ticket start -->
+	    	<div class="panel panel-default w765 pull-left">
+			  <div class="panel-body no-padder">
+			    <h4 class="m-b-md padder m-t-md"><i class="more_vert pull-right"></i>Troble Ticket</h4>
+			     <table class="table-newest">
+			        <thead>
+				     	<tr>
+				     		<th>Ticket</th>
+				     		<th>Fault</th>
+				     		<th>Create</th>
+				     	</tr>
+			     	</thead>
+			     	<tbody>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="no-m-b text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-primary m-l-xs no-m-b">M</label>
+                                      </p>
+
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-success font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">Need help to repair my iphone</p>
+				     			<p class="no-m-b text-muted text-sm">John Doe Create in 21 min ago</p>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-success">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Resol
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-dark font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-warning font-bold m-r-xs"></i>Middle</span>
+                                      <span class="text-danger"><i class="md-event text-danger m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="no-m-b text-dark font-medium">Repair Device</p>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="m-b-xs text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-success m-l-xs no-m-b">F</label>
+                                      </p>
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-danger font-bold m-r-xs"></i>High</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="no-m-b text-dark font-medium">NP Ticket</p>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg bg-light light">
+                                        Close
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-muted font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-muted font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-muted m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="no-m-b text-muted font-medium">Need help to repair my iphone</p>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-muted font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+			     	</tbody>
+			     </table>
+			  </div>
+			</div>
+			<!-- troble ticket end -->
+
+			<!-- order start -->
+			<div class="panel panel-default w370 h370 pull-left">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Order</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">FRI+15 GB</p>
+	                 <p class="no-m-b">135768</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-md">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">effective type</label>
+	            		<p class="text-c-c font-medium">immediately</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">effective date</label>
+	            		<p class="text-c-c font-medium">2015-12-22</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row m-t-md">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-c-c font-medium">postpaid</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">product spacification</label>
+	            		<p class="text-c-c font-medium">GSM product spec</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">status</label>
+	            		<p class="text-c-c font-medium">suspension</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">iccid</label>
+	            		<p class="text-c-c font-medium">98976778909</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- order end -->
+
+			<!-- agreement start -->
+			<div class="panel panel-default w370 h370 pull-left m-l-25">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Agreement</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">Aller Subsidiary A/S</p>
+	                 <p class="no-m-b">1025 3345 34534</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">accout type</label>
+	            		<p class="text-c-c font-medium">normal</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payment method</label>
+	            		<p class="text-c-c font-medium">bank transfer</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-c-c font-medium">Aller Subsidiary A/S</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's address</label>
+	            		<p class="text-c-c font-medium">havnelohm 12343 koble vdname</p>
+	            	</div>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's EMIIL</label>
+	            		<p class="text-c-c font-medium">finance@allermedia.com</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- agreement end -->
+
+			<!-- device start -->
+			<div class="panel panel-default w370 h370 pull-right">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Device</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">Aller Subsidiary A/S</p>
+	                 <p class="no-m-b">1025 3345 34534</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">accout type</label>
+	            		<p class="text-c-c font-medium">normal</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payment method</label>
+	            		<p class="text-c-c font-medium">bank transfer</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-c-c font-medium">Aller Subsidiary A/S</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's address</label>
+	            		<p class="text-c-c font-medium">havnelohm 12343 koble vdname</p>
+	            	</div>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's EMIIL</label>
+	            		<p class="text-c-c font-medium">finance@allermedia.com</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- agreement end -->
+
+			<!-- oppotunity start -->
+			<div class="panel panel-default w570 pull-left">
+			  <div class="panel-body no-padder">
+			    <h4 class="m-b-md padder m-t-md"><i class="more_vert pull-right"></i>Oppotunity</h4>
+			     <table class="table-newest">
+			        <thead>
+				     	<tr>
+				     		<th>Ticket</th>
+				     		<th>Create</th>
+				     	</tr>
+			     	</thead>
+			     	<tbody>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="no-m-b text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-primary m-l-xs no-m-b">M</label>
+                                      </p>
+
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-success font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-success">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Resol
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-dark font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-warning font-bold m-r-xs"></i>Middle</span>
+                                      <span class="text-danger"><i class="md-event text-danger m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="m-b-xs text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-success m-l-xs no-m-b">F</label>
+                                      </p>
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-danger font-bold m-r-xs"></i>High</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg bg-light light">
+                                        Close
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-muted font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-muted font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-muted m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-muted font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+			     	</tbody>
+			     </table>
+			  </div>
+			</div>
+			<!-- oppotunity end -->
+
+			<!-- leads start -->
+			<div class="panel panel-default w570 pull-right">
+			  <div class="panel-body no-padder">
+			    <h4 class="m-b-md padder m-t-md"><i class="more_vert pull-right"></i>Leads</h4>
+			     <table class="table-newest">
+			        <thead>
+				     	<tr>
+				     		<th>Ticket</th>
+				     		<th>Create</th>
+				     	</tr>
+			     	</thead>
+			     	<tbody>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="no-m-b text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-primary m-l-xs no-m-b">M</label>
+                                      </p>
+
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-success font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-success">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Resol
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-dark font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-warning font-bold m-r-xs"></i>Middle</span>
+                                      <span class="text-danger"><i class="md-event text-danger m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal thumb-primary">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg">
+                                        Open
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5>
+                                      <p class="m-b-xs text-base text-dark font-medium">20154464564357657 
+                                      <label class="bg-light lter wrapper-xs inline-block v-middle r text-success m-l-xs no-m-b">F</label>
+                                      </p>
+                                      </h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-danger font-bold m-r-xs"></i>High</span>
+                                      <span><i class="md-event text-dark m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-dark font-medium">0</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+				     	<tr>
+				     		<td>
+				     			<div class="thumb-horizontal">
+                                  <div class="thumb-img">
+                                      <span class="thumb-img-bg bg-light light">
+                                        Close
+                                      </span>
+                                  </div>
+                                  <div class="thumb-caption">
+                                      <h5><p class="m-b-xs text-base text-muted font-medium">20154464564357657 </p></h5>
+                                      <small>
+                                      <span class="w-xxs inline-block"><i class="md-radio-button-unchecked text-muted font-bold m-r-xs"></i>Low</span>
+                                      <span><i class="md-event text-muted m-r-xs text-base"></i>19 Augest</span>
+                                      </small>
+                                  </div>
+                               </div>
+				     		</td>
+				     		<td>
+				     			<p class="m-b-xs text-muted font-medium">21 tester (Denmark)</p>
+				     			<p class="no-m-b text-muted text-sm">Create in 21 min ago</p>
+				     		</td>
+				     	</tr>
+			     	</tbody>
+			     </table>
+			  </div>
+			</div>
+			<!-- leads end -->
+
+			<!-- customer relationShip start -->
+            <div class="panel panel-default w370 h370 pull-left customerRelationShip">
+			  <div class="panel-body wrapper-md h-full">
+			    <h4 class="customerRelationShipHeader"><i class="more_vert pull-right"></i>Customer Relationship</h4>
+			    <div class="m-l-n-md m-r-n-md m-t-n-md m-b-n-md wrapper-sm bg-light lter h-full">
+			    	<p class="padder padder-v-sm bg-white box-shadow r">
+			    		<i class="file_document text-1x5"></i>
+			    		Push C
+			    	</p>
+			    	<p class="padder padder-v-sm bg-white box-shadow r">
+			    		<i class="stars text-1x5"></i>
+			    		Push C
+			    	</p>
+			    	<p class="padder padder-v-sm bg-white box-shadow r">
+			    		<i class="stars text-1x5"></i>
+			    		Push C
+			    	</p>
+			    	<p class="padder padder-v-sm bg-white box-shadow r">
+			    		<i class="stars text-1x5"></i>
+			    		Push C
+			    	</p>
+			    </div>
+			  </div>
+			</div> 
+			<!-- customer relationShip end  -->
+
+			<!-- spilt subscriber start -->
+			<div class="panel panel-default w370 h370 pull-left m-l-25">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Spilt Subscriber</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">Aller Subsidiary A/S</p>
+	                 <p class="no-m-b">1025 3345 34534</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">accout type</label>
+	            		<p class="text-c-c font-medium">normal</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payment method</label>
+	            		<p class="text-c-c font-medium">bank transfer</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-c-c font-medium">Aller Subsidiary A/S</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's address</label>
+	            		<p class="text-c-c font-medium">havnelohm 12343 koble vdname</p>
+	            	</div>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's EMIIL</label>
+	            		<p class="text-c-c font-medium">finance@allermedia.com</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- spilt subscriber end -->
+
+			<!-- insurance start -->
+			<div class="panel panel-default w370 h370 pull-right">
+			  <div class="panel-body wrapper-md">
+			    <h4 class="m-b-md"><i class="more_vert pull-right"></i>Insurance</h4>
+			    <div class="btn-group w-full">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	                 <p class="m-b-xs text-lg">Aller Subsidiary A/S</p>
+	                 <p class="no-m-b">1025 3345 34534</p>
+	                 <i class="icon-arrowlup-down"></i>
+	               </button>
+	               <ul class="dropdown-menu">
+	                <li><a href="#">Action</a></li>
+	                <li><a href="#">Another action</a></li>
+	                <li><a href="#">Something else here</a></li>
+	                <li role="separator" class="divider"></li>
+	                <li><a href="#">Separated link</a></li>
+	              </ul>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">accout type</label>
+	            		<p class="text-c-c font-medium">normal</p>
+	            	</div>
+	            	<div class="col-md-6">
+	            		<label class="text-muted text-u-c">payment method</label>
+	            		<p class="text-c-c font-medium">bank transfer</p>
+	            	</div>
+	            </div>
+	            <div class="line thin no-m-t"></div> 
+	            <div class="row">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's type</label>
+	            		<p class="text-c-c font-medium">Aller Subsidiary A/S</p>
+	            	</div>
+	            </div> 
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's address</label>
+	            		<p class="text-c-c font-medium">havnelohm 12343 koble vdname</p>
+	            	</div>
+	            </div>
+	            <div class="row m-t-sm">
+	            	<div class="col-md-12">
+	            		<label class="text-muted text-u-c">payer's EMIIL</label>
+	            		<p class="text-c-c font-medium">finance@allermedia.com</p>
+	            	</div>
+	            </div>
+			  </div>
+			</div>
+			<!-- insurance end -->
+
+			
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="information">2</div>
+	    <div role="tabpanel" class="tab-pane" id="ticketTrack">3</div>
+	  </div>
+	</div>
+
+<!-- 组件框架js -->
+    <script src="/ARIESRES/assets/aries/lib/jquery.js" type="text/javascript"></script>
+    <script src="/ARIESRES/assets/aries/main/sea.js" type="text/javascript"></script>
+<script>
+	seajs.use('aries-main',function(){
+       $(document).ready(function(){ 
+       	     var coiInitTop = $(".customer-over-info").offset().top;
+       	     var offsetTop;
+		　　 $(window).scroll(function (){
+			     // 让浮动层距离窗口顶部，始终保持80px
+			　　 offsetTop = $(window).scrollTop(); 
+			     if(offsetTop>coiInitTop){
+			     	$(".customer-over-info .tab-nav").addClass("fixed");
+			     	$(".customer-person-info").addClass("cpi-mini");
+			     }
+			     else{
+			     	$(".customer-over-info .tab-nav").removeClass("fixed");
+			     	$(".customer-person-info").removeClass("cpi-mini");
+			     }
+		　　 
+		　　 });
+	   });
+	})
+</script>	
+</body>
+</html>

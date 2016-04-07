@@ -1,0 +1,512 @@
+.announce-left {
+    float: left;
+    width: 21%;
+    height: 100%;
+    background-color: #f5f5f5;
+    overflow: auto
+}
+
+.announce-left h5 {
+    padding: 10px 0;
+    margin:35px 0 15px;
+    font-size: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.announce-left  li{
+    height: 40px;
+    line-height: 40px;
+   
+    
+}
+.announce-left  li a{
+    display:block;
+    font-size: 16px;
+    font-weight: 400;
+    padding:0 30px;
+}
+.announce-left  li a:hover{
+    background-color: #e6e6e6;
+    color: #666;
+}
+.announce-left  li.active a{
+    background-color: #1a94dc;
+    color: #fff;
+}
+.announce-left  li i{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.announce-labels h5{
+    margin:80px 30px 15px;
+}
+.announce-labels li a{
+    font-size: 14px;
+}
+
+.announce-type,
+.announce-time{
+    padding:0 30px ;
+}
+.announce-right {
+    float: left;
+
+    width: 79%;
+    height: 100%;
+}
+
+.announce-right .tab-pane {
+    width: 100%;
+    height: 100%;
+}
+
+.announce-right .announce-list-con {
+    position: relative;
+
+    width: 34%;
+    height: 100%;
+    padding: 0 30px;
+}
+
+.announce-list-con .search-box {
+    margin-top: 20px;
+}
+
+.announce-list-con .search-box .search {
+    color: #d9d9d9;
+    font-size: 24px;
+    margin-top: -12px;
+}
+
+.announce-right .announce-detail {
+    position: relative;
+
+    width: 66%;
+    height: 100%;
+}
+
+.announce-con {
+    padding: 0 30px;
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.announce-drop .new-notice-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.announce-drop h4 {
+    line-height: 70px;
+
+    height: 70px;
+    margin:0 30px 20px 30px;
+}
+
+.announce-list {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    bottom: 0;
+    left: 30px;
+
+    overflow-y: auto;
+
+    margin: 0;
+
+    background-color: #fff;
+}
+.announce-list-filterable{
+    top:125px;
+}
+
+.announce-list li {
+    cursor: default;
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.announce-list li .fx-checkbox {
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+
+}
+
+.announce-list li:hover,
+.announce-list li.current {
+    border-bottom: 1px solid #f5f5f5;
+    background-color: #f5f5f5;;
+}
+
+.announce-list li:hover .announce-list-type,
+.announce-list li.current .announce-list-type {
+    display: none;
+}
+
+.announce-list li:hover .fx-checkbox,
+.announce-list li.current .fx-checkbox {
+    display: block !important;
+}
+
+.announce-list .announce-list-item {
+    padding: 20px 10px 20px 50px;
+
+    border: none;
+}
+
+.announce-list .announce-list-type {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #999;
+}
+
+.announce-list .announce-list-type .badge.up {
+    top: -46px;
+    margin-left: 25px;
+}
+
+.flip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    border-bottom: solid 10px transparent;
+    border-left: solid 10px #f35050;
+}
+
+.flip-red {
+    border-left-color: #f35050 !important;
+    border-right-color: #f35050 !important;
+}
+
+.flip-green {
+    border-left-color: #21bb54 !important;
+    border-right-color: #21bb54 !important;
+}
+
+.flip-yellow {
+    border-left-color: #ffbf00 !important;
+    border-right-color: #ffbf00 !important;
+}
+
+.flip-left-top {
+    left: 0;
+    top: 0;
+    border-bottom: solid 10px transparent;
+    border-left: solid 10px #f35050;
+    border-right: none;
+    border-top: none;
+}
+
+.flip-right-top {
+    right: 0;
+    top: 0;
+    left: auto;
+    border-bottom: solid 10px transparent;
+    border-right: solid 10px #f35050;
+    border-top: none;
+    border-left: none;
+
+}
+
+.flip-left-bottom {
+    left: 0;
+    bottom: 0;
+    top: auto;
+    border-top: solid 10px transparent;
+    border-left: solid 10px #f35050;
+    border-bottom: none;
+    border-right: none;
+}
+
+.flip-right-bottom {
+    right: 0;
+    bottom: 0;
+    left: auto;
+    top: auto;
+    border-top: solid 10px transparent;
+    border-right: solid 10px #f35050;
+    border-bottom: none;
+    border-left: none;
+}
+
+.announce-list .announce-list-type i {
+    color: #fff;
+    font-size: 22px;
+}
+
+.announce-list li h5,
+.announce-list li h6 {
+    margin: 0 0 5px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.announce-list li h6 {
+    font-size: 14px;
+}
+
+.announce-list li ins {
+    font-size: 12px;
+    font-weight: 400;
+
+    text-decoration: none;
+
+    color: #999;
+}
+
+.announce-drop .thumb-horizontal {
+    padding: 15px;
+}
+
+.announce-drop .thumb-horizontal h5 {
+    font-size: 14px !important;
+    font-weight: 500;
+}
+
+.announce-drop .thumb-horizontal .thumb-caption {
+    width: auto;
+}
+
+.announce-drop .notice-detail {
+    background-color: #fff;
+}
+
+.announce-summary {
+    padding: 20px 0;
+}
+
+.announce-summary dt {
+    float: left;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #999;
+    margin-right: 10px;
+    margin-top: 5px;
+
+}
+
+.announce-summary dt i {
+    color: #fff;
+    font-size: 22px;
+}
+
+.announce-summary dd:nth-child(2) {
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.announce-summary dd:nth-child(2) span {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666;
+}
+
+.announce-attachments{
+   padding-top: 20px;
+}
+.announce-attachments dl{
+    margin-bottom: 15px;
+}
+.announce-attachments dt{
+    float: left;
+    width:20%;
+    color: #333;
+}
+.announce-attachments dd {
+    height: auto;
+    overflow: hidden;
+}
+.announce-attachments dd a{
+    display: block;
+}
+.announce-attachments dd a:not(:last-child){
+    display: block;
+    margin-bottom: 15px;
+}
+.announce-attachments dd  .file_document{
+    font-size: 20px;
+}
+
+
+.announcement-time-line .timeline .tl-data-head {
+    margin-left: 5.2em;
+    background-color: #efefef;
+    color: #333;
+    font-weight: 500;
+}
+
+.announcement-time-line .tl-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.announcement-time-line .tl-content p {
+    line-height: 1.5;
+}
+
+.announcement-time-line .tl-wrap {
+    border-width: 0 0 0 1px;
+    border-color: #dee5e7 !important;
+}
+
+.announcement-time-line .tl-wrap:before {
+
+    border-color: #f5f5f5;
+}
+.announcement-time-line .tl-date{
+    top:14px;
+}
+
+.announcement-time-line .tl-wrap:hover:before {
+    background: #27a3e6;
+}
+
+.announcement-time-line .timeline .b-info:before {
+    background: #27a3e6;
+}
+
+.announcement-time-line .timeline .b-info:hover:before {
+    background: #27a3e6;
+}
+
+.announcement-time-line .timeline .b-success:before {
+    background: #53c9a4;
+}
+
+.announcement-time-line .timeline .b-success:hover:before {
+    background: #53c9a4;
+}
+
+.announcement-time-line .timeline .b-danger:before {
+    background: #f35050;
+}
+
+.announcement-time-line .timeline .b-danger:hover:before {
+    background: #f35050;
+}
+
+
+.message-feedback {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.message-feedback i {
+    font-size: 20px;
+    margin-right: 5px;
+
+}
+
+.personal-letter .chat-detail {
+    bottom: 170px;
+
+    padding: 10px 10px 0 0;
+}
+
+.personal-letter .chat-sent {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    left: 30px;
+}
+
+.single-message {
+    position: relative;
+
+    margin-bottom: 20px;
+}
+
+.single-message .avatar {
+    position: absolute;
+}
+
+.single-message .message-con {
+    position: relative;
+
+    padding: 15px;
+}
+
+.single-message .message-con .arrowBg {
+    position: absolute;
+    top: 16px;
+    left: -8px;
+
+    display: block;
+
+    width: 8px;
+    height: 8px;
+
+    background: url(../images/qipao_left.png) no-repeat;
+}
+
+.other-messages,
+.mine-messages {
+    padding: 0 45px;
+}
+
+.other-messages .avatar {
+    right: auto;
+    left: 0;
+}
+
+.other-messages .message-con {
+    background-color: #e4f2fa;
+}
+
+.mine-messages .avatar {
+    right: 0;
+    left: auto;
+}
+
+.mine-messages .message-con {
+    background-color: #f5f5f5;
+}
+
+.mine-messages .message-con .arrowBg {
+    position: absolute;
+    top: 16px;
+    right: -8px;
+    left: auto;
+
+    display: block;
+
+    width: 8px;
+    height: 8px;
+
+    background: url(../images/qipao_right.png) no-repeat;
+}
+
+/*新增公告弹出框*/
+.new-notice-modal-left {
+    width: 540px;
+    padding: 20px 30px;
+}
+
+.new-notice-modal-right {
+    padding: 20px 30px;
+    width: 360px;
+}

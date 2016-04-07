@@ -2001,6 +2001,123 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
 
 }(jQuery);
 
+/*global jQuery */
+//define(function(require, exports, module) {
+	(function($) {
+		$.gevent = (function() {
+			//---------------- BEGIN MODULE SCOPE VARIABLES --------------
+			var subscribeEvent, publishEvent, unsubscribeEvent, $customSubMap = {};
+			//----------------- END MODULE SCOPE VARIABLES ---------------
+
+			//------------------- BEGIN PUBLIC METHODS -------------------
+			// BEGIN public method /publishEvent/
+			// Example  :
+			//   $.gevent.publish(
+			//     'spa-model-msg-receive',
+			//     [ { user : 'fred', msg : 'Hi gang' } ]
+			//   );
+			// Purpose  :
+			//   Publish an event with an optional list of arguments
+			//   which a subscribed handler will receive after the event object.
+			// Arguments (positional)
+			//   * 0 ( event_name )  - The global event name
+			//   * 2 ( data )        - Optional data to be passed as argument(s)
+			//                         to subscribed functions after the event
+			//                         object. Provide an array for multiple
+			//                         arguments.
+			// Throws   : none
+			// Returns  : none
+			//
+			publishEvent = function(event_name, data) {
+//				console.log('event|' + event_name + '| published  data: ');
+//				console.log(data);
+				var data_list;
+
+				if (!$customSubMap[event_name]) {
+					return false;
+				}
+				if (data) {
+					data_list = Array.isArray(data) ? data : [ data ];
+					$customSubMap[event_name].trigger(event_name, data_list);
+					return true;
+				}
+
+				$customSubMap[event_name].trigger(event_name);
+				return true;
+			};
+			// END public method /publishEvent/
+
+			// BEGIN public method /subscribeEvent/
+			// Example  :
+			//   $.gevent.subscribe(
+			//     $( '#msg' ),
+			//     'spa-msg-receive',
+			//     onModelMsgReceive
+			//   );
+			// Purpose  :
+			//   Subscribe a function to a published event on a jQuery collection
+			// Arguments (positional)
+			//   * 0 ( $collection ) - The jQuery collection on which to bind event
+			//   * 1 ( event_name )  - The global event name
+			//   * 2 ( fn ) - The function to bound to the event on the collection
+			// Throws   : none
+			// Returns  : none
+			//
+			subscribeEvent = function($collection, event_name, fn) {
+				$collection.on(event_name,function(e,data){
+					e.stopPropagation();
+					if(fn && typeof fn=="function"){
+						fn(e,data);
+					}
+				});
+
+				if (!$customSubMap[event_name]) {
+					$customSubMap[event_name] = $collection;
+				} else {
+					$customSubMap[event_name] = $customSubMap[event_name].add($collection);
+				}
+			};
+			// END public method /subscribeEvent/
+
+			// BEGIN public method /unsubscribeEvent/
+			// Example  :
+			//   $.gevent.unsubscribe(
+			//     $( '#msg' ),
+			//     'spa-model-msg-receive'
+			//   );
+			// Purpose  :
+			//   Remove a binding for the named event on a provided collection
+			// Arguments (positional)
+			//   * 0 ( $collection ) - The jQuery collection on which to bind event
+			//   * 1 ( event_name )  - The global event name
+			// Throws   : none
+			// Returns  : none
+			//
+			unsubscribeEvent = function($collection, event_name) {
+				if (!$customSubMap[event_name]) {
+					return false;
+				}
+
+				$customSubMap[event_name] = $customSubMap[event_name].not($collection);
+
+				if ($customSubMap[event_name].length === 0) {
+					delete $customSubMap[event_name];
+				}
+
+				return true;
+			};
+			// END public method /unsubscribeEvent/
+			//------------------- END PUBLIC METHODS ---------------------
+
+			// return public methods
+			return {
+				publish : publishEvent,
+				subscribe : subscribeEvent,
+				unsubscribe : unsubscribeEvent
+			};
+		}());
+	}(jQuery));
+//});
 /*!
  * Copyright © 2014-2015 AsiaInfo Corporation. All rights reserved.
  * createDate 2015-06-13
@@ -2159,18 +2276,40 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
      * option.tabName tab名称
      */
     feUtils.openTab = function (option){
-        var tabUrl = option.tabUrl;
-        var tabId = option.tabId;
-        var tabName = option.tabName;
+        var tabUrl = option.tabUrl,
+            tabId = option.tabId,
+            tabName = option.tabName,
+            hostname = null;
         if(!tabId || tabId ==""){
             tabId = new Date().getTime();
         }
+        if(!!tabUrl){
+            var aNode = document.createElement('a');
+            aNode.href = tabUrl;
+            hostname = aNode.hostname;
+        }
+        console.log("target tab hostname:",hostname);
+        console.log("location hostname:",location.hostname);
         if(top != self){
-            var newIframe = document.createElement("iframe");
-            newIframe.style.visable = "hidden";
-            newIframe.style.display='none';
-            newIframe.src="/ARIESRES/crm-bj/agentview/business/callback.html?tabId="+tabId+"&tabName="+escape(tabName)+"&tabUrl="+escape(tabUrl);
-            document.body.appendChild(newIframe);
+            if(hostname === top.location.hostname){
+                var view360Status = top.document.getElementById("agentview-cust360view-container").getAttribute("active-status");
+                console.log("viewStatus",view360Status);
+                if(view360Status === "open"){//customer 360view tab
+                    window.top.feUtils.openCur360ViewNewTab(tabName, tabUrl);
+                }else{//agent view main tab
+                    var opts = {
+                        "tabUrl":tabUrl,//tab url for new agent view tab
+                        "tabName":tabName//tab name for new agent view tab
+                    };
+                    window.top.feUtils.openNewFrameTab(opts);
+                }
+            }else{
+                var newIframe = document.createElement("iframe");
+                newIframe.style.visable = "hidden";
+                newIframe.style.display='none';
+                newIframe.src="/ARIESRES/crm-bj/agentview/business/callback.html?tabId="+tabId+"&tabName="+escape(tabName)+"&tabUrl="+escape(tabUrl);
+                document.body.appendChild(newIframe);
+            }
         }else{
             window.open(tabUrl);
         }
@@ -2391,7 +2530,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         dateStringToNaturalLanguage: function(dateStr) {
             var date;
 
-            dateStr=dateStr.replace(/-/g,"/");
+            // dateStr=dateStr.replace(/-/g,"/");
             date = new Date(dateStr);
             return this.dateToNaturalLanguage(date);
         },
@@ -2431,3 +2570,61 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
         }
     };
 })(jQuery);
+
+/**
+ * Created by broxleon on 16/3/10.
+ */
+define(function(require, exports, module) {
+    $.extend($.aries, {
+        fn: {
+            auth: {//安全相关
+                //用户名密码错误 AIAUTH1003
+                login_error: function (code, value) {
+                    $.Notice.error("Login fails: Incorrect username or password.");
+                },
+                //若15分钟未对系统进行操作，则中断用户会话 AIAUTH1004
+                login_timeout: function (code, value) {
+                    $.Notice.warning("Security Policy: No any operation in 15 minutes.");
+                    _fowardLogin()
+                },
+                //用户已登录系统8小时，则中断用户会话，要求用户重新登录  AIAUTH1005
+                login_too_long: function (code, value) {
+                    $.Notice.warning("Security Policy: Login more than 8 hours, should login again.");
+                    _fowardLogin()
+                },
+                //一个账号同时只能在一个地方登录 AIAUTH1006
+                login_only_once: function (code, value) {
+                    $.Notice.error("Login fails: This account has signed-in at another place.");
+                },
+                //账号连续登录失败3次则锁定此账号30分钟，然后自动解锁此账号 AIAUTH1007
+                login_overload: function (code, value) {
+                    $.Notice.error("Login fails: You have typed in incorrect password for 3 times, please try again 30 minutes later.");
+                },
+                //新创建账号或管理员重置密码账号，在用户登录时必须强制其修改账号口令  AIAUTH1008
+                login_reset_pwd: function (code, value) {
+                    $.Notice.warning("Security Policy: The newly created account or the administrator to reset your account password , please modify the initial password.");
+                },
+                //用户密码每3个月要修改，且最近3次的密码不能相同，不能包含用户姓、名，账号名等   AIAUTH1009
+                login_pwd_too_old: function (code, value) {
+                    $.Notice.warning("Security Policy: User password must be changed for every 3 months.");
+                },
+                //密码不能包含敏感信息   AIAUTH1013
+                login_pwd_has_sensitive: function (code, value) {
+                    $.Notice.warning("Security Policy: Password can't contain sensitive information.");
+                },
+                //初次登陆需修改密码 AIAUTH1016
+                login_first_change_pwd: function (code, value, data) {
+                    $.Notice.warning("Security Policy: First time login, please modify the initial password.");
+                }
+            }
+        }
+    });
+    /**
+     * forward to login
+     */
+    function _fowardLogin(){
+        setTimeout(function(){
+            window.top.location.href="/ARIESRES/crm-bj/agentview/login.html?tid="+$.cookie($.aries.config.sec.SEC_AUTH_TENANT_KEY);
+        },5000);
+    }
+});

@@ -1,0 +1,6 @@
+.dl-menuwrapper .dl-menu {
+    display: none;
+}
+.dl-menuwrapper .dl-menu.dl-menuopen {
+    display: block;
+}

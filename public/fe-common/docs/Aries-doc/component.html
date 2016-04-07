@@ -399,6 +399,7 @@
   <h3 class="b-b padder-v-sm" id="btn">按钮</h3>
   <div class="docs-example  b-a r m-b">
     <div class="example wrapper">
+        <p>实心按钮</p>
         <p>
           <button class="btn btn-default" type="button">default</button>
           <button class="btn btn-primary" type="button">primary</button>
@@ -407,8 +408,9 @@
           <button class="btn btn-warning" type="button">warning</button>
           <button class="btn btn-danger" type="button">danger</button>
           <button class="btn btn-dark" type="button">dark</button>
-          <button class="btn btn-black" type="button">black</button>
-        </p>        
+          <!-- <button class="btn btn-black" type="button">black</button> -->
+        </p> 
+        <p class="m-t-md">实心按钮禁用状态</p>       
         <p>
           <button class="btn btn-default disabled" type="button">default 禁用</button>
           <button class="btn btn-primary disabled" type="button">primary 禁用</button>
@@ -417,24 +419,64 @@
           <button class="btn btn-warning disabled" type="button">warning 禁用</button>
           <button class="btn btn-danger disabled" type="button">danger 禁用</button>
           <button class="btn btn-dark disabled" type="button">dark 禁用</button>
-          <button class="btn btn-black disabled" type="button">black 禁用</button>
+          <!-- <button class="btn btn-black disabled" type="button">black 禁用</button> -->
         </p>
+        
+        <p class="m-t-md">空心按钮</p>
         <p>
-          <button class="btn btn-default btn-icon btn-sm" type="button"><i class="crown"></i></button>
-           <button class="btn btn-default btn-icon btn-lg" type="button"><i class="crown"></i></button>
+          <button class="btn btn-primary-blank" type="button">primary-blank</button>
+          <button class="btn btn-success-blank" type="button">success-blank</button>
+          <button class="btn btn-info-blank" type="button">info-blank</button>
+          <button class="btn btn-warning-blank" type="button">warning-blank</button>
+          <button class="btn btn-danger-blank" type="button">danger-blank</button>
+          <button class="btn btn-dark-blank" type="button">dark-blank</button>
+          <button class="btn btn-db-blank" type="button">db-blank</button>
+        </p> 
+        <p class="m-t-md">空心按钮禁用状态</p>       
+        <p>
+          <button class="btn btn-primary-blank disabled" type="button">primary-blank 禁用</button>
+          <button class="btn btn-success-blank disabled" type="button">success-blank 禁用</button>
+          <button class="btn btn-info-blank disabled" type="button">info-blank 禁用</button>
+          <button class="btn btn-warning-blank disabled" type="button">warning-blank 禁用</button>
+          <button class="btn btn-danger-blank disabled" type="button">danger-blank 禁用</button>
+          <button class="btn btn-dark-blank disabled" type="button">dark-blank 禁用</button>
+          <button class="btn btn-db-blank disabled" type="button">db-blank 禁用</button>
         </p>
+        <p class="m-t-md">按钮尺寸</p>
         <p>
-        <button class="btn btn-default btn-rounded" type="button">圆角按钮</button>
+          <button class="btn btn-primary btn-xs" type="button">btn-xs</button>
+          <button class="btn btn-primary btn-sm" type="button">btn-sm</button>
+          <button class="btn btn-primary btn-md" type="button">btn-md</button>
+          <button class="btn btn-primary btn-lg" type="button">btn-lg</button>
+        </p>
+        
+        <p class="m-t-md">图标按钮</p>
+        <p>
+        <button class="btn btn-primary btn-icon btn-xs" type="button"><i class="crown"></i></button>
+          <button class="btn btn-primary btn-icon btn-sm" type="button"><i class="crown"></i></button>
+           <button class="btn btn-primary btn-icon btn-md" type="button"><i class="crown"></i></button>
+           <button class="btn btn-primary btn-icon btn-lg" type="button"><i class="crown"></i></button>
+        </p>
+        
+        <p class="m-t-md">圆角按钮</p>
+        <p>
+        <button class="btn btn-default btn-rounded btn-xs" type="button">圆角按钮</button>
+        <button class="btn btn-default btn-rounded btn-sm" type="button">圆角按钮</button>
+        <button class="btn btn-default btn-rounded btn-md" type="button">圆角按钮</button>
         <button class="btn btn-default btn-rounded btn-lg" type="button">圆角按钮</button>
         </p>
+
+        <p class="m-t-md">全长按钮</p>
         <p>
           <button class="btn btn-default btn-block" type="button"><i class="crown pull-left"></i>全长按钮，占一行</button>
            <button class="btn btn-default btn-block" type="button"><i class="crown pull-right"></i>全长按钮，占一行</button>
         </p>
+
+        <p></p>
         <p>
         <button class="btn btn-link" type="button">link</button>
-         </p>
-        
+        </p>
+
         
         
         
@@ -1149,54 +1191,58 @@
   </div>
   </div>
   <!-- drop-down-btn end -->
-  <!-- <h3 class="b-b padder-v-sm" id="input">输入框</h3>
+  <h3 class="b-b padder-v-sm" id="input">输入框</h3>
   <div class="docs-example  b-a r m-b">
     <div class="example">
       <div class=" wrapper m-b">
 
-         <div class="row  m-b">
+         <div class="row">
             <div class="col-md-6">
-              <label class="text-muted">普通输入框</label>
-              <input aetype="aeTextfield" aeid="firstName" aeinit="false" class="form-control" placeholder="-input the value!-">
-            </div>
+                <div class="form-group">
+                  <label class="control-label">普通输入框</label>
+                  <input aetype="aeTextfield" aeid="firstName" aeinit="false" class="form-control" placeholder="-input the value!-">
+                </div>  
+             </div>
             <div class="col-md-6">
-              <label class="text-muted">密码输入框</label>
-              <input aetype="aeTextfield" aeid="password" aeinit="false" class="form-control" type="password" placeholder="-Please select the password!-">
-            </div>
+              <div class="form-group">
+                <label class="control-label">密码输入框</label>
+                <input aetype="aeTextfield" aeid="password" aeinit="false" class="form-control" type="password" placeholder="-Please select the password!-">
+              </div>
            </div>
-
+           </div>
            <div class="row m-b">
             <div class="col-md-6">
-              <label class="text-muted">多行输入框</label>
+              <div class="form-group">
+              <label class="control-label">多行输入框</label>
               <textarea aetype="aeTextarea" aeid="remarks" aeinit="false" class="form-control" rows="3"></textarea>
-            </div>
+              </div>
+              </div>
              <div class="col-md-6">
                  <div class="row">
                   <div class="col-md-12 m-b-xs">
-                    <label class="text-muted">输入框组</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">$</span>
-                      <input type="text" class="form-control">
-                      <span class="input-group-addon">.00</span>
+                    <div class="form-group">
+                      <label class="control-label">输入框组</label>
+                      <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon">.00</span>
+                      </div>
                     </div>
-                  </div>
-
-                  <div class="col-md-12">
                     <div class="input-group">
                       <input type="text" class="form-control">
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-default" data-type="last"><i class="search"></i></button>
                       </span>
                     </div>
-                  </div>
-
+                   </div>
                 </div>
             </div>
             </div>
 
            <div class="row m-b"> 
             <div class="col-md-6">
-              <label class="text-muted">数值输入框</label>
+             <div class="form-group">
+              <label class="control-label">数值输入框</label>
               <div class="input-group">
                 <input aetype="aeFlip" aeid="productNumber" aeinit="false" class="form-control">
                 <div class="input-group-btn-vertical">
@@ -1208,6 +1254,7 @@
                   </div>
                 </div>
             </div>
+           </div>
            </div>
 
            <div class="row">
@@ -1232,9 +1279,9 @@
             </div>
          
        </div>
-     <div class="code wrapper bg-light ltest b-t"> -->
+     <div class="code wrapper bg-light ltest b-t">
           <!-- 示例代码区域 -->
-            <!-- <div class="highlight">
+            <div class="highlight">
                 <pre>
                   <code class="html">
                        &lt;!-- 普通输入框 --&gt;
@@ -1293,28 +1340,33 @@
     </div>
      </div>
   </div>
-  </div> -->
+  </div>
   <!-- input end -->
 
-  <!-- <h3 class="b-b padder-v-sm">下拉框</h3>
+  <h3 class="b-b padder-v-sm">下拉框</h3>
   <div class="docs-example  b-a r m-b">
     <div class="example">
       <div class=" wrapper m-b">
 
-         <div class="row  m-b">
+         <div class="row">
             <div class="col-md-6">
-              <label class="text-muted">普通下拉框</label>
+              <div class="form-group">
+              <label class="control-label">普通下拉框</label>
               <span aeType="aeCombo" id="formOfAddress" aeInit="true" optionField="codeName" valueField="codeValue" emptyText="-Please select the value!-" showClear="true"></span>
             </div>
+            </div>
             <div class="col-md-6">
-              <label class="text-muted">多选下拉框</label>
+              <div class="form-group">
+              <label class="control-label">多选下拉框</label>
               <span aeType="aeCombo" id="certificate" aeInit="true" multi="true" emptyText="-Please select the certificate!-" optionField="certificateType" valueField="certificateValue" ></span>
             </div>
            </div>
+           </div>
 
-           <div class="row m-b">
+           <div class="row">
             <div class="col-md-6">
-              <label class="text-muted">级联下拉框</label>
+              <div class="form-group">
+              <label class="control-label">级联下拉框</label>
               <div class="form-horizontal">
                  <div class="form-group">
                     <div class="col-md-6">    
@@ -1325,12 +1377,13 @@
                     </div>
                  </div>
               </div>
+              </div>
             </div>
             </div>
        </div>
-     <div class="code wrapper bg-light ltest b-t"> -->
+     <div class="code wrapper bg-light ltest b-t">
           <!-- 示例代码区域 -->
-            <!-- <div class="highlight">
+             <div class="highlight">
                 <pre>
                   <code class="html">
                        &lt;!-- 普通下拉框 --&gt;
@@ -1354,10 +1407,10 @@
     </div>
      </div>
   </div>
-  </div> -->
+  </div>
   <!-- select end -->
 
-  <!-- <h3 class="b-b padder-v-sm">单选框/复选框</h3>
+  <h3 class="b-b padder-v-sm">单选框/复选框</h3>
   <div class="docs-example  b-a r m-b">
     <div class="example">
       <div class=" wrapper m-b">
@@ -1372,9 +1425,9 @@
          </p>
 
        </div>
-     <div class="code wrapper bg-light ltest b-t"> -->
+     <div class="code wrapper bg-light ltest b-t"> 
           <!-- 示例代码区域 -->
-            <!-- <div class="highlight">
+             <div class="highlight">
                 <pre>
                   <code class="html">
                        &lt;!-- 单选框 --&gt;
@@ -1388,10 +1441,10 @@
     </div>
      </div>
   </div>
-  </div> -->
+  </div>
   <!-- Checkboxes and Radios end -->
 
-  <!-- <h3 class="b-b padder-v-sm">日历</h3>
+  <h3 class="b-b padder-v-sm">日历</h3>
   <div class="docs-example  b-a r m-b">
     <div class="example">
       <div class=" wrapper m-b">
@@ -1407,7 +1460,7 @@
        </div>
      <div class="code wrapper bg-light ltest b-t">
           <!-- 示例代码区域 -->
-            <!-- <div class="highlight">
+             <div class="highlight">
                 <pre>
                   <code class="html">
                        &lt;!-- 年月日展示 --&gt;
@@ -1420,7 +1473,7 @@
     </div>
      </div>
   </div>
-  </div> -->
+  </div>
   <!-- Checkboxes and Radios end -->
 
 </div>
@@ -1437,27 +1490,27 @@
 <script type="text/javascript">
 seajs.use('aries-main',function(){
   //普通下拉框
-  // var formOfAddress  = '[{"codeName":"gentlemen","codeValue":"1"},{"codeName":"lady","codeValue":"2"}]';
-  // $("#formOfAddress").aeCombo('reload',$.parseJSON(formOfAddress));
+  var formOfAddress  = '[{"codeName":"gentlemen","codeValue":"1"},{"codeName":"lady","codeValue":"2"}]';
+  $("#formOfAddress").aeCombo('reload',$.parseJSON(formOfAddress));
   //下拉多选框
-  // var certificate  = '[{"certificateType":"身份证","certificateValue":"1"},{"certificateType":"学生证","certificateValue":"2"},{"certificateType":"军官证","certificateValue":"3"},'+
-  //                    '{"certificateType":"护照","certificateValue":"4"},{"certificateType":"其他证件","certificateValue":"5"}]';
-  // $("#certificate").aeCombo('reload',$.parseJSON(certificate));
+  var certificate  = '[{"certificateType":"身份证","certificateValue":"1"},{"certificateType":"学生证","certificateValue":"2"},{"certificateType":"军官证","certificateValue":"3"},'+
+                     '{"certificateType":"护照","certificateValue":"4"},{"certificateType":"其他证件","certificateValue":"5"}]';
+  $("#certificate").aeCombo('reload',$.parseJSON(certificate));
   //级联
-  // var countryName  = '[{"text":"中国","value":"China"},{"text":"美国","value":"America"}]';
-  // $("#countryName").aeCombo('reload',$.parseJSON(countryName)); 
+  var countryName  = '[{"text":"中国","value":"China"},{"text":"美国","value":"America"}]';
+  $("#countryName").aeCombo('reload',$.parseJSON(countryName)); 
   //单选
-  // var customerRadio = '[{"codeValue":"existCustomer","codeName":"Existing Customer","checked":"true"},{"codeValue":"newCustomer","codeName":"New Customer"}]';
-  //   $("#customerRadio").aeRadio('reload',$.parseJSON(customerRadio));
+  var customerRadio = '[{"codeValue":"existCustomer","codeName":"Existing Customer","checked":"true"},{"codeValue":"newCustomer","codeName":"New Customer"}]';
+    $("#customerRadio").aeRadio('reload',$.parseJSON(customerRadio));
   //复选框
-  // var plan = '[{"codeName":"plan1","codeValue":"1","checked":"checked"},'+
-  //            '{"codeName":"plan2","codeValue":"2"},'+
-  //            '{"codeName":"plan3","codeValue":"3"},'+
-  //            '{"codeName":"plan4","codeValue":"4"},'+
-  //            '{"codeName":"plan5","codeValue":"5"},'+
-  //            '{"codeName":"plan6","codeValue":"6"},'+
-  //            '{"codeName":"plan7","codeValue":"7"}]';
-  // $("#plan").aeCheckbox('reload',$.parseJSON(plan));  
+  var plan = '[{"codeName":"plan1","codeValue":"1","checked":"checked"},'+
+             '{"codeName":"plan2","codeValue":"2"},'+
+             '{"codeName":"plan3","codeValue":"3"},'+
+             '{"codeName":"plan4","codeValue":"4"},'+
+             '{"codeName":"plan5","codeValue":"5"},'+
+             '{"codeName":"plan6","codeValue":"6"},'+
+             '{"codeName":"plan7","codeValue":"7"}]';
+  $("#plan").aeCheckbox('reload',$.parseJSON(plan));  
 });
 
 </script>

@@ -1,0 +1,422 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {
+    font-size: 12px;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+}
+
+.slide {
+    margin-right: 380px;
+    height: 100%;
+    position: relative;
+}
+
+.login_box {
+    width: 380px;
+    float: right;
+    height: 100%;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+    filter: none;
+}
+
+.carousel-control {
+    top: 50%;
+    margin-top: -25px;
+    font-size: 70px;
+    width: 23px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.carousel-control.left {
+    left: 15px;
+}
+
+.carousel-control.right {
+    right: 15px;
+}
+
+.carousel-inner {
+    height: 100%
+}
+
+.carousel-indicators {
+    left: auto;
+    right: 0;
+    width: 12%;
+    bottom: 30px;
+}
+
+.carousel-indicators li {
+    width: 15px;
+    height: 15px;
+    border: none;
+    background: #fff;
+    opacity: .5;
+    *filter: alpha(opacity=50);
+    margin: 0 0 0 10px;
+    float: left;
+}
+
+.carousel-indicators .active {
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    *filter: alpha(opacity=100);
+    margin: 0 0 0 10px;
+}
+
+.carousel-caption {
+    /*left:6%;
+     right:12%;*/
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    /*width:88%;*/
+    left: 0;
+    bottom: 0;
+    padding-left: 6%;
+    padding-right: 6%;
+    text-align: left;
+    padding-bottom: 40px;
+    /*-moz-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    -webkit-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);*/
+    text-shadow: none;
+    background: url(../images/bg.png) repeat-x center top;
+}
+
+.carousel-caption .produce {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.logoCopyRight {
+    position: absolute;
+    bottom: 15px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 12px; /* width:390px; *//*background: url(../images/logo_ban.png) no-repeat left center; padding-left:50px;*/
+}
+
+.login_box {
+    position: relative;
+    padding-top: 75px;
+    padding: 75px 50px 0 50px;
+}
+
+.login_logo {
+    color: #474747;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.login_logo img {
+    vertical-align: baseline;
+    margin-bottom: -5px;
+    width: 40px;
+    height: 40px;
+}
+
+.useNameAndError {
+    position: relative;
+}
+
+.ipt {
+    border: 1px solid #d1d1d1;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 12px;
+    margin-top: 21px;
+    transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out; /* Firefox 4 */
+    -webkit-transition: all .3s ease-out; /* Safari 和 Chrome */
+    -o-transition: all .3s ease-out; /* Opera */
+}
+
+.ipt:hover {
+    border-color: #b8b8b8
+}
+
+.ipt.focus {
+    border-color: #038CD6
+}
+
+.ipt input {
+    border: none;
+    width: 100%;
+    color: #474747;
+    font-size: 16px;
+}
+
+.ipt label {
+    color: #bdb8bb;
+    font-size: 12px;
+    margin: 0;
+    display: block;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #038cd6;
+    text-align: center;
+    padding: 0;
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid #0e83c1;
+    margin: 20px 0;
+}
+
+.btn:link, .btn:visited, .btn:hover, .btn:active {
+    color: #fff;
+    background-color: #0593df;
+}
+
+.keepSigned {
+    margin-top: 20px;
+    color: #827575;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border: 1px solid #d1d1d1;
+    background: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.keepSigned label {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.checkedColor, .forget {
+    color: #038cd6;
+    font-size: 12px;
+}
+
+.otherLoginWay {
+    position: absolute;
+    bottom: 45px;
+    width: 190px;
+}
+
+.otherLoginWay .otherWayTips {
+    color: #b8bbd2;
+    font-size: 12px;
+}
+
+.otherLoginWay .otherWayBtn {
+    color: #62626b;
+    font-size: 12px;
+}
+
+.otherLoginWay .facebook, .otherLoginWay .google {
+    margin: 0 3px;
+}
+
+.otherLoginWay .facebook {
+    color: #41b6ff
+}
+
+.otherLoginWay .google {
+    color: #ff3700
+}
+
+.bigImg {
+    background: url(../images/loginBan1.jpg) no-repeat center;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/ARIESRES/crm-bj/agentview/assets/images/loginBan1.jpg', sizingMethod='scale')/9;
+}
+
+.usename {
+    margin-top: 0;
+}
+
+.loginErrorTips {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+    vertical-align: middle;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    display: none;
+    -moz-transition: width 0.1s, height 0.1s;
+    -webkit-transition: width 0.1s, height 0.1s;
+    -o-transition: width 0.1s, height 0.1s;
+    transition: width 0.1s, height 0.1s;
+
+}
+
+.loginErrorTips.disappear {
+    -moz-animation: disappear 5s ease;
+    -webkit-animation: disappear 5s ease;
+    animation: disappear 5s ease;
+}
+
+@keyframes disappear {
+    from {
+        opacity: 100;
+    }
+    50% {
+        opacity: 50;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-moz-keyframes disappear {
+    from {
+        opacity: 100;
+    }
+    50% {
+        opacity: 50;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-webkit-keyframes disappear {
+    from {
+        opacity: 100;
+    }
+    50% {
+        opacity: 50;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@-o-keyframes disappear {
+    from {
+        opacity: 100;
+    }
+    50% {
+        opacity: 50;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.loginErrorTips .info {
+    color: #FF3700;
+    font-size: 16px;
+    opacity: 1;
+    *filter: alpha(opacity=100);
+}
+
+#LoginCheckTips {
+    position: absolute;
+    height: 33px;
+    line-height: 33px;
+    left: 1px;
+    right: 1px;
+    top: 50%;
+    margin-top: -20px;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: #FF3700;
+}
+
+#LoginCheckTips .icon-close {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .login_box {
+        width: 334px;
+        padding: 75px 30px 0 30px;
+    }
+
+    .slide {
+        margin-right: 334px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bigImg {
+        display: none;
+    }
+
+    .login_box {
+        width: 100%;
+        padding: 11% 11% 0 11%;
+    }
+
+    .login_logo {
+        text-align: center;
+        font-size: 34px;
+    }
+
+    .login_logo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ipt label, .ipt input {
+        font-size: 18px;
+    }
+
+    .keepSigned label {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 24px;
+    }
+
+    .forget {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .loginErrorTips .info {
+        font-size: 24px;
+    }
+
+    #LoginCheckTips {
+        font-size: 18px;
+    }
+}

@@ -5564,7 +5564,7 @@
             async.readFileAsDataURL(file).then(function (sDataURL) {
               modules.editor.insertImage($editable, sDataURL, filename);
             }).fail(function () {
-              ($holder, callbacks, 'image.upload.error')(options.langInfo.image.maximumFileSizeError);
+              bindCustomEvent($holder, callbacks, 'image.upload.error')(options.langInfo.image.maximumFileSizeError);
             });
           }
         });

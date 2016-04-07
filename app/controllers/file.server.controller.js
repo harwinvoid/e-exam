@@ -27,16 +27,19 @@ exports.fileUpload = function (req, res) {
                     var obj = xlsx.parse(dstPath);
                     var infoJson = obj[0].data;
                     for (var i = 1; i < infoJson.length; i++) {
-                        var stuInfo = infoJson[i];
+                        var userInfo = infoJson[i];
                         var user = {};
-                        for (var j = 0; j < stuInfo.length; j++) {
+                        for (var j = 0; j < userInfo.length; j++) {
                             //根据解析出来的数据构造用户
                             user = new User({
-                                name: stuInfo[0],
-                                stno: stuInfo[1],
-                                sid: stuInfo[2],
-                                role: stuInfo[3],
-                                major: stuInfo[4]
+                                name: userInfo[0],
+                                uno: userInfo[1],
+                                uid: userInfo[2],
+                                role: userInfo[3],
+                                major: userInfo[4],
+                                address:userInfo[5],
+                                phone:userInfo[6]
+
                             });
                             user.provider = 'local';
                         }

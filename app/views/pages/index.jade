@@ -1,5 +1,41 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to #{name}
+  div.container.m-t-md.m-b-md
+    div.hbox
+      div.col.w-lg
+        div.wrapper.m-r-md.bg-white.b-a(style='height:600px')
+          p.text-center.text-md 功能列表
+          div#menuTree
+      div.col.bg-white(style='height:600px')
+        div.wrapper
+          div#teacherInfo
+          div#studentInfo.hidden
+          div#classRoomInfo.hidden
+          div#examInfo.hidden
+
+  script(type='text/javascript').
+    var teacherModule = '/module/teacherInfo/teacherManagement';
+    seajs.use(['aries-main',teacherModule],function(aries,teacherModule){
+
+      var tree = [
+        {
+          text: "教师管理",
+        },
+        {
+          text: "学生管理"
+        },
+        {
+          text: "考场管理"
+        },
+        {
+          text: "考试管理"
+        }
+      ];
+      $('#menuTree').treeview({data:tree});
+      teacherModule.initModule($('#teacherInfo'));
+
+    });
+
+
+

@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Material-Design-Icon';
-  src: url('../fonts/icon-md/Material-Design-Icon.eot?y8zpqy');
-  src: url('../fonts/icon-md/Material-Design-Icon.eot?y8zpqy#iefix') format('embedded-opentype'), url('../fonts/icon-md/Material-Design-Icon.ttf?y8zpqy') format('truetype'), url('../fonts/icon-md/Material-Design-Icon.woff?y8zpqy') format('woff'), url('../fonts/icon-md/Material-Design-Icon.svg?y8zpqy#Material-Design-Icon') format('svg');
+  src: url('../fonts/icon-md/Material-Design-Icon.eot?l3gexd');
+  src: url('../fonts/icon-md/Material-Design-Icon.eot?l3gexd#iefix') format('embedded-opentype'), url('../fonts/icon-md/Material-Design-Icon.ttf?l3gexd') format('truetype'), url('../fonts/icon-md/Material-Design-Icon.woff?l3gexd') format('woff'), url('../fonts/icon-md/Material-Design-Icon.svg?l3gexd#Material-Design-Icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -30,6 +30,8 @@ i.md-icon {
   -moz-osx-font-smoothing: grayscale;
   line-height: normal;
   vertical-align: middle;
+  position: relative;
+  bottom: 1px;
 }
 [class^="md-"].icon-md,
 [class*=" md-"].icon-md,
@@ -58,6 +60,27 @@ i.md-icon {
   font-size: 14px;
   width: 14px;
   height: 14px;
+}
+/*md图标字体大小*/
+.md-icon-sm {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+.md-icon-md {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+.md-icon-lg {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+.md-icon-xl {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
 }
 i.RTSS:before {
   content: "\efb0";
@@ -1432,6 +1455,9 @@ i.voicemail:before {
 }
 i.vpn_key:before {
   content: "\ebb7";
+}
+i.code_not_equal_outline:before {
+  content: "\efb5";
 }
 i.arrow_collapse3:before {
   content: "\ee92";
@@ -3770,6 +3796,12 @@ i.terrain:before {
 i.traffic:before {
   content: "\e9dc";
 }
+i.chevron_left_circle_outline:before {
+  content: "\efbd";
+}
+i.chevron_right_circle_outline:before {
+  content: "\efbe";
+}
 i.drag_horizontal:before {
   content: "\ef62";
 }
@@ -4153,6 +4185,42 @@ i.wc:before {
 }
 i.wifi:before {
   content: "\e96e";
+}
+i.grade_one:before {
+  content: "\efb1";
+}
+i.grade_two:before {
+  content: "\efb2";
+}
+i.grade_three:before {
+  content: "\efb3";
+}
+i.grade_four:before {
+  content: "\efb4";
+}
+i.account_remove_outline:before {
+  content: "\efbf";
+}
+i.account_edit_outline:before {
+  content: "\efc0";
+}
+i.account_line:before {
+  content: "\efc1";
+}
+i.account_line_outline:before {
+  content: "\efc2";
+}
+i.account_headphone:before {
+  content: "\efc3";
+}
+i.account_headphone_outline:before {
+  content: "\efc4";
+}
+i.account_import:before {
+  content: "\efc5";
+}
+i.account_import_outline:before {
+  content: "\efc6";
 }
 i.earth_off:before {
   content: "\ef76";
@@ -4747,6 +4815,9 @@ i.volume_up:before {
 }
 i.web:before {
   content: "\ebf5";
+}
+i.wechat_outline:before {
+  content: "\efbc";
 }
 i.wunderlist:before {
   content: "\edd9";

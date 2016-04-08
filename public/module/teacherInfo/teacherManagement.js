@@ -1,7 +1,6 @@
 /**
  * Created by Harwin on 2016/4/6.
  */
-var obj = {}
 define(function (require, exports, module) {
     var jqueryMap = {},
         viewMap = {
@@ -11,7 +10,12 @@ define(function (require, exports, module) {
             isInit: false
         },
         stateMap = {},
-        selections = [];
+        tmpl = {},
+        pageInfo = {
+            currentPage: 1,
+            pageSize: 10
+        }
+    selections = [];
     viewMap.currentViewHtml = require('/module/teacherInfo/teacherManagement.html');
     function _loadHtml() {
         if (stateMap.$container && stateMap.$container.length) {
@@ -21,251 +25,123 @@ define(function (require, exports, module) {
             throw util.getError("notification:loadHtml", "$container not exist");
         }
     };
+    function _initTemplate() {
+        tmpl = {
+            item: Handlebars.compile(stateMap.$container.find('#item').html())
+        }
+    }
+
     function _setJqueryMap() {
         stateMap.$container.find('#teachersList')
         jqueryMap = {
             $teachersList: stateMap.$container.find('#teachersList'),
             $teacherTable: stateMap.$container.find('#teacherTable'),
-            $remove: stateMap.$container.find('remove')
+            $remove: stateMap.$container.find('#remove'),
+            $tbody: stateMap.$container.find('#tbody'),
+            $selectAll: stateMap.$container.find('#selectAll'),
+            $delTeacher: stateMap.$container.find('#delTeacher'),
+            $pagination: stateMap.$container.find('#pagination')
         };
     }
 
     function _bindEvent() {
+
+        jqueryMap.$selectAll.aeCheckbox({
+            onSelect: _checkAll
+        }).aeCheckbox('reload', {
+            text: '',
+            value: ''
+        });
         _initTable();
 
     };
     function _initTable() {
-
-        jqueryMap.$teacherTable.bootstrapTable({
-            url:'/mockdata/teacher.json',
-            icons:{
-                export: 'export',
-                toggle: 'view_list ',
-                refresh: 'refresh',
-                columns: 'view_week'
-            }
-            ,
-            columns: [
-
-                {
-                    field: 'state',
-                    checkbox: true,
-                    align: 'center',
-                    valign: 'middle'
-                },
-                {
-                    field: 'id',
-                    title: '教师号',
-                    sortable: true,
-                    editable: true,
-                    align: 'center'
-                },
-                {
-                    field: 'typeNo',
-                    title: '院系编号',
-                    sortable: true,
-                    align: 'center',
-                    editable: {
-                        type: 'text',
-                        title: '院系编号',
-                        validate: function (value) {
-                            value = $.trim(value);
-                            if (!value) {
-                                return 'This field is required';
-                            }
-                            if (!/^$/.test(value)) {
-                                return 'This field needs to start width $.'
-                            }
-                            var data = jqueryMap.$teacherTable.bootstrapTable('getData'),
-                                index = $(this).parents('tr').data('index');
-                            console.log(data[index]);
-                            return '';
-                        }
-                    }
-
-                },
-                {
-                    field: 'name',
-                    title: '姓名',
-                    sortable: true,
-                    editable: true,
-                    align: 'center',
-                    editable: {
-                        type: 'text',
-                        title: '姓名',
-                        validate: function (value) {
-                            value = $.trim(value);
-                            if (!value) {
-                                return 'This field is required';
-                            }
-                            if (!/^$/.test(value)) {
-                                return 'This field needs to start width $.'
-                            }
-                            var data = jqueryMap.$teacherTable.bootstrapTable('getData'),
-                                index = $(this).parents('tr').data('index');
-                            console.log(data[index]);
-                            return '';
-                        }
-                    }
-                },
-                {
-                    field: 'age',
-                    title: '年龄',
-                    sortable: true,
-                    editable: true,
-                    align: 'center',
-                    editable: {
-                        type: 'text',
-                        title: '年龄',
-                        validate: function (value) {
-                            value = $.trim(value);
-                            if (!value) {
-                                return 'This field is required';
-                            }
-                            if (!/^$/.test(value)) {
-                                return 'This field needs to start width $.'
-                            }
-                            var data = jqueryMap.$teacherTable.bootstrapTable('getData'),
-                                index = $(this).parents('tr').data('index');
-                            console.log(data[index]);
-                            return '';
-                        }
-                    }
-                },
-                {
-                    field: 'address',
-                    title: '办公地址',
-                    sortable: true,
-                    editable: true,
-                    align: 'center',
-                    editable: {
-                        type: 'text',
-                        title: '办公地址',
-                        validate: function (value) {
-                            value = $.trim(value);
-                            if (!value) {
-                                return 'This field is required';
-                            }
-                            if (!/^$/.test(value)) {
-                                return 'This field needs to start width $.'
-                            }
-                            var data = jqueryMap.$teacherTable.bootstrapTable('getData'),
-                                index = $(this).parents('tr').data('index');
-                            console.log(data[index]);
-                            return '';
-                        }
-                    }
-                },
-                {
-                    field: 'phone',
-                    title: '联系电话',
-                    sortable: true,
-                    editable: true,
-                    align: 'center',
-                    editable: {
-                        type: 'text',
-                        title: '联系电话',
-                        validate: function (value) {
-                            value = $.trim(value);
-                            if (!value) {
-                                return 'This field is required';
-                            }
-                            if (!/^$/.test(value)) {
-                                return 'This field needs to start width $.'
-                            }
-                            var data = jqueryMap.$teacherTable.bootstrapTable('getData'),
-                                index = $(this).parents('tr').data('index');
-                            console.log(data[index]);
-                            return '';
-                        }
-                    }
-                },
-                {
-                    field: 'operate',
-                    title: '操作',
-                    align: 'center',
-                    events: operateEvents,
-                    formatter: operateFormatter
-                }
-
-
-            ]
-        });
-        // sometimes footer render error.
-        setTimeout(function () {
-            jqueryMap.$teacherTable.bootstrapTable('resetView');
-        }, 200);
-        jqueryMap.$teacherTable.on('check.bs.table uncheck.bs.table ' +
-            'check-all.bs.table uncheck-all.bs.table', function () {
-            console.log(jqueryMap.$teacherTable.bootstrapTable('getSelections').length)
-            jqueryMap.$remove.prop('disabled', !jqueryMap.$teacherTable.bootstrapTable('getSelections').length);
-            // save your data, here just save the current page
-            selections = getIdSelections();
-            // push or splice the selections if you want to save all data selections
-        });
-        jqueryMap.$teacherTable.on('expand-row.bs.table', function (e, index, row, $detail) {
-            if (index % 2 == 1) {
-                $detail.html('Loading from ajax request...');
-                $.get('LICENSE', function (res) {
-                    $detail.html(res.replace(/\n/g, '<br>'));
-                });
-            }
-        });
-        jqueryMap.$teacherTable.on('all.bs.table', function (e, name, args) {
-            console.log(name, args);
-        });
-        jqueryMap.$remove.click(function () {
-            var ids = getIdSelections();
-            jqueryMap.$teacherTable.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            });
-            jqueryMap.$remove.prop('disabled', true);
-        });
-        $(window).resize(function () {
-            jqueryMap.$teacherTable.bootstrapTable('resetView', {
-                height: getHeight()
-            });
-        });
-    }
-    function operateFormatter(value, row, index) {
-        return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="dehaze"></i>',
-            '</a>  ',
-            '<a class="remove m-l-md" href="javascript:void(0)" title="Remove">',
-            '<i class="delete"></i>',
-            '</a>'
-        ].join('');
-    }
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-        },
-        'click .remove': function (e, value, row, index) {
-            jqueryMap.$teacherTable.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-            });
+        var params = {
+            pageNumber: pageInfo.currentPage,
+            pageSize: pageInfo.pageSize
         }
-    };
+        $.post('/queryTeacher.json', params, function (data) {
+            jqueryMap.$tbody.html(tmpl.item(data.data));
+            jqueryMap.$singleCheck = stateMap.$container.find('.singleCheck')
+            $.each(data.data, function (index, item) {
+                $(jqueryMap.$singleCheck[index]).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                    value: item._id,
+                    text: ''
+                })
+            });
+           jqueryMap.$pagination.aePagination({
+                isShowPageSizeCombo: true,
+                "currentPage": pageInfo.pageNumber,
+                "totalRecords": 0,
+                "pageSize": pageInfo.pageSize,
+                "onPageChange": function (currentPage, pageSize) {
+                    pageInfo.pageNumber = currentPage;
+                    pageInfo.pageSize = pageSize;
+                    _initTable();
+                },
 
-    function getIdSelections() {
-        return $.map(jqueryMap.$teacherTable.bootstrapTable('getSelections'), function (row) {
-            return row.id
+            }).aePagination('setTotalRecords', data.total);
+
         });
+
     }
 
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        });
-        return res;
+    function _checkAll() {
+        var selectLength =jqueryMap.$tbody.find('label.checked').length;
+        //如果下面的checkbox已经全部选中，则点击全选按钮后将下面所有的checkbox都置为未勾选状态。反之
+        if (selectLength ===jqueryMap.$tbody.find('tr').length) {
+           jqueryMap.$tbody.find('.singleCheck').each(function (index, item) {
+                var id = $(item).parents('tr').attr('data-id');
+                $(item).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                    value: id,
+                    text: '',
+                });
+
+            });
+            jqueryMap.$delTeacher.addClass('none');
+        } else {
+            jqueryMap.$tbody.find('.singleCheck').each(function (index, item) {
+                var id = $(item).parents('tr').attr('data-id');
+                $(item).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                    value: id,
+                    text: '',
+                    checked: 'checked'
+                });
+
+            });
+            jqueryMap.$delTeacher.removeClass('none');
+        }
+
+
     }
 
-    function getHeight() {
-        return '600px';
+    function _singleCheck() {
+        console.log('-----------')
+        var selectLength = jqueryMap.$tbody.find('label.checked').length;
+        var liLength = jqueryMap.$tbody.find('tr').length;
+        //如果一个都没选中。则隐藏全选和删除按钮，如果勾选了一个单选框，则将所有的单选框都显示
+        if (selectLength === 0) {
+            jqueryMap.$delTeacher.addClass('none');
+        } else {
+            jqueryMap.$delTeacher.removeClass('none');
+        }
+        //如果一个一个的把checkbox全部选中，则把顶部的全选按钮也置为勾选状态
+        if (selectLength === liLength) {
+            jqueryMap.$selectAll.aeCheckbox('reload', {
+                text: '',
+                value: '1',
+                checked: 'checked'
+            });
+        } else {
+            jqueryMap.$selectAll.aeCheckbox('reload', {
+                text: '',
+                value: '1'
+            });
+
+        }
+
     }
+
     function destroyModule() {
         if (!configMap.isInit) {
             return;
@@ -281,6 +157,7 @@ define(function (require, exports, module) {
         }
         stateMap.$container = $container || null;
         _loadHtml();
+        _initTemplate();
         _setJqueryMap();
         _bindEvent();
 
@@ -289,10 +166,6 @@ define(function (require, exports, module) {
 
     module.exports = {
         initModule: initModule,
-        destroyModule: destroyModule,
-        obj: {
-            responseHandler: responseHandler
-        }
-
+        destroyModule: destroyModule
     }
 });

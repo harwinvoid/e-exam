@@ -17,6 +17,8 @@ module.exports = function(app){
     app.route('/importStu')
         .post(upload.fileUpload);
 
+    app.route('/queryTeacher.json')
+        .post(users.queryTeacher)
        
     app.get('/signout',users.signout);
   /*app.route('/users')

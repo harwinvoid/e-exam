@@ -1,18 +1,44 @@
 <div id="teachersList" class="panel panel-default">
-    <div id="toolbar">
-        <button id="remove" class="btn btn-danger" disabled>
-            <i class="delete"></i> Delete
-        </button>
-    </div>
-    <table id="teacherTable"
-           data-toolbar="#toolbar"
-           data-search="true"
-           data-show-refresh="true"
-           data-show-toggle="true"
-           data-show-columns="true"
-           data-show-export="true"
-           data-icons-prefix =''
-           data-pagination="true"
-           data-page-list="[10, 25, 50, 100, ALL]"></table>
-          <!-- data-side-pagination="server"-->
+   <div class="wrapper">
+       <div id="toolbar" class="m-t-md m-b-md">
+           <button class="btn btn-primary none" id="delTeacher"><i class="delete"></i>删除</button>
+       </div>
+       <table class="table b-t" style="margin-bottom: 0">
+           <thead >
+           <tr>
+               <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
+               <th>教师号</th>
+               <th>院系名称</th>
+               <th>姓名</th>
+               <th>身份证号</th>
+               <th>办公地址</th>
+               <th>联系电话</th>
+               <th>操作</th>
+           </tr>
+           </thead>
+           <tbody id="tbody">
+           </tbody>
+       </table>
+       <div style="clear: both">
+           <span aeType="aePagination" aeInit="true" id="pagination"/>
+       </div>
+   </div>
+
 </div>
+<script type="text/html" id="item">
+    {{#each this}}
+    <tr data-id="{{this._id}}">
+        <th scope="row"><span aeType="aeCheckbox" aeInit="true" class="singleCheck"/></th>
+        <td>{{this.uno}}</td>
+        <td>{{this.major}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.uid}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.phone}}</td>
+        <td>
+            <a class="like" href="javascript:void(0)" title="Like"><i class="dehaze"></i></a>
+            <a class="remove m-l-md" href="javascript:void(0)" title="Remove"><i class="delete"></i></a>
+        </td>
+    </tr>
+    {{/each}}
+</script>

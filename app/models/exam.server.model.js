@@ -27,4 +27,8 @@ var ExamSchema = new Schema({
 
 
 });
+ExamSchema.statics.queryByPagination = function(offset,pageSize,cb){
+   return this.find().skip(offset).limit(pageSize).exec(cb);
+
+};
 mongoose.model('Exam',ExamSchema,'exams');

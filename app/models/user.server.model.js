@@ -65,9 +65,15 @@ UserSchema.methods.hashPassword = function (password) {
 };
 
 UserSchema.methods.authenticate = function (password) {
-    console.log(password)
     return this.password === this.hashPassword(password);
 };
+UserSchema.statics.findAllTeacherByPagination = function(offset,pageSize,cb){
+   return this.find({role:2}).skip(offset).limit(pageSize).exec(cb);
+}
+UserSchema.statics.findAllTeacher = function(cb){
+    return this.find({role:2}).exec(cb);
+}
+
 
 UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
     var _this = this;

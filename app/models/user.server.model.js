@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     crypto = require('crypto'),
+    async = require('async'),
     Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -26,9 +27,9 @@ var UserSchema = new Schema({
     address: String, /*用户办公地址（如果有）*/
     phone: String, /*用户电话*/
     permission: {
-        /*用户权限1.管理员，2.教师，3，学生 */
+        /*用户权限1.管理员，0.非管理员 */
         type: Number,
-        default: 2,
+        default: 0,
     },
     role: Number, /*用户角色 2.教师 ，3.学生*/
     major: {
@@ -67,12 +68,27 @@ UserSchema.methods.hashPassword = function (password) {
 UserSchema.methods.authenticate = function (password) {
     return this.password === this.hashPassword(password);
 };
-UserSchema.statics.findAllTeacherByPagination = function(offset,pageSize,cb){
-   return this.find({role:2}).skip(offset).limit(pageSize).exec(cb);
+UserSchema.statics.findAllTeacherByPagination = function (name, offset, pageSize, cb) {
+    if (name) {
+        console.log('name:' + name);
+        return this.find({role: 2, name: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
+    } else {
+        return this.find({role: 2}).skip(offset).limit(pageSize).exec(cb);
+    }
+
 }
-UserSchema.statics.findAllTeacher = function(cb){
-    return this.find({role:2}).exec(cb);
+UserSchema.statics.findAllTeacher = function (name, cb) {
+    if (name) {
+        console.log('name:' + name);
+        return this.find({role: 2, name: {$regex: name}}).exec(cb);
+    } else {
+        return this.find({role: 2}).exec(cb);
+    }
+
 }
+UserSchema.statics.delTeacherById = function (ids, cb) {
+    this.remove({role: 2, _id: {$in: ids}}, cb)
+};
 
 
 UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
@@ -93,7 +109,13 @@ UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
         }
     });
 };
-
+//更新用户数据
+UserSchema.statics.updateUserInfo = function(_id,user,cb){
+  return this.update({_id: _id }, { $set: { uno:user.uno,name: user.name,major:user.major,phone:user.phone,address:user.address }},cb);
+};
+UserSchema.statics.queryUserInfo =function(id,role,cb){
+    return this.findOne({_id:id,role:role}).exec(cb);
+}
 UserSchema.set('toJson', {
     getters: true,
     setters: true

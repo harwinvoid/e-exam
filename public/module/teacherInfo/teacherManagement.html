@@ -1,30 +1,32 @@
-<div id="teachersList" class="panel panel-default">
-   <div class="wrapper">
-       <div id="toolbar" class="m-t-md m-b-md">
-           <button class="btn btn-primary none" id="delTeacher"><i class="delete"></i>删除</button>
-       </div>
-       <table class="table b-t" style="margin-bottom: 0">
-           <thead >
-           <tr>
-               <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
-               <th>教师号</th>
-               <th>院系名称</th>
-               <th>姓名</th>
-               <th>身份证号</th>
-               <th>办公地址</th>
-               <th>联系电话</th>
-               <th>操作</th>
-           </tr>
-           </thead>
-           <tbody id="tbody">
-           </tbody>
-       </table>
-       <div style="clear: both">
-           <span aeType="aePagination" aeInit="true" id="pagination"/>
-       </div>
-   </div>
-
+<div id="teachersList">
+    <div id="toolbar" class="m-t-md m-b-md">
+        <button class="btn btn-primary" id="delTeacher" style="visibility: hidden"><i class="delete"></i>删除</button>
+        <div class="input-group pull-right" style="width: 300px">
+            <span class="input-group-addon"><i class="search"></i></span>
+            <input type="text" aeType="aeTextfield" id="searchTeacher" class="form-control" emptyText="Search By Name">
+        </div>
+    </div>
+    <table class="table b-t" style="margin-bottom: 0">
+        <thead>
+        <tr>
+            <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
+            <th>教师号</th>
+            <th>院系名称</th>
+            <th>姓名</th>
+            <th>身份证号</th>
+            <th>办公地址</th>
+            <th>联系电话</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    <div style="clear: both">
+        <span aeType="aePagination" aeInit="true" id="pagination"/>
+    </div>
 </div>
+<div id="teacherInfo" class="none">
 <script type="text/html" id="item">
     {{#each this}}
     <tr data-id="{{this._id}}">
@@ -36,9 +38,84 @@
         <td>{{this.address}}</td>
         <td>{{this.phone}}</td>
         <td>
-            <a class="like" href="javascript:void(0)" title="Like"><i class="dehaze"></i></a>
+            <a class="detail" href="javascript:void(0)" title="detail"><i class="dehaze"></i></a>
             <a class="remove m-l-md" href="javascript:void(0)" title="Remove"><i class="delete"></i></a>
         </td>
     </tr>
     {{/each}}
+</script>
+<script type="text/html" id="info">
+    <div class="container-fluid">
+        <div class="row m-b-lg m-t-lg">
+            <div class="col-md-12 col-sm-12">
+                <div class="text-center">个人信息</div>
+            </div>
+        </div>
+        <form class="form-horizontal" id="infoForm">
+            <input type="hidden" value="{{_id}}" name="_id">
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>教师号:</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input type="text"  class="form-control" value="{{uno}}" name="uno"/>
+                </div>
+            </div>
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>姓名：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input type="text" class="form-control" value="{{name}}" name="name"/>
+                </div>
+
+            </div>
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>院系：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input class="form-control" type="text" value="{{major}}" name="major"/>
+                </div>
+            </div>
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>身份证号：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input type="text" class="form-control" value="{{uid}}" name="uid"/>
+                </div>
+            </div>
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>权限：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">  <!--{{#ifCond processState '6'}}be-gr{{/ifCond}}-->
+                    <input type="text" class="form-control" readonly="readonly"
+                           value="{{#ifCond permission '1'}}管理员{{/ifCond}}{{#ifCond permission '2'}}普通用户{{/ifCond}}"
+                           name="permission">
+                </div>
+            </div>
+            <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>电话：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input type="text" class="form-control" value="{{phone}}" name="phone">
+                </div>
+            </div>
+            <div class="row m-b-lg">
+                <div class="col-md-2 col-sm-12">
+                    <span>地址：</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input type="text" class="form-control" value="{{address}}" name="address">
+                </div>
+            </div>
+            <div class="row text-center">
+                <button class="btn btn-primary update m-r-sm">修改</button>
+                <button class="btn btn-default back">返回</button>
+            </div>
+        </form>
+    </div>
 </script>

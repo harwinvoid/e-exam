@@ -2284,17 +2284,16 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
             tabId = new Date().getTime();
         }
         if(!!tabUrl){
-            var aNode = document.createElement('a');
-            aNode.href = tabUrl;
-            hostname = aNode.hostname;
+            hostname = feUtils.getHostFromUrl(tabUrl);
         }
         console.log("target tab hostname:",hostname);
-        console.log("location hostname:",location.hostname);
+        var topHostName = feUtils.getHostFromUrl(top.location);
+        console.log("location hostname:",topHostName);
         if(top != self){
-            if(hostname === top.location.hostname){
+            if(hostname === topHostName){
                 var view360Status = top.document.getElementById("agentview-cust360view-container").getAttribute("active-status");
                 console.log("viewStatus",view360Status);
-                if(view360Status === "open"){//customer 360view tab
+                if(view360Status === "active"){//customer 360view tab
                     window.top.feUtils.openCur360ViewNewTab(tabName, tabUrl);
                 }else{//agent view main tab
                     var opts = {
@@ -2310,10 +2309,23 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
                 newIframe.src="/ARIESRES/crm-bj/agentview/business/callback.html?tabId="+tabId+"&tabName="+escape(tabName)+"&tabUrl="+escape(tabUrl);
                 document.body.appendChild(newIframe);
             }
+            /*var newIframe = document.createElement("iframe");
+            newIframe.style.visable = "hidden";
+            newIframe.style.display='none';
+            newIframe.src="/ARIESRES/crm-bj/agentview/business/callback.html?tabId="+tabId+"&tabName="+escape(tabName)+"&tabUrl="+escape(tabUrl);
+            document.body.appendChild(newIframe);*/
         }else{
             window.open(tabUrl);
         }
     };
+    feUtils.getHostFromUrl = function(url){
+        var aNode = document.createElement('a');
+        aNode.href = url;
+        var hostname = aNode.hostname;
+        aNode = null;
+        return hostname;
+    };
+
 
     return feUtils;
 }));

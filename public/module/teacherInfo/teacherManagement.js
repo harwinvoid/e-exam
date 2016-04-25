@@ -15,7 +15,6 @@ define(function (require, exports, module) {
             currentPage: 1,
             pageSize: 10
         }
-    selections = [];
     viewMap.currentViewHtml = require('/module/teacherInfo/teacherManagement.html');
     function _loadHtml() {
         if (stateMap.$container && stateMap.$container.length) {
@@ -27,24 +26,32 @@ define(function (require, exports, module) {
     };
     function _initTemplate() {
         tmpl = {
-            item: Handlebars.compile(stateMap.$container.find('#item').html())
+            item: Handlebars.compile(stateMap.$container.find('#item').html()),
+            info: Handlebars.compile(stateMap.$container.find('#info').html()),
         }
     }
 
     function _setJqueryMap() {
-        stateMap.$container.find('#teachersList')
         jqueryMap = {
             $teachersList: stateMap.$container.find('#teachersList'),
             $teacherTable: stateMap.$container.find('#teacherTable'),
-            $remove: stateMap.$container.find('#remove'),
             $tbody: stateMap.$container.find('#tbody'),
             $selectAll: stateMap.$container.find('#selectAll'),
             $delTeacher: stateMap.$container.find('#delTeacher'),
-            $pagination: stateMap.$container.find('#pagination')
+            $pagination: stateMap.$container.find('#pagination'),
+            $searchTeacher: stateMap.$container.find('#searchTeacher'),
+            $teacherInfo: stateMap.$container.find('#teacherInfo')
         };
     }
 
     function _bindEvent() {
+        jqueryMap.$searchTeacher.aeTextfield({
+            onValueChange: function () {
+                var name = jqueryMap.$searchTeacher.aeTextfield('getValue'), params;
+                _initTable(name);
+
+            }
+        });
 
         jqueryMap.$selectAll.aeCheckbox({
             onSelect: _checkAll
@@ -52,33 +59,119 @@ define(function (require, exports, module) {
             text: '',
             value: ''
         });
-        _initTable();
+        _initTable(null);
+        //删除选中的老师
+        jqueryMap.$delTeacher.on('click', function () {
+            var ids = getSelectedIds(), params;
+            params = {
+                ids: ids
+            };
+            $.post('/delTeacher.json', params, function (data) {
+                if (data != 0) {
+                    _initTable(null);
+                }
+
+            });
+        });
+        jqueryMap.$tbody.on('click', 'a.remove', function (e) {
+            e.preventDefault();
+            var id = $(this).parents('tr').attr('data-id'), params, ids = [];
+            ids.push(id);
+            params = {
+                ids: ids
+            };
+            console.log(ids);
+            $.post('/delTeacher.json', params, function (data) {
+                if (data != 0) {
+                    _initTable(null);
+                }
+            })
+
+        }).on('click', 'a.detail', function (e) {
+            e.preventDefault();
+            var id = $(this).parents('tr').attr('data-id'), params;
+            params = {
+                id: id,
+                role: 2
+            };
+            $.post('/userInfo.json', params, function (data) {
+                jqueryMap.$teacherInfo.html(tmpl.info(data)).removeClass('none');
+                jqueryMap.$teachersList.addClass('none');
+                jqueryMap.$infoForm = jqueryMap.$teacherInfo.find('#infoForm');
+                jqueryMap.$update = jqueryMap.$infoForm.find('.update');
+                jqueryMap.$back = jqueryMap.$infoForm.find('.back');
+                jqueryMap.$update.on('click', function (e) {
+                    e.preventDefault();
+                    var data = jqueryMap.$infoForm.serializeArray();
+                    var params = {
+                        _id: data[0].value,
+                        uno: data[1].value,
+                        name: data[2].value,
+                        major: data[3].value,
+                        phone: data[6].value,
+                        address: data[7].value
+                    }
+                    $.post('/updateUserInfo.json', params, function (data) {
+                        if (data === 1) {
+                            $.Notice.success("用户信息修改成功");
+                            jqueryMap.$teacherInfo.addClass('none');
+                            jqueryMap.$teachersList.removeClass('none');
+                            _initTable();
+                        } else if (data === 0) {
+                            $.Notice.error("用户信息修改失败");
+                        }
+                    });
+                });
+                jqueryMap.$back.on('click', function (e) {
+                    e.preventDefault();
+                    jqueryMap.$teacherInfo.addClass('none');
+                    jqueryMap.$teachersList.removeClass('none');
+                });
+
+
+
+            });
+
+        });
+
 
     };
-    function _initTable() {
+    function _initTable(name) {
         var params = {
+            name: name,
             pageNumber: pageInfo.currentPage,
             pageSize: pageInfo.pageSize
+        };
+        if (!name) {
+            delete params[name];
         }
+
         $.post('/queryTeacher.json', params, function (data) {
+            console.log(data);
             jqueryMap.$tbody.html(tmpl.item(data.data));
             jqueryMap.$singleCheck = stateMap.$container.find('.singleCheck')
             $.each(data.data, function (index, item) {
-                $(jqueryMap.$singleCheck[index]).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                $(jqueryMap.$singleCheck[index]).aeCheckbox({ onSelect: _singleCheck }).aeCheckbox('reload', {
                     value: item._id,
                     text: ''
                 })
             });
-           jqueryMap.$pagination.aePagination({
+            jqueryMap.$pagination.aePagination({
                 isShowPageSizeCombo: true,
                 "currentPage": pageInfo.pageNumber,
                 "totalRecords": 0,
                 "pageSize": pageInfo.pageSize,
-                "onPageChange": function (currentPage, pageSize) {
+                onPageChange: function (currentPage, pageSize) {
                     pageInfo.pageNumber = currentPage;
                     pageInfo.pageSize = pageSize;
-                    _initTable();
+                    _initTable(null);
                 },
+                onComboChange: function (currentPage, pageSize) {
+                    pageInfo.pageNumber = currentPage;
+                    pageInfo.pageSize = pageSize;
+                    _initTable(params);
+                }
+
 
             }).aePagination('setTotalRecords', data.total);
 
@@ -86,44 +179,55 @@ define(function (require, exports, module) {
 
     }
 
+    function getSelectedIds() {
+        var selected = [];
+        jqueryMap.$tbody.find('label').each(function (index, item) {
+            console.log(item);
+            if ($(item).hasClass('checked')) {
+                selected.push($(item).parents('tr').attr('data-id'));
+            }
+        });
+        return selected;
+    }
+
     function _checkAll() {
-        var selectLength =jqueryMap.$tbody.find('label.checked').length;
+        var selectLength = jqueryMap.$tbody.find('label.checked').length;
         //如果下面的checkbox已经全部选中，则点击全选按钮后将下面所有的checkbox都置为未勾选状态。反之
-        if (selectLength ===jqueryMap.$tbody.find('tr').length) {
-           jqueryMap.$tbody.find('.singleCheck').each(function (index, item) {
+        if (selectLength === jqueryMap.$tbody.find('tr').length) {
+            jqueryMap.$tbody.find('.singleCheck').each(function (index, item) {
                 var id = $(item).parents('tr').attr('data-id');
-                $(item).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                $(item).aeCheckbox({ onSelect: _singleCheck }).aeCheckbox('reload', {
                     value: id,
                     text: '',
                 });
 
             });
-            jqueryMap.$delTeacher.addClass('none');
+            jqueryMap.$delTeacher.attr('style', 'visibility: hidden');
         } else {
             jqueryMap.$tbody.find('.singleCheck').each(function (index, item) {
                 var id = $(item).parents('tr').attr('data-id');
-                $(item).aeCheckbox({onSelect: _singleCheck}).aeCheckbox('reload', {
+                $(item).aeCheckbox({ onSelect: _singleCheck }).aeCheckbox('reload', {
                     value: id,
                     text: '',
                     checked: 'checked'
                 });
 
             });
-            jqueryMap.$delTeacher.removeClass('none');
+            jqueryMap.$delTeacher.attr('style', 'visibility: visible');
         }
 
 
     }
 
     function _singleCheck() {
-        console.log('-----------')
+        var id = $(this).parents('tr').attr('data-id');
         var selectLength = jqueryMap.$tbody.find('label.checked').length;
         var liLength = jqueryMap.$tbody.find('tr').length;
         //如果一个都没选中。则隐藏全选和删除按钮，如果勾选了一个单选框，则将所有的单选框都显示
         if (selectLength === 0) {
-            jqueryMap.$delTeacher.addClass('none');
+            jqueryMap.$delTeacher.attr('style', 'visibility: hidden');
         } else {
-            jqueryMap.$delTeacher.removeClass('none');
+            jqueryMap.$delTeacher.attr('style', 'visibility: visible');
         }
         //如果一个一个的把checkbox全部选中，则把顶部的全选按钮也置为勾选状态
         if (selectLength === liLength) {

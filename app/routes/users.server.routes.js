@@ -18,7 +18,16 @@ module.exports = function(app){
         .post(upload.fileUpload);
 
     app.route('/queryTeacher.json')
-        .post(users.queryTeacher)
+        .post(users.queryTeacher);
+
+    app.route('/delTeacher.json')
+       .post(users.delTeacher);
+
+    app.route('/userInfo.json')
+        .post(users.queryUserInfo);
+
+    app.route('/updateUserInfo.json')
+        .post(users.updateUserInfo);
        
     app.get('/signout',users.signout);
   /*app.route('/users')

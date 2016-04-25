@@ -3,7 +3,7 @@ define(function(require, exports, modules) {
 	require('./aries-base.min');
 	require('./aries-ui.min');
 	require('./bootstrap-treeview.min');
-	require("../../../fe-common/js/extend");
+	require("../../../fe-common/js/extend.min");
 
 	//浏览器版本是否低于IE8
     function isIE8() {

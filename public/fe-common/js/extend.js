@@ -12,67 +12,37 @@ define(function(require, exports, modules) {
  * @module ui-pagination
  */
 define("ui-pagination",function(require, exports, module){
-    var i18n={
-        firstPageText: '首页',
-        firstPageTipText: 'First',
-        lastPageText: '尾页',
-        lastPageTipText: 'Last',
-        prePageText: '上一页',
-        prePageTipText: 'Prev',
-        nextPageText: '下一页',
-        nextPageTipText: 'Next',
-        totalPageBeforeText: '共',
-        totalPageAfterText: '页',
-        currPageBeforeText: '当前第',
-        currPageAfterText   : '页',
-        totalInfoSplitStr: '/',
-        totalRecordsBeforeText: '共',
-        totalRecordsAfterText: '条数据',
-        gopageBeforeText: '&nbsp;转到',
-        gopageButtonOkText: '确定',
-        gopageAfterText: '页',
-        buttonTipBeforeText: '第',
-        buttonTipAfterText: '页'
-    };
     /**
-     * 翻页组件国际化对象
+     * 翻页组件国际化对��?
      * @name $.ae.lang#aePagination
      * @property {object} aePagination
-     * @property {string} aePagination.firstPageText          - 首页
      * @property {string} aePagination.firstPageTipText       - First
-     * @property {string} aePagination.lastPageText           - 尾页
-     * @property {string} aePagination.firstPageText          - lastPageTipText
-     * @property {string} aePagination.prePageText            - 上一页
+     * @property {string} aePagination.lastPageTipText        - last
      * @property {string} aePagination.prePageTipText         - Prev
-     * @property {string} aePagination.nextPageText           - 下一页
      * @property {string} aePagination.nextPageTipText        - Next
-     * @property {string} aePagination.totalPageBeforeText    - 共
-     * @property {string} aePagination.totalPageAfterText     - 页
-     * @property {string} aePagination.currPageBeforeText     - 当前第
-     * @property {string} aePagination.currPageAfterText      - 页
-     * @property {string} aePagination.totalInfoSplitStr      - /
-     * @property {string} aePagination.totalRecordsBeforeTex  - 共
-     * @property {string} aePagination.totalRecordsAfterText  - 条数据
-     * @property {string} aePagination.gopageBeforeText       - &nbsp;转到
-     * @property {string} aePagination.gopageButtonOkText     - 确定
-     * @property {string} aePagination.gopageAfterText        - 页
-     * @property {string} aePagination.buttonTipBeforeText    - 第
-     * @property {string} aePagination.buttonTipAfterText     - 页
+     * @property {string} aePagination.totalRecordsBeforeText - Total
      */
-    $.ae.lang.aePagination = i18n;
+    $.ae.lang.aePagination={
+        firstPageTipText: 'First',
+        lastPageTipText: 'Last',
+        prePageTipText: 'Prev',
+        nextPageTipText: 'Next',
+        totalRecordsBeforeText: 'Total'
+    };
+
     /**
-     * 块列表
+     * 块列��?
      * @namespace ae.aePagination
      */
     $.aeWidget('ae.aePagination',{
         /**
-         * 可选项
+         * 可�?�项
          * @name ae.aePagination#options
-         * @property {object} options                           - 可选项
+         * @property {object} options                           - 可�?�项
          * @property {number} options.totalRecords              - 总记录数
-         * @property {string|function} options.pageSize         - 每页可展现的记录数
+         * @property {string|function} options.pageSize         - 每页可展现的记录��?
          * @property {boolean} options.align                    - 文本对齐方式
-         * @property {number} options.currentPage               - 当前页
+         * @property {number} options.currentPage               - 当前��?
          * @property {boolean} options.isShowPageSizeCombo      - 是否显示设置每页数据显示的下拉框，默认为true
          * @property {boolean} options.isShowFirstLastBtn       - 是否显示首页和尾页按钮，默认为false
          * @property {boolean} options.isShowPreNextBtn         - 是否显示上一页和下一页按钮，默认为true
@@ -88,13 +58,6 @@ define("ui-pagination",function(require, exports, module){
             pageSize : 10,
             align : "right",
             currentPage: 1,
-            /**
-             * 设置分页的模式(click,link)
-             * @type string
-             * @default 'click'
-             * @private
-             */
-            mode: "click",
             isShowPageSizeCombo: true,
             isShowFirstLastBtn: false,
             isShowPreNextBtn: true,
@@ -102,7 +65,8 @@ define("ui-pagination",function(require, exports, module){
             isShowCurrPage: false,
             isShowTotalRecords: false,
             isMinPagination:false,
-            onPageChange : function(current,total){}
+            onPageChange : $.noop,
+            onComboChange: $.noop
         },
         _create: function(){
             var self = this,
@@ -122,7 +86,6 @@ define("ui-pagination",function(require, exports, module){
             ops.totalRecords = el.attr("totalRecords") || ops.totalRecords;
             ops.currentPage = el.attr("currentPage") || ops.currentPage;
             ops.pageSize = el.attr("pageSize") || ops.pageSize;
-            ops.mode = el.attr("mode") || ops.mode;
             ops.isShowPageSizeCombo = el.attr("isShowPageSizeCombo") || ops.isShowPageSizeCombo;
             ops.isShowFirstLastBtn = el.attr("isShowFirstLastBtn") || ops.isShowFirstLastBtn;
             ops.isShowPreNextBtn = el.attr("isShowPreNextBtn") || ops.isShowPreNextBtn;
@@ -137,7 +100,7 @@ define("ui-pagination",function(require, exports, module){
          * 根据选项重新加载组件
          * @name ae.aePagination#reload
          * @function
-         * @param  {object} ops 新的可选项，如果选项名与原有选项名重复则优先使用新制定的选项值
+         * @param  {object} ops 新的可�?�项，如果�?�项名与原有选项名重复则优先使用新制定的选项��?
          */
         reload:function(ops){
             $.extend(true, this.options, ops);
@@ -146,7 +109,8 @@ define("ui-pagination",function(require, exports, module){
         _generPageHtml : function(ops){
             var self = this,
                 i,
-                key;
+                key,
+                i18n=$.ae.lang.aePagination;
             ops.currentPage = parseInt(ops.currentPage) || 1;
             var totalPage = (ops.totalRecords%ops.pageSize)? (Math.ceil(ops.totalRecords/ops.pageSize)) : (ops.totalRecords/ops.pageSize);
             ops.totalPage = totalPage;
@@ -259,14 +223,14 @@ define("ui-pagination",function(require, exports, module){
             }
             var total_info='';
             if(ops.isShowTotalRecords){
-                total_info += '<div class="pull-left m-n text-light" style="line-height:32px;">Total:' +  ops.totalRecords +'</div>';
+                total_info += '<div class="pull-left m-n text-light" style="line-height:32px;">'+i18n.totalRecordsBeforeText+':' +  ops.totalRecords +'</div>';
             }
             html += total_info;
             html += pagerHtml;
             this.element.addClass("text-"+ops.align).html(html);
 
             if(flag){
-                var comboFlag;//判断如果pageSize和定义的data.value值不匹配，添加一条记录
+                var comboFlag;//判断如果pageSize和定义的data.value值不匹配，添加一条记��?
                 var data = [
                     {"text":"5 Items", "value":"5"},
                     {"text":"10 Items", "value":"10"},
@@ -303,16 +267,14 @@ define("ui-pagination",function(require, exports, module){
         },
 
         _getHandlerStr : function(n){
-            if(this.options.mode == 'click'){
-                return 'href="javascript:void(0)" data-value=' + n;
-            }
+            return 'href="javascript:void(0)" data-value=' + n;
         },
         /**
-         * 不刷新页面直接手动调用选中某一页码，此方法与option方法相同
+         * 不刷新页面直接手动调用�?�中某一页码，此方法与option方法相同
          * @name ae.aePagination#selectPage
          * @function
          * @deprecated
-         * @param  {number} pageNumber 新当前页号
+         * @param  {number} pageNumber 新当前页��?
          */
         selectPage : function(pageNumber){
             this.options.currentPage = pageNumber;
@@ -328,10 +290,10 @@ define("ui-pagination",function(require, exports, module){
             this._generPageHtml(this.options);
         },
         /**
-         * 获得每页可展现的记录数
+         * 获得每页可展现的记录��?
          * @name ae.aePagination#getPageSize
          * @function
-         * @return 返回每页可展现的记录数。
+         * @return 返回每页可展现的记录数�??
          */
         getPageSize : function(){
             return this.options.pageSize;
@@ -340,49 +302,57 @@ define("ui-pagination",function(require, exports, module){
 });
 
 /**
- * 块列表模块
+ * 块列表模��?
  * @module ui-blocklist
  * @requires ui-pagination
  */
 define('ui-blocklist', function (require, exports, moudles) {
+    //根据页序号和每页数据量返回数据段
+    function getDataSegment(data,pageNumber,pageSize) {
+        var count,
+            start;
+        if($.isArray(data)){
+            count=data.length;
+            start=(pageNumber-1)*pageSize;
+            return data.slice(start,start+pageSize);
+        }
+        return null;
+    }
     /**
-     * 块列表
+     * 块列��?
      * @namespace ae.aeBlocklist
      */
     $.aeWidget('ae.aeBlocklist', {
         /**
-         * 可选项
+         * 可�?�项
          * @name ae.aeBlocklist#options
          * @property {object} options
-         * @property {boolean} options.mutiSelect          - 是否多选，默认为false即不多选。
-         * @property {string} options.col                  - 设置列表所占列数，默认为“1”即1列。
-         * @property {string} options.columnHeadId         - 列头Id。如果设置了此选项，组件将会把对应的外部列头结构移到内部结构里来，这样方便支持表格内容滚动的场景。
-         * @property {object} options.pagingConfig         - 列表分页配置项。详情见aePagination组件选项描述{@link ae.aePagination#options}。
-         * @property {string} options.selectedRowStyle     - 被选择行的高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标点击的时候将会展现为选中状态。
-         * @property {object} options.traceRowStyle        - 鼠标跟随高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标移过的时候将展现高亮状态。
-         * @property {boolean} options.showEmpty           - 数据为空时是否展示空数据提示。默认为false。
-         * @property {boolean} options.showException       - 数据异常时是否展示数据异常提示。默认为false。
-         * @property {boolean} options.emptyTigMsg          - 数据为空时展示空数据提示信息。默认为data。
-         * @property {string} options.tpl                  - 模版字符串，默认为空串，如果template属性存在则不处理此属性，否则，将此属性字符串转为模版函数存入template属性。
-         * @property {string} options.template             - 表格中每一行（块）对应的模版函数。此属性来源于tpl属性。
+         * @property {boolean} options.mutiSelect          - 是否多�?�，默认为false即不多�?��??
+         * @property {string} options.col                  - 设置列表��?占列数，默认为�??1”即1列�??
+         * @property {string} options.columnHeadId         - 列头Id。如果设置了此�?�项，组件将会把对应的外部列头结构移到内部结构里来，这样方便支持表格内容滚动的场景�??
+         * @property {object} options.pagingConfig         - 列表分页配置项�?�详情见aePagination组件选项描述{@link ae.aePagination#options}��?
+         * @property {string} options.selectedRowStyle     - 被�?�择行的高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标点击的时候将会展现为选中状�?��??
+         * @property {object} options.traceRowStyle        - 鼠标跟随高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标移过的时候将展现高亮状�?��??
+         * @property {boolean} options.showEmpty           - 数据为空时是否展示空数据提示。默认为false��?
+         * @property {boolean} options.showException       - 数据异常时是否展示数据异常提示�?�默认为false��?
+         * @property {boolean} options.emptyTigMsg          - 数据为空时展示空数据提示信息。默认为data��?
+         * @property {string} options.tpl                  - 模版字符串，默认为空串，如果template属�?�存在则不处理此属�?�，否则，将此属性字符串转为模版函数存入template属�?��??
+         * @property {string} options.template             - 表格中每��?行（块）对应的模版函数�?�此属�?�来源于tpl属�?��??
+         * @property {string} options.localPagination      - 是否进行前端翻页
          */
         options: {
             mutiSelect:false,
             col: "1",
             columnHeadId:"",
-            pagingConfig: {
-                currentPage: 1,
-                pageSize: 7,
-                mode: "click",
-                onPageChange: function () {}
-            },
+            pagingConfig: {},
             selectedRowStyle: "",
             traceRowStyle:"",
             showEmpty: false,
             showException: false,
             emptyTipMsg : "data",
             tpl:"",
-            template: null
+            template: null,
+            localPagination:false
         },
         _create: function () {
             var options = this.options,
@@ -392,10 +362,22 @@ define('ui-blocklist', function (require, exports, moudles) {
                 $ele.attr("aeId",id);
             }
             $ele.attr("aeInit",false);
+            this._source=null;//本地翻页的数据缓��?
             this._buildOptions(options, $ele);
             this._rebuildSkeleton();
             this._loadColumnHead();
             this._createEmptyBrand();
+        },
+        _hdLocalPageChange:function(currentPageNumber, pageSize){
+            var pn=parseInt(currentPageNumber,10),
+                finalData=getDataSegment(this._source,pn,parseInt(pageSize,10)),
+                $el=$("#" + this.options.pagingConfig.id),
+                opts;
+            this.clear();
+            opts=$el.aePagination("option");
+            opts.currentPage=pn;
+            $el.aePagination("reload", opts);
+            this._reload(finalData,this.options);
         },
         _loadColumnHead:function(){
             var options = this.options,
@@ -445,19 +427,27 @@ define('ui-blocklist', function (require, exports, moudles) {
             if(!dataArray){
                 this._createEmptyBrand();
                 this._showEmptyBrand();
-                return;
+                return false;
             }if (!$.isArray(dataArray)) {
                 this._createExceptionBrand();
                 this._showExceptionBrand();
-                return;
+                return false;
             }
             return this._generator(dataArray);
         },
         _reloadPagination:function(paginationOptions){
+            var opts=$.extend({},paginationOptions),
+                hdChange;
+
+            if(this.options.localPagination===true){
+                hdChange=$.proxy(this._hdLocalPageChange,this);
+                opts.onPageChange=hdChange;
+                opts.onComboChange=hdChange;
+            }
             if ($("#" + paginationOptions.id).length === 0) {
                 this.element.after('<div style="clear:both"></div><div id="' + paginationOptions.id + '" aeType="aePagination" aeInit="true"></div>');
             }
-            $("#" + paginationOptions.id).aePagination("reload", paginationOptions);
+            $("#" + paginationOptions.id).aePagination("reload", opts);
         },
         _rebuildSkeleton:function(){
             var $ele=this.element;
@@ -477,22 +467,27 @@ define('ui-blocklist', function (require, exports, moudles) {
          * @function
          * @param  {object} data 数据
          * * data 数据内容数组
-         * * tpl 模版字符串
+         * * tpl 模版字符��?
          */
         reload: function (data) {
+            var finalData=(data?data.data:null),
+                $el;
             $.extend(true, this.options, data);
             this.clear();
             this._buildOptions(this.options,this.element);
-            if(this._reload(data.data,this.options)===true){
-                this._addEvents();
-
-                if (this.hasPaging() === true && data.data.length > 0) {
-                    this._reloadPagination(this.options.pagingConfig);
-                    this._showPagination();
-                    return;
+            this._hidePagination();
+            if (this.hasPaging() === true && data && $.isArray(data.data) && data.data.length > 0) {
+                this._reloadPagination(this.options.pagingConfig);
+                this._showPagination();
+                if(this.options.localPagination===true){
+                    this._source=data.data;
+                    $el=$("#" + this.options.pagingConfig.id);
+                    finalData=getDataSegment(this._source,$el.aePagination("option","currentPage"),$el.aePagination("getPageSize"));
                 }
             }
-            this._hidePagination();
+            if(this._reload(finalData,this.options)===true){
+                this._addEvents();
+            }
         },
         _showPagination:function(){
             //var $page=this.element.next();
@@ -507,15 +502,6 @@ define('ui-blocklist', function (require, exports, moudles) {
             if($page.length>0){
                 $page.hide();
             }
-        },
-        _createPagination:function(){
-            var $ele=this.element,
-                pagingConfig = this.options.pagingConfig;
-
-            if ($("#" + pagingConfig.id).length === 0) {
-                $ele.after('<div style="clear:both"></div><div id="' + pagingConfig.id + '" aeType="aePagination" data-role="pagination" aeInit="false"></div>');
-            }
-            $("#" + pagingConfig.id).aePagination("reload", pagingConfig);
         },
         _setRowSelectedStyle:function(chk,isChecked){
             var opts=this.options;
@@ -561,7 +547,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             this._showEmptyBrand();
         },
         /**
-         * 选择所有项目，此方法只在多选模式是有效
+         * 选择��?有项目，此方法只在多选模式是有效
          * @name ae.aeBlocklist.selectAll
          * @function
          */
@@ -581,7 +567,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             }
         },
         /**
-         * 获得选中项数据
+         * 获得选中项数��?
          * @name ae.aeBlocklist.getSelected
          * @function
          * @return {array} 选中项的数据
@@ -607,7 +593,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             return data;
         },
         /**
-         * 是否启用了翻页功能
+         * 是否启用了翻页功��?
          * @name ae.aeBlocklist.hasPaging
          * @function
          * @return {boolean} 如果启用了翻页功能返回true，否则返回false
@@ -617,16 +603,16 @@ define('ui-blocklist', function (require, exports, moudles) {
             return !!(pagingConfig && pagingConfig.id);
         },
         /**
-         * 添加一行（块），此方法只在无翻页模式下有效
+         * 添加��?行（块），此方法只在无翻页模式下有效
          * @name ae.aeBlocklist.addBlock
          * @function
          * @param {object} blockData 行（块）数据
-         * @param {string} tmpl  模版字符串
+         * @param {string} tmpl  模版字符��?
          * @param {string|undefined} pos   添加位置，如果为“top”那么将新增的行（块）添加在列表首部，否则添加到尾部
          * @return {object|null} 如果添加成功返回添加后内容的DOM实例，否则返回null
          */
         addBlock: function (blockData, tmpl, pos) {
-            var $ele = this.element.find("[data-role='body-container']"),
+            var $ele = this.element.find("[data-role='body-container']").eq(0),
                 $el,
                 i,
                 count,
@@ -663,30 +649,36 @@ define('ui-blocklist', function (require, exports, moudles) {
             return null;
         },
         /**
-         * 设置数据，此方法将清空现有列表内容
+         * 设置数据，此方法将清空现有列表内��?
          * @name ae.aeBlocklist.setData
          * @function
          * @param {array} data 数据
          */
         setData: function (data) {
             var $pagination,
-                opts;
+                opts,
+                finalData=data,
+                $el;
             this.clear();
-            if(this._reload(data,this.options)===true){
-                this._addEvents();
-                if (this.hasPaging() === true && data.length > 0) {
-                    $pagination=$("#"+this.options.pagingConfig.id);
-                    if($pagination.length>0){
-                        opts=$pagination.aePagination("option");
-                    }else{
-                        opts=this.options.pagingConfig;
-                    }
-                    this._reloadPagination(opts);
-                    this._showPagination();
-                    return;
+            this._hidePagination();
+            if (this.hasPaging() === true && data.length > 0) {
+                $pagination=$("#"+this.options.pagingConfig.id);
+                if($pagination.length>0){
+                    opts=$pagination.aePagination("option");
+                }else{
+                    opts=this.options.pagingConfig;
+                }
+                this._reloadPagination(opts);
+                this._showPagination();
+                if(this.options.localPagination===true){
+                    this._source=data;
+                    $el=$("#" + this.options.pagingConfig.id);
+                    finalData=getDataSegment(this._source,$el.aePagination("option","currentPage"),$el.aePagination("getPageSize"));
                 }
             }
-            this._hidePagination();
+            if(this._reload(finalData,this.options)===true){
+                this._addEvents();
+            }
         },
         _buildOptions: function (options, element) {
             var tmplStr;
@@ -737,7 +729,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             }
         },
         /**
-         * 创建空数据视图
+         * 创建空数据视��?
          * @private
          */
         _createEmptyBrand:function(){
@@ -758,10 +750,10 @@ define('ui-blocklist', function (require, exports, moudles) {
             this.element.find("[data-role='emptyBrand']").stop().hide();
         },
         /**
-         * 根据数据和模版生成DOM元素集
+         * 根据数据和模版生成DOM元素��?
          * @private
          * @param  {Array} data 数据
-         * @param  {Function} tpl  块模版
+         * @param  {Function} tpl  块模��?
          * @return {Array}      返回DOM元素数组
          */
         _generatorDOMs: function (data, tpl) {
@@ -807,7 +799,7 @@ define('ui-selectgroup',function (require, exports, moudles) {
         options:{
             initType: "html",
             /**
-             * 模式（simple/complex 简单/复杂）
+             * 模式（simple/complex ��?��?/复杂��?
              * @type String
              * @default 'simple'
              * @example
@@ -881,9 +873,9 @@ define('ui-selectgroup',function (require, exports, moudles) {
             return (this.element.find(".btn input").eq(0).attr("type") || "radio" );
         },
         /**
-         *  获取选中按钮的值。
+         *  获取选中按钮的�?��??
          *  radio类型，返回string类型
-         *  checkbox，返回数组
+         *  checkbox，返回数��?
          **/
         getSelectValue : function(){
             var self = this, options = self.options, el = self.element;
@@ -900,9 +892,9 @@ define('ui-selectgroup',function (require, exports, moudles) {
             }
         },
         /**
-         *  获取选中按钮的文本。
+         *  获取选中按钮的文本�??
          *  radio类型，返回string类型
-         *  checkbox，返回数组
+         *  checkbox，返回数��?
          **/
         getSelectText : function(){
             var self = this, options = self.options, el = self.element;
@@ -921,7 +913,7 @@ define('ui-selectgroup',function (require, exports, moudles) {
 
         /**
          *  通过下标设置按钮选中
-         *  obj表示下标或者下标数组
+         *  obj表示下标或�?�下标数��?
          **/
         setSelectByIndex : function(obj){
             var self = this,
@@ -963,8 +955,8 @@ define('ui-selectgroup',function (require, exports, moudles) {
             }
         },
         /**
-         *  通过值设置按钮选中
-         *  obj表示值或者数组
+         *  通过值设置按钮�?�中
+         *  obj表示值或者数��?
          **/
         setSelectByValue : function(obj){
             var self = this,
@@ -1037,25 +1029,25 @@ define('ui-logicblock', function(require, exports, moudles) {
         tmplMember = "<div class='panel panel-default m-b-sm' id='{{id}}' data-group-id='{{group_id}}' data-dock='true' data-role='member'><div class='pull-right pos-abt' style='right:15px;top:50%;margin-top:-10px;'><a href='javascript:void(0);'><i class='ion-close text-dark' data-role='member-del' data-group-id='{{group_id}}' data-member-id='{{id}}' style='opacity:0.5;filter:\"alpha(opacity=0.5)\"'></i></a></div><div class='inline-block v-middle pos-abt' style='cursor: move;left: 0px;top: 50%; margin-top: -25px;' data-role='drag-handle'><a class='text-center block text-muted m' style='cursor: move;opacity:0.5;filter:\"alpha(opacity=0.5)\"'><i class='ion-drag' data-member-id='{{id}}' data-role='member-icon'></i></a></div><div class='form-inline inline-block v-middle m-t-xs' data-role='member-cntr' style='padding:10px 40px 10px 40px;width:100%'></div></div>",
         hdTimer = null,
         CSS_HIGHLIGHT="bg-light lt",
-        ATTR_VAR="$ATTR_CODE$", //模版内的属性名变量
-        VAL_VAR="$ATTR_VALUE$", //模版内的值变量
-        CTRL_NUM=1, //数字输入框
-        CTRL_TEXT=2, //文本输入框
-        CTRL_DATE=3, //日期输入框
-        CTRL_ENUM=4, //枚举下拉框
+        ATTR_VAR="$ATTR_CODE$", //模版内的属�?�名变量
+        VAL_VAR="$ATTR_VALUE$", //模版内的值变��?
+        CTRL_NUM=1, //数字输入��?
+        CTRL_TEXT=2, //文本输入��?
+        CTRL_DATE=3, //日期输入��?
+        CTRL_ENUM=4, //枚举下拉��?
         VALUE_TYPE_ENUM=0, //枚举
-        VALUE_TYPE_STR=1, //字符串
+        VALUE_TYPE_STR=1, //字符��?
         VALUE_TYPE_NUM=2, //数字
         VALUE_TYPE_DATE=3, //日期
         VALUE_TYPE_DATETIME=4, //日期时间
         $input;
 
     /**
-     * aeLogicBlock组件国际化对象名称空间
+     * aeLogicBlock组件国际化对象名称空��?
      * @namespace
      * @property {object} aeLogicBlock
-     * @property {string} aeLogicBlock.addNewCondition 添加新条件
-     * @property {string} aeLogicBlock.dropTip 拖到这里添加组
+     * @property {string} aeLogicBlock.addNewCondition 添加新条��?
+     * @property {string} aeLogicBlock.dropTip 拖到这里添加��?
      * @property {string} aeLogicBlock.notFound 搜索栏内容没有找到匹配项
      */
     $.ae.lang.aeLogicBlock={
@@ -1080,7 +1072,7 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 获得随机Id
      * @param {string} prefix Id前缀
-     * @returns {string} 返回带指定前缀的新Id
+     * @returns {string} 返回带指定前��?的新Id
      */
     function getId(prefix) {
         return prefix + (new Date()).getTime();
@@ -1091,7 +1083,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         s=s.replace(/\$ATTR_VALUE\$/g,val);
         return s;
     }
-    //根据操作符号名称在给定操作符里找对应操作符信息
+    //根据操作符号名称在给定操作符里找对应操作符信��?
     function getOperator(operators,operatorName) {
         var i;
         for(i=operators.length-1;i>=0;i--){
@@ -1104,9 +1096,9 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 表达式树模型类，其根节点必须是条件组类型节点，子节点可以是简单变量也可以是条件组节点
      * @param {string} exprId 表达式Id
-     * @param {string} [rootGroupId] 可选,根组Id
-     * @param {string} ［defaultOperatorText］默认逻辑操作符文本
-     * @param {string} ［defaultOperatorCode］默认逻辑操作符编码
+     * @param {string} [rootGroupId] 可�??,根组Id
+     * @param {string} ［defaultOperatorText］默认�?�辑操作符文��?
+     * @param {string} ［defaultOperatorCode］默认�?�辑操作符编��?
      * @constructor
      */
     function Expression(exprId, rootGroupId,defaultOperatorText,defaultOperatorCode) {
@@ -1122,9 +1114,9 @@ define('ui-logicblock', function(require, exports, moudles) {
     }
     Expression.prototype = {
         /**
-         * 添加组
-         * @param {MemberGroup} group 新的组实例
-         * @param {MemberGroup} parentGroup 新组所属的父组
+         * 添加��?
+         * @param {MemberGroup} group 新的组实��?
+         * @param {MemberGroup} parentGroup 新组��?属的父组
          */
         addGroup: function(group, parentGroup) {
             if(parentGroup && (parentGroup instanceof MemberGroup)) {
@@ -1137,7 +1129,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 根据组Id获得组实例
+         * 根据组Id获得组实��?
          * @param {string} groupId 组Id
          * @returns {MemberGroup|null} 返回给定Id的MemberGroup实例
          */
@@ -1145,7 +1137,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return this.groups[groupId] || null;
         },
         /**
-         * 删除组
+         * 删除��?
          * @param {string} groupId 组Id
          */
         deleteGroup: function(groupId) {
@@ -1155,17 +1147,17 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 导出表达式
+         * 导出表达��?
          * @param {function} [assembler] 装配器，即一个回调函数，它将在组装表达式的时候被调用，可用来自定义表达式
-         * @param {boolean} [useLogicOperatorText] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接）
+         * @param {boolean} [useLogicOperatorText] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接��?
          * @returns {string} 返回表达式字符串
          */
         toExpression: function(assembler,useLogicOperatorText) {
             return this.root.toExpression(assembler,useLogicOperatorText);
         },
         /**
-         * 获得状态
-         * @returns {Object} 返回状态对象
+         * 获得状�??
+         * @returns {Object} 返回状�?�对��?
          */
         getState: function() {
             var obj = {
@@ -1190,10 +1182,10 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 设置状态
-         * @param {object} state 状态对象
+         * 设置状�??
+         * @param {object} state 状�?�对��?
          * @param {object} mapVariables 以变量Id为key的变量map对象
-         * @returns {boolean} 如果状态设置成功返回true,否则返回false
+         * @returns {boolean} 如果状�?�设置成功返回true,否则返回false
          */
         setState: function(state,mapVariables) {
             var i,
@@ -1207,7 +1199,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 this.id = state.id;
                 groupStates = state.groups;
                 count = groupStates.length;
-                //先产生全部实例然后恢复状态,这样来避免恢复状态时父组找不到的问题
+                //先产生全部实例然后恢复状��?,这样来避免恢复状态时父组找不到的问题
                 for(i = 0; i < count; i++) {
                     if(groupStates[i].id === state.rootId) {
                         this.root = new MemberGroup({
@@ -1247,19 +1239,19 @@ define('ui-logicblock', function(require, exports, moudles) {
         }
     };
     /**
-     * 简单成员
+     * ��?单成��?
      * @param {string} id 序号
-     * @param {string} variableName 变量名
+     * @param {string} variableName 变量��?
      * @param {string} variable 变量编码
      * @param {string} variableId 变量Id
-     * @param {string} operator 操作符唯一标识
-     * @param {string} operatorName 操作符名称
-     * @param {string} value 值
-     * @param {string} valueText 值描述文本（此属性只有当vlaueType为0时才有值）
-     * @param {number} valueType 值类型, 0--枚举; 1--字符串(默认); 2--数字; 3--日期; 4--日期时间
-     * @param {number} controlType 控件类型，1--数字输入框; 2--文本输入框(默认); 3--日期组件; 4--枚举下拉框
-     * @param {string} template 模版，模版变量可能有 $ATTR_CODE$ 和 $ATTR_VALUE$
-     * @param {string} displayTemplate 显示模版，模版变量可能有 $ATTR_CODE$ 和 $ATTR_VALUE$
+     * @param {string} operator 操作符唯��?标识
+     * @param {string} operatorName 操作符名��?
+     * @param {string} value ��?
+     * @param {string} valueText 值描述文本（此属性只有当vlaueType��?0时才有�?�）
+     * @param {number} valueType 值类��?, 0--枚举; 1--字符��?(默认); 2--数字; 3--日期; 4--日期时间
+     * @param {number} controlType 控件类型��?1--数字输入��?; 2--文本输入��?(默认); 3--日期组件; 4--枚举下拉��?
+     * @param {string} template 模版，模版变量可能有 $ATTR_CODE$ ��? $ATTR_VALUE$
+     * @param {string} displayTemplate 显示模版，模版变量可能有 $ATTR_CODE$ ��? $ATTR_VALUE$
      * @param {MemberGroup} [parentGroup] 父组
      * @constructor
      */
@@ -1273,15 +1265,15 @@ define('ui-logicblock', function(require, exports, moudles) {
         this.value = value;
         this.valueText=valueText;
         this.valueType = valueType || VALUE_TYPE_STR;
-        this.controlType=controlType || CTRL_TEXT;
+        this.controlType=controlType || null;
         this.template=template;
         this.displayTemplate=displayTemplate;
         this.parentGroup = parentGroup || null;
     }
     Member.prototype = {
         /**
-         * 获得状态
-         * @returns {Object} 返回状态对象
+         * 获得状�??
+         * @returns {Object} 返回状�?�对��?
          */
         getState: function() {
             return {
@@ -1310,11 +1302,11 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 成员组类
      * @param options 选项，属性如下：
-     * * expr -- 表达式对象实例
-     * * [operator] -- 可选，默认操作符，暂时只支持and和or
-     * * [members] -- 可选，一个数组，其成员可以是Member实例或MemberGroup实例
-     * * [id] -- 可选，组id
-     * * [parentGroup] -- 可选，父组
+     * * expr -- 表达式对象实��?
+     * * [operator] -- 可�?�，默认操作符，暂时只支持and和or
+     * * [members] -- 可�?�，��?个数组，其成员可以是Member实例或MemberGroup实例
+     * * [id] -- 可�?�，组id
+     * * [parentGroup] -- 可�?�，父组
      * @constructor
      */
     function MemberGroup(options) {
@@ -1394,7 +1386,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 idx,
                 exprStr,
                 tmplStr,
-                $expr=$("#"+this.expr.id),
+                $expr=$('[data-expr-inst-id="'+this.expr.id+'"]'),
                 opts=$expr.aeLogicBlock("option"),
                 tmplParser=opts.templateParser,
                 mapVariables=$expr.data("map_vars"),
@@ -1445,7 +1437,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
             idx = s.lastIndexOf(this.operator);
             if(idx === (s.length - this.operator.length)) {
-                //去掉尾部多余操作符
+                //去掉尾部多余操作��?
                 s = s.substr(0, idx);
             }
             return "(" + s + ")";
@@ -1486,7 +1478,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return null;
         },
         /**
-         * 添加新成员，不允许添加重复成员
+         * 添加新成员，不允许添加重复成��?
          * @param {Member|MemberGroup} member 成员
          */
         addMember: function(member) {
@@ -1542,7 +1534,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          * 根据组Id添加新组
          * @param {string} groupId 新组Id
          * @param {string} parentGroupId 父组Id
-         * @returns {MemberGroup} 返回一个新的MemberGroup类实例
+         * @returns {MemberGroup} 返回��?个新的MemberGroup类实��?
          */
         addGroup: function(groupId, parentGroupId) {
             var exprId,
@@ -1552,7 +1544,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 opts,
                 parentGroup;
             exprId = $("#" + groupId).attr("data-expr-id");
-            $expr=$("#" + exprId);
+            $expr=$('[data-expr-inst-id="'+exprId+'"]');
             expr = $expr.data("expr");
             opts=$expr.aeLogicBlock("option");
             defaultLogicOperator=opts.logicOperators[0];
@@ -1567,40 +1559,40 @@ define('ui-logicblock', function(require, exports, moudles) {
             return group;
         },
         /**
-         * 根据组Id获取表达式对象
+         * 根据组Id获取表达式对��?
          * @param {string} groupId 组Id
          * @returns {Expression|null} 返回组Id对应的Expression类实例，如果没有对应的实例返回null
          */
         getExpr: function(groupId) {
             var exprId = $("#" + groupId).attr("data-expr-id"),
-                expr = $("#" + exprId).data("expr");
+                expr = $('[data-expr-inst-id="'+exprId+'"]').data("expr");
             return(expr) ? expr : null;
         },
         /**
-         * 根据组Id获得组实例
+         * 根据组Id获得组实��?
          * @param {string} groupId 组Id
          * @returns {MemberGroup}
          */
         getGroup: function(groupId) {
             var exprId = $("#" + groupId).attr("data-expr-id"),
-                expr = $("#" + exprId).data("expr");
+                expr = $('[data-expr-inst-id="'+exprId+'"]').data("expr");
             return(expr) ? expr.getGroup(groupId) : null;
         },
         /**
-         * 删除组
+         * 删除��?
          * @param {string} groupId 组Id
          */
         delGroup: function(groupId) {
             var exprId = $("#" + groupId).attr("data-expr-id"),
-                expr = $("#" + exprId).data("expr");
+                expr = $('[data-expr-inst-id="'+exprId+'"]').data("expr");
             expr.deleteGroup(groupId);
         },
         /**
-         * 触发表达式改变事件
+         * 触发表达式改变事��?
          * @param {string} exprId 表达式Id
          */
         fireExprChangeEvent: function(exprId) {
-            var $elExpr = $("#" + exprId);
+            var $elExpr = $('[data-expr-inst-id="'+exprId+'"]');
             $elExpr.aeLogicBlock("option").onExprChange.call($elExpr);
         }
     };
@@ -1642,7 +1634,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 v = $el.find("[data-role='member-value-datetime']").aeCalendar("getValue");
                 vt=v;
             }
-        }else{ //其他不显示值输入控件的情况
+        }else{ //其他不显示�?�输入控件的情况
             v="?";
             vt="?";
         }
@@ -1808,7 +1800,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             visible:false
         });
         $el.next().addClass("m-b-xs");
-        //构造日期控件
+        //构�?�日期控��?
         $cntr.find("[data-role='member-value-date']").aeCalendar({
             showTime: false,
             visible: false
@@ -1823,7 +1815,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         });
         $elFlip.next().addClass("m-b-xs");
 
-        //延后绑定事件，避免逻辑错误
+        //延后绑定事件，避免�?�辑错误
         opt=$elFlip.aeFlip("option");
         opt.onValueChange=hdDateChange;
 
@@ -1922,14 +1914,14 @@ define('ui-logicblock', function(require, exports, moudles) {
 
     function getMapVars(groupId) {
         var exprId = $("#" + groupId).attr("data-expr-id"),
-            $el = $("#" + exprId),
+            $el = $('[data-expr-inst-id="'+exprId+'"]'),
             mapVars = $el.data("map_vars");
         return mapVars;
     }
 
     function getOptions(groupId) {
         var exprId = $("#" + groupId).attr("data-expr-id"),
-            $el = $("#" + exprId),
+            $el = $('[data-expr-inst-id="'+exprId+'"]'),
             option = $el.aeLogicBlock("option");
         return option;
     }
@@ -2021,11 +2013,9 @@ define('ui-logicblock', function(require, exports, moudles) {
                 $elDateTime.aeCalendar("visible", true);
             }
         }else if(controlType == CTRL_ENUM) {
-            $elEnum.aeCombo("reload",finalValue);
-            if(defaultValue){
-                $elEnum.aeCombo("setValue",defaultValue);
-            }else{
-                $elEnum.aeCombo("setValue",finalValue[0].code);
+            if($.isArray(finalValue)){
+                $elEnum.aeCombo("reload",finalValue);
+                $elEnum.aeCombo("setDefault",finalValue[0].code);
             }
             $elEnum.aeCombo("visible", true);
         }
@@ -2066,24 +2056,24 @@ define('ui-logicblock', function(require, exports, moudles) {
             exprId = $("#" + groupId).attr("data-expr-id"),
             dialogId = "logicblock-" + exprId,
             $tree = $("#" + dialogId).find("[data-role='member-tree']");
-        //因为此事件中的this指向window而不是组件实例,因此设置全局变量进行通讯
+        //因为此事件中的this指向window而不是组件实��?,因此设置全局变量进行通讯
         window.logicblock_share_data = {
             "groupId": groupId,
             "memberId": memberId
         };
-        $("#"+exprId).data("ae-aeLogicBlock")._initSearchbar();
+        $('[data-expr-inst-id="'+exprId+'"]').data("ae-aeLogicBlock")._initSearchbar();
         $.openPopupDiv(dialogId, 'Select Variable', '640', '480', {
             showButton: false
         });
         $("#"+dialogId).aeDialog("option","beforeClose",function(){
-            $("#"+exprId).data("ae-aeLogicBlock")._resetDialog();
+            $('[data-expr-inst-id="'+exprId+'"]').data("ae-aeLogicBlock")._resetDialog();
         });
     }
     /**
      * 获得第一个有效的变量对象数据
      * @ignore
-     * @param variables 一个数组，即options.variables
-     * @returns {Object} 返回options.variables中第一个有效的变量数据对象
+     * @param variables ��?个数组，即options.variables
+     * @returns {Object} 返回options.variables中第��?个有效的变量数据对象
      */
     function getFirstVariableObject(variables) {
         var i,
@@ -2170,17 +2160,17 @@ define('ui-logicblock', function(require, exports, moudles) {
             $select,
             groupId = $this.parent().attr("data-group-id"),
             exprId = $("#" + groupId).attr("data-expr-id"),
-            $el = $("#" + exprId),
+            $el = $('[data-expr-inst-id="'+exprId+'"]'),
             expr = $el.data("expr"),
             option = $el.aeLogicBlock("option"),
             condi,
             operators,
             $btn,
-            variableObject, //第一个有效的变量对象,option.variables数组里可能存在描述分类的根节点对象
+            variableObject, //第一个有效的变量对象,option.variables数组里可能存在描述分类的根节点对��?
             member,
             tmpl,
             tmplDisplay,
-            defaultValue; //第一个变量中的第一个操作符的模版
+            defaultValue; //第一个变量中的第��?个操作符的模��?
         $memberView = createMemberView(groupId, memberId);
         $memberView.insertBefore($this);
         $cntr = $memberView.find("[data-role='member-cntr']");
@@ -2207,7 +2197,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         tmplDisplay=operators[0].displayTemplate;
         defaultValue=operators[0].defaultValue;
         $select = createOperatorView(groupId, memberId, variableObject);
-        $cntr.append($select); //默认加入第一个变量对应的操作符
+        $cntr.append($select); //默认加入第一个变量对应的操作��?
         $select.aeCombo({});
         $select.next().addClass("m-b-xs");
         $select.aeCombo("reload",operators);
@@ -2219,7 +2209,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $($select[0]).aeCombo("setDefault",variableObject.value[0].code);
         }
         addMemberEvents($memberView);
-        //获得界面元素值
+        //获得界面元素��?
         condi = getCondition(memberId, variableObject.valueType);
         //更新模型
         member = new Member(memberId, condi.variableName, condi.variable,condi.variableId, condi.operator,condi.operatorName, condi.value,condi.valueText, condi.valueType, condi.controlType, tmpl,tmplDisplay);
@@ -2303,7 +2293,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             exprId = $g.attr("data-expr-id"),
             memberId = $this.attr("data-member-id"),
             $member = $("#" + memberId),
-            $el = $("#" + exprId),
+            $el = $('[data-expr-inst-id="'+exprId+'"]'),
             option = $el.aeLogicBlock("option"),
             valueType = option.variables[$this.aeCombo("getIndex")].valueType;
         $member.find("[data-role='member-operator']").attr("data-value-type", valueType);
@@ -2352,7 +2342,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $g = $("#" + groupId),
             $member=$("#"+memberId),
             exprId = $g.attr("data-expr-id"),
-            $el = $("#" + exprId),
+            $el = $('[data-expr-inst-id="'+exprId+'"]'),
             option = $el.aeLogicBlock("option"),
             valueType,
             controlType,
@@ -2407,7 +2397,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             groupId = $this.attr("data-group-id"),
             $g = $("#" + groupId),
             group = ExpressionHelper.getGroup(groupId),
-            logicOperators = $("#" + $g.attr("data-expr-id")).aeLogicBlock("option").logicOperators,
+            logicOperators = $('[data-expr-inst-id="'+$g.attr("data-expr-id")+'"]').aeLogicBlock("option").logicOperators,
             logics = getNextOper(logicOperators, operator);
         if(logics !== null) {
             $g.removeClass(logics.current.color).addClass(logics.next.color);
@@ -2421,25 +2411,25 @@ define('ui-logicblock', function(require, exports, moudles) {
     }
 
     function disableMemberDroppable(exprId) {
-        var $els = $("#panels").find("[data-role='expr-cntr']").not("[id='" + exprId + "']");
+        var $els = $("[data-role='expr-cntr']").not("[data-expr-inst-id='" + exprId + "']");
         $els.find("[data-role='member']").aeDroppable("disable");
         $els.find("[data-role='member-drop-tip']").aeDroppable("disable");
     }
 
     function enableMemberDroppable(exprId) {
-        var $els = $("#panels").find("[data-role='expr-cntr']").not("[id='" + exprId + "']");
+        var $els = $("[data-role='expr-cntr']").not("[data-expr-inst-id='" + exprId + "']");
         $els.find("[data-role='member']").aeDroppable("enable");
         $els.find("[data-role='member-drop-tip']").aeDroppable("enable");
     }
 
     function disableGroupDroppable(exprId) {
         disableMemberDroppable(exprId);
-        $("#" + exprId).find("[data-role='member']").aeDroppable("disable");
+        $('[data-expr-inst-id="'+exprId+'"]').find("[data-role='member']").aeDroppable("disable");
     }
 
     function enableGroupDroppable(exprId) {
         enableMemberDroppable(exprId);
-        $("#" + exprId).find("[data-role='member']").aeDroppable("enable");
+        $('[data-expr-inst-id="'+exprId+'"]').find("[data-role='member']").aeDroppable("enable");
     }
 
     function hdStartDrag(event, ui) {
@@ -2447,7 +2437,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             groupId = $this.attr("data-group-id"),
             $g = $("#" + groupId),
             exprId = $g.attr("data-expr-id"),
-            $expr = $("#" + exprId),
+            $expr = $('[data-expr-inst-id="'+exprId+'"]'),
             $btns,
             $tips;
         disableMemberDroppable(exprId);
@@ -2466,7 +2456,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $parentGroupCntr = $this.parent(),
             $g = $("#" + groupId),
             exprId = $g.attr("data-expr-id"),
-            $expr = $("#" + exprId);
+            $expr = $('[data-expr-inst-id="'+exprId+'"]');
         disableGroupDroppable(exprId);
         $expr.find("[data-role='member-del']").hide();
         $g.find("[data-role='member-add']").attr("data-excluder", "1");
@@ -2484,7 +2474,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         var $this = $(this),
             groupId = $this.attr("data-group-id"),
             exprId = $("#" + groupId).attr("data-expr-id"),
-            $expr = $("#" + exprId);
+            $expr = $('[data-expr-inst-id="'+exprId+'"]');
         enableMemberDroppable(exprId);
         $expr.find("[data-role='member-icon']").not("[data-member-id='" + $this.attr("id") + "']").removeClass("ion-arrow-shrink").addClass("ion-drag");
         $expr.find("[data-role='member-del']").show();
@@ -2498,7 +2488,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             groupId = $this.attr("id"),
             $g = $("#" + groupId),
             exprId = $g.attr("data-expr-id"),
-            $expr = $("#" + exprId);
+            $expr = $('[data-expr-inst-id="'+exprId+'"]');
         enableGroupDroppable(exprId);
         $expr.find("[data-role='member-del']").show();
         $btns = $expr.find("[data-role='member-add']");
@@ -2549,17 +2539,19 @@ define('ui-logicblock', function(require, exports, moudles) {
             defaultLogicOperator,
             member,
             group,
+            oldParentGroupId,
             parentGroupId,
             $el;
         $this.removeClass("b-danger");
-        //被拖拽元素肯定都是条件项,所有的组都不能拖拽!
+        //被拖拽元素肯定都是条件项,��?有的组都不能拖拽!
         if(thisRole === "member") { //合并两个条件为新的组,此组加入到目标条件所在的组内
             newGroupId = getId("gid");
             $this.hide();
-            //生成视图并调整视图关系
+            //生成视图并调整视图关��?
             parentGroupId = $this.attr("data-group-id");
+            oldParentGroupId = draggable.attr("data-group-id");
             exprId = $("#" + parentGroupId).attr("data-expr-id");
-            defaultLogicOperator=$("#"+exprId).aeLogicBlock("option").logicOperators[0];
+            defaultLogicOperator=$('[data-expr-inst-id="'+exprId+'"]').aeLogicBlock("option").logicOperators[0];
             groupView = createMemberGroupView(newGroupId);
             groupView.addClass(defaultLogicOperator.color);
             groupView.find('[data-role="oper"]').text(defaultLogicOperator.text);
@@ -2581,7 +2573,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             group.addMember(member);
             groupId = draggable.attr("data-group-id");
             prevGroupId = groupId;
-            member = ExpressionHelper.getGroup(parentGroupId).getMember(draggable.attr("id"));
+            member = ExpressionHelper.getGroup(oldParentGroupId).getMember(draggable.attr("id"));
             group.addMember(member);
             $this.show();
             $el.find("[data-role='member-drop-tip']").aeDroppable({
@@ -2597,7 +2589,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 start: hdStartGroupDrag,
                 stop: hdStopGroupDrag
             });
-        } else if(thisRole === "member-drop-tip") { //加入到组内
+        } else if(thisRole === "member-drop-tip") { //加入到组��?
             if(draggable.attr("data-role") === "member-group") { //组加入组
                 groupId = draggable.attr("id");
                 group = ExpressionHelper.getGroup(groupId);
@@ -2606,7 +2598,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 prevGroupId = $el.parent().attr("data-group-id");
                 groupId = $this.attr("data-group-id");
                 $el = $("#" + groupId);
-                //生成视图并调整视图关系
+                //生成视图并调整视图关��?
                 $btn = $el.find("[data-role='member-add']").filter("[data-group-id='" + groupId + "']");
                 draggable.insertBefore($btn);
                 //更新模型
@@ -2615,7 +2607,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 groupId = draggable.attr("data-group-id");
                 prevGroupId = groupId;
                 groupId = $this.attr("data-group-id");
-                //生成视图并调整视图关系
+                //生成视图并调整视图关��?
                 $el = $("#" + groupId);
                 exprId = $el.attr("data-expr-id");
                 $btn = $el.find("[data-role='member-add']").filter("[data-group-id='" + groupId + "']");
@@ -2700,65 +2692,65 @@ define('ui-logicblock', function(require, exports, moudles) {
      */
     $.aeWidget("ae.aeLogicBlock", {
         /**
-         * 这是一个逻辑类型，它没有对应的实体。
+         * 这是��?个�?�辑类型，它没有对应的实体�??
          * @typedef ae.aeLogicBlock#VariableItem
          * @type {object}
          * @property {string} id 变量Id
          * @property {string} name 变量名称，此名称是变量的组件展现文本
          * @property {string} code 变量编码，调用[toExpression]{@link ae.aeLogicBlock#toExpression}
-         * 方法获得的表达式都将以此属性的值作为最终的变量关键字。
-         * @property {number} valueType 值类型，分为以下几种：
-         * * 0 -- 枚举；
+         * 方法获得的表达式都将以此属�?�的值作为最终的变量关键字�??
+         * @property {number} valueType 值类型，分为以下几种��?
+         * * 0 -- 枚举��?
          * * 1 -- 字符串；
-         * * 2 -- 数字；
-         * * 3 -- 日期；
-         * * 4 -- 日期时间。
-         * @property {string} value 当前值，它将优先于默认值被组件展现
+         * * 2 -- 数字��?
+         * * 3 -- 日期��?
+         * * 4 -- 日期时间��?
+         * @property {string} value 当前值，它将优先于默认�?�被组件展现
          * @property {ae.aeLogicBlock#OperatorItem[]} operators 操作符信息对象数组，每个数组元素是一个[对象]{@link OperatorItem}
          */
 
         /**
-         * 这是一个逻辑类型，它没有对应的实体。
+         * 这是��?个�?�辑类型，它没有对应的实体�??
          * @typedef ae.aeLogicBlock#OperatorItem
          * @type {object}
          * @property {string} name 操作符名称，此名称是操作符的组件展现文本
-         * @property {string} code 操作符编码，此编码只在没有设置template属性的时候有用，
+         * @property {string} code 操作符编码，此编码只在没有设置template属�?�的时�?�有用，
          * 调用[toExpression]{@link ae.aeLogicBlock#toExpression}方法获得的表达式都将
-         * 以此属性的值作为最终的操作符关键字。
-         * @property {string} template 模版字符串。如果同时设置此属性和code属性，那么组件
-         * 将优先以此属性为准来生成表达式。模版字符串中暂时只支持两个模版变量：$ATTR_CODE$和
-         * $ATTR_VALUE$， 其中，$ATTR_CODE$将被变量编码替换，而$ATTR_VALUE$将被变量的当前
-         * 值或默认值替换。
-         * @property {string} displayTemplate 显示模版字符串。此模版用于自定义表达式展现为
-         * 自然语言表达式的时候设置。
-         * @property {number} controlType 控件类型，包括以下可选值：
+         * 以此属�?�的值作为最终的操作符关键字��?
+         * @property {string} template 模版字符串�?�如果同时设置此属�?�和code属�?�，那么组件
+         * 将优先以此属性为准来生成表达式�?�模版字符串中暂时只支持两个模版变量��?$ATTR_CODE$��?
+         * $ATTR_VALUE$��? 其中��?$ATTR_CODE$将被变量编码替换，�??$ATTR_VALUE$将被变量的当��?
+         * 值或默认值替换�??
+         * @property {string} displayTemplate 显示模版字符串�?�此模版用于自定义表达式展现��?
+         * 自然语言表达式的时�?�设置�??
+         * @property {number} controlType 控件类型，包括以下可选�?�：
          * * 1 -- 数字输入框；
          * * 2 -- 文本输入框；
          * * 3 -- 日期输入框；
-         * * 4 -- 枚举下拉框。
-         * * 其他任何取值都不会展现任何控件
-         * @property {string} defaultValue 默认值，即数据类型对应控件的默认显示值或编码(下拉框)
+         * * 4 -- 枚举下拉框�??
+         * * 其他任何取�?�都不会展现任何控件
+         * @property {string} defaultValue 默认值，即数据类型对应控件的默认显示值或编码(下拉��?)
          */
 
         /**
-         * 可选项
+         * 可�?�项
          * @name ae.aeLogicBlock#options
-         * @property {object} options                  - 可选项
-         * @property {ae.aeLogicBlock#VariableItem[]} options.variables - 变量信息对象数组，每个数组元素是一个[对象]{@link VariableItem}
-         * @property {array} options.logicOperators    - 逻辑操作符信息对象数组
-         * @property {boolean} options.hasCatalog      - 变量是否存在分类，如果为false，那么变量选择交互方式将以下拉框的形式体现，否则，变量选择交互方式将以树形对话框形势体现。默认为false，即不存在分类。
-         * @property {function} options.onExprChange   - 表达式改变回调函数
+         * @property {object} options                  - 可�?�项
+         * @property {ae.aeLogicBlock#VariableItem[]} options.variables - 变量信息对象数组，每个数组元素是��?个[对象]{@link VariableItem}
+         * @property {array} options.logicOperators    - 逻辑操作符信息对象数��?
+         * @property {boolean} options.hasCatalog      - 变量是否存在分类，如果为false，那么变量�?�择交互方式将以下拉框的形式体现，否则，变量选择交互方式将以树形对话框形势体现�?�默认为false，即不存在分类�??
+         * @property {function} options.onExprChange   - 表达式改变回调函��?
          * @property {function} options.assembler      - 组装器，即一个回调函数，它将在组装表达式的时候被调用，可用来自定义表达式
-         * @property {function} options.templateParser - 一个模版解析函数，默认使用内置解析函数
+         * @property {function} options.templateParser - ��?个模版解析函数，默认使用内置解析函数
          * @example <caption>HTML代码</caption>
          * <div class="container">
          *     <div id="myLogicBlock"></div>
          *     <div class="text-center" id="expr"></div>
          * </div>
          * @example <caption>javascript代码</caption>
-         * // 此函数为一个回调函数，调用 $el.aeLogicBlock("toExpression",myAssembler);
-         * // 可以输出拼接了表名且使用了模版的表达式。显示返回false表示使用内置的拼接方式生成
-         * // 表达式，如果返回一个字符串，那么组件将使用这个字符串来生成表达式。
+         * // 此函数为��?个回调函数，调用 $el.aeLogicBlock("toExpression",myAssembler);
+         * // 可以输出拼接了表名且使用了模版的表达式�?�显示返回false表示使用内置的拼接方式生��?
+         * // 表达式，如果返回��?个字符串，那么组件将使用这个字符串来生成表达式�??
          * function myAssembler(detailedList) {
          *     var variableCode=detailedList.variableCode,
          *         variableName=detailedList.variableName,
@@ -2773,7 +2765,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         exprStr;
          *
          *     if($.isFunction(templateParser)){
-         *         //此处调用默认模版解析函数输出以编码显示的表达式
+         *         //此处调用默认模版解析函数输出以编码显示的表达��?
          *         if(userData && userData.tableName){
          *             exprStr=templateParser(userData.tableName+"."+variableCode,value,template);
          *         }else{
@@ -2782,7 +2774,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         console.log("exprStr = '"+exprStr+"'"); //debug
          *         return exprStr;
          *     }
-         *     return false; //以默认方式拼装子表达式
+         *     return false; //以默认方式拼装子表达��?
          * }
          * //变量数据定义
          * var variablesCache=[
@@ -2807,13 +2799,13 @@ define('ui-logicblock', function(require, exports, moudles) {
          *     },
          *     {
          *         id:"v0002",
-         *         name:"用户名",
+         *         name:"用户��?",
          *         code:"v0002",
          *         valueType:1,
          *         value:"John",
          *         operators:[
          *             {
-         *                 name:"是",
+         *                 name:"��?",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:2,
@@ -2825,7 +2817,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         id:"v0003",
          *         name:"创建日期",
          *         code:"v0003",
-         *         valueType:3, //日期类型（不包括时间）
+         *         valueType:3, //日期类型（不包括时间��?
          *         value:[
          *             {
          *                 name:"今天",
@@ -2836,13 +2828,13 @@ define('ui-logicblock', function(require, exports, moudles) {
          *                 code:"yestoday()"
          *             },
          *             {
-         *                 name:"今天以前的第30天",
+         *                 name:"今天以前的第30��?",
          *                 code:"pre30days()"
          *             }
          *         ],
          *         operators:[
          *             {
-         *                 name:"是",
+         *                 name:"��?",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:3, //日期组件
@@ -2852,14 +2844,14 @@ define('ui-logicblock', function(require, exports, moudles) {
          *                 name:"早于",
          *                 code:"<",
          *                 template:"$ATTR_CODE$ < $ATTR_VALUE$",
-         *                 controlType:4, //下拉框
+         *                 controlType:4, //下拉��?
          *                 defaultValue:""
          *             },
          *             {
          *                 name:"晚于",
          *                 code:">",
          *                 template:"$ATTR_CODE$ > $ATTR_VALUE$",
-         *                 controlType:4, //下拉框
+         *                 controlType:4, //下拉��?
          *                 defaultValue:"2016-01-29"
          *             }
          *         ],
@@ -2871,11 +2863,11 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         id:"v0004",
          *         name:"生效日期",
          *         code:"v0004",
-         *         valueType:4, //日期类型（包括时分秒）
+         *         valueType:4, //日期类型（包括时分秒��?
          *         value:"2016-01-29",
          *         operators:[
          *             {
-         *                 name:"是",
+         *                 name:"��?",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:3, //日期组件
@@ -2892,14 +2884,14 @@ define('ui-logicblock', function(require, exports, moudles) {
          *
          * $("#myLogicBlock").aeLogicBlock({
          *     variables: variablesCache,
-         *     logicOperators: [ //逻辑操作符
+         *     logicOperators: [ //逻辑操作��?
          *         {
          *             text: "并且",
          *             code: "and",
          *             color: "bg-info"
          *         },
          *         {
-         *             text: "或者",
+         *             text: "或�??",
          *             code: "or",
          *             color: "bg-success"
          *         }
@@ -2919,16 +2911,16 @@ define('ui-logicblock', function(require, exports, moudles) {
          *             exprStr;
          *
          *         if($.isFunction(templateParser)){
-         *             //此处简单拼接变量名称、操作符名称和值来返回语义化的子表达式
+         *             //此处��?单拼接变量名称�?�操作符名称和�?�来返回语义化的子表达式
          *             exprStr=variableName+operatorName+valueText;
          *             return exprStr;
          *         }
-         *         return false; //以默认方式拼装子表达式
+         *         return false; //以默认方式拼装子表达��?
          *     },
-         *     hasCatalog: true, //启用变量分类，此模式下的variables里的结构与aeTree所需的数据结构类似
+         *     hasCatalog: true, //启用变量分类，此模式下的variables里的结构与aeTree��?��?的数据结构类��?
          *     onExprChange: function() {
-         *         //使用默认的回调函数（assembler属性指定的函数）输出变更后的表达式，
-         *         //此时，this关键字指向Id为"myLogicBlock"的DOM元素实例
+         *         //使用默认的回调函数（assembler属�?�指定的函数）输出变更后的表达式��?
+         *         //此时，this关键字指向Id��?"myLogicBlock"的DOM元素实例
          *         var exprStr=$(this).aeLogicBlock("toExpression",null,true);
          *         $("#expr").text(exprStr);
          *     }
@@ -2936,7 +2928,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          */
         options: {
             variables: null,
-            logicOperators: [ //逻辑操作符
+            logicOperators: [ //逻辑操作��?
                 {
                     text: "AND",
                     code: "and",
@@ -2954,21 +2946,27 @@ define('ui-logicblock', function(require, exports, moudles) {
         },
         _create: function() {
             var $el = this.element,
-                inited = $el.data("inited"),
-                exprId = $el.attr("id") || getId("expr"),
+                // inited = $el.data("inited"),
+                exprId =$el.attr("id"), //getId("expr"),
                 groupId = getId("gid");
-            if(!inited) {
-                $el.data("inited", true);
-                this._hdTimer=null;
-                this._initModel(exprId, groupId);
-                this._initView(exprId, groupId);
+            // if(!inited) {
+            //     $el.data("inited", true);
+            // }
+            this._hdTimer=null;
+            if(!exprId){
+                exprId=getId("expr");
+                $el.attr("id",exprId);
             }
+            $el.attr("aeId",$el.attr("id"));
+            this._initModel(exprId, groupId);
+            this._initView(exprId, groupId);
         },
         _initSearchbar:function(){
             var exprId,
                 $dlg;
             if(!this._$tree){
-                exprId=this.element.attr("id");
+                // exprId=this.element.attr("id");
+                exprId=this.element.data("expr").id;
                 $dlg=$("#logicblock-"+exprId);
                 this._$tree=$dlg.find('[data-role="var-tree"]');
                 this._$result=$dlg.find('[data-role="result"]');
@@ -3069,7 +3067,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         _search:function(condition){
-            var exprId=this.element.attr("id"),
+            var exprId=this.element.data("expr").id, //this.element.attr("id")
                 $el=$("#logicblock-"+exprId).find("[data-role='member-tree']"),
                 cache,
                 nodeId,
@@ -3102,7 +3100,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             this._$result.append($(s));
         },
         /**
-         * 预处理可选项，使其值规范便于内部处理
+         * 预处理可选项，使其�?�规范便于内部处��?
          * @ignore
          * @private
          */
@@ -3121,7 +3119,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                     operators=variables[i].operators;
                     for(j = operators.length-j; j >=0; j--) {
                         oper=operators[j];
-                        oper.noValue=(oper.template.indexOf(VAL_VAR)<0); //暂时内部处理这个状态，如果有新需求再由外部设置
+                        oper.noValue=(oper.template.indexOf(VAL_VAR)<0); //暂时内部处理这个状�?�，如果有新��?求再由外部设��?
                         oper.template=oper.template || "";
                         oper.controlType=parseInt(oper.controlType,10);
                         if(typeof(oper.defaultValue)!=="string"){
@@ -3138,14 +3136,15 @@ define('ui-logicblock', function(require, exports, moudles) {
                 defaultLogicOperator=this.options.logicOperators[0];
             expr = new Expression(exprId, groupId,defaultLogicOperator.text,defaultLogicOperator.code);
             this._preprocessVariables();
-            this.element.attr("aeId",exprId).attr("id", exprId).data("expr", expr);
+            // this.element.attr("aeId",exprId).attr("id", exprId).data("expr", expr);
+            this.element.attr("data-expr-inst-id",exprId).data("expr", expr);
             return expr;
         },
         _initView: function(exprId, groupId) {
             var $el = this.element,
                 $g = createMemberGroupView(groupId);
             $g.find('[data-role="oper"]').text(this.options.logicOperators[0].text);
-            $g.attr("data-expr-id", exprId).attr("data-root-group", "1");
+            $g.attr("aeType","aeLogicBlock").attr("data-expr-id", exprId).attr("data-root-group", "1");
             $g.addClass(this.options.logicOperators[0].color);
             $el.attr("data-root-gid", groupId).prepend($g);
             $g.find("[data-role='drag-handle']").remove();
@@ -3226,29 +3225,29 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 导出表达式
+         * 导出表达��?
          * @name ae.aeLogicBlock#toExpression
          * @function
-         * @param {function} [assembler] 组装器，即一个回调函数，此函数将在每次拼接条件的时候被组件调用，可以使用它来自定义条件的表达方式（比如：在变量名前面添加一个前缀）。如果此参数与options选项内的assembler同时存在将优先使用参数传入的函数。
-         * @param {boolean} [useLogicOperatorText=false] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接），如果是true，那么此函数将使用logicOperators中的text属性来拼接表达式。
-         * @return {string} 返回表达式
+         * @param {function} [assembler] 组装器，即一个回调函数，此函数将在每次拼接条件的时�?�被组件调用，可以使用它来自定义条件的表达方式（比如：在变量名前面添加一个前��?）�?�如果此参数与options选项内的assembler同时存在将优先使用参数传入的函数��?
+         * @param {boolean} [useLogicOperatorText=false] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接），如果是true，那么此函数将使用logicOperators中的text属�?�来拼接表达式�??
+         * @return {string} 返回表达��?
          */
         toExpression: function(assembler,useLogicOperatorText) {
             var expr = this.element.data("expr");
             return expr.toExpression((assembler || this.options.assembler),useLogicOperatorText);
         },
         /**
-         * 获得状态
+         * 获得状�??
          * @name ae.aeLogicBlock#getState
          * @function
-         * @return {object} 返回组件内部状态
+         * @return {object} 返回组件内部状�??
          */
         getState: function() {
             var expr = this.element.data("expr");
             return expr.getState();
         },
         /**
-         * 清理现有属性为重新加载做准备
+         * 清理现有属�?�为重新加载做准��?
          * @ignore
          * @name ae.aeLogicBlock#_clear
          * @function
@@ -3258,20 +3257,25 @@ define('ui-logicblock', function(require, exports, moudles) {
         _clear: function() {
             var expr = this.element.data("expr"),
                 exprId = expr.id;
+                groupId=expr.root.id;
             expr.gc();
             this.element.off(".aeLogicBlock");
             this.element.empty();
-            return exprId;
+            $("#logicblock-" + exprId).remove();
+            return {
+                "exprId":exprId,
+                "groupId":groupId
+            };
         },
         /**
-         * 根据指定变量名在变量数据对象中检索，如果有匹配的数据项则返回它
+         * 根据指定变量名在变量数据对象中检索，如果有匹配的数据项则返回��?
          * @ignore
          * @name ae.aeLogicBlock#_getVariableObject
          * @function
          * @private
          * @param {object} variables 变量对象
-         * @param {string} vairableName 变量名
-         * @return {object} 返回匹配的变量数据对象
+         * @param {string} vairableName 变量��?
+         * @return {object} 返回匹配的变量数据对��?
          */
         _getVariableObject: function(variables, vairableName) {
             var i;
@@ -3283,13 +3287,13 @@ define('ui-logicblock', function(require, exports, moudles) {
             return null;
         },
         /**
-         * 获得逻辑操作符选项
+         * 获得逻辑操作符�?�项
          * @ignore
          * @name ae.aeLogicBlock#_getLogicOperator
          * @function
          * @private
-         * @param {string} operCode 逻辑操作符编码
-         * @returns {string|null} 返回operCode逻辑操作符对应的逻辑操作符选项
+         * @param {string} operCode 逻辑操作符编��?
+         * @returns {string|null} 返回operCode逻辑操作符对应的逻辑操作符�?�项
          */
         _getLogicOperator: function(operCode) {
             var logicOperators = this.options.logicOperators,
@@ -3333,7 +3337,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $btn = $parentGroupView.find("[data-role='group-cntr']").children("[data-role='member-add']");
             for(i = 0; i < count; i++) {
                 if(members[i] instanceof MemberGroup) {
-                    //新建组
+                    //新建��?
                     $groupView = createMemberGroupView(members[i].id);
                     $groupView.attr("data-expr-id", $parentGroupView.attr("data-expr-id")); //继承父组上的exprId
                     $groupView.insertBefore($btn);
@@ -3365,7 +3369,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                     $memberView.insertBefore($btn);
                     $cntr = $memberView.find("[data-role='member-cntr']");
                     variableObject = this._getVariableObject(options.variables, members[i].variableName);
-                    if(variableObject === null) { //没有找到对应变量名则取第一个有效变量
+                    if(variableObject === null) { //没有找到对应变量名则取第��?个有效变��?
                         variableObject = getFirstVariableObject(options.variables);
                     }
                     if(this.options.hasCatalog) {
@@ -3385,14 +3389,12 @@ define('ui-logicblock', function(require, exports, moudles) {
                     $elOpers = createOperatorView(groupId, memberId, variableObject, members[i].operator);
                     $cntr.append($elOpers);
                     $elOpers.aeCombo({});
+                    $elOpers.next().addClass("m-b-xs");
                     $elOpers.aeCombo("reload",variableObject.operators);
-                    $elOpers.aeCombo("setDefault",variableObject.operators[0].code);
+                    $elOpers.aeCombo("setDefault",members[i].operator); //variableObject.operators[0].code
                     setOperatorsUserdata($elOpers,variableObject.operators);
                     $select = createValueView($cntr,groupId, memberId, members[i].valueType,members[i].value, members[i].defaultValue);
-                    if($.isArray(variableObject.value)) { //是下拉框
-                        $($select[0]).aeCombo("reload",variableObject.value);
-                        $($select[0]).aeCombo("setDefault",variableObject.value[0].code);
-                    }
+
                     addMemberEvents($memberView);
                     optValueChange=$elOpers.aeCombo("option").onValueChange; //保存现有回调函数
                     $elOpers.aeCombo("option","onValueChange",null); //卸载回调函数避免调用
@@ -3406,28 +3408,31 @@ define('ui-logicblock', function(require, exports, moudles) {
                         controlType:parseInt(members[i].controlType,10)
                     };
                     exprId=$("#"+groupId).attr("data-expr-id");
-                    $expr = $("#" + exprId);
+                    $expr = $('[data-expr-inst-id="'+exprId+'"]');
                     optionValue=members[i].value;
                     if(optionValue==="?"){
                         optionValue="";
                     }
                     refreshValues(ownerInfo,optionValue,members[i].valueText);
+                    if($.isArray(variableObject.value)) { //是下拉框
+                        $($select[0]).aeCombo("reload",variableObject.value);
+                        $($select[0]).aeCombo("setDefault",(members[i].value || variableObject.value[0].code));
+                    }
                     updateValuesModel(ownerInfo);
                 }
             }
         },
         /**
-         * 清除表达式
+         * 清除表达��?
          * @name ae.aeLogicBlock#clear
          * @function
          */
         clear: function() {
-            var exprId = this.element.attr("id") || getId("expr"),
-                groupId = getId("gid");
-            this._clear();
-            this._initModel(exprId, groupId);
-            this._initView(exprId, groupId);
-            ExpressionHelper.fireExprChangeEvent(exprId);
+            var groupId = getId("gid"),
+                oldIds=this._clear();
+            this._initModel(oldIds.exprId, oldIds.groupId);
+            this._initView(oldIds.exprId, oldIds.groupId);
+            ExpressionHelper.fireExprChangeEvent(oldIds.exprId);
         },
         /**
          * 重新加载根组
@@ -3436,7 +3441,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          * @function
          * @private
          * @param  {object} $root 根组DOM元素实例
-         * @param  {object} state 内部状态
+         * @param  {object} state 内部状�??
          */
         _reloadRoot:function($root,state){
             var $glbl,
@@ -3460,20 +3465,20 @@ define('ui-logicblock', function(require, exports, moudles) {
          * 重新加载数据
          * @name ae.aeLogicBlock#reload
          * @function
-         * @param {Object} state 状态数据对象，其值通过[getState]{@link ae.aeLogicBlock#getState}方法获取
+         * @param {Object} state 状�?�数据对象，其�?��?�过[getState]{@link ae.aeLogicBlock#getState}方法获取
          */
         reload: function(state) {
             var expr,
                 members,
-                oldExprId,
+                oldIds,
                 $g,
                 mapVariables;
-            oldExprId = this._clear();
-            expr = this._initModel(state.id, state.rootId);
+            oldIds = this._clear();
+            expr = this._initModel(state.id, state.rootId);//state.id
             mapVariables=this.element.data("map_vars");
             expr.setState(state,mapVariables);
-            $("#logicblock-" + oldExprId).attr("id", "logicblock-" + expr.id);
-            $g = this._initView(state.id, state.rootId);
+            // $("#logicblock-" + oldExprId).attr("id", "logicblock-" + expr.id);
+            $g = this._initView(state.id, state.rootId);//state.id
             this._reloadRoot($g,state);
             members = expr.root.members;
             this._reloadViews($g, members);
@@ -3500,11 +3505,12 @@ define('ui-logicblock', function(require, exports, moudles) {
 define('ui-notice', function (require, exports, moudles) {
     $.ae.lang.aeNotice = {
         success: "Success",
-        error: "Error",
-        warning: "Warning",
-        message: "Message",
-        notify: "Notification",
-        annunciate: "Announcement"
+        error:"Error",
+        warning:"Warning",
+        message:"Message",
+        notify:"Notification",
+        annunciate:"Announcement",
+        rss:"Rss"
     };
     $.aeWidget("ae.aeNotice", {
         options: {
@@ -3527,29 +3533,29 @@ define('ui-notice', function (require, exports, moudles) {
             /**
              * 音频文件路径
              * */
-            audio: '/ARIESRES/crm-bj/fe-common/audio/blop',
+            audio: '/fe-common/audio/blop',
             /**
              * 音频播放时的音量
              * */
-            volume: '60',
+            volume: '45',
             /**
              * 是否自动关闭
-             * 为true显示关闭按钮, setting life  will be ignored；为false时会经过life时长后自动关闭
+             * 为true显示关闭按钮, setting life  will be ignored；为false时会经过life时长后自动关��?
              * */
             autoClose: true,
             /**
-             * notice 显示的垂直位置
+             * notice 显示的垂直位��?
              * top bottom
              * */
             verticalEdge: 'bottom',
             /**
-             * notice 显示的水平位置
+             * notice 显示的水平位��?
              * left center right
              * */
             horizontalEdge: 'right',
             zindex: '1060',
             /**
-             *需要显示icon的名字
+             *��?要显示icon的名��?
              * */
             icon: 'md-close',
             onCreate: null,
@@ -3611,10 +3617,10 @@ define('ui-notice', function (require, exports, moudles) {
             $container = this.container;
             num = $container.data("notice") || 0;
             num += 1;
-            $container.data("notice", num); //将页面notice实例的数量保存的容器的自定义属性中
+            $container.data("notice", num); //将页面notice实例的数量保存的容器的自定义属�?�中
             notificationId = "notice-notification-" + num;
             $container.css("z-index", options.zindex);
-            $notification = $('<div class="r clear"></div>');
+            $notification = $('<div class="r clear m-t-xs"></div>');
             //add top frame position offset
             if (window.top === window.self) {
                 $container.addClass("is-top-frame");
@@ -3656,7 +3662,7 @@ define('ui-notice', function (require, exports, moudles) {
             target.on('click', '.md-close', {
                 inst: this,
                 opts: options
-            }, function (event) {  //响应按钮的关闭事件
+            }, function (event) {  //响应按钮的关闭事��?
                 var data = event.data;
                 data.inst._closeNotification(target, data.opts);
             });
@@ -3794,7 +3800,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/beep1"
+                audio: "/fe-common/audio/blop"
             });
         },
         error: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3814,7 +3820,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/bling4"
+                audio: "/fe-common/audio/blop"
             });
         },
         warning: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3833,7 +3839,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/bling1"
+                audio: "/fe-common/audio/blop"
             });
         },
         info: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3865,7 +3871,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/boop1"
+                audio: "/fe-common/audio/boop2"
             });
         },
         messageDark: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3878,7 +3884,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/boop1"
+                audio: "/fe-common/audio/boop2"
             });
         },
         notify: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3891,7 +3897,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
+                audio: "/fe-common/audio/boop2"
             });
         },
         annunciate: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3904,7 +3910,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/boop3"
+                audio: "/fe-common/audio/boop2"
             });
         },
         rss: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3917,7 +3923,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
+                audio: "/fe-common/audio/boop2"
             });
         }
     };
@@ -3933,7 +3939,7 @@ define('ui-notice', function (require, exports, moudles) {
 });
 
 /**
- * 水平树组件模块
+ * 水平树组件模��?
  * @module ui-htree
  */
  define('ui-htree', function(require, exports, moudles) {
@@ -3944,13 +3950,12 @@ define('ui-notice', function (require, exports, moudles) {
         CSS_ACTIVE="active",
         CSS_CNTR="node-selection",
         FOLDER_ICON="folder",
-        FOLDER_OPEN_ICON="folder_open",
         FOLDER_BLURRY_ICON="folder_move",
         FILE_ICON="file_outline",
         LOADING_ANI="loading.gif";
 
     /**
-     * aeHTree组件国际化对象名称空间
+     * aeHTree组件国际化对象名称空��?
      * @namespace
      * @property {object} aeHTree
      * @property {string} aeHTree.selectedCount 已经选择总数描述
@@ -3963,12 +3968,12 @@ define('ui-notice', function (require, exports, moudles) {
         cancel:"Cancel"
     };
 
-    //判断是否是图片图标
+    //判断是否是图片图��?
     function isImgIcon(icon){
         return icon.indexOf(".")>=0;
     }
 
-    //多选模式下复选框的点击响应处理
+    //多�?�模式下复�?�框的点击响应处��?
     function hdCheck(inst,nodeId){
         var $this=$(this),
             selected=$this.hasClass(CSS_OUTLINE),
@@ -3977,6 +3982,14 @@ define('ui-notice', function (require, exports, moudles) {
         affectedNodes=inst.setSelected(nodeId,selected);
         inst._updateSelectedNodes(affectedNodes);
         return affectedNodes;
+    }
+    function addChilds($el,inst,node,opts) {
+        if(node.loading===false && $.isFunction(opts.source)){
+            $el.find('[data-role="htree-icon"]').hide();
+            $el.find('[data-role="htree-loading"]').show();
+            node.loading=true;
+            opts.source.call(inst.element,node.getState());
+        }
     }
     //在节点上单击时的响应处理
     function hdSelect(inst,nodeId) {
@@ -3997,37 +4010,7 @@ define('ui-notice', function (require, exports, moudles) {
 
         nd=inst._nodes[nodeId];
         changed=!$this.hasClass(CSS_ACTIVE);
-        if(changed){
-            if(lazyLoadMode && nd.isLazy){
-                if(nd.loading===false && $.isFunction(opts.source)){
-                    $this.find('[data-role="htree-icon"]').hide();
-                    $this.find('[data-role="htree-loading"]').show();
-                    nd.loading=true;
-                    opts.source.call(inst.element,nd.getState());
-                }
-                return;
-            }else{
-                $this.addClass(CSS_ACTIVE);
-                if(nd.getChildCount()>0){
-                    $el=$this.find('[data-role="htree-icon"]');
-                    if(isImgIcon(nd.expandedIcon)){
-                        $el.attr("src",nd.expandedIcon);
-                    }else{
-                        $el.removeClass().addClass(nd.expandedIcon);
-                    }
-                }
-            }
-        }else{
-            if(lazyLoadMode && nd.isLazy){
-                if(nd.loading===false && $.isFunction(opts.source)){
-                    $this.find('[data-role="htree-icon"]').hide();
-                    $this.find('[data-role="htree-loading"]').show();
-                    nd.loading=true;
-                    opts.source.call(inst.element,nd.getState());
-                }
-                return;
-            }
-        }
+
         $el=$this.siblings(selector).removeClass(CSS_ACTIVE);
         if($el.length>0){
             orgNodeId=$el.attr("data-node-id");
@@ -4040,6 +4023,29 @@ define('ui-notice', function (require, exports, moudles) {
                 }
             }
         }
+
+        if(changed){
+            $this.addClass(CSS_ACTIVE);
+            if(lazyLoadMode && nd.isLazy){
+                addChilds($this,inst,nd,opts);
+                // return;
+            }else{
+                if(nd.getChildCount()>0){
+                    $el=$this.find('[data-role="htree-icon"]');
+                    if(isImgIcon(nd.expandedIcon)){
+                        $el.attr("src",nd.expandedIcon);
+                    }else{
+                        $el.removeClass().addClass(nd.expandedIcon);
+                    }
+                }
+            }
+        }else{
+            if(lazyLoadMode && nd.isLazy){
+                addChilds($this,inst,nd,opts);
+                // return;
+            }
+        }
+
         hasChildren=(nd.getChildCount()>0);
         if(nd.pid===null){
             if(changed){
@@ -4074,13 +4080,15 @@ define('ui-notice', function (require, exports, moudles) {
                 if(hasChildren){
                     $el=$el.nextAll();
                     $item=$($el[0]).find(selector);
-                    $item.removeClass(CSS_ACTIVE);
-                    ndCurrent=inst._nodes[$item.attr("data-node-id")];
-                    if(ndCurrent.getChildCount()>0){
-                        if(isImgIcon(nd.foldedIcon)){
-                            $item.attr("src",ndCurrent.foldedIcon);
-                        }else{
-                            $item.find('[data-role="htree-icon"]').removeClass().addClass(ndCurrent.foldedIcon);
+                    if($item.length>0){
+                        $item.removeClass(CSS_ACTIVE);
+                        ndCurrent=inst._nodes[$item.attr("data-node-id")];
+                        if(ndCurrent.getChildCount()>0){
+                            if(isImgIcon(nd.foldedIcon)){
+                                $item.attr("src",ndCurrent.foldedIcon);
+                            }else{
+                                $item.find('[data-role="htree-icon"]').removeClass().addClass(ndCurrent.foldedIcon);
+                            }
                         }
                     }
                     $el.slice(1).remove();
@@ -4102,10 +4110,30 @@ define('ui-notice', function (require, exports, moudles) {
         }
     }
 
+    function getRelativeFlags(mutiSelectMode) {
+        var obj={
+            noRelativeAncestors:false,
+            noRelativeDescendants:false
+        };
+        switch (mutiSelectMode) {
+            case 1: //勾�?�节点后同时选中��?有子孙节��?
+                obj.noRelativeAncestors=true;
+                break;
+            case 2: //勾�?�节点后同时选中��?有祖先节��?
+                obj.noRelativeDescendants=true;
+                break;
+            case 3: //只勾选节点本身�?�不关联选中其它节点
+                obj.noRelativeAncestors=true;
+                obj.noRelativeDescendants=true;
+                break;
+        }
+        return obj;
+    }
+
     /**
      * HTree树节点类
      * @global
-     * @param {object} nodeState 节点状态
+     * @param {object} nodeState 节点状�??
      * @property {string} nodeState.id 节点Id
      * @property {string} nodeState.pid 父节点Id
      * @property {string} nodeState.name 节点名称
@@ -4118,10 +4146,10 @@ define('ui-notice', function (require, exports, moudles) {
         this.rootId=nodeState.rootId || null;
         this.name=nodeState.name || "";
         this.level=(isNaN(nodeState.level)?0:parseInt(nodeState.level,10));
-        //初始的时候外部必须保证selected状态的正确性，否则isIndeterminate属性的取值将会出问题!
+        //初始的时候外部必须保证selected状�?�的正确性，否则isIndeterminate属�?�的取�?�将会出问题!
         this.selected=!!nodeState.selected;
         this.foldedIcon=nodeState.foldedIcon || (opts && opts.foldedIcon) || FOLDER_ICON;
-        this.expandedIcon=nodeState.expandedIcon || (opts && opts.expandedIcon) || FOLDER_OPEN_ICON;
+        this.expandedIcon=nodeState.expandedIcon || (opts && opts.expandedIcon) || FOLDER_ICON;
         this.leafIcon=nodeState.leafIcon || (opts && opts.leafIcon) || FILE_ICON;
         this.blurryIcon=nodeState.blurryIcon || (opts && opts.blurryIcon) || FOLDER_BLURRY_ICON;
         this.userData=nodeState.userData || null;
@@ -4136,8 +4164,8 @@ define('ui-notice', function (require, exports, moudles) {
     }
     HTreeNode.prototype={
         /**
-         * 获得子节点总数
-         * @return {number} 返回子节点总数
+         * 获得子节点�?�数
+         * @return {number} 返回子节点�?�数
          */
         getChildCount:function(){
             return (this.childInfo.children!==null)?this.childInfo.children.length:0;
@@ -4161,8 +4189,8 @@ define('ui-notice', function (require, exports, moudles) {
             return (this.pid===null);
         },
         /**
-         * 获得节点状态
-         * @return {object} 返回节点内部状态拷贝
+         * 获得节点状�??
+         * @return {object} 返回节点内部状�?�拷��?
          */
         getState:function() {
             var state={
@@ -4187,10 +4215,10 @@ define('ui-notice', function (require, exports, moudles) {
         },
         /**
          * DFS树遍历，可以控制是否遍历祖先节点和子孙节点以提高性能
-         * @param  {object}   nodes                 树中所有节点集合
-         * @param  {Function} callback              回调函数（迭代器），this指向节点实例，入参为树中所有节点集合
-         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节点
-         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节点
+         * @param  {object}   nodes                 树中��?有节点集��?
+         * @param  {Function} callback              回调函数（迭代器），this指向节点实例，入参为树中��?有节点集��?
+         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节��?
+         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节��?
          */
         each:function(nodes,callback,noRelativeAncestors,noRelativeDescendants){
             var children=this.childInfo.children,
@@ -4214,13 +4242,13 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 设置选中状态
-         * @param  {object} nodes                 树中所有节点集合
-         * @param  {object} levels                树层级信息
-         * @param  {boolean} selected             是否选中，true表示设置当前节点为选中状态，否则为未选中状态
-         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节点
-         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节点
-         * @return {array} 返回所有状态有改变的节点数组
+         * 设置选中状�??
+         * @param  {object} nodes                 树中��?有节点集��?
+         * @param  {object} levels                树层级信��?
+         * @param  {boolean} selected             是否选中，true表示设置当前节点为�?�中状�?�，否则为未选中状�??
+         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节��?
+         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节��?
+         * @return {array} 返回��?有状态有改变的节点数��?
          */
         setSelected:function(nodes,levels,selected,noRelativeAncestors,noRelativeDescendants){
             var nd,
@@ -4287,7 +4315,7 @@ define('ui-notice', function (require, exports, moudles) {
         }
     };
 
-    //根据子节点信息获得对应的复选框样式
+    //根据子节点信息获得对应的复�?�框样式
     function getCheckCSS(childInfo) {
         var children=childInfo.children,
             i,
@@ -4317,7 +4345,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+=getFooterString();
         return $(s);
     }
-    //获得页脚部分的DOM结构字符串
+    //获得页脚部分的DOM结构字符��?
     function getFooterString() {
         var i18n=$.ae.lang.aeHTree,
             s='<div class="node-selection-footer pos-rlt" data-role="htree-footer"><button class="btn btn-primary pull-right" type="button" data-role="htree-ok">'+i18n.select+'</button> <button class="btn btn-default pull-right m-r-sm" type="button" data-role="htree-cancel">'+i18n.cancel+'</button><span class="node-selection-selected-num" data-role="htree-tips">',
@@ -4327,7 +4355,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+='</span><div class="have-selected-popover none" data-role="htree-popover"><i class="window_close" data-role="htree-win-close"></i></div></div>';
         return s;
     }
-    //获得页脚部分选中提示框项中的选中项DOM结构字符串
+    //获得页脚部分选中提示框项中的选中项DOM结构字符��?
     function getSelectedItemString(nodeId,nodeName) {
         return '<span class="label label-primary" data-role="htree-item">'+nodeName+'<i class="window_close" data-role="htree-delete-item" data-node-id="'+nodeId+'"></i></span>';
     }
@@ -4345,7 +4373,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+='</ul></div>';
         return $(s);
     }
-    //获得节点的DOM结构字符串
+    //获得节点的DOM结构字符��?
     function getNodeString(node,options){
         var icon,
             cls,
@@ -4366,10 +4394,10 @@ define('ui-notice', function (require, exports, moudles) {
         }
         s='<li data-node-id="'+node.id+'"><i class="'+cls+' '+(mutiSelect?"":"none")+'" data-role="htree-checkbox"></i>';
         if(options.lazyLoadMode===true){
-            s+='<img src="'+options.loadingAni+'" class="rounded m-l-xs m-r-xs none" data-role="htree-loading" width="18px" height="18px"/>';
+            s+='<img src="'+options.loadingAni+'" class="rounded m-l-xs m-r-xs none" data-role="htree-loading" width="14px" height="14px"/>';
         }
         if(isImgIcon(icon)){
-            s+='<img src="'+icon+'" class="rounded m-l-xs m-r-xs" data-role="htree-icon" width="18px" height="18px"/>';
+            s+='<img src="'+icon+'" class="rounded m-l-xs m-r-xs" data-role="htree-icon" width="14px" height="14px"/>';
         }else{
             s+='<i class="'+icon+'" data-role="htree-icon"></i>';
         }
@@ -4419,39 +4447,41 @@ define('ui-notice', function (require, exports, moudles) {
     }
 
     /**
-     * 水平树组件
+     * 水平树组��?
      * @namespace ae.aeHTree
      */
     $.aeWidget("ae.aeHTree", {
         /**
-         * 可选项
+         * 可�?�项
          * @name ae.aeHTree#options
-         * @property {object} options 可选项
-         * @property {string} options.foldedIcon - 节点收起状态图标，它可以是一个样式类也可以是一个图片文件对应的URL
-         * @property {string} options.expandedIcon - 节点展开状态图标，它可以是一个样式类也可以是一个图片文件对应的URL
-         * @property {string} options.leafIcon - 叶子节点图标，它可以是一个样式类也可以是一个图片文件对应的URL
-         * @property {string} options.blurryIcon - 懒加载节点图标，它可以是一个样式类也可以是一个图片文件对应的URL
-         * @property {string} options.loadingAni - 懒加载节点加载数据时显示的图标，它是一个图片（一般是动态gif格式）文件对应的URL
-         * @property {boolean} options.searchable - 是否能够查询节点，默认为true，如果为true组件会在节点展示区上方显示一个节点快速定位搜索栏，否则将隐藏搜索栏
-         * @property {boolean} options.mutiSelect - 是否是多选，默认为false，如果为true组件将会切换到多选模式，即树节点左侧将出现复选框，否则组件为单选模式
-         * @property {number} options.minLength - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索字符串的最小长度
-         * @property {number} options.delay - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索的延迟时间（单位：毫秒）
+         * @property {object} options 可�?�项
+         * @property {string} options.foldedIcon - 节点收起状�?�图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
+         * @property {string} options.expandedIcon - 节点展开状�?�图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
+         * @property {string} options.leafIcon - 叶子节点图标，它可以是一个样式类也可以是��?个图片文件对应的URL
+         * @property {string} options.blurryIcon - 懒加载节点图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
+         * @property {string} options.loadingAni - 懒加载节点加载数据时显示的图标，它是��?个图片（��?般是动�?�gif格式）文件对应的URL
+         * @property {boolean} options.searchable - 是否能够查询节点，默认为true，如果为true组件会在节点展示区上方显示一个节点快速定位搜索栏，否则将隐藏搜索��?
+         * @property {boolean} options.mutiSelect - 是否是多选，默认为false，如果为true组件将会切换到多选模式，即树节点左侧将出现复选框，否则组件为单�?�模��?
+         * @property {number} options.mutiSelectMode - 多�?�模式，分为四种��?0 -- 勾�?�节点后同时选中��?有子孙节点和��?有祖先节点；1 -- 勾�?�节点后同时选中��?有子孙节点；2 -- 勾�?�节点后同时选中��?有祖先节点；3 -- 只勾选节点本身�?�不关联选中其它节点
+         * @property {number} options.minLength - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索字符串的最小长��?
+         * @property {number} options.delay - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索的延迟时间（单位：毫秒��?
          * @property {boolean} options.footerEnabled - 是否显示页脚区域，true为显示页脚区域，否则隐藏页脚区域
-         * @property {boolean} options.lazyLoadMode - 是否为懒加载模式，为true则组件将进入懒加载模式，否则是正常模式
-         * @property {boolean} options.subTreeId - 子树过滤Id，此Id为某颗子树的根节点，设置以后组件将只加载匹配的子树而忽略除这颗子树以外的所有节点
-         * @property {array|function} [options.source] - 数据源。可以是一个对象数组，也可以是一个函数，在[lazyLoadMode]{@link ae.aeHTree#options.lazyLoadMode}属性为true时此属性必须设置为一个函数
+         * @property {boolean} options.lazyLoadMode - 是否为懒加载模式，为true则组件将进入懒加载模式，否则是正常模��?
+         * @property {boolean} options.subTreeId - 子树过滤Id，此Id为某棵子树的根节点，设置以后组件将只加载匹配的子树�?�忽略除这颗子树以外的所有节��?
+         * @property {array|function} [options.source] - 数据源�?�可以是��?个对象数组，也可以是��?个函数，在[lazyLoadMode]{@link ae.aeHTree#options.lazyLoadMode}属�?�为true时此属�?�必须设置为��?个函��?
          * @property {function} [options.ok] - 当点击了确定按钮后的回调函数
          * @property {function} [options.cancle] - 当点击了取消按钮后的回调函数
          */
         options: {
             foldedIcon:FOLDER_ICON,
-            expandedIcon:FOLDER_OPEN_ICON,
+            expandedIcon:FOLDER_ICON,
             leafIcon:FILE_ICON,
             blurryIcon:FOLDER_BLURRY_ICON,
             loadingAni:LOADING_ANI,
             nodeRender:null,
             searchable:true,
             mutiSelect:false,
+            mutiSelectMode:0,
             minLength:1,
             delay:300,
             footerEnabled:true,
@@ -4473,7 +4503,8 @@ define('ui-notice', function (require, exports, moudles) {
             var $el=this.element,
                 opts=this.options,
                 aeInit=$el.attr("aeInit"),
-                source;
+                source,
+                cb;
             //此处这样处理是为了让$.globalInit方法不再选择到已经被实例化的元素避免做无用功
             if(aeInit){
                 $el.data("org_aeInit",aeInit).attr("aeInit",false);
@@ -4492,13 +4523,14 @@ define('ui-notice', function (require, exports, moudles) {
             this._$main=$el.find('[data-role="htree-main-list"]');
             this._$sub=$el.find('[data-role="htree-sub-list"]');
             this._$footer=$el.find('[data-role="htree-footer"]');
+            cb=$.proxy(function(){
+                return this._$footer.find('[data-role="htree-popover"]').html();
+            },this);
             this._$footer.find('[date-role="htree-count"]').popover({
                 html: true,
                 placement:'top',
                 title:'',
-                content: $.proxy(function() {
-                    return this._$footer.find('[date-role="htree-popover"]').html();
-                },this)
+                content: cb
             }).on("show.bs.popover",this,function(event){
                 var inst=event.data;
                 if(inst.options.disabled || inst._selectedCount===0){
@@ -4516,6 +4548,11 @@ define('ui-notice', function (require, exports, moudles) {
                 opts.footerEnabled=!opts.footerEnabled;
                 this._setOption("footerEnabled",!opts.footerEnabled);
             }else{
+                if(this.options.mutiSelect===true){
+                    this._$footer.find('[data-role="htree-tips"]').show();
+                }else{
+                    this._$footer.find('[data-role="htree-tips"]').hide();
+                }
                 this._addFooterEvents();
             }
             if(opts.source!==null){
@@ -4574,6 +4611,7 @@ define('ui-notice', function (require, exports, moudles) {
                     for(i=0;i<count;i++){
                         affectedNodeStates.push(affectedNodes[i].getState());
                     }
+                    inst._$footer.find('[date-role="htree-count"]').popover("hide");
                     inst._trigger((selected?"check":"unCheck"),null,affectedNodeStates);
                 }
 
@@ -4596,11 +4634,12 @@ define('ui-notice', function (require, exports, moudles) {
             }).on("click.aeHTree",'[data-role="htree-win-close"]',this,function(event){
                 var inst=event.data;
                 inst._$footer.find('[date-role="htree-count"]').popover("hide");
-                $(this).parents(".popover").hide(); //todo:bootstrap的hide方法不能隐掉容器,这个是补丁!原因待查
+                $(this).parents(".popover").hide(); //todo:bootstrap的hide方法不能隐掉容器,这个是补��?!原因待查
                 return false;
             }).on("click.aeHTree",'[data-role="htree-delete-item"]',this,function(event){
                 var $this=$(this),
                     inst=event.data,
+                    $el,
                     affectedNodes,
                     mutiSelect=inst.options.mutiSelect,
                     nodeId=$this.attr("data-node-id");
@@ -4609,8 +4648,14 @@ define('ui-notice', function (require, exports, moudles) {
                     return;
                 }
                 affectedNodes=inst.setSelected(nodeId,false);
+                $el=inst._$footer.find('[date-role="htree-count"]');
+                $el.popover("hide");
                 inst._updateSelectedNodes(affectedNodes);
+                if(inst._selectedCount>0){
+                    $el.popover("show");
+                }
                 if(mutiSelect){
+                    inst._$footer.find('[date-role="htree-count"]').popover("hide");
                     inst._trigger("unCheck",null,inst._nodes[nodeId].getState());
                 }
                 return false;
@@ -4722,6 +4767,7 @@ define('ui-notice', function (require, exports, moudles) {
                     for(i=0;i<count;i++){
                         affectedNodeStates.push(affectedNodes[i].getState());
                     }
+                    inst._$footer.find('[date-role="htree-count"]').popover("hide");
                     inst._trigger((selected?"check":"unCheck"),null,affectedNodeStates);
                 }
             }).on("click.aeHTree",'a',this,function(event){
@@ -4763,13 +4809,17 @@ define('ui-notice', function (require, exports, moudles) {
                     nd=nodes[i];
                     nodeId=nd.id;
                     isExisted=(nodeId in selectedNodes);
-                    if(nd.selected && isExisted===false){
+                    if(nd.selected===true && isExisted===false){
                         selectedNodes[nodeId]=nd;
                         this._selectedCount++;
                         if($el.find('[data-node-id="'+nodeId+'"]').length===0){
                             $el.append(getSelectedItemString(nodeId,nd.name));
                         }
-                    }else if(nd.selected===false && isExisted){
+                    }else if(nd.selected===true && isExisted===true){
+                        if($el.find('[data-node-id="'+nodeId+'"]').length===0){
+                            $el.append(getSelectedItemString(nodeId,nd.name));
+                        }
+                    }else if(nd.selected===false && isExisted===true){
                         delete selectedNodes[nodeId];
                         this._selectedCount--;
                         $el.find('[data-node-id="'+nodeId+'"]').parent().remove();
@@ -4812,7 +4862,7 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 跳转到指定节点
+         * 跳转到指定节��?
          * @name ae.aeHTree#goto
          * @function
          * @param  {string} nodeId 节点Id
@@ -4830,7 +4880,7 @@ define('ui-notice', function (require, exports, moudles) {
                 $el=this._$tree.find('[data-node-id="'+nodeId+'"]');
                 $tree=this._$tree;
                 ancestors=this._getAncestorsById(nodeId);
-                for(i=ancestors.length-1;i>=0;i--){ //从根开始依次点击祖先节点
+                for(i=ancestors.length-1;i>=0;i--){ //从根��?始依次点击祖先节��?
                     ancestorId=ancestors[i].id;
                     $el=$tree.find('[data-node-id="'+ancestorId+'"]');
                     hdSelect.apply($el[0],[this,ancestorId]);
@@ -4847,7 +4897,13 @@ define('ui-notice', function (require, exports, moudles) {
          * @return {number} 返回选择节点总数
          */
         getSelectedCount:function(){
-            return this._selectedCount;
+            if(this.options.mutiSelect===true){
+                return this._selectedCount;
+            }else{
+                if(this._$tree.find("."+CSS_ACTIVE).length>0){
+                    return 1;
+                }
+            }
         },
         _setSelected:function(nodeId,selected,noRelativeAncestors,noRelativeDescendants){
             var $chk,
@@ -4875,43 +4931,51 @@ define('ui-notice', function (require, exports, moudles) {
                 }else{
                     $chk.removeClass().addClass(CSS_OUTLINE);
                 }
-                //设置子节点状态
-                if(nd.getChildCount()>0 && $el.hasClass(CSS_ACTIVE)){
-                    icon=(nd.selected?CSS_CHECKED:CSS_OUTLINE);
-                    if(isRoot){
-                        $chkList=this._$sub.find('[data-role="htree-checkbox"]');
-                    }else{
-                        $chkList=this._$sub.find('[data-node-id="'+nodeId+'"]').parents('[data-role="htree-list"]:eq(0)').nextAll().find('[data-role="htree-checkbox"]');
+
+                if(noRelativeDescendants===false){
+                    //设置子节点状��?
+                    if(nd.getChildCount()>0 && $el.hasClass(CSS_ACTIVE)){
+                        icon=(nd.selected?CSS_CHECKED:CSS_OUTLINE);
+                        if(isRoot){
+                            $chkList=this._$sub.find('[data-role="htree-checkbox"]');
+                        }else{
+                            $chkList=this._$sub.find('[data-node-id="'+nodeId+'"]').parents('[data-role="htree-list"]:eq(0)').nextAll().find('[data-role="htree-checkbox"]');
+                        }
+                        $chkList.removeClass().addClass(icon);
                     }
-                    $chkList.removeClass().addClass(icon);
                 }
 
-                //设置祖先节点状态
-                if(isRoot===false){
-                    ancestors=this._getAncestorsById(nodeId);
-                    count=ancestors.length;
-                    for(i=1;i<count;i++){
-                        icon=getCheckCSS(ancestors[i].childInfo);
-                        $chkList=((ancestors[i].isRoot())?this._$main:this._$sub);
-                        $chkList.find('[data-node-id="'+ancestors[i].id+'"]>[data-role="htree-checkbox"]').removeClass().addClass(icon);
+                if(noRelativeAncestors===false){
+                    //设置祖先节点状�??
+                    if(isRoot===false){
+                        ancestors=this._getAncestorsById(nodeId);
+                        count=ancestors.length;
+                        for(i=1;i<count;i++){
+                            icon=getCheckCSS(ancestors[i].childInfo);
+                            $chkList=((ancestors[i].isRoot())?this._$main:this._$sub);
+                            $chkList.find('[data-node-id="'+ancestors[i].id+'"]>[data-role="htree-checkbox"]').removeClass().addClass(icon);
+                        }
                     }
                 }
             }
         },
         /**
-         * 设置节点选中状态
+         * 设置节点选中状�??
          * @param  {string} nodeId   节点Id
          * @param  {boolean} selected 是否选中，true表示选中，否则表示未选中
-         * @return {array} 返回被选中的节点
+         * @return {array} 返回被�?�中的节��?
          */
         setSelected:function(nodeId,selected){
             var mutiSelect=this.options.mutiSelect,
                 affectedNodes=[],
-                $el;
+                $el,
+                relativeFlags;
             this.goto(nodeId);
-            if(mutiSelect){
-                affectedNodes= this._nodes[nodeId].setSelected(this._nodes,this._levels,selected,false,!mutiSelect);
-                this._setSelected(nodeId,selected);
+            if(mutiSelect===true){
+                relativeFlags=getRelativeFlags(this.options.mutiSelectMode);
+                affectedNodes= this._nodes[nodeId].setSelected(this._nodes,this._levels,selected,relativeFlags.noRelativeAncestors,relativeFlags.noRelativeDescendants);
+                // affectedNodes= this._nodes[nodeId].setSelected(this._nodes,this._levels,selected,false,!mutiSelect);
+                this._setSelected(nodeId,selected,relativeFlags.noRelativeAncestors,relativeFlags.noRelativeDescendants);
             }
             return affectedNodes;
         },
@@ -4923,6 +4987,7 @@ define('ui-notice', function (require, exports, moudles) {
                 leafIcon=this.options.leafIcon,
                 blurryIcon=this.options.blurryIcon,
                 lazyLoadMode=this.options.lazyLoadMode,
+                mutiSelectMode=this.options.mutiSelectMode,
                 nodes=this._nodes,
                 roots=this._roots,
                 levels=this._levels,
@@ -4950,7 +5015,7 @@ define('ui-notice', function (require, exports, moudles) {
                     selected:!!data[i].selected,
                     userData:data[i].userData
                 });
-                //外部状态可以强制某个节点不进行懒加载
+                //外部状�?�可以强制某个节点不进行懒加��?
                 if(lazyLoadMode===true && data[i].isLazy===false){
                     nd.isLazy=false;
                 }
@@ -4971,8 +5036,13 @@ define('ui-notice', function (require, exports, moudles) {
                     }
                     ndParent.childInfo.children.push(nd);
                     if(nd.selected){
-                        //此处只保证所有叶子节点的父节点的selectedCount状态是正确的!
+                        //此处只保证所有叶子节点的父节点的selectedCount状�?�是正确��?!
                         ndParent.childInfo.selectedCount++;
+                        selectedNodes[nd.id]=nd;
+                        this._selectedCount++;
+                    }
+                }else{
+                    if(nd.selected){
                         selectedNodes[nd.id]=nd;
                         this._selectedCount++;
                     }
@@ -5006,31 +5076,33 @@ define('ui-notice', function (require, exports, moudles) {
                 roots[nodeId].each(nodes,cb,true);
             }
 
-            //修正状态
-            for(i=levels.length-1;i>=1;i--){
-                pnds=levels[i].parents;
-                for(nodeId in pnds){
-                    nd=pnds[nodeId];
-                    levelInfo=levels[nd.level];
-                    // nd.isLazy=false; //所有非叶子节点都不需要懒加载! 暂时屏蔽，因为员工选择树里混有组织机构节点，员工节点都会挂在组织机构下面
-                    css=getCheckCSS(nd.childInfo);
-                    nd.isIndeterminate=(css===CSS_INDETERMINATE);
-                    isSelected=(css!==CSS_OUTLINE);
-                    if(nd.selected!==isSelected){ //修复非叶子节点可能产生的错误状态
-                        nd.selected=isSelected;
-                        if(isSelected){
-                            factor=1;
-                            selectedNodes[nd.id]=nd;
-                        }else{
-                            factor=-1;
-                            delete selectedNodes[nd.id];
-                        }
-                        if(nd.pid!==null){
-                            nodes[nd.pid].childInfo.selectedCount+=factor;
-                        }
+            //修正状�??
+            if(mutiSelectMode===0 || mutiSelectMode===2){
+                for(i=levels.length-1;i>=1;i--){
+                    pnds=levels[i].parents;
+                    for(nodeId in pnds){
+                        nd=pnds[nodeId];
+                        levelInfo=levels[nd.level];
+                        // nd.isLazy=false; //��?有非叶子节点都不��?要懒加载! 暂时屏蔽，因为员工�?�择树里混有组织机构节点，员工节点都会挂在组织机构下��?
+                        css=getCheckCSS(nd.childInfo);
+                        nd.isIndeterminate=(css===CSS_INDETERMINATE);
+                        isSelected=(css!==CSS_OUTLINE);
+                        if(nd.selected!==isSelected){ //修复非叶子节点可能产生的错误状�??
+                            nd.selected=isSelected;
+                            if(isSelected){
+                                factor=1;
+                                selectedNodes[nd.id]=nd;
+                            }else{
+                                factor=-1;
+                                delete selectedNodes[nd.id];
+                            }
+                            if(nd.pid!==null){
+                                nodes[nd.pid].childInfo.selectedCount+=factor;
+                            }
 
-                        this._selectedCount+=factor;
-                        levelInfo.selectedCount+=factor;
+                            this._selectedCount+=factor;
+                            levelInfo.selectedCount+=factor;
+                        }
                     }
                 }
             }
@@ -5057,7 +5129,7 @@ define('ui-notice', function (require, exports, moudles) {
                 }
                 nodes=this._nodes={};
                 roots=this._roots={};
-                levels=this._levels={};
+                levels=this._levels=[];
                 selectedNodes=this._selectedNodes={};
                 self._selectedCount=0;
                 oldRootId=cache[subTreeId].rootId;
@@ -5151,17 +5223,19 @@ define('ui-notice', function (require, exports, moudles) {
                     break;
                 case "mutiSelect":
                     $el=this.element.find('[data-role="htree-checkbox"]');
-                    if(value){ //多选
-                            nodeId=$el.filter(":last").parent().attr("data-node-id");
-                            if(nodeId){
-                                affectedNodes=this._nodes[nodeId].setSelected(this._nodes,this._levels,false);
-                            }
+                    if(value){ //多�??
+                        nodeId=$el.filter(":last").parent().attr("data-node-id");
+                        if(nodeId){
+                            affectedNodes=this._nodes[nodeId].setSelected(this._nodes,this._levels,false);
+                        }
+                        this._$footer.find('[data-role="htree-tips"]').show();
                         $el.show();
-                    }else{ //单选
+                    }else{ //单�??
                         $el.removeClass().addClass(CSS_OUTLINE);
                         for(nodeId in this._roots){
                             affectedNodes=this._roots[nodeId].setSelected(this._nodes,this._levels,false);
                         }
+                        this._$footer.find('[data-role="htree-tips"]').hide();
                         $el.hide();
                     }
                     break;
@@ -5175,6 +5249,11 @@ define('ui-notice', function (require, exports, moudles) {
                 case "footerEnabled":
                     if(value){
                         this._addFooterEvents();
+                        if(this.options.mutiSelect===true){
+                            this._$footer.find('[data-role="htree-tips"]').show();
+                        }else{
+                            this._$footer.find('[data-role="htree-tips"]').hide();
+                        }
                         this._$footer.show();
                         this._$tree.css("padding-bottom","auto");
                     }else{
@@ -5193,13 +5272,13 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 添加懒加载节点的子节点，此方法只在懒加载模式下有效。
+         * 添加懒加载节点的子节点，此方法只在懒加载模式下有效�??
          * @name ae.aeHTree#addLazyChilds
          * @function
          * @param  {string} parentId    父节点Id，注意，它不能为null，如果需要在懒加载模式中加载根节点请使用[reload]{@link ae.aeHTree#reload}方法
-         * @param  {string} serviceName 服务名
+         * @param  {string} serviceName 服务��?
          * @param  {string} params       服务入参
-         * @param  {function} convertor 一个回调函数，负责将业务数据格式转化为组件能够识别的数据格式
+         * @param  {function} convertor ��?个回调函数，负责将业务数据格式转化为组件能够识别的数据格��?
          */
         addLazyChilds:function(parentId,serviceName,params,convertor){
             if(this.options.lazyLoadMode===false || !(parentId in this._nodes) || this._nodes[parentId].isLazy===false){ //只在懒加载模式时有效
@@ -5227,12 +5306,12 @@ define('ui-notice', function (require, exports, moudles) {
                             id:item.id,
                             pid:parentId,
                             name:item.name,
-                            expandedIcon:(finalData[i].expandedIcon || opts.expandedIcon),
-                            foldedIcon:(finalData[i].foldedIcon || opts.foldedIcon),
-                            leafIcon:(finalData[i].leafIcon || opts.leafIcon),
-                            blurryIcon:(finalData[i].blurryIcon || opts.blurryIcon),
-                            selected:!!finalData[i].selected,
-                            isLazy:!!finalData[i].isLazy,
+                            expandedIcon:(item.expandedIcon || opts.expandedIcon),
+                            foldedIcon:(item.foldedIcon || opts.foldedIcon),
+                            leafIcon:(item.leafIcon || opts.leafIcon),
+                            blurryIcon:(item.blurryIcon || opts.blurryIcon),
+                            selected:!!item.selected,
+                            isLazy:!!item.isLazy,
                             userData:(item.userData || finalData[i])
                         },parentId);
                     }
@@ -5240,14 +5319,14 @@ define('ui-notice', function (require, exports, moudles) {
                 $el=this._$tree.find('[data-node-id="'+parentId+'"]');
                 this._nodes[parentId].isLazy=false;
                 this._nodes[parentId].loading=false;
-                $el.find('[data-role="htree-icon"]').show().removeClass().addClass(FOLDER_OPEN_ICON);
+                $el.find('[data-role="htree-icon"]').show().removeClass().addClass(this._nodes[parentId].expandedIcon);
                 $el.find('[data-role="htree-loading"]').hide();
-            },this),function(errCode,errInfo){
+            },this),$.proxy(function(errCode,errInfo){
                 $el=this._$tree.find('[data-node-id="'+parentId+'"]');
                 $el.find('[data-role="htree-icon"]').show();
                 $el.find('[data-role="htree-loading"]').hide();
                 this._nodes[parentId].loading=false;
-            });
+            },this));
             return true;
         },
         _checkState:function(nodeState){
@@ -5261,7 +5340,7 @@ define('ui-notice', function (require, exports, moudles) {
          * 添加节点
          * @name ae.aeHTree#addNode
          * @function
-         * @param  {object} nodeState 节点状态
+         * @param  {object} nodeState 节点状�??
          * @return {boolean} 如果添加成功返回true，否则返回false
          */
         addNode:function(nodeState){
@@ -5329,7 +5408,7 @@ define('ui-notice', function (require, exports, moudles) {
             $el=this._$tree.find('[data-node-id="'+nd.pid+'"]');
             if($el.length>0){
                 if($el.hasClass(CSS_ACTIVE)===true){
-                    if(this._nodes[nd.pid].pid===null){ //父节点是根节点
+                    if(this._nodes[nd.pid].pid===null){ //父节点是根节��?
                         $list=this._$sub.find('[data-role="htree-list"]:eq(0)');
                     }else{
                         $list=$el.parents('[data-role="htree-list"]:eq(0)').next();
@@ -5399,7 +5478,7 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 删除节点及其所有子节点
+         * 删除节点及其��?有子节点
          * @name ae.aeHTree#deleteNode
          * @function
          * @param  {string} nodeId 节点Id
@@ -5428,7 +5507,7 @@ define('ui-notice', function (require, exports, moudles) {
                     nd.loading=false;
                 }
                 deleteNodes=[];
-                //先把层信息清除
+                //先把层信息清��?
                 cb=function(nodes){
                     var nodeId=this.id;
                     levelInfo=levels[this.level];
@@ -5448,6 +5527,7 @@ define('ui-notice', function (require, exports, moudles) {
                     deleteNodes[i].gc();
                     delete nodes[deleteNodes[i].id];
                 }
+                this._$footer.find('[date-role="htree-count"]').popover("hide");
                 this._trigger("afterDeleteNode");
             }
         },
@@ -5515,27 +5595,37 @@ define('ui-notice', function (require, exports, moudles) {
         },
         _reloadRootList:function(){
             this._$main.append(generateList("",this._roots,this.options));
-            this._$footer.find('[date-role="htree-count"]').text(""+this._selectedCount);
         },
         /**
          * 重新加载
          * @name ae.aeHtree#reload
          * @function
-         * @param  {array} data 节点状态数据
+         * @param  {array} data 节点状�?�数��?
          */
         reload:function(data){
+            var nodes,
+                nodeId,
+                arr;
             this.clear();
             if($.isArray(data)===true){
                 this._initData(data);
                 this._reloadRootList();
+                arr=[];
+                nodes=this._selectedNodes;
+                for(nodeId in nodes){
+                    arr.push(nodes[nodeId]);
+                }
+                if(arr.length>0){
+                    this._updateSelectedNodes(arr);
+                }
             }
         },
         /**
-         * 根据Id获得节点状态
+         * 根据Id获得节点状�??
          * @name ae.aeHTree#getNodeById
          * @function
          * @param  {string} nodeId 节点Id
-         * @return {object|null} 返回节点状态，如果节点不存在返回null
+         * @return {object|null} 返回节点状�?�，如果节点不存在返回null
          */
         getNodeById:function(nodeId){
             if(nodeId in this._nodes){
@@ -5544,7 +5634,7 @@ define('ui-notice', function (require, exports, moudles) {
             return null;
         },
         /**
-         * 复位初始状态，复位操作不会重新装载数据
+         * 复位初始状�?�，复位操作不会重新装载数据
          * @name ae.aeHTree#reset
          * @function
          */
@@ -5553,17 +5643,27 @@ define('ui-notice', function (require, exports, moudles) {
             this.goto(nodeId);
         },
         /**
-         * 获得选中节点状态
+         * 获得选中节点状�??
          * @name ae.aeHTree#getSelectedNodes
          * @function
-         * @return {array} 返回被选中节点状态数组
+         * @return {array} 返回被�?�中节点状�?�数��?
          */
         getSelectedNodes:function(){
             var nodeId,
-                nodes=this._selectedNodes,
+                nodes,
+                $el,
                 arr=[];
-            for(nodeId in nodes){
-                arr.push(nodes[nodeId].getState());
+            if(this.options.mutiSelect===true){
+                nodes=this._selectedNodes;
+                for(nodeId in nodes){
+                    arr.push(nodes[nodeId].getState());
+                }
+            }else{ //单�?�模式下只返回最末端的高亮项
+                $el=this._$tree.find("."+CSS_ACTIVE).filter(":last");
+                if($el.length>0){
+                    nodeId=$el.attr("data-node-id");
+                    arr.push(this._nodes[nodeId].getState());
+                }
             }
             return arr;
         },
@@ -5587,13 +5687,13 @@ define('ui-notice', function (require, exports, moudles) {
             return (isObverse?arr.reverse():arr);
         },
         /**
-         * 根据节点Id获得祖先节点状态
+         * 根据节点Id获得祖先节点状�??
          * @name ae.aeHTree#getAncestorsById
          * @function
          * @param  {string}  nodeId     节点Id
-         * @param  {Boolean} isSelected 是否已经被选中，如果为true表示只返回选中节点，否则表示返回所有节点（包括选中的和未选中节点）
+         * @param  {Boolean} isSelected 是否已经被�?�中，如果为true表示只返回�?�中节点，否则表示返回所有节点（包括选中的和未�?�中节点��?
          * @param  {Boolean} isObverse  是否反转返回结果。默认为false，即在返回结果数组中，下标为0的元素是指定节点的状态，后续元素依次是此节点祖先节点，否则，返回结果数据中的元素顺序将被反转
-         * @return {array} 返回指定节点和它的祖先节点
+         * @return {array} 返回指定节点和它的祖先节��?
          */
         getAncestorsById:function(nodeId,isSelected,isObverse){
             var nodes=this._getAncestorsById(nodeId,isSelected,isObverse),
@@ -5627,12 +5727,12 @@ define('ui-notice', function (require, exports, moudles) {
             return obj;
         },
         /**
-         * 根据节点Id获得此节点的所有子节点
+         * 根据节点Id获得此节点的��?有子节点
          * @name ae.aeHTree#getChilrenById
          * @function
          * @param  {string}  nodeId     节点Id
-         * @param  {boolean} isSelected 是否选中，如果为true则表示只返回被选中的节点，否则返回所有子节点，默认为false
-         * @return {array} 返回包含所有符合条件的子节点状态数组
+         * @param  {boolean} isSelected 是否选中，如果为true则表示只返回被�?�中的节点，否则返回��?有子节点，默认为false
+         * @return {array} 返回包含��?有符合条件的子节点状态数��?
          */
         getChilrenById:function(nodeId,isSelected){
             var nodes=this._getChilrenById(nodeId,isSelected),
@@ -5644,7 +5744,7 @@ define('ui-notice', function (require, exports, moudles) {
             return arr;
         },
         /**
-         * 销毁组件实例，恢复容器元素的原始状态
+         * ��?毁组件实例，恢复容器元素的原始状��?
          * @private
          */
         _destroy:function(){
@@ -20161,8 +20261,8 @@ the specific language governing permissions and limitations under the Apache Lic
          formatInputTooShort: function (input, min) { var n = min - input.length; return "Please enter " + n + " or more character" + (n == 1 ? "" : "s"); },
          formatInputTooLong: function (input, max) { var n = input.length - max; return "Please delete " + n + " character" + (n == 1 ? "" : "s"); },
          formatSelectionTooBig: function (limit) { return "You can only select " + limit + " item" + (limit == 1 ? "" : "s"); },
-         formatLoadMore: function (pageNumber) { return "Loading more results…"; },
-         formatSearching: function () { return "Searching…"; }
+         formatLoadMore: function (pageNumber) { return "Loading more results��?"; },
+         formatSearching: function () { return "Searching��?"; }
     };
 
     $.extend($.fn.select2.defaults, $.fn.select2.locales['en']);
@@ -26717,10 +26817,10 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutText = function (lang) {
       var keys = [
-        { kbd: '⌘ + B', text: lang.font.bold },
-        { kbd: '⌘ + I', text: lang.font.italic },
-        { kbd: '⌘ + U', text: lang.font.underline },
-        { kbd: '⌘ + \\', text: lang.font.clear }
+        { kbd: '��? + B', text: lang.font.bold },
+        { kbd: '��? + I', text: lang.font.italic },
+        { kbd: '��? + U', text: lang.font.underline },
+        { kbd: '��? + \\', text: lang.font.clear }
       ];
 
       return tplShortcut(lang.shortcut.textFormatting, keys);
@@ -26728,11 +26828,11 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutAction = function (lang) {
       var keys = [
-        { kbd: '⌘ + Z', text: lang.history.undo },
-        { kbd: '⌘ + ⇧ + Z', text: lang.history.redo },
-        { kbd: '⌘ + ]', text: lang.paragraph.indent },
-        { kbd: '⌘ + [', text: lang.paragraph.outdent },
-        { kbd: '⌘ + ENTER', text: lang.hr.insert }
+        { kbd: '��? + Z', text: lang.history.undo },
+        { kbd: '��? + ��? + Z', text: lang.history.redo },
+        { kbd: '��? + ]', text: lang.paragraph.indent },
+        { kbd: '��? + [', text: lang.paragraph.outdent },
+        { kbd: '��? + ENTER', text: lang.hr.insert }
       ];
 
       return tplShortcut(lang.shortcut.action, keys);
@@ -26740,12 +26840,12 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutPara = function (lang) {
       var keys = [
-        { kbd: '⌘ + ⇧ + L', text: lang.paragraph.left },
-        { kbd: '⌘ + ⇧ + E', text: lang.paragraph.center },
-        { kbd: '⌘ + ⇧ + R', text: lang.paragraph.right },
-        { kbd: '⌘ + ⇧ + J', text: lang.paragraph.justify },
-        { kbd: '⌘ + ⇧ + NUM7', text: lang.lists.ordered },
-        { kbd: '⌘ + ⇧ + NUM8', text: lang.lists.unordered }
+        { kbd: '��? + ��? + L', text: lang.paragraph.left },
+        { kbd: '��? + ��? + E', text: lang.paragraph.center },
+        { kbd: '��? + ��? + R', text: lang.paragraph.right },
+        { kbd: '��? + ��? + J', text: lang.paragraph.justify },
+        { kbd: '��? + ��? + NUM7', text: lang.lists.ordered },
+        { kbd: '��? + ��? + NUM8', text: lang.lists.unordered }
       ];
 
       return tplShortcut(lang.shortcut.paragraphFormatting, keys);
@@ -26753,13 +26853,13 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutStyle = function (lang) {
       var keys = [
-        { kbd: '⌘ + NUM0', text: lang.style.normal },
-        { kbd: '⌘ + NUM1', text: lang.style.h1 },
-        { kbd: '⌘ + NUM2', text: lang.style.h2 },
-        { kbd: '⌘ + NUM3', text: lang.style.h3 },
-        { kbd: '⌘ + NUM4', text: lang.style.h4 },
-        { kbd: '⌘ + NUM5', text: lang.style.h5 },
-        { kbd: '⌘ + NUM6', text: lang.style.h6 }
+        { kbd: '��? + NUM0', text: lang.style.normal },
+        { kbd: '��? + NUM1', text: lang.style.h1 },
+        { kbd: '��? + NUM2', text: lang.style.h2 },
+        { kbd: '��? + NUM3', text: lang.style.h3 },
+        { kbd: '��? + NUM4', text: lang.style.h4 },
+        { kbd: '��? + NUM5', text: lang.style.h5 },
+        { kbd: '��? + NUM6', text: lang.style.h6 }
       ];
 
       return tplShortcut(lang.shortcut.documentStyle, keys);
@@ -26797,7 +26897,7 @@ the specific language governing permissions and limitations under the Apache Lic
     };
 
     var replaceMacKeys = function (sHtml) {
-      return sHtml.replace(/⌘/g, 'Ctrl').replace(/⇧/g, 'Shift');
+      return sHtml.replace(/��?/g, 'Ctrl').replace(/��?/g, 'Shift');
     };
 
     var tplDialogInfo = {
@@ -26876,7 +26976,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var representShortcut = function (str) {
       if (agent.isMac) {
-        str = str.replace('CMD', '⌘').replace('SHIFT', '⇧');
+        str = str.replace('CMD', '��?').replace('SHIFT', '��?');
       }
 
       return str.replace('BACKSLASH', '\\')

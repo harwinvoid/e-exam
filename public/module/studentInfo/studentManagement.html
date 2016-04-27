@@ -1,36 +1,36 @@
-<div id="teachersList">
+<div id="studentList">
     <div id="toolbar" class="m-t-md m-b-md">
-        <button class="btn btn-primary" id="delTeacher" style="visibility: hidden"><i class="delete"></i>删除</button>
+        <button class="btn btn-primary" id="delStudent" style="visibility: hidden"><i class="delete"></i>删除</button>
         <div class="input-group pull-right" style="width: 300px">
             <span class="input-group-addon"><i class="search"></i></span>
-            <input type="text" aeType="aeTextfield" id="searchTeacher" class="form-control" emptyText="Search By Name">
+            <input type="text" aeType="aeTextfield" id="searchStudent" class="form-control" emptyText="Search By Name or Classes">
         </div>
     </div>
     <table class="table b-t" style="margin-bottom: 0">
         <thead>
-        <tr>
-            <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
-            <th>教师号</th>
-            <th>院系名称</th>
-            <th>姓名</th>
-            <th>身份证号</th>
-            <th>办公地址</th>
-            <th>联系电话</th>
-            <th>操作</th>
-        </tr>
+            <tr>
+                <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
+                <th>学号</th>
+                <th>院系名称</th>
+                <th>姓名</th>
+                <th>身份证号</th>
+                <th>宿舍地址</th>
+                <th>联系电话</th>
+                <th>操作</th>
+            </tr>
         </thead>
         <tbody id="tbody">
         </tbody>
     </table>
     <div style="clear: both">
-        <span aeType="aePagination" aeInit="true" id="pagination"/>
+        <span aeType="aePagination" aeInit="true" id="pagination" />
     </div>
 </div>
-<div id="teacherInfo" class="none"/>
+<div id="studentInfo" class="none" />
 <script type="text/html" id="item">
     {{#each this}}
     <tr data-id="{{this._id}}">
-        <th scope="row"><span aeType="aeCheckbox" aeInit="true" class="singleCheck"/></th>
+        <th scope="row"><span aeType="aeCheckbox" aeInit="true" class="singleCheck" /></th>
         <td>{{this.uno}}</td>
         <td>{{this.major}}</td>
         <td>{{this.name}}</td>
@@ -55,7 +55,7 @@
             <input type="hidden" value="{{_id}}" name="_id">
             <div class="row m-b-md">
                 <div class="col-md-2 col-sm-12">
-                    <span>教师号:</span>
+                    <span>学号:</span>
                 </div>
                 <div class="col-md-10 col-sm-12">
                     <input type="text"  class="form-control" value="{{uno}}" name="uno"/>

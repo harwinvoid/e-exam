@@ -68,6 +68,7 @@ UserSchema.methods.hashPassword = function (password) {
 UserSchema.methods.authenticate = function (password) {
     return this.password === this.hashPassword(password);
 };
+
 UserSchema.statics.findAllTeacherByPagination = function (name, offset, pageSize, cb) {
     if (name) {
         console.log('name:' + name);
@@ -77,6 +78,21 @@ UserSchema.statics.findAllTeacherByPagination = function (name, offset, pageSize
     }
 
 }
+
+UserSchema.statics.findAllStudentByPagination = function (name, offset, pageSize, cb) {
+    if (name) {
+        var flag = parseInt(name);
+        if(flag === NaN){
+        return this.find({role: 3, name: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
+        }else{
+            return this.find({role: 3, uno: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
+        }
+    } else {
+        return this.find({role: 3}).skip(offset).limit(pageSize).exec(cb);
+    }
+
+}
+
 UserSchema.statics.findAllTeacher = function (name, cb) {
     if (name) {
         console.log('name:' + name);
@@ -86,8 +102,29 @@ UserSchema.statics.findAllTeacher = function (name, cb) {
     }
 
 }
+
+UserSchema.statics.findAllStudent = function (name, cb) {
+    if (name) {
+        var flag = parseInt(name);
+        if(flag === NaN){
+            return this.find({role: 3, name: {$regex: name}}).exec(cb);    
+        }else{
+            return this.find({role: 3, uno: {$regex: name}}).exec(cb);
+        }
+        
+    } else {
+        return this.find({role: 3}).exec(cb);
+    }
+
+}
+
 UserSchema.statics.delTeacherById = function (ids, cb) {
-    this.remove({role: 2, _id: {$in: ids}}, cb)
+    this.remove({role:2, _id: {$in: ids}}, cb)
+};
+
+UserSchema.statics.delStudentById = function (ids, cb) {
+    console.log(ids);
+    this.remove({role:3, _id: {$in: ids}}, cb)
 };
 
 

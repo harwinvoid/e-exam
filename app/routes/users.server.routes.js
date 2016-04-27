@@ -19,9 +19,15 @@ module.exports = function(app){
 
     app.route('/queryTeacher.json')
         .post(users.queryTeacher);
+        
+    app.route('/queryStudent.json')
+        .post(users.queryStudent);
 
     app.route('/delTeacher.json')
        .post(users.delTeacher);
+       
+    app.route('/delStudent.json')
+       .post(users.delStudent);
 
     app.route('/userInfo.json')
         .post(users.queryUserInfo);

@@ -48,15 +48,36 @@ exports.renderSignUp = function (req, res, next) {
  * 查询教师
  * */
 exports.queryTeacher = function (req, res, next) {
+    
     var limit = req.body.pageSize,
         name = req.body.name,
         offset = (req.body.pageNumber - 1) * limit;
     User.findAllTeacherByPagination(name, offset, limit, function (err, datas) {
         if (err) {
+            res.json(err);
+        } else {
+            User.findAllTeacher(name, function (err, data) {
+                var result = {
+                    data: datas,
+                    total: data.length
+                }
+                res.json(result);
+            })
+
+        }
+    });
+
+};
+exports.queryStudent = function (req, res, next) {
+    var limit = req.body.pageSize,
+        name = req.body.name,
+        offset = (req.body.pageNumber - 1) * limit;
+    User.findAllStudentByPagination(name, offset, limit, function (err, datas) {
+        if (err) {
             console.log(err);
             return
         } else {
-            User.findAllTeacher(name, function (err, data) {
+            User.findAllStudent(name, function (err, data) {
                 var result = {
                     data: datas,
                     total: data.length
@@ -73,17 +94,33 @@ exports.queryTeacher = function (req, res, next) {
  * */
 exports.delTeacher = function (req, res, next) {
     var delIds = req.body.ids;
-    User.delTeacherById(delIds, function (err,data) {
+    User.delTeacherById(delIds, function (err, data) {
         res.json(data);
 
     });
 }
-exports.queryUserInfo = function(req,res,next){
+/**
+ * 删除学生
+ * */
+exports.delStudent = function (req, res, next) {
+    var delIds = req.body.ids;
+    console.log(delIds);
+    User.delStudentById(delIds, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(data);
+        }
+
+
+    });
+}
+exports.queryUserInfo = function (req, res, next) {
     var id = req.body.id,
         role = req.body.role;
-    console.log(id,role);
-    User.queryUserInfo(id,role,function(err,data){
-        if(err) return err;
+    console.log(req.body);
+    User.queryUserInfo(id, role, function (err, data) {
+        if (err) return err;
         res.json(data);
     });
 }
@@ -131,7 +168,7 @@ exports.saveOAuthUserProfile = function (req, profile, done) {
         } else {
             if (!user) {
                 var possibleUsername = profile.username ||
-                (profile.email) ? profile.email.split('@')[0] : '';
+                    (profile.email) ? profile.email.split('@')[0] : '';
 
                 User.findUniqueUsername(possibleUsername, null, function (availableUsername) {
                     profile.username = availableUsername;
@@ -154,10 +191,10 @@ exports.saveOAuthUserProfile = function (req, profile, done) {
         }
     });
 }
-exports.updateUserInfo = function(req,res,next){
+exports.updateUserInfo = function (req, res, next) {
     console.log('-------');
     console.log(req.body);
-    var user= {
+    var user = {
         _id: req.body._id,
         uno: req.body.uno,
         name: req.body.name,
@@ -165,12 +202,13 @@ exports.updateUserInfo = function(req,res,next){
         phone: req.body.phone,
         address: req.body.address
     };
-    User.updateUserInfo(user._id,user,function(err,data){
-       if(err){
-           res.json(err)
-       }else{
-           res.json(data);
-       }
+    User.updateUserInfo(user._id, user, function (err, data) {
+
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(data);
+        }
     });
 }
 

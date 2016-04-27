@@ -16,9 +16,35 @@ var RoomSchema = new Schema({
         type:Number,
         required:'capacity is required'
     },
-    created:{
-        type:Date,
-        default: Date.now
+    /**
+     * 是否被占用
+     */
+    isEmpty:{
+        type:Boolean,
+        default:false,
+        required:'isEmpty is required'
     }
+});
+RoomSchema.statics.findAllRoomByPagination = function (no, offset, pageSize, cb) {
+    if (no) {
+        console.log(no);
+        return this.find({roomNo: {$regex: no}}).skip(offset).limit(pageSize).exec(cb);
+    } else {
+        return this.find({}).skip(offset).limit(pageSize).exec(cb);
+    }
+}
+
+RoomSchema.statics.findAllRoom = function (no, cb) {
+    if (no) {
+        console.log(no);
+        return this.find({roomNo: {$regex: no}}).exec(cb);
+    } else {
+        return this.find({}).exec(cb);
+    }
+
+}
+RoomSchema.set('toJson', {
+    getters: true,
+    setters: true
 });
 mongoose.model('Room', RoomSchema, 'rooms');

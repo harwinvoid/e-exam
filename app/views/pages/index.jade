@@ -8,33 +8,69 @@ block content
           p.text-center.text-md 功能列表
           div#menuTree
       div.col.bg-white(style='height:600px')
-        div.wrapper
-          div#teacherInfo
-          div#studentInfo.hidden
-          div#classRoomInfo.hidden
-          div#examInfo.hidden
+        div.wrapper#mainContent
+          div#teacherInfo.none
+          div#studentInfo.none
+          div#classRoomInfo.none
+          div#examInfo.none
 
   script(type='text/javascript').
-    var teacherModule = '/module/teacherInfo/teacherManagement';
-    seajs.use(['aries-main',teacherModule],function(aries,teacherModule){
+    var teacherModule = '/module/teacherInfo/teacherManagement',
+        studentModule = '/module/studentInfo/studentManagement',
+        roomModule ='/module/roomInfo/roomManagement';
+    seajs.use(['aries-main',teacherModule,studentModule,roomModule],function(aries,teacherModule,studentModule,roomModule){
+      var jqueryMap = {};
+      jqueryMap.$teacherInfo = $('#mainContent').find('#teacherInfo');
+      jqueryMap.$studentInfo = $('#mainContent').find('#studentInfo');
+      jqueryMap.$classRoomInfo = $('#mainContent').find('#classRoomInfo');
+      jqueryMap.$examInfo = $('#mainContent').find('#examInfo');
 
       var tree = [
         {
           text: "教师管理",
+          id:"teacher"
+                  
+         },
+        {
+          text: "学生管理",
+          id:"student"
         },
         {
-          text: "学生管理"
+          text: "考场管理",
+          id:"classRoom"
         },
         {
-          text: "考场管理"
-        },
-        {
-          text: "考试管理"
+          text: "考试管理",
+          id:"exam"
         }
       ];
       $('#menuTree').treeview({data:tree});
-      teacherModule.initModule($('#teacherInfo'));
-
+      $('#menuTree').find('li[data-nodeid="0"]').trigger('click');
+      teacherModule.initModule(jqueryMap.$teacherInfo);
+      jqueryMap.$teacherInfo.removeClass('none').siblings().addClass('none');
+      $('#menuTree').on('click','li',function(e){
+        var id = $(this).attr('data-nodeid');
+        switch(id){
+           case '0':
+             teacherModule.initModule(jqueryMap.$teacherInfo);
+             jqueryMap.$teacherInfo.removeClass('none').siblings().addClass('none');
+             break;
+           case '1':
+             studentModule.initModule(jqueryMap.$studentInfo);
+             jqueryMap.$studentInfo.removeClass('none').siblings().addClass('none');
+             break;
+           case '2':
+             roomModule.initModule(jqueryMap.$classRoomInfo);
+             jqueryMap.$classRoomInfo.removeClass('none').siblings().addClass('none');
+             break;
+           case '3':
+             //examModule.initModule(jqueryMap.$examInfo);
+             jqueryMap.$examInfo.removeClass('none').siblings().addClass('none');
+             break; 
+       }
+       
+     })
+     
     });
 
 

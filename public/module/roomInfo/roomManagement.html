@@ -1,0 +1,94 @@
+<div id="roomList">
+    <div id="toolbar" class="m-t-md m-b-md">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-icon" id="addRoom">
+               <i class = "add" > </i>
+            </button>
+            <button type="button" class="btn btn-default btn-icon" id="delRoom" style="visibility: hidden">
+                <i class = "delete" > </i>
+            </button>
+        </div>
+
+        <div class="btn-group m-l-lg">
+            <button type="button" class="btn btn-default btn-icon">
+               <i class = "cloud_upload" > </i>
+            </button>
+            <button type="button" class="btn btn-default btn-icon">
+                <i class = "cloud_download" > </i>
+            </button>
+        </div>
+
+        <div class="input-group pull-right" style="width: 300px">
+            <span class="input-group-addon"><i class="search"></i></span>
+            <input type="text" aeType="aeTextfield" id="searchRoom" class="form-control" emptyText="Search By Room NO">
+        </div>
+    </div>
+    <table class="table b-t" style="margin-bottom: 0">
+        <thead>
+            <tr>
+                <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
+                <th>编号</th>
+                <th>考场地址</th>
+                <th>容量(人)</th>
+                <th>是否空闲</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    <div style="clear: both">
+        <span aeType="aePagination" aeInit="true" id="pagination" />
+    </div>
+</div>
+<div id="addRoomModal" class="none">
+    <div class="wrapper-lg">
+             <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>编号:</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input  aeType="aeTextfield" aeinit='true' width="300"  class="form-control"  id="no"/>
+                </div>
+            </div>
+             <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>考场地址:</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input  aeType="aeTextfield" aeinit='true' width="300" class="form-control"  id="address"/>
+                </div>
+            </div>
+             <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>容量(人):</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <input  aeType="aeTextfield" aeinit='true' width="300"  class="form-control"  id="capacity"/>
+                </div>
+            </div>
+             <div class="row m-b-md">
+                <div class="col-md-2 col-sm-12">
+                    <span>是否空闲:</span>
+                </div>
+                <div class="col-md-10 col-sm-12">
+                    <div  aeType="aeRadio" aeinit='true' class="form-control"  id="isEmpty" labelField="code" valueField="value"/>
+                </div>
+            </div>
+    </div>
+</div>
+<script type="text/html" id="item">
+    {{#each this}}
+    <tr data-id="{{this._id}}">
+        <th scope="row"><span aeType="aeCheckbox" aeInit="true" class="singleCheck" /></th>
+        <td>{{this.roomNo}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.capacity}}</td>
+        <td>{{#ifCond this.isEmpty true}}是{{/ifCond}}{{#ifCond this.isEmpty false}}否{{/ifCond}}</td>
+        <td>
+            <a class="detail" href="javascript:void(0)" title="detail"><i class="build"></i></a>
+            <a class="remove m-l-md" href="javascript:void(0)" title="Remove"><i class="delete"></i></a>
+        </td>
+    </tr>
+    {{/each}}
+</script>

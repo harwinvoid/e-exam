@@ -17,15 +17,8 @@ var ExamSchema = new Schema({
         courseId:String,
         courseName:String
     },
-    clazz:{
-        name:String,
-        no:String,
-        amount:Number
-    },
-    room:ObjectId
-
-
-
+    clazz: String,
+    room: ObjectId
 });
 ExamSchema.statics.queryByPagination = function(offset,pageSize,cb){
    return this.find().skip(offset).limit(pageSize).exec(cb);

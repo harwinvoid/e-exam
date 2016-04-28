@@ -38,7 +38,7 @@ define(function (require, exports, module) {
             $tbody: stateMap.$container.find('#tbody'),
             $selectAll: stateMap.$container.find('#selectAll'),
             $delstudent: stateMap.$container.find('#delStudent'),
-            $pagination: stateMap.$container.find('#pagination'),
+            $pagination: stateMap.$container.find('#studentPagination'),
             $searchstudent: stateMap.$container.find('#searchStudent'),
             $studentInfo: stateMap.$container.find('#studentInfo')
         };
@@ -138,7 +138,7 @@ define(function (require, exports, module) {
     function _initTable(name) {
         var params = {
             name: name,
-            pageNumber: pageInfo.currentPage,
+            pageNumber: pageInfo.pageNumber,
             pageSize: pageInfo.pageSize
         };
         if (!name) {

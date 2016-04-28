@@ -15,7 +15,7 @@ module.exports = function(app){
            failureFlash: true
        }));
     app.route('/importStu')
-        .post(upload.fileUpload);
+        .post(upload.userFileUpload);
 
     app.route('/queryTeacher.json')
         .post(users.queryTeacher);

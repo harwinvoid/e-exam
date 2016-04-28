@@ -22,13 +22,13 @@ define(function (require, exports, module) {
             $.Notice.error("notification:loadHtml", "$container not exist");
         }
     }
-    
+
     function _initTemplate() {
         tmpl = {
-           item: Handlebars.compile(stateMap.$container.find('#item').html()),
-        }; 
+            item: Handlebars.compile(stateMap.$container.find('#item').html()),
+        };
     }
-    
+
     function _setJqueryMap() {
         jqueryMap = {
             $roomsList: stateMap.$container.find('#roomList'),
@@ -37,20 +37,57 @@ define(function (require, exports, module) {
             $selectAll: stateMap.$container.find('#selectAll'),
             $delroom: stateMap.$container.find('#delRoom'),
             $addroom: stateMap.$container.find('#addRoom'),
-            $pagination: stateMap.$container.find('#pagination'),
+            $pagination: stateMap.$container.find('#roomPagination'),
             $searchroom: stateMap.$container.find('#searchRoom'),
             $no: stateMap.$container.find('#no'),
             $address: stateMap.$container.find('#address'),
             $capacity: stateMap.$container.find('#capacity'),
             $isEmpty: stateMap.$container.find('#isEmpty')
-            
-            
         };
     }
-    
-   function _bindEvent() {
-       var isEmptyRadio = [{code:'是',value:'1'},{code:'否',value:'0'}];
-       jqueryMap.$isEmpty.aeRadio('reload',isEmptyRadio);
+    function initUploader() {
+        var Uploader = Q.Uploader;
+        var uploader = new Uploader({
+            target: $("#upload")[0],
+            allows: '.xlsx',
+            url: '/uploadRoom.json',
+            on: {
+                add: function (task) {
+                    console.log(task);
+                    if (task.disabled) return alert("允许上传的文件格式为：" + this.ops.allows);
+                    console.log(task.name + ": 已添加!");
+                },
+                remove: function (task) {
+                    log(task.name + ": 已移除!");
+                },
+                //上传之前触发
+                upload: function (task) {
+                    //exe文件可以添加，但不会上传
+                    if (task.ext == ".exe") return false;
+                    //可针对单独的任务配置参数(POST方式)
+                    task.data = { name: task.name + "_" + Date.now() };
+                },
+                //上传完成后触发
+                complete: function (task) {
+                    if (task.state != Uploader.COMPLETE) return console.log(task.name + ": " + Uploader.getStatusText(task.state) + "!");
+                    var json = task.json;
+                    if (!json) return log(task.name + ": 服务器未返回正确的数据");
+                    $.Notice.success('数据导入成功');
+                    _initTable(null);
+                    console.log("服务器返回:  " + (task.response || ""));
+                    console.log();
+                }
+            }
+        });
+    }
+    function _bindEvent() {
+        initUploader();
+        $("[data-toggle='tooltip']").tooltip();  
+        var isEmptyRadio = [{ code: '是', value: '1', checked: 'true' }, { code: '否', value: '0' }];
+        jqueryMap.$isEmpty.aeRadio('reload', isEmptyRadio);
+        jqueryMap.$no.aeTextfield({});
+        jqueryMap.$address.aeTextfield({});
+        jqueryMap.$capacity.aeTextfield({});
         jqueryMap.$searchroom.aeTextfield({
             onValueChange: function () {
                 var name = jqueryMap.$searchroom.aeTextfield('getValue'), params;
@@ -79,15 +116,17 @@ define(function (require, exports, module) {
 
             });
         });
-        jqueryMap.$addroom.on('click',function(){
-             $.openPopupDiv('addRoomModal', '添加考场', '600', '', {
+        jqueryMap.$addroom.on('click', function () {
+            $.openPopupDiv('addRoomModal', '添加考场', '600', '', {
                 showButton: true,
                 confirmButtonText: 'Save',
                 cancelButtonText: 'Cancle',
-                "onConfirm": "public.addRoom",
+                onConfirm: "public.addRoom"
             });
-            
+
         });
+        
+
         jqueryMap.$tbody.on('click', 'a.remove', function (e) {
             e.preventDefault();
             var id = $(this).parents('tr').attr('data-id'), params, ids = [];
@@ -95,14 +134,12 @@ define(function (require, exports, module) {
             params = {
                 ids: ids
             };
-            console.log(ids);
-            $.post('/delroom.json', params, function (data) {
+            $.post('/delRoom.json', params, function (data) {
                 console.log(data);
                 if (data != 0) {
                     _initTable(null);
                 }
             })
-
         }).on('click', 'a.detail', function (e) {
             e.preventDefault();
             var id = $(this).parents('tr').attr('data-id'), params;
@@ -110,54 +147,81 @@ define(function (require, exports, module) {
                 id: id,
                 role: 3
             };
-            $.post('/userInfo.json', params, function (data) {
-                jqueryMap.$roomInfo.html(tmpl.info(data)).removeClass('none');
-                jqueryMap.$roomsList.addClass('none');
-                jqueryMap.$infoForm = jqueryMap.$roomInfo.find('#infoForm');
-                jqueryMap.$update = jqueryMap.$infoForm.find('.update');
-                jqueryMap.$back = jqueryMap.$infoForm.find('.back');
-                jqueryMap.$update.on('click', function (e) {
-                    e.preventDefault();
-                    var data = jqueryMap.$infoForm.serializeArray();
-                    var params = {
-                        _id: data[0].value,
-                        uno: data[1].value,
-                        name: data[2].value,
-                        major: data[3].value,
-                        phone: data[6].value,
-                        address: data[7].value
-                    }
-                    $.post('/updateUserInfo.json', params, function (data) {
-                        if (data === 1) {
-                            $.Notice.success("用户信息修改成功");
-                            jqueryMap.$roomInfo.addClass('none');
-                            jqueryMap.$roomsList.removeClass('none');
-                            _initTable();
-                        } else if (data === 0) {
-                            $.Notice.error("用户信息修改失败");
-                        }
-                    });
-                });
-                jqueryMap.$back.on('click', function (e) {
-                    e.preventDefault();
-                    jqueryMap.$roomInfo.addClass('none');
-                    jqueryMap.$roomsList.removeClass('none');
-                });
+            // $.post('/userInfo.json', params, function (data) {
+            //     jqueryMap.$roomInfo.html(tmpl.info(data)).removeClass('none');
+            //     jqueryMap.$roomsList.addClass('none');
+            //     jqueryMap.$infoForm = jqueryMap.$roomInfo.find('#infoForm');
+            //     jqueryMap.$update = jqueryMap.$infoForm.find('.update');
+            //     jqueryMap.$back = jqueryMap.$infoForm.find('.back');
+            //     jqueryMap.$update.on('click', function (e) {
+            //         e.preventDefault();
+            //         var data = jqueryMap.$infoForm.serializeArray();
+            //         var params = {
+            //             _id: data[0].value,
+            //             uno: data[1].value,
+            //             name: data[2].value,
+            //             major: data[3].value,
+            //             phone: data[6].value,
+            //             address: data[7].value
+            //         }
+            //         $.post('/updateUserInfo.json', params, function (data) {
+            //             if (data === 1) {
+            //                 $.Notice.success("用户信息修改成功");
+            //                 jqueryMap.$roomInfo.addClass('none');
+            //                 jqueryMap.$roomsList.removeClass('none');
+            //                 _initTable();
+            //             } else if (data === 0) {
+            //                 $.Notice.error("用户信息修改失败");
+            //             }
+            //         });
+            //     });
+            //     jqueryMap.$back.on('click', function (e) {
+            //         e.preventDefault();
+            //         jqueryMap.$roomInfo.addClass('none');
+            //         jqueryMap.$roomsList.removeClass('none');
+            //     });
 
 
 
-            });
+            // });
 
         });
     }
     function addRoom() {
-        console.log('addRoom');
+        var no = jqueryMap.$no.aeTextfield('getValue');
+        var address = jqueryMap.$address.aeTextfield('getValue');
+        var capacity = jqueryMap.$capacity.aeTextfield('getValue');
+        var isEmpty = jqueryMap.$isEmpty.aeRadio('getValue') === '1' ? true : false;
+        console.log(isEmpty);
+        if (no === '') {
+            $.Notice.warning('警告', '教室编号不可为空！');
+        }
+        if (address === '') {
+            $.Notice.warning('警告', '教室地址不可为空！');
+        }
+        if (capacity === '') {
+            $.Notice.warning('警告', '教室容量不可为空！');
+        } else {
+            if (!parseInt(capacity)) {
+                $.Notice.warning('警告', '教室容量必须为数字');
+            }
+        }
+        var params = {
+            no: no,
+            address: address,
+            capacity: capacity,
+            isEmpty: isEmpty
+        };
+        $.post('/addRoom.json', params, function (data) {
+
+        });
+
     }
-    
+
     function _initTable(name) {
         var params = {
             name: name,
-            pageNumber: pageInfo.currentPage,
+            pageNumber: pageInfo.pageNumber,
             pageSize: pageInfo.pageSize
         };
         if (!name) {
@@ -187,7 +251,7 @@ define(function (require, exports, module) {
                 onComboChange: function (currentPage, pageSize) {
                     pageInfo.pageNumber = currentPage;
                     pageInfo.pageSize = pageSize;
-                    _initTable(params);
+                    _initTable(null);
                 }
 
 
@@ -282,8 +346,8 @@ define(function (require, exports, module) {
         _initTemplate();
         _setJqueryMap();
         _bindEvent();
-         public = {
-            addRoom:addRoom
+        public = {
+            addRoom: addRoom
         }
 
 

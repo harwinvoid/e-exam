@@ -20,5 +20,37 @@ exports.queryRoom = function (req, res, next) {
 
         }
     });
-
 };
+exports.addRoom = function (req, res, next) {
+    var no = req.body.no,
+        address = req.body.address,
+        capacity = req.body.capacity,
+        isEmpty = req.body.isEmpty;
+    var room = new Room({
+        roomNo: no,
+        address: address,
+        capacity: capacity,
+        isEmpty: isEmpty
+    });
+    room.save(function (err) {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json('success');
+        }
+    });
+};
+exports.delRoom = function (req, res, next) {
+    var delIds = req.body.ids;
+    console.log(delIds);
+    Room.delRoomById(delIds, function (err, data) {
+        if (err) {
+            res.json(data);
+        } else {
+            res.json(data);
+        }
+
+
+    });
+
+}

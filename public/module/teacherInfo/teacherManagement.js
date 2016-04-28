@@ -139,7 +139,7 @@ define(function (require, exports, module) {
     function _initTable(name) {
         var params = {
             name: name,
-            pageNumber: pageInfo.currentPage,
+            pageNumber: pageInfo.pageNumber,
             pageSize: pageInfo.pageSize
         };
         if (!name) {
@@ -169,7 +169,7 @@ define(function (require, exports, module) {
                 onComboChange: function (currentPage, pageSize) {
                     pageInfo.pageNumber = currentPage;
                     pageInfo.pageSize = pageSize;
-                    _initTable(params);
+                    _initTable(null);
                 }
 
 

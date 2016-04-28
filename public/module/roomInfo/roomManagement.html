@@ -1,21 +1,21 @@
 <div id="roomList">
     <div id="toolbar" class="m-t-md m-b-md">
         <div class="btn-group">
-            <button type="button" class="btn btn-default btn-icon" id="addRoom">
+            <a type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom'  title='添加教室' id="addRoom">
                <i class = "add" > </i>
-            </button>
-            <button type="button" class="btn btn-default btn-icon" id="delRoom" style="visibility: hidden">
+            </a>
+            <a type="button" class="btn btn-default btn-icon" id="delRoom" style="visibility: hidden" data-toggle="tooltip" data-placement='bottom'  title='删除教室' >
                 <i class = "delete" > </i>
-            </button>
+            </a>
         </div>
 
         <div class="btn-group m-l-lg">
-            <button type="button" class="btn btn-default btn-icon">
+            <button type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom' id="upload"  title='批量添加'>
                <i class = "cloud_upload" > </i>
             </button>
-            <button type="button" class="btn btn-default btn-icon">
+            <a href="files/roomInfoTemplate.xlsx" type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom'  title='下载模板'>
                 <i class = "cloud_download" > </i>
-            </button>
+            </a>
         </div>
 
         <div class="input-group pull-right" style="width: 300px">
@@ -38,38 +38,38 @@
         </tbody>
     </table>
     <div style="clear: both">
-        <span aeType="aePagination" aeInit="true" id="pagination" />
+        <span aeType="aePagination" aeInit="true" id="roomPagination" />
     </div>
 </div>
 <div id="addRoomModal" class="none">
     <div class="wrapper-lg">
              <div class="row m-b-md">
                 <div class="col-md-2 col-sm-12">
-                    <span>编号:</span>
+                    <span>编号<span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-10 col-sm-12">
-                    <input  aeType="aeTextfield" aeinit='true' width="300"  class="form-control"  id="no"/>
+                    <span  aeType="aeTextfield" aeinit='true' width="300" emptyText='请输入教室编号'  class="form-control"  id="no"/>
                 </div>
             </div>
              <div class="row m-b-md">
                 <div class="col-md-2 col-sm-12">
-                    <span>考场地址:</span>
+                    <span>考场地址<span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-10 col-sm-12">
-                    <input  aeType="aeTextfield" aeinit='true' width="300" class="form-control"  id="address"/>
+                    <span  aeType="aeTextfield" aeinit='true' width="300" class="form-control" emptyText='请输入教室地址'  id="address"/>
                 </div>
             </div>
              <div class="row m-b-md">
                 <div class="col-md-2 col-sm-12">
-                    <span>容量(人):</span>
+                    <span>容量(人)<span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-10 col-sm-12">
-                    <input  aeType="aeTextfield" aeinit='true' width="300"  class="form-control"  id="capacity"/>
+                    <span  aeType="aeTextfield" aeinit='true' width="300"  emptyText='请输入教室容量' class="form-control"  id="capacity"/>
                 </div>
             </div>
              <div class="row m-b-md">
                 <div class="col-md-2 col-sm-12">
-                    <span>是否空闲:</span>
+                    <span>是否空闲</span>
                 </div>
                 <div class="col-md-10 col-sm-12">
                     <div  aeType="aeRadio" aeinit='true' class="form-control"  id="isEmpty" labelField="code" valueField="value"/>

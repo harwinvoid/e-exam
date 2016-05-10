@@ -48,7 +48,14 @@ var UserSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    attendExam: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Exam'
+
+        }
+    ]
 });
 UserSchema.pre('save', function (next) {
     this.password = this.uid.substring(this.uid.length - 6, this.uid.length);
@@ -68,13 +75,19 @@ UserSchema.methods.hashPassword = function (password) {
 UserSchema.methods.authenticate = function (password) {
     return this.password === this.hashPassword(password);
 };
-
+UserSchema.statics.findUserById = function (id, cb) {
+    if (id) {
+        return this.findOne({ _id: id })
+            .populate('attendExam')
+            .exec(cb);
+    }
+};
 UserSchema.statics.findAllTeacherByPagination = function (name, offset, pageSize, cb) {
     if (name) {
         console.log('name:' + name);
-        return this.find({role: 2, name: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
+        return this.find({ role: 2, name: { $regex: name } }).skip(offset).limit(pageSize).exec(cb);
     } else {
-        return this.find({role: 2}).skip(offset).limit(pageSize).exec(cb);
+        return this.find({ role: 2 }).skip(offset).limit(pageSize).exec(cb);
     }
 
 }
@@ -82,13 +95,13 @@ UserSchema.statics.findAllTeacherByPagination = function (name, offset, pageSize
 UserSchema.statics.findAllStudentByPagination = function (name, offset, pageSize, cb) {
     if (name) {
         var flag = parseInt(name);
-        if(flag === NaN){
-        return this.find({role: 3, name: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
-        }else{
-            return this.find({role: 3, uno: {$regex: name}}).skip(offset).limit(pageSize).exec(cb);
+        if (flag === NaN) {
+            return this.find({ role: 3, name: { $regex: name } }).skip(offset).limit(pageSize).exec(cb);
+        } else {
+            return this.find({ role: 3, uno: { $regex: name } }).skip(offset).limit(pageSize).exec(cb);
         }
     } else {
-        return this.find({role: 3}).skip(offset).limit(pageSize).exec(cb);
+        return this.find({ role: 3 }).skip(offset).limit(pageSize).exec(cb);
     }
 
 }
@@ -96,9 +109,9 @@ UserSchema.statics.findAllStudentByPagination = function (name, offset, pageSize
 UserSchema.statics.findAllTeacher = function (name, cb) {
     if (name) {
         console.log('name:' + name);
-        return this.find({role: 2, name: {$regex: name}}).exec(cb);
+        return this.find({ role: 2, name: { $regex: name } }).exec(cb);
     } else {
-        return this.find({role: 2}).exec(cb);
+        return this.find({ role: 2 }).exec(cb);
     }
 
 }
@@ -106,25 +119,25 @@ UserSchema.statics.findAllTeacher = function (name, cb) {
 UserSchema.statics.findAllStudent = function (name, cb) {
     if (name) {
         var flag = parseInt(name);
-        if(flag === NaN){
-            return this.find({role: 3, name: {$regex: name}}).exec(cb);    
-        }else{
-            return this.find({role: 3, uno: {$regex: name}}).exec(cb);
+        if (flag === NaN) {
+            return this.find({ role: 3, name: { $regex: name } }).exec(cb);
+        } else {
+            return this.find({ role: 3, uno: { $regex: name } }).exec(cb);
         }
-        
+
     } else {
-        return this.find({role: 3}).exec(cb);
+        return this.find({ role: 3 }).exec(cb);
     }
 
 }
 
 UserSchema.statics.delTeacherById = function (ids, cb) {
-    this.remove({role:2, _id: {$in: ids}}, cb)
+    this.remove({ role: 2, _id: { $in: ids } }, cb)
 };
 
 UserSchema.statics.delStudentById = function (ids, cb) {
     console.log(ids);
-    this.remove({role:3, _id: {$in: ids}}, cb)
+    this.remove({ role: 3, _id: { $in: ids } }, cb)
 };
 
 
@@ -147,11 +160,11 @@ UserSchema.statics.findUniqueUsername = function (username, suffix, callback) {
     });
 };
 //更新用户数据
-UserSchema.statics.updateUserInfo = function(_id,user,cb){
-  return this.update({_id: _id }, { $set: { uno:user.uno,name: user.name,major:user.major,phone:user.phone,address:user.address }},cb);
+UserSchema.statics.updateUserInfo = function (_id, user, cb) {
+    return this.update({ _id: _id }, { $set: { uno: user.uno, name: user.name, major: user.major, phone: user.phone, address: user.address } }, cb);
 };
-UserSchema.statics.queryUserInfo =function(id,role,cb){
-    return this.findOne({_id:id,role:role}).exec(cb);
+UserSchema.statics.queryUserInfo = function (id, role, cb) {
+    return this.findOne({ _id: id, role: role }).exec(cb);
 }
 UserSchema.set('toJson', {
     getters: true,

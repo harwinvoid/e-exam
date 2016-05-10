@@ -17,8 +17,9 @@ block content
   script(type='text/javascript').
     var teacherModule = '/module/teacherInfo/teacherManagement',
         studentModule = '/module/studentInfo/studentManagement',
-        roomModule ='/module/roomInfo/roomManagement';
-    seajs.use(['aries-main',teacherModule,studentModule,roomModule],function(aries,teacherModule,studentModule,roomModule){
+        roomModule ='/module/roomInfo/roomManagement',
+        examModule = '/module/examInfo/examManagement';
+    seajs.use(['aries-main',teacherModule,studentModule,roomModule,examModule],function(aries,teacherModule,studentModule,roomModule,examModule){
       var jqueryMap = {};
       jqueryMap.$teacherInfo = $('#mainContent').find('#teacherInfo');
       jqueryMap.$studentInfo = $('#mainContent').find('#studentInfo');
@@ -64,7 +65,7 @@ block content
              jqueryMap.$classRoomInfo.removeClass('none').siblings().addClass('none');
              break;
            case '3':
-             //examModule.initModule(jqueryMap.$examInfo);
+             examModule.initModule(jqueryMap.$examInfo);
              jqueryMap.$examInfo.removeClass('none').siblings().addClass('none');
              break; 
        }

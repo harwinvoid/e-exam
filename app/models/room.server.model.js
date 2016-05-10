@@ -23,8 +23,22 @@ var RoomSchema = new Schema({
         type: Boolean,
         default: false,
         required: 'isEmpty is required'
-    }
+    },
+    attendExam:[
+        {
+               type: Schema.Types.ObjectId,
+               ref: 'Exam'           
+        }
+    ]
 });
+RoomSchema.statics.findRoomById = function (id,cb) {
+    if(id){
+        return this.findOne({_id:id})
+                   .populate('attendExam')
+                   .exec(cb);
+    }
+    
+};
 RoomSchema.statics.findAllRoomByPagination = function (no, offset, pageSize, cb) {
     if (no) {
         console.log(no);

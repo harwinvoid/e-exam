@@ -207,5 +207,17 @@ define(function (require, exports, moudles) {
 		}
 		return options.inverse(this);
 	});
+	Handlebars.registerHelper('getDate',function(value,options) {
+	 var completeDate =value.startTime.split('T')[0],
+       date = completeDate.substr(0, 10);
+    return date; 
+});
+Handlebars.registerHelper('getPeriod',function(value,options) {
+	  value.startTime = moment.parseZone(value.startTime).local().format();
+		value.endTime =moment.parseZone(value.endTime).local().format();
+	  var begin = value.startTime.split('T')[1].substr(0,5),
+    		end = value.endTime.split('T')[1].substr(0,5);
+    return begin + '-' + end;
+});
 
 });

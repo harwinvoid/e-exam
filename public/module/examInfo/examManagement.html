@@ -1,0 +1,150 @@
+<div id="examList">
+    <div id="toolbar" class="m-t-md m-b-md">
+        <div class="btn-group">
+            <a type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom' title='添加考试' id="addExam">
+                <i class="add"> </i>
+            </a>
+            <a type="button" class="btn btn-default btn-icon" id="delExam" style="visibility: hidden" data-toggle="tooltip" data-placement='bottom'
+                title='删除考试'>
+                <i class="delete"> </i>
+            </a>
+        </div>
+
+        <div class="btn-group m-l-lg">
+            <button type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom' id="upload" title='批量添加'>
+               <i class = "cloud_upload" > </i>
+            </button>
+            <a href="files/roomInfoTemplate.xlsx" type="button" class="btn btn-default btn-icon" data-toggle="tooltip" data-placement='bottom'
+                title='下载模板'>
+                <i class="cloud_download"> </i>
+            </a>
+        </div>
+        <div class="input-group pull-right" style="width: 300px">
+            <span class="input-group-addon"><i class="search"></i></span>
+            <input type="text" aeType="aeTextfield" id="searchExam" class="form-control" emptyText="Search By Name or Classes">
+        </div>
+    </div>
+    <table class="table b-t" style="margin-bottom: 0">
+        <thead>
+            <tr>
+                <th><span aeType="aeCheckbox" aeInit="true" id="selectAll"></span></th>
+                <th>考试日期</th>
+                <th>考试时间</th>
+                <th>考试班级</th>
+                <th>考试科目</th>
+                <th>考试地点</th>
+                <th>参考人数</th>
+                <th>考试形式</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    <div style="clear: both">
+        <span aeType="aePagination" aeInit="true" id="examPagination" />
+    </div>
+</div>
+<div id="addExamModal" class="none">
+    <div class="wrapper">
+        <div aeType="aeForm" id="createExam" class="form-horizontal m-t-sm m-b-md">
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">科目名称<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <span aeType="aeTextfield" id="courseName" aeInit="true" emptyText="-科目名称-"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-6 col-sm-12">
+                    <label class="text-sm font-bold text-muted">开始时间<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-6 col-sm-12">
+                            <span aeType="aeCalendar" id="startTime" showTime='true' aeInit="true" width='260' emptyText="-开始时间-">ssss</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-sm-12">
+                    <label class="text-sm font-bold text-muted">结束时间<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-6 col-sm-12">
+                            <span aeType="aeCalendar" id="endTime" aeInit="true" showTime='true' width='260' emptyText="-结束名称-">sss</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">参考班级<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-6 col-sm-12">
+                            <span aeType="aeCombo" id="attendClass" aeInit="true" width='548'  showClear='true' emptyText="-参考班级!-"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">监考人员<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-6 col-sm-12">
+                            <span aeType="aeCombo" id="examTeacher" width='548'  showClear='true' emptyText="-监考人员!-"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">考试地点<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <span aeType="aeCombo" id="examAddress" aeInit="true" emptyText="-考试地点-" showClear='true'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">考试人数<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <span aeType="aeFlip" id="attendNum" aeInit="true" emptyText="-考试人数-"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group m-b-md">
+                <div class="col-xs-12 col-md-12 col-sm-12">
+                    <label class="text-sm font-bold text-muted">考试形式<span style="color:red"> *</span></label>
+                    <div class="row m-t-sm">
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <span aeType="aeRadio" id="examType" aeInit="true" labelField='code' valueField='value'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="item">
+    {{#each this}}
+    <tr data-id="{{this._id}}">
+        <th scope="row"><span aeType="aeCheckbox" aeInit="true" class="singleCheck" /></th>
+        <td>{{getDate this.time}}</td>
+        <td>{{getPeriod this.time}}</td>
+        <td>{{this.attendClass}}</td>
+        <td>{{this.courseName}}</td>
+        <td>{{this.examAddress.address}}
+            <td>{{this.attendNum}}</td>
+            <td>{{this.examType}}</td>
+            <td>
+                <a class="detail" href="javascript:void(0)" title="detail"><i class="dehaze"></i></a>
+                <a class="remove m-l-md" href="javascript:void(0)" title="Remove"><i class="delete"></i></a>
+            </td>
+    </tr>
+    {{/each}}
+</script>

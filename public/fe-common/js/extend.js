@@ -13,7 +13,7 @@ define(function(require, exports, modules) {
  */
 define("ui-pagination",function(require, exports, module){
     /**
-     * 翻页组件国际化对��?
+     * 翻页组件国际化对象
      * @name $.ae.lang#aePagination
      * @property {object} aePagination
      * @property {string} aePagination.firstPageTipText       - First
@@ -31,18 +31,18 @@ define("ui-pagination",function(require, exports, module){
     };
 
     /**
-     * 块列��?
+     * 块列表
      * @namespace ae.aePagination
      */
     $.aeWidget('ae.aePagination',{
         /**
-         * 可�?�项
+         * 可选项
          * @name ae.aePagination#options
-         * @property {object} options                           - 可�?�项
+         * @property {object} options                           - 可选项
          * @property {number} options.totalRecords              - 总记录数
-         * @property {string|function} options.pageSize         - 每页可展现的记录��?
+         * @property {string|function} options.pageSize         - 每页可展现的记录数
          * @property {boolean} options.align                    - 文本对齐方式
-         * @property {number} options.currentPage               - 当前��?
+         * @property {number} options.currentPage               - 当前页
          * @property {boolean} options.isShowPageSizeCombo      - 是否显示设置每页数据显示的下拉框，默认为true
          * @property {boolean} options.isShowFirstLastBtn       - 是否显示首页和尾页按钮，默认为false
          * @property {boolean} options.isShowPreNextBtn         - 是否显示上一页和下一页按钮，默认为true
@@ -100,7 +100,7 @@ define("ui-pagination",function(require, exports, module){
          * 根据选项重新加载组件
          * @name ae.aePagination#reload
          * @function
-         * @param  {object} ops 新的可�?�项，如果�?�项名与原有选项名重复则优先使用新制定的选项��?
+         * @param  {object} ops 新的可选项，如果选项名与原有选项名重复则优先使用新制定的选项值
          */
         reload:function(ops){
             $.extend(true, this.options, ops);
@@ -230,7 +230,7 @@ define("ui-pagination",function(require, exports, module){
             this.element.addClass("text-"+ops.align).html(html);
 
             if(flag){
-                var comboFlag;//判断如果pageSize和定义的data.value值不匹配，添加一条记��?
+                var comboFlag;//判断如果pageSize和定义的data.value值不匹配，添加一条记录
                 var data = [
                     {"text":"5 Items", "value":"5"},
                     {"text":"10 Items", "value":"10"},
@@ -270,11 +270,11 @@ define("ui-pagination",function(require, exports, module){
             return 'href="javascript:void(0)" data-value=' + n;
         },
         /**
-         * 不刷新页面直接手动调用�?�中某一页码，此方法与option方法相同
+         * 不刷新页面直接手动调用选中某一页码，此方法与option方法相同
          * @name ae.aePagination#selectPage
          * @function
          * @deprecated
-         * @param  {number} pageNumber 新当前页��?
+         * @param  {number} pageNumber 新当前页号
          */
         selectPage : function(pageNumber){
             this.options.currentPage = pageNumber;
@@ -290,10 +290,10 @@ define("ui-pagination",function(require, exports, module){
             this._generPageHtml(this.options);
         },
         /**
-         * 获得每页可展现的记录��?
+         * 获得每页可展现的记录数
          * @name ae.aePagination#getPageSize
          * @function
-         * @return 返回每页可展现的记录数�??
+         * @return 返回每页可展现的记录数。
          */
         getPageSize : function(){
             return this.options.pageSize;
@@ -302,7 +302,7 @@ define("ui-pagination",function(require, exports, module){
 });
 
 /**
- * 块列表模��?
+ * 块列表模块
  * @module ui-blocklist
  * @requires ui-pagination
  */
@@ -319,25 +319,25 @@ define('ui-blocklist', function (require, exports, moudles) {
         return null;
     }
     /**
-     * 块列��?
+     * 块列表
      * @namespace ae.aeBlocklist
      */
     $.aeWidget('ae.aeBlocklist', {
         /**
-         * 可�?�项
+         * 可选项
          * @name ae.aeBlocklist#options
          * @property {object} options
-         * @property {boolean} options.mutiSelect          - 是否多�?�，默认为false即不多�?��??
-         * @property {string} options.col                  - 设置列表��?占列数，默认为�??1”即1列�??
-         * @property {string} options.columnHeadId         - 列头Id。如果设置了此�?�项，组件将会把对应的外部列头结构移到内部结构里来，这样方便支持表格内容滚动的场景�??
-         * @property {object} options.pagingConfig         - 列表分页配置项�?�详情见aePagination组件选项描述{@link ae.aePagination#options}��?
-         * @property {string} options.selectedRowStyle     - 被�?�择行的高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标点击的时候将会展现为选中状�?��??
-         * @property {object} options.traceRowStyle        - 鼠标跟随高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标移过的时候将展现高亮状�?��??
-         * @property {boolean} options.showEmpty           - 数据为空时是否展示空数据提示。默认为false��?
-         * @property {boolean} options.showException       - 数据异常时是否展示数据异常提示�?�默认为false��?
-         * @property {boolean} options.emptyTigMsg          - 数据为空时展示空数据提示信息。默认为data��?
-         * @property {string} options.tpl                  - 模版字符串，默认为空串，如果template属�?�存在则不处理此属�?�，否则，将此属性字符串转为模版函数存入template属�?��??
-         * @property {string} options.template             - 表格中每��?行（块）对应的模版函数�?�此属�?�来源于tpl属�?��??
+         * @property {boolean} options.mutiSelect          - 是否多选，默认为false即不多选。
+         * @property {string} options.col                  - 设置列表所占列数，默认为“1”即1列。
+         * @property {string} options.columnHeadId         - 列头Id。如果设置了此选项，组件将会把对应的外部列头结构移到内部结构里来，这样方便支持表格内容滚动的场景。
+         * @property {object} options.pagingConfig         - 列表分页配置项。详情见aePagination组件选项描述{@link ae.aePagination#options}。
+         * @property {string} options.selectedRowStyle     - 被选择行的高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标点击的时候将会展现为选中状态。
+         * @property {object} options.traceRowStyle        - 鼠标跟随高亮样式，默认为空串，如果设置了此样式，那么列表项在鼠标移过的时候将展现高亮状态。
+         * @property {boolean} options.showEmpty           - 数据为空时是否展示空数据提示。默认为false。
+         * @property {boolean} options.showException       - 数据异常时是否展示数据异常提示。默认为false。
+         * @property {boolean} options.emptyTigMsg          - 数据为空时展示空数据提示信息。默认为data。
+         * @property {string} options.tpl                  - 模版字符串，默认为空串，如果template属性存在则不处理此属性，否则，将此属性字符串转为模版函数存入template属性。
+         * @property {string} options.template             - 表格中每一行（块）对应的模版函数。此属性来源于tpl属性。
          * @property {string} options.localPagination      - 是否进行前端翻页
          */
         options: {
@@ -362,7 +362,7 @@ define('ui-blocklist', function (require, exports, moudles) {
                 $ele.attr("aeId",id);
             }
             $ele.attr("aeInit",false);
-            this._source=null;//本地翻页的数据缓��?
+            this._source=null;//本地翻页的数据缓存
             this._buildOptions(options, $ele);
             this._rebuildSkeleton();
             this._loadColumnHead();
@@ -467,7 +467,7 @@ define('ui-blocklist', function (require, exports, moudles) {
          * @function
          * @param  {object} data 数据
          * * data 数据内容数组
-         * * tpl 模版字符��?
+         * * tpl 模版字符串
          */
         reload: function (data) {
             var finalData=(data?data.data:null),
@@ -547,7 +547,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             this._showEmptyBrand();
         },
         /**
-         * 选择��?有项目，此方法只在多选模式是有效
+         * 选择所有项目，此方法只在多选模式是有效
          * @name ae.aeBlocklist.selectAll
          * @function
          */
@@ -567,7 +567,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             }
         },
         /**
-         * 获得选中项数��?
+         * 获得选中项数据
          * @name ae.aeBlocklist.getSelected
          * @function
          * @return {array} 选中项的数据
@@ -593,7 +593,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             return data;
         },
         /**
-         * 是否启用了翻页功��?
+         * 是否启用了翻页功能
          * @name ae.aeBlocklist.hasPaging
          * @function
          * @return {boolean} 如果启用了翻页功能返回true，否则返回false
@@ -603,11 +603,11 @@ define('ui-blocklist', function (require, exports, moudles) {
             return !!(pagingConfig && pagingConfig.id);
         },
         /**
-         * 添加��?行（块），此方法只在无翻页模式下有效
+         * 添加一行（块），此方法只在无翻页模式下有效
          * @name ae.aeBlocklist.addBlock
          * @function
          * @param {object} blockData 行（块）数据
-         * @param {string} tmpl  模版字符��?
+         * @param {string} tmpl  模版字符串
          * @param {string|undefined} pos   添加位置，如果为“top”那么将新增的行（块）添加在列表首部，否则添加到尾部
          * @return {object|null} 如果添加成功返回添加后内容的DOM实例，否则返回null
          */
@@ -649,7 +649,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             return null;
         },
         /**
-         * 设置数据，此方法将清空现有列表内��?
+         * 设置数据，此方法将清空现有列表内容
          * @name ae.aeBlocklist.setData
          * @function
          * @param {array} data 数据
@@ -729,7 +729,7 @@ define('ui-blocklist', function (require, exports, moudles) {
             }
         },
         /**
-         * 创建空数据视��?
+         * 创建空数据视图
          * @private
          */
         _createEmptyBrand:function(){
@@ -750,10 +750,10 @@ define('ui-blocklist', function (require, exports, moudles) {
             this.element.find("[data-role='emptyBrand']").stop().hide();
         },
         /**
-         * 根据数据和模版生成DOM元素��?
+         * 根据数据和模版生成DOM元素集
          * @private
          * @param  {Array} data 数据
-         * @param  {Function} tpl  块模��?
+         * @param  {Function} tpl  块模版
          * @return {Array}      返回DOM元素数组
          */
         _generatorDOMs: function (data, tpl) {
@@ -799,7 +799,7 @@ define('ui-selectgroup',function (require, exports, moudles) {
         options:{
             initType: "html",
             /**
-             * 模式（simple/complex ��?��?/复杂��?
+             * 模式（simple/complex 简单/复杂）
              * @type String
              * @default 'simple'
              * @example
@@ -873,9 +873,9 @@ define('ui-selectgroup',function (require, exports, moudles) {
             return (this.element.find(".btn input").eq(0).attr("type") || "radio" );
         },
         /**
-         *  获取选中按钮的�?��??
+         *  获取选中按钮的值。
          *  radio类型，返回string类型
-         *  checkbox，返回数��?
+         *  checkbox，返回数组
          **/
         getSelectValue : function(){
             var self = this, options = self.options, el = self.element;
@@ -892,9 +892,9 @@ define('ui-selectgroup',function (require, exports, moudles) {
             }
         },
         /**
-         *  获取选中按钮的文本�??
+         *  获取选中按钮的文本。
          *  radio类型，返回string类型
-         *  checkbox，返回数��?
+         *  checkbox，返回数组
          **/
         getSelectText : function(){
             var self = this, options = self.options, el = self.element;
@@ -913,7 +913,7 @@ define('ui-selectgroup',function (require, exports, moudles) {
 
         /**
          *  通过下标设置按钮选中
-         *  obj表示下标或�?�下标数��?
+         *  obj表示下标或者下标数组
          **/
         setSelectByIndex : function(obj){
             var self = this,
@@ -955,8 +955,8 @@ define('ui-selectgroup',function (require, exports, moudles) {
             }
         },
         /**
-         *  通过值设置按钮�?�中
-         *  obj表示值或者数��?
+         *  通过值设置按钮选中
+         *  obj表示值或者数组
          **/
         setSelectByValue : function(obj){
             var self = this,
@@ -1029,25 +1029,25 @@ define('ui-logicblock', function(require, exports, moudles) {
         tmplMember = "<div class='panel panel-default m-b-sm' id='{{id}}' data-group-id='{{group_id}}' data-dock='true' data-role='member'><div class='pull-right pos-abt' style='right:15px;top:50%;margin-top:-10px;'><a href='javascript:void(0);'><i class='ion-close text-dark' data-role='member-del' data-group-id='{{group_id}}' data-member-id='{{id}}' style='opacity:0.5;filter:\"alpha(opacity=0.5)\"'></i></a></div><div class='inline-block v-middle pos-abt' style='cursor: move;left: 0px;top: 50%; margin-top: -25px;' data-role='drag-handle'><a class='text-center block text-muted m' style='cursor: move;opacity:0.5;filter:\"alpha(opacity=0.5)\"'><i class='ion-drag' data-member-id='{{id}}' data-role='member-icon'></i></a></div><div class='form-inline inline-block v-middle m-t-xs' data-role='member-cntr' style='padding:10px 40px 10px 40px;width:100%'></div></div>",
         hdTimer = null,
         CSS_HIGHLIGHT="bg-light lt",
-        ATTR_VAR="$ATTR_CODE$", //模版内的属�?�名变量
-        VAL_VAR="$ATTR_VALUE$", //模版内的值变��?
-        CTRL_NUM=1, //数字输入��?
-        CTRL_TEXT=2, //文本输入��?
-        CTRL_DATE=3, //日期输入��?
-        CTRL_ENUM=4, //枚举下拉��?
+        ATTR_VAR="$ATTR_CODE$", //模版内的属性名变量
+        VAL_VAR="$ATTR_VALUE$", //模版内的值变量
+        CTRL_NUM=1, //数字输入框
+        CTRL_TEXT=2, //文本输入框
+        CTRL_DATE=3, //日期输入框
+        CTRL_ENUM=4, //枚举下拉框
         VALUE_TYPE_ENUM=0, //枚举
-        VALUE_TYPE_STR=1, //字符��?
+        VALUE_TYPE_STR=1, //字符串
         VALUE_TYPE_NUM=2, //数字
         VALUE_TYPE_DATE=3, //日期
         VALUE_TYPE_DATETIME=4, //日期时间
         $input;
 
     /**
-     * aeLogicBlock组件国际化对象名称空��?
+     * aeLogicBlock组件国际化对象名称空间
      * @namespace
      * @property {object} aeLogicBlock
-     * @property {string} aeLogicBlock.addNewCondition 添加新条��?
-     * @property {string} aeLogicBlock.dropTip 拖到这里添加��?
+     * @property {string} aeLogicBlock.addNewCondition 添加新条件
+     * @property {string} aeLogicBlock.dropTip 拖到这里添加组
      * @property {string} aeLogicBlock.notFound 搜索栏内容没有找到匹配项
      */
     $.ae.lang.aeLogicBlock={
@@ -1072,7 +1072,7 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 获得随机Id
      * @param {string} prefix Id前缀
-     * @returns {string} 返回带指定前��?的新Id
+     * @returns {string} 返回带指定前缀的新Id
      */
     function getId(prefix) {
         return prefix + (new Date()).getTime();
@@ -1083,7 +1083,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         s=s.replace(/\$ATTR_VALUE\$/g,val);
         return s;
     }
-    //根据操作符号名称在给定操作符里找对应操作符信��?
+    //根据操作符号名称在给定操作符里找对应操作符信息
     function getOperator(operators,operatorName) {
         var i;
         for(i=operators.length-1;i>=0;i--){
@@ -1096,9 +1096,9 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 表达式树模型类，其根节点必须是条件组类型节点，子节点可以是简单变量也可以是条件组节点
      * @param {string} exprId 表达式Id
-     * @param {string} [rootGroupId] 可�??,根组Id
-     * @param {string} ［defaultOperatorText］默认�?�辑操作符文��?
-     * @param {string} ［defaultOperatorCode］默认�?�辑操作符编��?
+     * @param {string} [rootGroupId] 可选,根组Id
+     * @param {string} ［defaultOperatorText］默认逻辑操作符文本
+     * @param {string} ［defaultOperatorCode］默认逻辑操作符编码
      * @constructor
      */
     function Expression(exprId, rootGroupId,defaultOperatorText,defaultOperatorCode) {
@@ -1114,9 +1114,9 @@ define('ui-logicblock', function(require, exports, moudles) {
     }
     Expression.prototype = {
         /**
-         * 添加��?
-         * @param {MemberGroup} group 新的组实��?
-         * @param {MemberGroup} parentGroup 新组��?属的父组
+         * 添加组
+         * @param {MemberGroup} group 新的组实例
+         * @param {MemberGroup} parentGroup 新组所属的父组
          */
         addGroup: function(group, parentGroup) {
             if(parentGroup && (parentGroup instanceof MemberGroup)) {
@@ -1129,7 +1129,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 根据组Id获得组实��?
+         * 根据组Id获得组实例
          * @param {string} groupId 组Id
          * @returns {MemberGroup|null} 返回给定Id的MemberGroup实例
          */
@@ -1137,7 +1137,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return this.groups[groupId] || null;
         },
         /**
-         * 删除��?
+         * 删除组
          * @param {string} groupId 组Id
          */
         deleteGroup: function(groupId) {
@@ -1147,17 +1147,17 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 导出表达��?
+         * 导出表达式
          * @param {function} [assembler] 装配器，即一个回调函数，它将在组装表达式的时候被调用，可用来自定义表达式
-         * @param {boolean} [useLogicOperatorText] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接��?
+         * @param {boolean} [useLogicOperatorText] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接）
          * @returns {string} 返回表达式字符串
          */
         toExpression: function(assembler,useLogicOperatorText) {
             return this.root.toExpression(assembler,useLogicOperatorText);
         },
         /**
-         * 获得状�??
-         * @returns {Object} 返回状�?�对��?
+         * 获得状态
+         * @returns {Object} 返回状态对象
          */
         getState: function() {
             var obj = {
@@ -1182,10 +1182,10 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 设置状�??
-         * @param {object} state 状�?�对��?
+         * 设置状态
+         * @param {object} state 状态对象
          * @param {object} mapVariables 以变量Id为key的变量map对象
-         * @returns {boolean} 如果状�?�设置成功返回true,否则返回false
+         * @returns {boolean} 如果状态设置成功返回true,否则返回false
          */
         setState: function(state,mapVariables) {
             var i,
@@ -1199,7 +1199,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 this.id = state.id;
                 groupStates = state.groups;
                 count = groupStates.length;
-                //先产生全部实例然后恢复状��?,这样来避免恢复状态时父组找不到的问题
+                //先产生全部实例然后恢复状态,这样来避免恢复状态时父组找不到的问题
                 for(i = 0; i < count; i++) {
                     if(groupStates[i].id === state.rootId) {
                         this.root = new MemberGroup({
@@ -1239,19 +1239,19 @@ define('ui-logicblock', function(require, exports, moudles) {
         }
     };
     /**
-     * ��?单成��?
+     * 简单成员
      * @param {string} id 序号
-     * @param {string} variableName 变量��?
+     * @param {string} variableName 变量名
      * @param {string} variable 变量编码
      * @param {string} variableId 变量Id
-     * @param {string} operator 操作符唯��?标识
-     * @param {string} operatorName 操作符名��?
-     * @param {string} value ��?
-     * @param {string} valueText 值描述文本（此属性只有当vlaueType��?0时才有�?�）
-     * @param {number} valueType 值类��?, 0--枚举; 1--字符��?(默认); 2--数字; 3--日期; 4--日期时间
-     * @param {number} controlType 控件类型��?1--数字输入��?; 2--文本输入��?(默认); 3--日期组件; 4--枚举下拉��?
-     * @param {string} template 模版，模版变量可能有 $ATTR_CODE$ ��? $ATTR_VALUE$
-     * @param {string} displayTemplate 显示模版，模版变量可能有 $ATTR_CODE$ ��? $ATTR_VALUE$
+     * @param {string} operator 操作符唯一标识
+     * @param {string} operatorName 操作符名称
+     * @param {string} value 值
+     * @param {string} valueText 值描述文本（此属性只有当vlaueType为0时才有值）
+     * @param {number} valueType 值类型, 0--枚举; 1--字符串(默认); 2--数字; 3--日期; 4--日期时间
+     * @param {number} controlType 控件类型，1--数字输入框; 2--文本输入框(默认); 3--日期组件; 4--枚举下拉框
+     * @param {string} template 模版，模版变量可能有 $ATTR_CODE$ 和 $ATTR_VALUE$
+     * @param {string} displayTemplate 显示模版，模版变量可能有 $ATTR_CODE$ 和 $ATTR_VALUE$
      * @param {MemberGroup} [parentGroup] 父组
      * @constructor
      */
@@ -1272,8 +1272,8 @@ define('ui-logicblock', function(require, exports, moudles) {
     }
     Member.prototype = {
         /**
-         * 获得状�??
-         * @returns {Object} 返回状�?�对��?
+         * 获得状态
+         * @returns {Object} 返回状态对象
          */
         getState: function() {
             return {
@@ -1302,11 +1302,11 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 成员组类
      * @param options 选项，属性如下：
-     * * expr -- 表达式对象实��?
-     * * [operator] -- 可�?�，默认操作符，暂时只支持and和or
-     * * [members] -- 可�?�，��?个数组，其成员可以是Member实例或MemberGroup实例
-     * * [id] -- 可�?�，组id
-     * * [parentGroup] -- 可�?�，父组
+     * * expr -- 表达式对象实例
+     * * [operator] -- 可选，默认操作符，暂时只支持and和or
+     * * [members] -- 可选，一个数组，其成员可以是Member实例或MemberGroup实例
+     * * [id] -- 可选，组id
+     * * [parentGroup] -- 可选，父组
      * @constructor
      */
     function MemberGroup(options) {
@@ -1437,7 +1437,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
             idx = s.lastIndexOf(this.operator);
             if(idx === (s.length - this.operator.length)) {
-                //去掉尾部多余操作��?
+                //去掉尾部多余操作符
                 s = s.substr(0, idx);
             }
             return "(" + s + ")";
@@ -1478,7 +1478,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return null;
         },
         /**
-         * 添加新成员，不允许添加重复成��?
+         * 添加新成员，不允许添加重复成员
          * @param {Member|MemberGroup} member 成员
          */
         addMember: function(member) {
@@ -1534,7 +1534,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          * 根据组Id添加新组
          * @param {string} groupId 新组Id
          * @param {string} parentGroupId 父组Id
-         * @returns {MemberGroup} 返回��?个新的MemberGroup类实��?
+         * @returns {MemberGroup} 返回一个新的MemberGroup类实例
          */
         addGroup: function(groupId, parentGroupId) {
             var exprId,
@@ -1559,7 +1559,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return group;
         },
         /**
-         * 根据组Id获取表达式对��?
+         * 根据组Id获取表达式对象
          * @param {string} groupId 组Id
          * @returns {Expression|null} 返回组Id对应的Expression类实例，如果没有对应的实例返回null
          */
@@ -1569,7 +1569,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return(expr) ? expr : null;
         },
         /**
-         * 根据组Id获得组实��?
+         * 根据组Id获得组实例
          * @param {string} groupId 组Id
          * @returns {MemberGroup}
          */
@@ -1579,7 +1579,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             return(expr) ? expr.getGroup(groupId) : null;
         },
         /**
-         * 删除��?
+         * 删除组
          * @param {string} groupId 组Id
          */
         delGroup: function(groupId) {
@@ -1588,7 +1588,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             expr.deleteGroup(groupId);
         },
         /**
-         * 触发表达式改变事��?
+         * 触发表达式改变事件
          * @param {string} exprId 表达式Id
          */
         fireExprChangeEvent: function(exprId) {
@@ -1634,7 +1634,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 v = $el.find("[data-role='member-value-datetime']").aeCalendar("getValue");
                 vt=v;
             }
-        }else{ //其他不显示�?�输入控件的情况
+        }else{ //其他不显示值输入控件的情况
             v="?";
             vt="?";
         }
@@ -1800,7 +1800,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             visible:false
         });
         $el.next().addClass("m-b-xs");
-        //构�?�日期控��?
+        //构造日期控件
         $cntr.find("[data-role='member-value-date']").aeCalendar({
             showTime: false,
             visible: false
@@ -1815,7 +1815,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         });
         $elFlip.next().addClass("m-b-xs");
 
-        //延后绑定事件，避免�?�辑错误
+        //延后绑定事件，避免逻辑错误
         opt=$elFlip.aeFlip("option");
         opt.onValueChange=hdDateChange;
 
@@ -2056,7 +2056,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             exprId = $("#" + groupId).attr("data-expr-id"),
             dialogId = "logicblock-" + exprId,
             $tree = $("#" + dialogId).find("[data-role='member-tree']");
-        //因为此事件中的this指向window而不是组件实��?,因此设置全局变量进行通讯
+        //因为此事件中的this指向window而不是组件实例,因此设置全局变量进行通讯
         window.logicblock_share_data = {
             "groupId": groupId,
             "memberId": memberId
@@ -2072,8 +2072,8 @@ define('ui-logicblock', function(require, exports, moudles) {
     /**
      * 获得第一个有效的变量对象数据
      * @ignore
-     * @param variables ��?个数组，即options.variables
-     * @returns {Object} 返回options.variables中第��?个有效的变量数据对象
+     * @param variables 一个数组，即options.variables
+     * @returns {Object} 返回options.variables中第一个有效的变量数据对象
      */
     function getFirstVariableObject(variables) {
         var i,
@@ -2166,11 +2166,11 @@ define('ui-logicblock', function(require, exports, moudles) {
             condi,
             operators,
             $btn,
-            variableObject, //第一个有效的变量对象,option.variables数组里可能存在描述分类的根节点对��?
+            variableObject, //第一个有效的变量对象,option.variables数组里可能存在描述分类的根节点对象
             member,
             tmpl,
             tmplDisplay,
-            defaultValue; //第一个变量中的第��?个操作符的模��?
+            defaultValue; //第一个变量中的第一个操作符的模版
         $memberView = createMemberView(groupId, memberId);
         $memberView.insertBefore($this);
         $cntr = $memberView.find("[data-role='member-cntr']");
@@ -2197,7 +2197,7 @@ define('ui-logicblock', function(require, exports, moudles) {
         tmplDisplay=operators[0].displayTemplate;
         defaultValue=operators[0].defaultValue;
         $select = createOperatorView(groupId, memberId, variableObject);
-        $cntr.append($select); //默认加入第一个变量对应的操作��?
+        $cntr.append($select); //默认加入第一个变量对应的操作符
         $select.aeCombo({});
         $select.next().addClass("m-b-xs");
         $select.aeCombo("reload",operators);
@@ -2209,7 +2209,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $($select[0]).aeCombo("setDefault",variableObject.value[0].code);
         }
         addMemberEvents($memberView);
-        //获得界面元素��?
+        //获得界面元素值
         condi = getCondition(memberId, variableObject.valueType);
         //更新模型
         member = new Member(memberId, condi.variableName, condi.variable,condi.variableId, condi.operator,condi.operatorName, condi.value,condi.valueText, condi.valueType, condi.controlType, tmpl,tmplDisplay);
@@ -2543,11 +2543,11 @@ define('ui-logicblock', function(require, exports, moudles) {
             parentGroupId,
             $el;
         $this.removeClass("b-danger");
-        //被拖拽元素肯定都是条件项,��?有的组都不能拖拽!
+        //被拖拽元素肯定都是条件项,所有的组都不能拖拽!
         if(thisRole === "member") { //合并两个条件为新的组,此组加入到目标条件所在的组内
             newGroupId = getId("gid");
             $this.hide();
-            //生成视图并调整视图关��?
+            //生成视图并调整视图关系
             parentGroupId = $this.attr("data-group-id");
             oldParentGroupId = draggable.attr("data-group-id");
             exprId = $("#" + parentGroupId).attr("data-expr-id");
@@ -2589,7 +2589,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 start: hdStartGroupDrag,
                 stop: hdStopGroupDrag
             });
-        } else if(thisRole === "member-drop-tip") { //加入到组��?
+        } else if(thisRole === "member-drop-tip") { //加入到组内
             if(draggable.attr("data-role") === "member-group") { //组加入组
                 groupId = draggable.attr("id");
                 group = ExpressionHelper.getGroup(groupId);
@@ -2598,7 +2598,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 prevGroupId = $el.parent().attr("data-group-id");
                 groupId = $this.attr("data-group-id");
                 $el = $("#" + groupId);
-                //生成视图并调整视图关��?
+                //生成视图并调整视图关系
                 $btn = $el.find("[data-role='member-add']").filter("[data-group-id='" + groupId + "']");
                 draggable.insertBefore($btn);
                 //更新模型
@@ -2607,7 +2607,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                 groupId = draggable.attr("data-group-id");
                 prevGroupId = groupId;
                 groupId = $this.attr("data-group-id");
-                //生成视图并调整视图关��?
+                //生成视图并调整视图关系
                 $el = $("#" + groupId);
                 exprId = $el.attr("data-expr-id");
                 $btn = $el.find("[data-role='member-add']").filter("[data-group-id='" + groupId + "']");
@@ -2692,65 +2692,65 @@ define('ui-logicblock', function(require, exports, moudles) {
      */
     $.aeWidget("ae.aeLogicBlock", {
         /**
-         * 这是��?个�?�辑类型，它没有对应的实体�??
+         * 这是一个逻辑类型，它没有对应的实体。
          * @typedef ae.aeLogicBlock#VariableItem
          * @type {object}
          * @property {string} id 变量Id
          * @property {string} name 变量名称，此名称是变量的组件展现文本
          * @property {string} code 变量编码，调用[toExpression]{@link ae.aeLogicBlock#toExpression}
-         * 方法获得的表达式都将以此属�?�的值作为最终的变量关键字�??
-         * @property {number} valueType 值类型，分为以下几种��?
-         * * 0 -- 枚举��?
+         * 方法获得的表达式都将以此属性的值作为最终的变量关键字。
+         * @property {number} valueType 值类型，分为以下几种：
+         * * 0 -- 枚举；
          * * 1 -- 字符串；
-         * * 2 -- 数字��?
-         * * 3 -- 日期��?
-         * * 4 -- 日期时间��?
-         * @property {string} value 当前值，它将优先于默认�?�被组件展现
+         * * 2 -- 数字；
+         * * 3 -- 日期；
+         * * 4 -- 日期时间。
+         * @property {string} value 当前值，它将优先于默认值被组件展现
          * @property {ae.aeLogicBlock#OperatorItem[]} operators 操作符信息对象数组，每个数组元素是一个[对象]{@link OperatorItem}
          */
 
         /**
-         * 这是��?个�?�辑类型，它没有对应的实体�??
+         * 这是一个逻辑类型，它没有对应的实体。
          * @typedef ae.aeLogicBlock#OperatorItem
          * @type {object}
          * @property {string} name 操作符名称，此名称是操作符的组件展现文本
-         * @property {string} code 操作符编码，此编码只在没有设置template属�?�的时�?�有用，
+         * @property {string} code 操作符编码，此编码只在没有设置template属性的时候有用，
          * 调用[toExpression]{@link ae.aeLogicBlock#toExpression}方法获得的表达式都将
-         * 以此属�?�的值作为最终的操作符关键字��?
-         * @property {string} template 模版字符串�?�如果同时设置此属�?�和code属�?�，那么组件
-         * 将优先以此属性为准来生成表达式�?�模版字符串中暂时只支持两个模版变量��?$ATTR_CODE$��?
-         * $ATTR_VALUE$��? 其中��?$ATTR_CODE$将被变量编码替换，�??$ATTR_VALUE$将被变量的当��?
-         * 值或默认值替换�??
-         * @property {string} displayTemplate 显示模版字符串�?�此模版用于自定义表达式展现��?
-         * 自然语言表达式的时�?�设置�??
-         * @property {number} controlType 控件类型，包括以下可选�?�：
+         * 以此属性的值作为最终的操作符关键字。
+         * @property {string} template 模版字符串。如果同时设置此属性和code属性，那么组件
+         * 将优先以此属性为准来生成表达式。模版字符串中暂时只支持两个模版变量：$ATTR_CODE$和
+         * $ATTR_VALUE$， 其中，$ATTR_CODE$将被变量编码替换，而$ATTR_VALUE$将被变量的当前
+         * 值或默认值替换。
+         * @property {string} displayTemplate 显示模版字符串。此模版用于自定义表达式展现为
+         * 自然语言表达式的时候设置。
+         * @property {number} controlType 控件类型，包括以下可选值：
          * * 1 -- 数字输入框；
          * * 2 -- 文本输入框；
          * * 3 -- 日期输入框；
-         * * 4 -- 枚举下拉框�??
-         * * 其他任何取�?�都不会展现任何控件
-         * @property {string} defaultValue 默认值，即数据类型对应控件的默认显示值或编码(下拉��?)
+         * * 4 -- 枚举下拉框。
+         * * 其他任何取值都不会展现任何控件
+         * @property {string} defaultValue 默认值，即数据类型对应控件的默认显示值或编码(下拉框)
          */
 
         /**
-         * 可�?�项
+         * 可选项
          * @name ae.aeLogicBlock#options
-         * @property {object} options                  - 可�?�项
-         * @property {ae.aeLogicBlock#VariableItem[]} options.variables - 变量信息对象数组，每个数组元素是��?个[对象]{@link VariableItem}
-         * @property {array} options.logicOperators    - 逻辑操作符信息对象数��?
-         * @property {boolean} options.hasCatalog      - 变量是否存在分类，如果为false，那么变量�?�择交互方式将以下拉框的形式体现，否则，变量选择交互方式将以树形对话框形势体现�?�默认为false，即不存在分类�??
-         * @property {function} options.onExprChange   - 表达式改变回调函��?
+         * @property {object} options                  - 可选项
+         * @property {ae.aeLogicBlock#VariableItem[]} options.variables - 变量信息对象数组，每个数组元素是一个[对象]{@link VariableItem}
+         * @property {array} options.logicOperators    - 逻辑操作符信息对象数组
+         * @property {boolean} options.hasCatalog      - 变量是否存在分类，如果为false，那么变量选择交互方式将以下拉框的形式体现，否则，变量选择交互方式将以树形对话框形势体现。默认为false，即不存在分类。
+         * @property {function} options.onExprChange   - 表达式改变回调函数
          * @property {function} options.assembler      - 组装器，即一个回调函数，它将在组装表达式的时候被调用，可用来自定义表达式
-         * @property {function} options.templateParser - ��?个模版解析函数，默认使用内置解析函数
+         * @property {function} options.templateParser - 一个模版解析函数，默认使用内置解析函数
          * @example <caption>HTML代码</caption>
          * <div class="container">
          *     <div id="myLogicBlock"></div>
          *     <div class="text-center" id="expr"></div>
          * </div>
          * @example <caption>javascript代码</caption>
-         * // 此函数为��?个回调函数，调用 $el.aeLogicBlock("toExpression",myAssembler);
-         * // 可以输出拼接了表名且使用了模版的表达式�?�显示返回false表示使用内置的拼接方式生��?
-         * // 表达式，如果返回��?个字符串，那么组件将使用这个字符串来生成表达式�??
+         * // 此函数为一个回调函数，调用 $el.aeLogicBlock("toExpression",myAssembler);
+         * // 可以输出拼接了表名且使用了模版的表达式。显示返回false表示使用内置的拼接方式生成
+         * // 表达式，如果返回一个字符串，那么组件将使用这个字符串来生成表达式。
          * function myAssembler(detailedList) {
          *     var variableCode=detailedList.variableCode,
          *         variableName=detailedList.variableName,
@@ -2765,7 +2765,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         exprStr;
          *
          *     if($.isFunction(templateParser)){
-         *         //此处调用默认模版解析函数输出以编码显示的表达��?
+         *         //此处调用默认模版解析函数输出以编码显示的表达式
          *         if(userData && userData.tableName){
          *             exprStr=templateParser(userData.tableName+"."+variableCode,value,template);
          *         }else{
@@ -2774,7 +2774,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         console.log("exprStr = '"+exprStr+"'"); //debug
          *         return exprStr;
          *     }
-         *     return false; //以默认方式拼装子表达��?
+         *     return false; //以默认方式拼装子表达式
          * }
          * //变量数据定义
          * var variablesCache=[
@@ -2799,13 +2799,13 @@ define('ui-logicblock', function(require, exports, moudles) {
          *     },
          *     {
          *         id:"v0002",
-         *         name:"用户��?",
+         *         name:"用户名",
          *         code:"v0002",
          *         valueType:1,
          *         value:"John",
          *         operators:[
          *             {
-         *                 name:"��?",
+         *                 name:"是",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:2,
@@ -2817,7 +2817,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         id:"v0003",
          *         name:"创建日期",
          *         code:"v0003",
-         *         valueType:3, //日期类型（不包括时间��?
+         *         valueType:3, //日期类型（不包括时间）
          *         value:[
          *             {
          *                 name:"今天",
@@ -2828,13 +2828,13 @@ define('ui-logicblock', function(require, exports, moudles) {
          *                 code:"yestoday()"
          *             },
          *             {
-         *                 name:"今天以前的第30��?",
+         *                 name:"今天以前的第30天",
          *                 code:"pre30days()"
          *             }
          *         ],
          *         operators:[
          *             {
-         *                 name:"��?",
+         *                 name:"是",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:3, //日期组件
@@ -2844,14 +2844,14 @@ define('ui-logicblock', function(require, exports, moudles) {
          *                 name:"早于",
          *                 code:"<",
          *                 template:"$ATTR_CODE$ < $ATTR_VALUE$",
-         *                 controlType:4, //下拉��?
+         *                 controlType:4, //下拉框
          *                 defaultValue:""
          *             },
          *             {
          *                 name:"晚于",
          *                 code:">",
          *                 template:"$ATTR_CODE$ > $ATTR_VALUE$",
-         *                 controlType:4, //下拉��?
+         *                 controlType:4, //下拉框
          *                 defaultValue:"2016-01-29"
          *             }
          *         ],
@@ -2863,11 +2863,11 @@ define('ui-logicblock', function(require, exports, moudles) {
          *         id:"v0004",
          *         name:"生效日期",
          *         code:"v0004",
-         *         valueType:4, //日期类型（包括时分秒��?
+         *         valueType:4, //日期类型（包括时分秒）
          *         value:"2016-01-29",
          *         operators:[
          *             {
-         *                 name:"��?",
+         *                 name:"是",
          *                 code:"=",
          *                 template:"$ATTR_CODE$ = $ATTR_VALUE$",
          *                 controlType:3, //日期组件
@@ -2884,14 +2884,14 @@ define('ui-logicblock', function(require, exports, moudles) {
          *
          * $("#myLogicBlock").aeLogicBlock({
          *     variables: variablesCache,
-         *     logicOperators: [ //逻辑操作��?
+         *     logicOperators: [ //逻辑操作符
          *         {
          *             text: "并且",
          *             code: "and",
          *             color: "bg-info"
          *         },
          *         {
-         *             text: "或�??",
+         *             text: "或者",
          *             code: "or",
          *             color: "bg-success"
          *         }
@@ -2911,16 +2911,16 @@ define('ui-logicblock', function(require, exports, moudles) {
          *             exprStr;
          *
          *         if($.isFunction(templateParser)){
-         *             //此处��?单拼接变量名称�?�操作符名称和�?�来返回语义化的子表达式
+         *             //此处简单拼接变量名称、操作符名称和值来返回语义化的子表达式
          *             exprStr=variableName+operatorName+valueText;
          *             return exprStr;
          *         }
-         *         return false; //以默认方式拼装子表达��?
+         *         return false; //以默认方式拼装子表达式
          *     },
-         *     hasCatalog: true, //启用变量分类，此模式下的variables里的结构与aeTree��?��?的数据结构类��?
+         *     hasCatalog: true, //启用变量分类，此模式下的variables里的结构与aeTree所需的数据结构类似
          *     onExprChange: function() {
-         *         //使用默认的回调函数（assembler属�?�指定的函数）输出变更后的表达式��?
-         *         //此时，this关键字指向Id��?"myLogicBlock"的DOM元素实例
+         *         //使用默认的回调函数（assembler属性指定的函数）输出变更后的表达式，
+         *         //此时，this关键字指向Id为"myLogicBlock"的DOM元素实例
          *         var exprStr=$(this).aeLogicBlock("toExpression",null,true);
          *         $("#expr").text(exprStr);
          *     }
@@ -2928,7 +2928,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          */
         options: {
             variables: null,
-            logicOperators: [ //逻辑操作��?
+            logicOperators: [ //逻辑操作符
                 {
                     text: "AND",
                     code: "and",
@@ -3100,7 +3100,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             this._$result.append($(s));
         },
         /**
-         * 预处理可选项，使其�?�规范便于内部处��?
+         * 预处理可选项，使其值规范便于内部处理
          * @ignore
          * @private
          */
@@ -3119,7 +3119,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                     operators=variables[i].operators;
                     for(j = operators.length-j; j >=0; j--) {
                         oper=operators[j];
-                        oper.noValue=(oper.template.indexOf(VAL_VAR)<0); //暂时内部处理这个状�?�，如果有新��?求再由外部设��?
+                        oper.noValue=(oper.template.indexOf(VAL_VAR)<0); //暂时内部处理这个状态，如果有新需求再由外部设置
                         oper.template=oper.template || "";
                         oper.controlType=parseInt(oper.controlType,10);
                         if(typeof(oper.defaultValue)!=="string"){
@@ -3225,29 +3225,29 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 导出表达��?
+         * 导出表达式
          * @name ae.aeLogicBlock#toExpression
          * @function
-         * @param {function} [assembler] 组装器，即一个回调函数，此函数将在每次拼接条件的时�?�被组件调用，可以使用它来自定义条件的表达方式（比如：在变量名前面添加一个前��?）�?�如果此参数与options选项内的assembler同时存在将优先使用参数传入的函数��?
-         * @param {boolean} [useLogicOperatorText=false] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接），如果是true，那么此函数将使用logicOperators中的text属�?�来拼接表达式�??
-         * @return {string} 返回表达��?
+         * @param {function} [assembler] 组装器，即一个回调函数，此函数将在每次拼接条件的时候被组件调用，可以使用它来自定义条件的表达方式（比如：在变量名前面添加一个前缀）。如果此参数与options选项内的assembler同时存在将优先使用参数传入的函数。
+         * @param {boolean} [useLogicOperatorText=false] 是否使用逻辑操作符的文本描述来拼接表达式，默认是false不使用文本描述拼接（即使用code拼接），如果是true，那么此函数将使用logicOperators中的text属性来拼接表达式。
+         * @return {string} 返回表达式
          */
         toExpression: function(assembler,useLogicOperatorText) {
             var expr = this.element.data("expr");
             return expr.toExpression((assembler || this.options.assembler),useLogicOperatorText);
         },
         /**
-         * 获得状�??
+         * 获得状态
          * @name ae.aeLogicBlock#getState
          * @function
-         * @return {object} 返回组件内部状�??
+         * @return {object} 返回组件内部状态
          */
         getState: function() {
             var expr = this.element.data("expr");
             return expr.getState();
         },
         /**
-         * 清理现有属�?�为重新加载做准��?
+         * 清理现有属性为重新加载做准备
          * @ignore
          * @name ae.aeLogicBlock#_clear
          * @function
@@ -3268,14 +3268,14 @@ define('ui-logicblock', function(require, exports, moudles) {
             };
         },
         /**
-         * 根据指定变量名在变量数据对象中检索，如果有匹配的数据项则返回��?
+         * 根据指定变量名在变量数据对象中检索，如果有匹配的数据项则返回它
          * @ignore
          * @name ae.aeLogicBlock#_getVariableObject
          * @function
          * @private
          * @param {object} variables 变量对象
-         * @param {string} vairableName 变量��?
-         * @return {object} 返回匹配的变量数据对��?
+         * @param {string} vairableName 变量名
+         * @return {object} 返回匹配的变量数据对象
          */
         _getVariableObject: function(variables, vairableName) {
             var i;
@@ -3287,13 +3287,13 @@ define('ui-logicblock', function(require, exports, moudles) {
             return null;
         },
         /**
-         * 获得逻辑操作符�?�项
+         * 获得逻辑操作符选项
          * @ignore
          * @name ae.aeLogicBlock#_getLogicOperator
          * @function
          * @private
-         * @param {string} operCode 逻辑操作符编��?
-         * @returns {string|null} 返回operCode逻辑操作符对应的逻辑操作符�?�项
+         * @param {string} operCode 逻辑操作符编码
+         * @returns {string|null} 返回operCode逻辑操作符对应的逻辑操作符选项
          */
         _getLogicOperator: function(operCode) {
             var logicOperators = this.options.logicOperators,
@@ -3337,7 +3337,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             $btn = $parentGroupView.find("[data-role='group-cntr']").children("[data-role='member-add']");
             for(i = 0; i < count; i++) {
                 if(members[i] instanceof MemberGroup) {
-                    //新建��?
+                    //新建组
                     $groupView = createMemberGroupView(members[i].id);
                     $groupView.attr("data-expr-id", $parentGroupView.attr("data-expr-id")); //继承父组上的exprId
                     $groupView.insertBefore($btn);
@@ -3369,7 +3369,7 @@ define('ui-logicblock', function(require, exports, moudles) {
                     $memberView.insertBefore($btn);
                     $cntr = $memberView.find("[data-role='member-cntr']");
                     variableObject = this._getVariableObject(options.variables, members[i].variableName);
-                    if(variableObject === null) { //没有找到对应变量名则取第��?个有效变��?
+                    if(variableObject === null) { //没有找到对应变量名则取第一个有效变量
                         variableObject = getFirstVariableObject(options.variables);
                     }
                     if(this.options.hasCatalog) {
@@ -3423,7 +3423,7 @@ define('ui-logicblock', function(require, exports, moudles) {
             }
         },
         /**
-         * 清除表达��?
+         * 清除表达式
          * @name ae.aeLogicBlock#clear
          * @function
          */
@@ -3441,7 +3441,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          * @function
          * @private
          * @param  {object} $root 根组DOM元素实例
-         * @param  {object} state 内部状�??
+         * @param  {object} state 内部状态
          */
         _reloadRoot:function($root,state){
             var $glbl,
@@ -3465,7 +3465,7 @@ define('ui-logicblock', function(require, exports, moudles) {
          * 重新加载数据
          * @name ae.aeLogicBlock#reload
          * @function
-         * @param {Object} state 状�?�数据对象，其�?��?�过[getState]{@link ae.aeLogicBlock#getState}方法获取
+         * @param {Object} state 状态数据对象，其值通过[getState]{@link ae.aeLogicBlock#getState}方法获取
          */
         reload: function(state) {
             var expr,
@@ -3533,29 +3533,29 @@ define('ui-notice', function (require, exports, moudles) {
             /**
              * 音频文件路径
              * */
-            audio: '/fe-common/audio/blop',
+            audio: '/ARIESRES/crm-bj/fe-common/audio/blop',
             /**
              * 音频播放时的音量
              * */
             volume: '45',
             /**
              * 是否自动关闭
-             * 为true显示关闭按钮, setting life  will be ignored；为false时会经过life时长后自动关��?
+             * 为true显示关闭按钮, setting life  will be ignored；为false时会经过life时长后自动关闭
              * */
             autoClose: true,
             /**
-             * notice 显示的垂直位��?
+             * notice 显示的垂直位置
              * top bottom
              * */
             verticalEdge: 'bottom',
             /**
-             * notice 显示的水平位��?
+             * notice 显示的水平位置
              * left center right
              * */
             horizontalEdge: 'right',
             zindex: '1060',
             /**
-             *��?要显示icon的名��?
+             *需要显示icon的名字
              * */
             icon: 'md-close',
             onCreate: null,
@@ -3617,7 +3617,7 @@ define('ui-notice', function (require, exports, moudles) {
             $container = this.container;
             num = $container.data("notice") || 0;
             num += 1;
-            $container.data("notice", num); //将页面notice实例的数量保存的容器的自定义属�?�中
+            $container.data("notice", num); //将页面notice实例的数量保存的容器的自定义属性中
             notificationId = "notice-notification-" + num;
             $container.css("z-index", options.zindex);
             $notification = $('<div class="r clear m-t-xs"></div>');
@@ -3662,7 +3662,7 @@ define('ui-notice', function (require, exports, moudles) {
             target.on('click', '.md-close', {
                 inst: this,
                 opts: options
-            }, function (event) {  //响应按钮的关闭事��?
+            }, function (event) {  //响应按钮的关闭事件
                 var data = event.data;
                 data.inst._closeNotification(target, data.opts);
             });
@@ -3800,7 +3800,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/blop"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/blop"
             });
         },
         error: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3820,7 +3820,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/blop"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/blop"
             });
         },
         warning: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3839,7 +3839,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/blop"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/blop"
             });
         },
         info: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3871,7 +3871,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/boop2"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
             });
         },
         messageDark: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3884,7 +3884,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/boop2"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
             });
         },
         notify: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3897,7 +3897,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/boop2"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
             });
         },
         annunciate: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3910,7 +3910,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/boop2"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
             });
         },
         rss: function (title, content, cbClick, cbClose, cbCreate) {
@@ -3923,7 +3923,7 @@ define('ui-notice', function (require, exports, moudles) {
                 clickEvent: $.isFunction(cbClick) ? cbClick : null,
                 onClose: $.isFunction(cbClose) ? cbClose : null,
                 onCreate: $.isFunction(cbCreate) ? cbCreate : null,
-                audio: "/fe-common/audio/boop2"
+                audio: "/ARIESRES/crm-bj/fe-common/audio/boop2"
             });
         }
     };
@@ -3939,7 +3939,7 @@ define('ui-notice', function (require, exports, moudles) {
 });
 
 /**
- * 水平树组件模��?
+ * 水平树组件模块
  * @module ui-htree
  */
  define('ui-htree', function(require, exports, moudles) {
@@ -3955,7 +3955,7 @@ define('ui-notice', function (require, exports, moudles) {
         LOADING_ANI="loading.gif";
 
     /**
-     * aeHTree组件国际化对象名称空��?
+     * aeHTree组件国际化对象名称空间
      * @namespace
      * @property {object} aeHTree
      * @property {string} aeHTree.selectedCount 已经选择总数描述
@@ -3968,12 +3968,12 @@ define('ui-notice', function (require, exports, moudles) {
         cancel:"Cancel"
     };
 
-    //判断是否是图片图��?
+    //判断是否是图片图标
     function isImgIcon(icon){
         return icon.indexOf(".")>=0;
     }
 
-    //多�?�模式下复�?�框的点击响应处��?
+    //多选模式下复选框的点击响应处理
     function hdCheck(inst,nodeId){
         var $this=$(this),
             selected=$this.hasClass(CSS_OUTLINE),
@@ -4116,13 +4116,13 @@ define('ui-notice', function (require, exports, moudles) {
             noRelativeDescendants:false
         };
         switch (mutiSelectMode) {
-            case 1: //勾�?�节点后同时选中��?有子孙节��?
+            case 1: //勾选节点后同时选中所有子孙节点
                 obj.noRelativeAncestors=true;
                 break;
-            case 2: //勾�?�节点后同时选中��?有祖先节��?
+            case 2: //勾选节点后同时选中所有祖先节点
                 obj.noRelativeDescendants=true;
                 break;
-            case 3: //只勾选节点本身�?�不关联选中其它节点
+            case 3: //只勾选节点本身而不关联选中其它节点
                 obj.noRelativeAncestors=true;
                 obj.noRelativeDescendants=true;
                 break;
@@ -4133,7 +4133,7 @@ define('ui-notice', function (require, exports, moudles) {
     /**
      * HTree树节点类
      * @global
-     * @param {object} nodeState 节点状�??
+     * @param {object} nodeState 节点状态
      * @property {string} nodeState.id 节点Id
      * @property {string} nodeState.pid 父节点Id
      * @property {string} nodeState.name 节点名称
@@ -4146,7 +4146,7 @@ define('ui-notice', function (require, exports, moudles) {
         this.rootId=nodeState.rootId || null;
         this.name=nodeState.name || "";
         this.level=(isNaN(nodeState.level)?0:parseInt(nodeState.level,10));
-        //初始的时候外部必须保证selected状�?�的正确性，否则isIndeterminate属�?�的取�?�将会出问题!
+        //初始的时候外部必须保证selected状态的正确性，否则isIndeterminate属性的取值将会出问题!
         this.selected=!!nodeState.selected;
         this.foldedIcon=nodeState.foldedIcon || (opts && opts.foldedIcon) || FOLDER_ICON;
         this.expandedIcon=nodeState.expandedIcon || (opts && opts.expandedIcon) || FOLDER_ICON;
@@ -4164,8 +4164,8 @@ define('ui-notice', function (require, exports, moudles) {
     }
     HTreeNode.prototype={
         /**
-         * 获得子节点�?�数
-         * @return {number} 返回子节点�?�数
+         * 获得子节点总数
+         * @return {number} 返回子节点总数
          */
         getChildCount:function(){
             return (this.childInfo.children!==null)?this.childInfo.children.length:0;
@@ -4189,8 +4189,8 @@ define('ui-notice', function (require, exports, moudles) {
             return (this.pid===null);
         },
         /**
-         * 获得节点状�??
-         * @return {object} 返回节点内部状�?�拷��?
+         * 获得节点状态
+         * @return {object} 返回节点内部状态拷贝
          */
         getState:function() {
             var state={
@@ -4215,10 +4215,10 @@ define('ui-notice', function (require, exports, moudles) {
         },
         /**
          * DFS树遍历，可以控制是否遍历祖先节点和子孙节点以提高性能
-         * @param  {object}   nodes                 树中��?有节点集��?
-         * @param  {Function} callback              回调函数（迭代器），this指向节点实例，入参为树中��?有节点集��?
-         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节��?
-         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节��?
+         * @param  {object}   nodes                 树中所有节点集合
+         * @param  {Function} callback              回调函数（迭代器），this指向节点实例，入参为树中所有节点集合
+         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节点
+         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节点
          */
         each:function(nodes,callback,noRelativeAncestors,noRelativeDescendants){
             var children=this.childInfo.children,
@@ -4242,13 +4242,13 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 设置选中状�??
-         * @param  {object} nodes                 树中��?有节点集��?
-         * @param  {object} levels                树层级信��?
-         * @param  {boolean} selected             是否选中，true表示设置当前节点为�?�中状�?�，否则为未选中状�??
-         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节��?
-         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节��?
-         * @return {array} 返回��?有状态有改变的节点数��?
+         * 设置选中状态
+         * @param  {object} nodes                 树中所有节点集合
+         * @param  {object} levels                树层级信息
+         * @param  {boolean} selected             是否选中，true表示设置当前节点为选中状态，否则为未选中状态
+         * @param  {boolean} noRelativeAncestors  不关联祖先节点，如果此参数为true，那么只遍历本节点和其子孙节点（ noRelativeDescendants 参数设置为false），否则将一并遍历祖先节点
+         * @param  {boolean} noRelativeDescendants 不关联子孙节点，如果此参数为true，那么只遍历本节点和其祖先节点（ noRelativeAncestors 参数设置为false），否则将一并遍历子孙节点
+         * @return {array} 返回所有状态有改变的节点数组
          */
         setSelected:function(nodes,levels,selected,noRelativeAncestors,noRelativeDescendants){
             var nd,
@@ -4315,7 +4315,7 @@ define('ui-notice', function (require, exports, moudles) {
         }
     };
 
-    //根据子节点信息获得对应的复�?�框样式
+    //根据子节点信息获得对应的复选框样式
     function getCheckCSS(childInfo) {
         var children=childInfo.children,
             i,
@@ -4345,7 +4345,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+=getFooterString();
         return $(s);
     }
-    //获得页脚部分的DOM结构字符��?
+    //获得页脚部分的DOM结构字符串
     function getFooterString() {
         var i18n=$.ae.lang.aeHTree,
             s='<div class="node-selection-footer pos-rlt" data-role="htree-footer"><button class="btn btn-primary pull-right" type="button" data-role="htree-ok">'+i18n.select+'</button> <button class="btn btn-default pull-right m-r-sm" type="button" data-role="htree-cancel">'+i18n.cancel+'</button><span class="node-selection-selected-num" data-role="htree-tips">',
@@ -4355,7 +4355,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+='</span><div class="have-selected-popover none" data-role="htree-popover"><i class="window_close" data-role="htree-win-close"></i></div></div>';
         return s;
     }
-    //获得页脚部分选中提示框项中的选中项DOM结构字符��?
+    //获得页脚部分选中提示框项中的选中项DOM结构字符串
     function getSelectedItemString(nodeId,nodeName) {
         return '<span class="label label-primary" data-role="htree-item">'+nodeName+'<i class="window_close" data-role="htree-delete-item" data-node-id="'+nodeId+'"></i></span>';
     }
@@ -4373,7 +4373,7 @@ define('ui-notice', function (require, exports, moudles) {
         s+='</ul></div>';
         return $(s);
     }
-    //获得节点的DOM结构字符��?
+    //获得节点的DOM结构字符串
     function getNodeString(node,options){
         var icon,
             cls,
@@ -4447,28 +4447,28 @@ define('ui-notice', function (require, exports, moudles) {
     }
 
     /**
-     * 水平树组��?
+     * 水平树组件
      * @namespace ae.aeHTree
      */
     $.aeWidget("ae.aeHTree", {
         /**
-         * 可�?�项
+         * 可选项
          * @name ae.aeHTree#options
-         * @property {object} options 可�?�项
-         * @property {string} options.foldedIcon - 节点收起状�?�图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
-         * @property {string} options.expandedIcon - 节点展开状�?�图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
-         * @property {string} options.leafIcon - 叶子节点图标，它可以是一个样式类也可以是��?个图片文件对应的URL
-         * @property {string} options.blurryIcon - 懒加载节点图标，它可以是��?个样式类也可以是��?个图片文件对应的URL
-         * @property {string} options.loadingAni - 懒加载节点加载数据时显示的图标，它是��?个图片（��?般是动�?�gif格式）文件对应的URL
-         * @property {boolean} options.searchable - 是否能够查询节点，默认为true，如果为true组件会在节点展示区上方显示一个节点快速定位搜索栏，否则将隐藏搜索��?
-         * @property {boolean} options.mutiSelect - 是否是多选，默认为false，如果为true组件将会切换到多选模式，即树节点左侧将出现复选框，否则组件为单�?�模��?
-         * @property {number} options.mutiSelectMode - 多�?�模式，分为四种��?0 -- 勾�?�节点后同时选中��?有子孙节点和��?有祖先节点；1 -- 勾�?�节点后同时选中��?有子孙节点；2 -- 勾�?�节点后同时选中��?有祖先节点；3 -- 只勾选节点本身�?�不关联选中其它节点
-         * @property {number} options.minLength - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索字符串的最小长��?
-         * @property {number} options.delay - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索的延迟时间（单位：毫秒��?
+         * @property {object} options 可选项
+         * @property {string} options.foldedIcon - 节点收起状态图标，它可以是一个样式类也可以是一个图片文件对应的URL
+         * @property {string} options.expandedIcon - 节点展开状态图标，它可以是一个样式类也可以是一个图片文件对应的URL
+         * @property {string} options.leafIcon - 叶子节点图标，它可以是一个样式类也可以是一个图片文件对应的URL
+         * @property {string} options.blurryIcon - 懒加载节点图标，它可以是一个样式类也可以是一个图片文件对应的URL
+         * @property {string} options.loadingAni - 懒加载节点加载数据时显示的图标，它是一个图片（一般是动态gif格式）文件对应的URL
+         * @property {boolean} options.searchable - 是否能够查询节点，默认为true，如果为true组件会在节点展示区上方显示一个节点快速定位搜索栏，否则将隐藏搜索栏
+         * @property {boolean} options.mutiSelect - 是否是多选，默认为false，如果为true组件将会切换到多选模式，即树节点左侧将出现复选框，否则组件为单选模式
+         * @property {number} options.mutiSelectMode - 多选模式，分为四种：0 -- 勾选节点后同时选中所有子孙节点和所有祖先节点；1 -- 勾选节点后同时选中所有子孙节点；2 -- 勾选节点后同时选中所有祖先节点；3 -- 只勾选节点本身而不关联选中其它节点
+         * @property {number} options.minLength - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索字符串的最小长度
+         * @property {number} options.delay - 当[searchable]{@link ae.aeHTree#options.searchable}选项为true时，搜索输入框响应搜索的延迟时间（单位：毫秒）
          * @property {boolean} options.footerEnabled - 是否显示页脚区域，true为显示页脚区域，否则隐藏页脚区域
-         * @property {boolean} options.lazyLoadMode - 是否为懒加载模式，为true则组件将进入懒加载模式，否则是正常模��?
-         * @property {boolean} options.subTreeId - 子树过滤Id，此Id为某棵子树的根节点，设置以后组件将只加载匹配的子树�?�忽略除这颗子树以外的所有节��?
-         * @property {array|function} [options.source] - 数据源�?�可以是��?个对象数组，也可以是��?个函数，在[lazyLoadMode]{@link ae.aeHTree#options.lazyLoadMode}属�?�为true时此属�?�必须设置为��?个函��?
+         * @property {boolean} options.lazyLoadMode - 是否为懒加载模式，为true则组件将进入懒加载模式，否则是正常模式
+         * @property {boolean} options.subTreeId - 子树过滤Id，此Id为某棵子树的根节点，设置以后组件将只加载匹配的子树而忽略除这颗子树以外的所有节点
+         * @property {array|function} [options.source] - 数据源。可以是一个对象数组，也可以是一个函数，在[lazyLoadMode]{@link ae.aeHTree#options.lazyLoadMode}属性为true时此属性必须设置为一个函数
          * @property {function} [options.ok] - 当点击了确定按钮后的回调函数
          * @property {function} [options.cancle] - 当点击了取消按钮后的回调函数
          */
@@ -4634,7 +4634,7 @@ define('ui-notice', function (require, exports, moudles) {
             }).on("click.aeHTree",'[data-role="htree-win-close"]',this,function(event){
                 var inst=event.data;
                 inst._$footer.find('[date-role="htree-count"]').popover("hide");
-                $(this).parents(".popover").hide(); //todo:bootstrap的hide方法不能隐掉容器,这个是补��?!原因待查
+                $(this).parents(".popover").hide(); //todo:bootstrap的hide方法不能隐掉容器,这个是补丁!原因待查
                 return false;
             }).on("click.aeHTree",'[data-role="htree-delete-item"]',this,function(event){
                 var $this=$(this),
@@ -4862,7 +4862,7 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 跳转到指定节��?
+         * 跳转到指定节点
          * @name ae.aeHTree#goto
          * @function
          * @param  {string} nodeId 节点Id
@@ -4880,7 +4880,7 @@ define('ui-notice', function (require, exports, moudles) {
                 $el=this._$tree.find('[data-node-id="'+nodeId+'"]');
                 $tree=this._$tree;
                 ancestors=this._getAncestorsById(nodeId);
-                for(i=ancestors.length-1;i>=0;i--){ //从根��?始依次点击祖先节��?
+                for(i=ancestors.length-1;i>=0;i--){ //从根开始依次点击祖先节点
                     ancestorId=ancestors[i].id;
                     $el=$tree.find('[data-node-id="'+ancestorId+'"]');
                     hdSelect.apply($el[0],[this,ancestorId]);
@@ -4933,7 +4933,7 @@ define('ui-notice', function (require, exports, moudles) {
                 }
 
                 if(noRelativeDescendants===false){
-                    //设置子节点状��?
+                    //设置子节点状态
                     if(nd.getChildCount()>0 && $el.hasClass(CSS_ACTIVE)){
                         icon=(nd.selected?CSS_CHECKED:CSS_OUTLINE);
                         if(isRoot){
@@ -4946,7 +4946,7 @@ define('ui-notice', function (require, exports, moudles) {
                 }
 
                 if(noRelativeAncestors===false){
-                    //设置祖先节点状�??
+                    //设置祖先节点状态
                     if(isRoot===false){
                         ancestors=this._getAncestorsById(nodeId);
                         count=ancestors.length;
@@ -4960,10 +4960,10 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 设置节点选中状�??
+         * 设置节点选中状态
          * @param  {string} nodeId   节点Id
          * @param  {boolean} selected 是否选中，true表示选中，否则表示未选中
-         * @return {array} 返回被�?�中的节��?
+         * @return {array} 返回被选中的节点
          */
         setSelected:function(nodeId,selected){
             var mutiSelect=this.options.mutiSelect,
@@ -5015,7 +5015,7 @@ define('ui-notice', function (require, exports, moudles) {
                     selected:!!data[i].selected,
                     userData:data[i].userData
                 });
-                //外部状�?�可以强制某个节点不进行懒加��?
+                //外部状态可以强制某个节点不进行懒加载
                 if(lazyLoadMode===true && data[i].isLazy===false){
                     nd.isLazy=false;
                 }
@@ -5036,7 +5036,7 @@ define('ui-notice', function (require, exports, moudles) {
                     }
                     ndParent.childInfo.children.push(nd);
                     if(nd.selected){
-                        //此处只保证所有叶子节点的父节点的selectedCount状�?�是正确��?!
+                        //此处只保证所有叶子节点的父节点的selectedCount状态是正确的!
                         ndParent.childInfo.selectedCount++;
                         selectedNodes[nd.id]=nd;
                         this._selectedCount++;
@@ -5076,18 +5076,18 @@ define('ui-notice', function (require, exports, moudles) {
                 roots[nodeId].each(nodes,cb,true);
             }
 
-            //修正状�??
+            //修正状态
             if(mutiSelectMode===0 || mutiSelectMode===2){
                 for(i=levels.length-1;i>=1;i--){
                     pnds=levels[i].parents;
                     for(nodeId in pnds){
                         nd=pnds[nodeId];
                         levelInfo=levels[nd.level];
-                        // nd.isLazy=false; //��?有非叶子节点都不��?要懒加载! 暂时屏蔽，因为员工�?�择树里混有组织机构节点，员工节点都会挂在组织机构下��?
+                        // nd.isLazy=false; //所有非叶子节点都不需要懒加载! 暂时屏蔽，因为员工选择树里混有组织机构节点，员工节点都会挂在组织机构下面
                         css=getCheckCSS(nd.childInfo);
                         nd.isIndeterminate=(css===CSS_INDETERMINATE);
                         isSelected=(css!==CSS_OUTLINE);
-                        if(nd.selected!==isSelected){ //修复非叶子节点可能产生的错误状�??
+                        if(nd.selected!==isSelected){ //修复非叶子节点可能产生的错误状态
                             nd.selected=isSelected;
                             if(isSelected){
                                 factor=1;
@@ -5223,14 +5223,14 @@ define('ui-notice', function (require, exports, moudles) {
                     break;
                 case "mutiSelect":
                     $el=this.element.find('[data-role="htree-checkbox"]');
-                    if(value){ //多�??
+                    if(value){ //多选
                         nodeId=$el.filter(":last").parent().attr("data-node-id");
                         if(nodeId){
                             affectedNodes=this._nodes[nodeId].setSelected(this._nodes,this._levels,false);
                         }
                         this._$footer.find('[data-role="htree-tips"]').show();
                         $el.show();
-                    }else{ //单�??
+                    }else{ //单选
                         $el.removeClass().addClass(CSS_OUTLINE);
                         for(nodeId in this._roots){
                             affectedNodes=this._roots[nodeId].setSelected(this._nodes,this._levels,false);
@@ -5272,13 +5272,13 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 添加懒加载节点的子节点，此方法只在懒加载模式下有效�??
+         * 添加懒加载节点的子节点，此方法只在懒加载模式下有效。
          * @name ae.aeHTree#addLazyChilds
          * @function
          * @param  {string} parentId    父节点Id，注意，它不能为null，如果需要在懒加载模式中加载根节点请使用[reload]{@link ae.aeHTree#reload}方法
-         * @param  {string} serviceName 服务��?
+         * @param  {string} serviceName 服务名
          * @param  {string} params       服务入参
-         * @param  {function} convertor ��?个回调函数，负责将业务数据格式转化为组件能够识别的数据格��?
+         * @param  {function} convertor 一个回调函数，负责将业务数据格式转化为组件能够识别的数据格式
          */
         addLazyChilds:function(parentId,serviceName,params,convertor){
             if(this.options.lazyLoadMode===false || !(parentId in this._nodes) || this._nodes[parentId].isLazy===false){ //只在懒加载模式时有效
@@ -5340,7 +5340,7 @@ define('ui-notice', function (require, exports, moudles) {
          * 添加节点
          * @name ae.aeHTree#addNode
          * @function
-         * @param  {object} nodeState 节点状�??
+         * @param  {object} nodeState 节点状态
          * @return {boolean} 如果添加成功返回true，否则返回false
          */
         addNode:function(nodeState){
@@ -5408,7 +5408,7 @@ define('ui-notice', function (require, exports, moudles) {
             $el=this._$tree.find('[data-node-id="'+nd.pid+'"]');
             if($el.length>0){
                 if($el.hasClass(CSS_ACTIVE)===true){
-                    if(this._nodes[nd.pid].pid===null){ //父节点是根节��?
+                    if(this._nodes[nd.pid].pid===null){ //父节点是根节点
                         $list=this._$sub.find('[data-role="htree-list"]:eq(0)');
                     }else{
                         $list=$el.parents('[data-role="htree-list"]:eq(0)').next();
@@ -5478,7 +5478,7 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 删除节点及其��?有子节点
+         * 删除节点及其所有子节点
          * @name ae.aeHTree#deleteNode
          * @function
          * @param  {string} nodeId 节点Id
@@ -5507,7 +5507,7 @@ define('ui-notice', function (require, exports, moudles) {
                     nd.loading=false;
                 }
                 deleteNodes=[];
-                //先把层信息清��?
+                //先把层信息清除
                 cb=function(nodes){
                     var nodeId=this.id;
                     levelInfo=levels[this.level];
@@ -5600,7 +5600,7 @@ define('ui-notice', function (require, exports, moudles) {
          * 重新加载
          * @name ae.aeHtree#reload
          * @function
-         * @param  {array} data 节点状�?�数��?
+         * @param  {array} data 节点状态数据
          */
         reload:function(data){
             var nodes,
@@ -5621,11 +5621,11 @@ define('ui-notice', function (require, exports, moudles) {
             }
         },
         /**
-         * 根据Id获得节点状�??
+         * 根据Id获得节点状态
          * @name ae.aeHTree#getNodeById
          * @function
          * @param  {string} nodeId 节点Id
-         * @return {object|null} 返回节点状�?�，如果节点不存在返回null
+         * @return {object|null} 返回节点状态，如果节点不存在返回null
          */
         getNodeById:function(nodeId){
             if(nodeId in this._nodes){
@@ -5634,7 +5634,7 @@ define('ui-notice', function (require, exports, moudles) {
             return null;
         },
         /**
-         * 复位初始状�?�，复位操作不会重新装载数据
+         * 复位初始状态，复位操作不会重新装载数据
          * @name ae.aeHTree#reset
          * @function
          */
@@ -5643,10 +5643,10 @@ define('ui-notice', function (require, exports, moudles) {
             this.goto(nodeId);
         },
         /**
-         * 获得选中节点状�??
+         * 获得选中节点状态
          * @name ae.aeHTree#getSelectedNodes
          * @function
-         * @return {array} 返回被�?�中节点状�?�数��?
+         * @return {array} 返回被选中节点状态数组
          */
         getSelectedNodes:function(){
             var nodeId,
@@ -5658,7 +5658,7 @@ define('ui-notice', function (require, exports, moudles) {
                 for(nodeId in nodes){
                     arr.push(nodes[nodeId].getState());
                 }
-            }else{ //单�?�模式下只返回最末端的高亮项
+            }else{ //单选模式下只返回最末端的高亮项
                 $el=this._$tree.find("."+CSS_ACTIVE).filter(":last");
                 if($el.length>0){
                     nodeId=$el.attr("data-node-id");
@@ -5687,13 +5687,13 @@ define('ui-notice', function (require, exports, moudles) {
             return (isObverse?arr.reverse():arr);
         },
         /**
-         * 根据节点Id获得祖先节点状�??
+         * 根据节点Id获得祖先节点状态
          * @name ae.aeHTree#getAncestorsById
          * @function
          * @param  {string}  nodeId     节点Id
-         * @param  {Boolean} isSelected 是否已经被�?�中，如果为true表示只返回�?�中节点，否则表示返回所有节点（包括选中的和未�?�中节点��?
+         * @param  {Boolean} isSelected 是否已经被选中，如果为true表示只返回选中节点，否则表示返回所有节点（包括选中的和未选中节点）
          * @param  {Boolean} isObverse  是否反转返回结果。默认为false，即在返回结果数组中，下标为0的元素是指定节点的状态，后续元素依次是此节点祖先节点，否则，返回结果数据中的元素顺序将被反转
-         * @return {array} 返回指定节点和它的祖先节��?
+         * @return {array} 返回指定节点和它的祖先节点
          */
         getAncestorsById:function(nodeId,isSelected,isObverse){
             var nodes=this._getAncestorsById(nodeId,isSelected,isObverse),
@@ -5727,12 +5727,12 @@ define('ui-notice', function (require, exports, moudles) {
             return obj;
         },
         /**
-         * 根据节点Id获得此节点的��?有子节点
+         * 根据节点Id获得此节点的所有子节点
          * @name ae.aeHTree#getChilrenById
          * @function
          * @param  {string}  nodeId     节点Id
-         * @param  {boolean} isSelected 是否选中，如果为true则表示只返回被�?�中的节点，否则返回��?有子节点，默认为false
-         * @return {array} 返回包含��?有符合条件的子节点状态数��?
+         * @param  {boolean} isSelected 是否选中，如果为true则表示只返回被选中的节点，否则返回所有子节点，默认为false
+         * @return {array} 返回包含所有符合条件的子节点状态数组
          */
         getChilrenById:function(nodeId,isSelected){
             var nodes=this._getChilrenById(nodeId,isSelected),
@@ -5744,7 +5744,7 @@ define('ui-notice', function (require, exports, moudles) {
             return arr;
         },
         /**
-         * ��?毁组件实例，恢复容器元素的原始状��?
+         * 销毁组件实例，恢复容器元素的原始状态
          * @private
          */
         _destroy:function(){
@@ -20261,8 +20261,8 @@ the specific language governing permissions and limitations under the Apache Lic
          formatInputTooShort: function (input, min) { var n = min - input.length; return "Please enter " + n + " or more character" + (n == 1 ? "" : "s"); },
          formatInputTooLong: function (input, max) { var n = input.length - max; return "Please delete " + n + " character" + (n == 1 ? "" : "s"); },
          formatSelectionTooBig: function (limit) { return "You can only select " + limit + " item" + (limit == 1 ? "" : "s"); },
-         formatLoadMore: function (pageNumber) { return "Loading more results��?"; },
-         formatSearching: function () { return "Searching��?"; }
+         formatLoadMore: function (pageNumber) { return "Loading more results…"; },
+         formatSearching: function () { return "Searching…"; }
     };
 
     $.extend($.fn.select2.defaults, $.fn.select2.locales['en']);
@@ -22997,7 +22997,7 @@ the specific language governing permissions and limitations under the Apache Lic
         },
         image: {
           image: 'Picture',
-          insert: 'Insert Image',
+          insert: 'Confirm',
           resizeFull: 'Resize Full',
           resizeHalf: 'Resize Half',
           resizeQuarter: 'Resize Quarter',
@@ -26817,10 +26817,10 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutText = function (lang) {
       var keys = [
-        { kbd: '��? + B', text: lang.font.bold },
-        { kbd: '��? + I', text: lang.font.italic },
-        { kbd: '��? + U', text: lang.font.underline },
-        { kbd: '��? + \\', text: lang.font.clear }
+        { kbd: '⌘ + B', text: lang.font.bold },
+        { kbd: '⌘ + I', text: lang.font.italic },
+        { kbd: '⌘ + U', text: lang.font.underline },
+        { kbd: '⌘ + \\', text: lang.font.clear }
       ];
 
       return tplShortcut(lang.shortcut.textFormatting, keys);
@@ -26828,11 +26828,11 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutAction = function (lang) {
       var keys = [
-        { kbd: '��? + Z', text: lang.history.undo },
-        { kbd: '��? + ��? + Z', text: lang.history.redo },
-        { kbd: '��? + ]', text: lang.paragraph.indent },
-        { kbd: '��? + [', text: lang.paragraph.outdent },
-        { kbd: '��? + ENTER', text: lang.hr.insert }
+        { kbd: '⌘ + Z', text: lang.history.undo },
+        { kbd: '⌘ + ⇧ + Z', text: lang.history.redo },
+        { kbd: '⌘ + ]', text: lang.paragraph.indent },
+        { kbd: '⌘ + [', text: lang.paragraph.outdent },
+        { kbd: '⌘ + ENTER', text: lang.hr.insert }
       ];
 
       return tplShortcut(lang.shortcut.action, keys);
@@ -26840,12 +26840,12 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutPara = function (lang) {
       var keys = [
-        { kbd: '��? + ��? + L', text: lang.paragraph.left },
-        { kbd: '��? + ��? + E', text: lang.paragraph.center },
-        { kbd: '��? + ��? + R', text: lang.paragraph.right },
-        { kbd: '��? + ��? + J', text: lang.paragraph.justify },
-        { kbd: '��? + ��? + NUM7', text: lang.lists.ordered },
-        { kbd: '��? + ��? + NUM8', text: lang.lists.unordered }
+        { kbd: '⌘ + ⇧ + L', text: lang.paragraph.left },
+        { kbd: '⌘ + ⇧ + E', text: lang.paragraph.center },
+        { kbd: '⌘ + ⇧ + R', text: lang.paragraph.right },
+        { kbd: '⌘ + ⇧ + J', text: lang.paragraph.justify },
+        { kbd: '⌘ + ⇧ + NUM7', text: lang.lists.ordered },
+        { kbd: '⌘ + ⇧ + NUM8', text: lang.lists.unordered }
       ];
 
       return tplShortcut(lang.shortcut.paragraphFormatting, keys);
@@ -26853,13 +26853,13 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var tplShortcutStyle = function (lang) {
       var keys = [
-        { kbd: '��? + NUM0', text: lang.style.normal },
-        { kbd: '��? + NUM1', text: lang.style.h1 },
-        { kbd: '��? + NUM2', text: lang.style.h2 },
-        { kbd: '��? + NUM3', text: lang.style.h3 },
-        { kbd: '��? + NUM4', text: lang.style.h4 },
-        { kbd: '��? + NUM5', text: lang.style.h5 },
-        { kbd: '��? + NUM6', text: lang.style.h6 }
+        { kbd: '⌘ + NUM0', text: lang.style.normal },
+        { kbd: '⌘ + NUM1', text: lang.style.h1 },
+        { kbd: '⌘ + NUM2', text: lang.style.h2 },
+        { kbd: '⌘ + NUM3', text: lang.style.h3 },
+        { kbd: '⌘ + NUM4', text: lang.style.h4 },
+        { kbd: '⌘ + NUM5', text: lang.style.h5 },
+        { kbd: '⌘ + NUM6', text: lang.style.h6 }
       ];
 
       return tplShortcut(lang.shortcut.documentStyle, keys);
@@ -26897,7 +26897,7 @@ the specific language governing permissions and limitations under the Apache Lic
     };
 
     var replaceMacKeys = function (sHtml) {
-      return sHtml.replace(/��?/g, 'Ctrl').replace(/��?/g, 'Shift');
+      return sHtml.replace(/⌘/g, 'Ctrl').replace(/⇧/g, 'Shift');
     };
 
     var tplDialogInfo = {
@@ -26910,12 +26910,12 @@ the specific language governing permissions and limitations under the Apache Lic
           imageLimitation = '<small>' + lang.image.maximumFileSize + ' : ' + readableSize + '</small>';
         }
 
-        var body = '<div class="form-group row note-group-select-from-files">' +
+        var body = '<div class="form-group note-group-select-from-files padder">' +
                      '<label>' + lang.image.selectFromFiles + '</label>' +
                      '<input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple="multiple" />' +
                      imageLimitation +
                    '</div>' +
-                   '<div class="form-group row">' +
+                   '<div class="form-group padder">' +
                      '<label>' + lang.image.url + '</label>' +
                      '<input class="note-image-url form-control col-md-12" type="text" />' +
                    '</div>';
@@ -26976,7 +26976,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
     var representShortcut = function (str) {
       if (agent.isMac) {
-        str = str.replace('CMD', '��?').replace('SHIFT', '��?');
+        str = str.replace('CMD', '⌘').replace('SHIFT', '⇧');
       }
 
       return str.replace('BACKSLASH', '\\')

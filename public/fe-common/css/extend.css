@@ -64,37 +64,49 @@ Roboto 字体，
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
-  src: local('roboto-thin'), url('../fonts/EN/RobotoTTF/Roboto-Thin.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Thin.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Thin'), url('../fonts/EN/Roboto/Roboto-Thin.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Thin.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Thin.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Thin.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: local('roboto-light'), url('../fonts/EN/RobotoTTF/Roboto-Light.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Light.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Light'), url('../fonts/EN/Roboto/Roboto-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Light.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Light.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Light.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('roboto-regular'), url('../fonts/EN/RobotoTTF/Roboto-Regular.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Regular.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Regular'), url('../fonts/EN/Roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Regular.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Regular.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Regular.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: local('roboto-medium'), url('../fonts/EN/RobotoTTF/Roboto-Medium.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Medium.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Medium'), url('../fonts/EN/Roboto/Roboto-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Medium.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Medium.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Medium.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local('roboto-bold'), url('../fonts/EN/RobotoTTF/Roboto-Bold.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Bold.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Bold'), url('../fonts/EN/Roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Bold.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Bold.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Bold.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: local('roboto-black'), url('../fonts/EN/RobotoTTF/Roboto-Black.ttf') format('ttf');
+  src: url('../fonts/EN/Roboto/Roboto-Black.eot');
+  /* IE9 Compat Modes */
+  src: local('Roboto-Black'), url('../fonts/EN/Roboto/Roboto-Black.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto/Roboto-Black.woff') format('woff'), url('../fonts/EN/Roboto/Roboto-Black.ttf') format('truetype'), url('../fonts/EN/Roboto/Roboto-Black.svg#Roboto') format('svg');
 }
 /*
 紧凑英文
@@ -106,19 +118,25 @@ Roboto Condensed字体，
   font-family: 'RobotoCondensed';
   font-style: normal;
   font-weight: 300;
-  src: local('robotocondensed-light'), url('../fonts/EN/robotocondensed-light-webfont.woff') format('woff');
+  src: url('../fonts/EN/Roboto-Condensed/Robotocondensed-Light.eot');
+  /* IE9 Compat Modes */
+  src: local('Robotocondensed-Light'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Light.woff') format('woff'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Light.ttf') format('truetype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Light.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'RobotoCondensed';
   font-style: normal;
   font-weight: 400;
-  src: local('robotocondensed-regular'), url('../fonts/EN/robotocondensed-regular-webfont.woff') format('woff');
+  src: url('../fonts/EN/Roboto-Condensed/Robotocondensed-Regular.eot');
+  /* IE9 Compat Modes */
+  src: local('Robotocondensed-Regular'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Regular.woff') format('woff'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Regular.ttf') format('truetype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Regular.svg#Roboto') format('svg');
 }
 @font-face {
   font-family: 'RobotoCondensed';
   font-style: normal;
   font-weight: 700;
-  src: local('robotocondensed-bold'), url('../fonts/EN/robotocondensed-bold-webfont.woff') format('woff');
+  src: url('../fonts/EN/Roboto-Condensed/Robotocondensed-Bold.eot');
+  /* IE9 Compat Modes */
+  src: local('Robotocondensed-Bold'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Bold.woff') format('woff'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Bold.ttf') format('truetype'), url('../fonts/EN/Roboto-Condensed/Robotocondensed-Bold.svg#Roboto') format('svg');
 }
 /*自定义默认的新的字体，字号，文字平滑，文字颜色*/
 html,
@@ -651,6 +669,18 @@ a:hover .caret-white {
   border-radius: 3px;
   height: 32px;
   color: #333333 !important;
+}
+.form-control:-moz-placeholder {
+  color: #cccccc;
+}
+.form-control::-moz-placeholder {
+  color: #cccccc;
+}
+.form-control:-ms-input-placeholder {
+  color: #cccccc;
+}
+.form-control::-webkit-input-placeholder {
+  color: #cccccc;
 }
 .form-control,
 .form-control:focus {
@@ -1606,7 +1636,7 @@ button.close {
   border-radius: 4px !important;
   padding: 0;
   /*box-shadow: none;*/
-  font-family: 'roboto';
+  font-family: 'Roboto';
   max-width: 640px;
 }
 .popover-title {
@@ -3902,6 +3932,9 @@ fieldset[disabled] .i-checks input + i:before {
 .datepicker-time .btn {
   height: 30px;
   padding: 0 6px;
+}
+.datepicker-time-no-minute .input-group:first-child {
+  margin-left: 16%;
 }
 /*sparkline*/
 .jqstooltip {
@@ -13626,7 +13659,6 @@ ol {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 72px;
   padding: 20px;
   border-top: 1px solid #e6e6e6;
   border-top-color: rgba(0, 0, 0, 0.1);

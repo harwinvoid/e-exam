@@ -91,13 +91,13 @@ exports.roomFileUpload = function (req, res) {
                         var roomInfo = infoJson[i];
                         var room = {};
                         for (var j = 0; j < roomInfo.length; j++) {
-                            var isEmpry = roomInfo[3] === '是' ? true : false;
+                            var isEmpty = roomInfo[3] == "是" ? true : false;
                             //根据解析出来的数据构造用户
                             room = new Room({
                                 roomNo: roomInfo[0],
                                 address: roomInfo[1],
                                 capacity: roomInfo[2],
-                                isEmpry: isEmpry
+                                isEmpty: isEmpty
                             });
                         }
                         //将用户保存到数据库

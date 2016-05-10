@@ -6199,6 +6199,7 @@ var aeDialog = $.aeWidget( "ae.aeDialog", {
 
 	    this._on( this.modalConfirm, {
 	          click: function( event ) {
+                  var aeId = self.element.attr("aeId");
 	        	  if(self.options.popupType !== 'div'){
 	        		  var array = $.aries.page.data._privateArray;
 	        		  if($.isArray(array) && array.length>0){
@@ -6207,7 +6208,9 @@ var aeDialog = $.aeWidget( "ae.aeDialog", {
                               popupConfirmEvent(event);
                           }else{
                               if(popupConfirmEvent && popupConfirmEvent.confirmFunc && typeof popupConfirmEvent.confirmFunc=="function"){
-                                  popupConfirmEvent.confirmFunc(event,popupConfirmEvent.id);
+                                  if(aeId.substring(13) == popupConfirmEvent.id){
+                                      popupConfirmEvent.confirmFunc(event,popupConfirmEvent.id);
+                                  }
                               }
                           }
 	        		  }
@@ -6776,7 +6779,7 @@ define('ui-calendar', function (require, exports, moudles) {
         		value = value.replace(' ','T');
         		value = value + this.options.timezoneValue;
         	}
-            if(!this.options.showSeconds){
+            if(value && !this.options.showSeconds){
                 value += ":00"
             }
         	return value;
@@ -7126,7 +7129,7 @@ define('ui-calendar', function (require, exports, moudles) {
                     if(!this.options.showSeconds){
                         this.widget.find('.datepicker > div.datepicker-time').find('[data-time-component="seconds"]').parents('div.input-group').remove();
 
-                        $(this.widget.find('.datepicker > div.datepicker-time').find('span')[3]).remove();
+                        $(this.widget.find('.datepicker > div.datepicker-time').addClass('datepicker-time-no-minute').find('span')[3]).remove();
                     }
                 }
             }
@@ -7659,7 +7662,8 @@ define('ui-calendar', function (require, exports, moudles) {
                 component,
                 components = [],
                 mask = [],
-                str = self.format,
+                //str = self.format,yyyy-MM-dd hh:mm:ss
+                str = 'yyyy-MM-dd hh:mm:ss',
                 propertiesByIndex = {},
                 i = 0,
                 pos = 0,
@@ -10320,9 +10324,13 @@ define('ui-textarea',function (require, exports, moudles) {
 
 		 },
 		 _create:function(){
-			 var options=this.options,inputEl=this.element;
+			 var options=this.options,inputEl=this.element,
+				 id = inputEl.attr('id');
 			 if(options.initType=='html'){
 				 this._buildOptions(options,inputEl);
+			 }
+			 if(id){
+				 inputEl.attr("aeId",id);
 			 }
 			 var  obj = $("<textarea></textarea>");
              obj.attr({"aeType":inputEl.attr("aeType"),"aeId":inputEl.attr("id"),"aeInit":"false","aeValidate":inputEl.attr("aeValidate"),"rules":inputEl.attr("rules"),"onAddRules":inputEl.attr("onAddRules"),"maxlength":inputEl.attr("maxlength")});
@@ -10575,10 +10583,14 @@ define('ui-textfield',function (require, exports, moudles) {
 
 		 },
 		 _create:function(){
-			 var options=this.options,inputEl=this.element;
+			 var options=this.options,inputEl=this.element,
+				 id = inputEl.attr('id');
 			 if(options.initType=='html'){
 				 this._buildOptions(options,inputEl);
 	         }
+			 if(id){
+				 inputEl.attr("aeId",id);
+			 }
 		     var  obj = $("<input></input>");
              obj.attr({"aeType":inputEl.attr("aeType"),"aeId":inputEl.attr("id"),"aeInit":"false","aeValidate":inputEl.attr("aeValidate"),"rules":inputEl.attr("rules"),"onAddRules":inputEl.attr("onAddRules"),"maxlength":inputEl.attr("maxlength")});
              this.element=obj;
@@ -10876,6 +10888,7 @@ define('ui-textpopup',function (require, exports, moudles) {
 	"require:nomunge,exports:nomunge,moudles:nomunge";
 	 $.aeWidget('ae.aeTextpopup', {
 		 options:{
+      
 			 /**
               * 是否禁用组件。如果禁用，则不可以输入，form提交时也将忽略这个输入框。
               * @type Boolean
@@ -11181,6 +11194,7 @@ define('ui-textpopup',function (require, exports, moudles) {
 			 options.showClose = element.attr("showClose")=='false' ? false : options.showClose;
 			 options.showButton = element.attr("showButton")=='false' ? false : options.showButton;
 			 options.popupTitle = $.evalI18nString(element.attr("popupTitle"));
+			 options.appendTo = options.appendTo || element.attr("appendTo");
 			 val=element.attr("popupSource");
 			 if(val===undefined){
 				val= options.popupSource;
@@ -11235,6 +11249,7 @@ define('ui-textpopup',function (require, exports, moudles) {
 	          var cfg = {
 		        		 autoOpen: true,
 		 		  		 modal: opts.modal,
+						 appendTo:opts.appendTo,
 		 		  		 draggable:opts.draggable,
 		 		  		 resizable:opts.resizable,
 		 		  		 showClose:opts.showClose,
@@ -11578,10 +11593,14 @@ define('ui-flip',function(require, exports, modules) {
 		 _create:function(){
 			 var $self = this.element,
 			 	opts = this.options,
-				obj;
+				obj,
+			 	id = $self.attr('id');
 
 			 if(opts.initType=='html'){
 				 this._buildOptions(opts,$self);
+			 }
+			 if(id){
+				 $self.attr('aeId', id);
 			 }
 			 obj = $("<input></input>");
              obj.attr({"aeType":$self.attr("aeType"),"aeId":$self.attr("id"),"aeInit":"false", "aeValidate":$self.attr("aeValidate"),"rules":$self.attr("rules")});
@@ -17678,42 +17697,43 @@ define('ui-menutree',function (require, exports, moudles) {
     });
 });
 
-define('ui-validate',function (require, exports, moudles) {
+define('ui-validate', function(require, exports, moudles) {
 	"require:nomunge,exports:nomunge,moudles:nomunge";
-//;(function($){
+	//;(function($){
 	$.extend($.fn, {
 		// http://docs.jquery.com/Plugins/Validation/validate
-		validate: function( options ) {
+		validate: function(options) {
 
 			// if nothing is selected, return nothing; can't chain anyway
 			if (!this.length) {
-				options && options.debug && window.console && console.warn( "nothing selected, can't validate, returning nothing" );
+				options && options.debug && window.console && console.warn("nothing selected, can't validate, returning nothing");
 				return;
 			}
 
+
 			// check if a validator for this form was already created
 			var validator = $.data(this, 'validator');
-			if ( !validator ) {
+			if (!validator) {
 				//return validator;
-				validator = new $.validator( options, this );
+				validator = new $.validator(options, this);
 				$.data(this, 'validator', validator);
 			}
-			if(validator.isAeForm){
-        if ( validator.form() ) {
-          /*if ( validator.pendingRequest ) {
+			//if (validator.isAeForm) {
+				if (validator.form()) {
+					/*if ( validator.pendingRequest ) {
             validator.formSubmitted = true;
             return false;
           }
           return handle();*/
-          return true;
-        } else {
-          //validator.focusInvalid();
-          return false;
-        }
-     }else{
-      return false;
-     }
-//			return validator;
+					return true;
+				} else {
+					//validator.focusInvalid();
+					return false;
+				}
+			//} else {
+			//	return false;
+			//}
+			//			return validator;
 		},
 		rules: function(command, argument) {
 			var element = this[0];
@@ -17722,235 +17742,237 @@ define('ui-validate',function (require, exports, moudles) {
 				var settings = $.data(element.form, 'validator').settings;
 				var staticRules = settings.rules;
 				var existingRules = $.validator.staticRules(element);
-				switch(command) {
-				case "add":
-					$.extend(existingRules, $.validator.normalizeRule(argument));
-					staticRules[element.name] = existingRules;
-					if (argument.messages)
-						settings.messages[element.name] = $.extend( settings.messages[element.name], argument.messages );
-					break;
-				case "remove":
-					if (!argument) {
-						delete staticRules[element.name];
-						return existingRules;
-					}
-					var filtered = {};
-					$.each(argument.split(/\s/), function(index, method) {
-						filtered[method] = existingRules[method];
-						delete existingRules[method];
-					});
-					return filtered;
+				switch (command) {
+					case "add":
+						$.extend(existingRules, $.validator.normalizeRule(argument));
+						staticRules[element.name] = existingRules;
+						if (argument.messages)
+							settings.messages[element.name] = $.extend(settings.messages[element.name], argument.messages);
+						break;
+					case "remove":
+						if (!argument) {
+							delete staticRules[element.name];
+							return existingRules;
+						}
+						var filtered = {};
+						$.each(argument.split(/\s/), function(index, method) {
+							filtered[method] = existingRules[method];
+							delete existingRules[method];
+						});
+						return filtered;
 				}
 			}
 
 			var data = $.validator.normalizeRules(
-			$.extend(
-				{},
-				$.validator.metadataRules(element)
-//				$.validator.classRules(element),
-//				$.validator.attributeRules(element),
-//				$.validator.staticRules(element)
-			), element);
+				$.extend({},
+					$.validator.metadataRules(element)
+					//				$.validator.classRules(element),
+					//				$.validator.attributeRules(element),
+					//				$.validator.staticRules(element)
+				), element);
 
 			// make sure required is at front
 			if (data.required) {
 				var param = data.required;
 				delete data.required;
-				data = $.extend({required: param}, data);
+				data = $.extend({
+					required: param
+				}, data);
 			}
 
 			return data;
 		}
 	});
 	// constructor for validator
-	$.validator = function( options, form ) {
-		this.settings = $.extend( true, {}, $.validator.defaults, options );
-		this.isAeForm = (form.attr("aeType")==="aeForm");
+	$.validator = function(options, form) {
+		this.settings = $.extend(true, {}, $.validator.defaults, options);
+		//this.isAeForm = (form.attr("aeType")==="aeForm");
 		this.currentForm = form.find('input[aeValidate="true"],textarea[aeValidate="true"]');
-		if(form.is('input[aeValidate="true"],textarea[aeValidate="true"]')){
+		if (form.is('input[aeValidate="true"],textarea[aeValidate="true"]')) {
 			this.currentForm = form;
 		}
-		for ( var k = 0, elements = this.currentForm; elements[k]; k++ ) {
+		for (var k = 0, elements = this.currentForm; elements[k]; k++) {
 			var onAddRules = $(elements[k]).attr("onAddRules");
-			if(onAddRules){
-				 var i = onAddRules.indexOf("(");
-				 var actName = i>0 ? onAddRules.substring(0, i) : onAddRules;
-				 var func = "return window."+actName+"?"+actName+".call(window):false;";
-				 new Function(func)();
+			if (onAddRules) {
+				var i = onAddRules.indexOf("(");
+				var actName = i > 0 ? onAddRules.substring(0, i) : onAddRules;
+				var func = "return window." + actName + "?" + actName + ".call(window):false;";
+				new Function(func)();
 			}
 		}
 		this.init();
 	};
-	
+
 	$.validator.format = function(source, params) {
-		if ( arguments.length == 1 )
+		if (arguments.length == 1)
 			return function() {
 				var args = $.makeArray(arguments);
 				args.unshift(source);
-				return $.validator.format.apply( this, args );
+				return $.validator.format.apply(this, args);
 			};
-		if ( arguments.length > 2 && params.constructor != Array  ) {
+		if (arguments.length > 2 && params.constructor != Array) {
 			params = $.makeArray(arguments).slice(1);
 		}
-		if ( params.constructor != Array ) {
-			params = [ params ];
+		if (params.constructor != Array) {
+			params = [params];
 		}
 		$.each(params, function(i, n) {
 			source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
 		});
 		return source;
 	};
-	
-	$.extend($.validator,{
-		
-		defaults:{
-			 /**
-		     * 键值对的校验错误信息.键是元素的name属性，值是错误信息的组合对象。<br/>
-		     * @name validate#messages
-		     * @type JSON
-		     * @default 无
-		     * @example
-		     * $(".selector").validate({
-	         *  rules: {
-	         *    name: {
-	         *      required: true,
-	         *      minlength: 2
-	         *    }
-	         *  },
-	         *  messages: {
-	         *    name: {
-	         *      required: "We need your email address to contact you",
-	         *      minlength: jQuery.format("At least {0} characters required!")
-	         *      //这里的{0}就是minlength定义的2
-	         *    }
-	         *  }
-	         *})
-		     */
+
+	$.extend($.validator, {
+
+		defaults: {
+			/**
+			 * 键值对的校验错误信息.键是元素的name属性，值是错误信息的组合对象。<br/>
+			 * @name validate#messages
+			 * @type JSON
+			 * @default 无
+			 * @example
+			 * $(".selector").validate({
+			 *  rules: {
+			 *    name: {
+			 *      required: true,
+			 *      minlength: 2
+			 *    }
+			 *  },
+			 *  messages: {
+			 *    name: {
+			 *      required: "We need your email address to contact you",
+			 *      minlength: jQuery.format("At least {0} characters required!")
+			 *      //这里的{0}就是minlength定义的2
+			 *    }
+			 *  }
+			 *})
+			 */
 			messages: {},
 			/**
-	         * 键值对的校验规则.键是元素的name属性，值是校验规则的组合对象，每一个规则都可以绑定一个依赖对象，<br/>
-	         * 通过depends设定，只有依赖对象成立才会执行验证<br/>
-	         * @name validate#rules
-	         * @type JSON
-	         * @default 无
-	         * @example
-	         * $(".selector").validate({
-	         *  rules: {
-	         *    contact: {
-	         *      required: true,
-	         *      email: { 
-	         *        depends: function(element) {
-	         *          return $("#contactform_email:checked")
-	         *          //email校验的前提是contactform_email被选中
-	         *        }
-	         *      }
-	         *    }
-	         *  }
-	         *})
-	         */
+			 * 键值对的校验规则.键是元素的name属性，值是校验规则的组合对象，每一个规则都可以绑定一个依赖对象，<br/>
+			 * 通过depends设定，只有依赖对象成立才会执行验证<br/>
+			 * @name validate#rules
+			 * @type JSON
+			 * @default 无
+			 * @example
+			 * $(".selector").validate({
+			 *  rules: {
+			 *    contact: {
+			 *      required: true,
+			 *      email: {
+			 *        depends: function(element) {
+			 *          return $("#contactform_email:checked")
+			 *          //email校验的前提是contactform_email被选中
+			 *        }
+			 *      }
+			 *    }
+			 *  }
+			 *})
+			 */
 			rules: {},
 			/**
-	         * 校验错误的时候是否将聚焦元素。<br/>
-	         * @name validate#focusInvalid
-	         * @type Boolean
-	         * @default true
-	         * @example
-	         * $(".selector").validate({
-	         *      focusInvalid: false
-	         *   })
-	         */
+			 * 校验错误的时候是否将聚焦元素。<br/>
+			 * @name validate#focusInvalid
+			 * @type Boolean
+			 * @default true
+			 * @example
+			 * $(".selector").validate({
+			 *      focusInvalid: false
+			 *   })
+			 */
 			focusInvalid: true,
-			
+
 			onfocusin: function(element) {
 				this.lastActive = element;
 
 				// hide error label and remove error class on focus if enabled
-//				if ( this.settings.focusCleanup && !this.blockFocusCleanup ) {
-//					this.settings.unhighlight && this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
-//					this.addWrapper(this.errorsFor(element)).hide();
-//				}
-	             //START
-				 var toolTip = $(document.body).find('div.tooltip');
-				 if ( !this.checkable(element) && (element.attr("aeid") in this.submitted || !this.optional(element)) ) {
-					    element = this.clean( element );
-		     			this.lastElement = element;
-		     			this.prepareElement( element );
-		     			this.currentElements = $(element);
-		     			var result = this.check( element );
-		     			if ( result ) {
-		     				delete this.invalid[$(element).attr("id")];
-		     			} else {
-		     				this.invalid[$(element).attr("id")] = true;
-		     			}
-		     			if ( !this.numberOfInvalids() ) {
-		     				// Hide error containers on last error
-		     				this.toHide = this.toHide.add( this.containers );
-		     			}
-		     			if(this.errorList.length>0){
-							 toolTip.show().find('div.tooltip-inner').html(this.errorList[0].message);
-							 var span = $(element), inputPos = span.offset();
-							 toolTip.css({
-							  	'top':inputPos.top,
-							  	'left':inputPos.left,
-					        'margin-top':'-'+toolTip.outerHeight()+'px',
-								  'z-index':"99999"
-					      });
-						}
-		         }else{
-		        	 if(toolTip.length>0){
-		        		 toolTip.hide();
-		        	 }
-		         }
-				 //END
+				//				if ( this.settings.focusCleanup && !this.blockFocusCleanup ) {
+				//					this.settings.unhighlight && this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
+				//					this.addWrapper(this.errorsFor(element)).hide();
+				//				}
+				//START
+				var toolTip = $(document.body).find('div.tooltip');
+				if (!this.checkable(element) && (element.attr("aeid") in this.submitted || !this.optional(element))) {
+					element = this.clean(element);
+					this.lastElement = element;
+					this.prepareElement(element);
+					this.currentElements = $(element);
+					var result = this.check(element);
+					if (result) {
+						delete this.invalid[$(element).attr("id")];
+					} else {
+						this.invalid[$(element).attr("id")] = true;
+					}
+					if (!this.numberOfInvalids()) {
+						// Hide error containers on last error
+						this.toHide = this.toHide.add(this.containers);
+					}
+					if (this.errorList.length > 0) {
+						toolTip.show().find('div.tooltip-inner').html(this.errorList[0].message);
+						var span = $(element),
+							inputPos = span.offset();
+						toolTip.css({
+							'top': inputPos.top,
+							'left': inputPos.left,
+							'margin-top': '-' + toolTip.outerHeight() + 'px',
+							'z-index': "99999"
+						});
+					}
+				} else {
+					if (toolTip.length > 0) {
+						toolTip.hide();
+					}
+				}
+				//END
 			},
-			
+
 			/**
-	         * 在blur事件发生时是否进行校验，如果没有输入任何值，则将忽略校验。
-	         * @name validate#onfocusout
-	         * @type Boolean
-	         * @default true
-	         * @example
-	         * $(".selector").validate({
-	         *      onfocusout: false
-	         *   })
-	         */
+			 * 在blur事件发生时是否进行校验，如果没有输入任何值，则将忽略校验。
+			 * @name validate#onfocusout
+			 * @type Boolean
+			 * @default true
+			 * @example
+			 * $(".selector").validate({
+			 *      onfocusout: false
+			 *   })
+			 */
 			onfocusout: function(element) {
-			    if (this.settings.validateOnEmpty) {
-			        if ( !this.checkable(element) || (element.name in this.submitted) ) {
-	                    this.element(element);
-	                }
-			    } else {
-			        if ( !this.checkable(element) && (element.attr("id") in this.submitted || !this.optional(element)) ) {
-	                    this.element(element);
-	                }
-			    }
-			    if($(document.body).find('div.tooltip').length>0){
-			    	$(document.body).find('div.tooltip').hide();
-        	    };
+				if (this.settings.validateOnEmpty) {
+					if (!this.checkable(element) || (element.name in this.submitted)) {
+						this.element(element);
+					}
+				} else {
+					if (!this.checkable(element) && (element.attr("id") in this.submitted || !this.optional(element))) {
+						this.element(element);
+					}
+				}
+				if ($(document.body).find('div.tooltip').length > 0) {
+					$(document.body).find('div.tooltip').hide();
+				};
 			},
 			/**
-	         * 在keyup事件发生时是否进行校验。
-	         * @name validate#onkeyup
-	         * @type Boolean
-	         * @default true
-	         * @example
-	         * $(".selector").validate({
-	         *      onkeyup: false
-	         *   })
-	         */
+			 * 在keyup事件发生时是否进行校验。
+			 * @name validate#onkeyup
+			 * @type Boolean
+			 * @default true
+			 * @example
+			 * $(".selector").validate({
+			 *      onkeyup: false
+			 *   })
+			 */
 			onkeyup: function(element) {
-				if ( element.attr("id") in this.submitted || this.clean(element) == this.lastElement ) {
+				if (element.attr("id") in this.submitted || this.clean(element) == this.lastElement) {
 					this.element(element);
 				}
 			},
 			onvaluechange: function(element) {
-				if ( element.attr("aeid") in this.submitted || this.clean(element) == this.lastElement ) {
+				if (element.attr("aeid") in this.submitted || this.clean(element) == this.lastElement) {
 					this.element(element);
-					
+
 				}
 			}
 		},
-		
+
 		messages: {
 			required: "This field is required.",
 			remote: "Please fix this field.",
@@ -17968,7 +17990,7 @@ define('ui-validate',function (require, exports, moudles) {
 			max: $.validator.format("Please enter a value less than or equal to {0}."),
 			min: $.validator.format("Please enter a value greater than or equal to {0}.")
 		},
-		
+
 		prototype: {
 			init: function() {
 				this.submitted = {};
@@ -17978,147 +18000,153 @@ define('ui-validate',function (require, exports, moudles) {
 					rules[key] = $.validator.normalizeRule(value);
 				});
 				var self = this;
+
 				function delegate(event) {
 					/*var validator = $.data(this, "validator"),
 						eventType = "on" + event.type.replace(/^validate/, "");
 					validator.settings[eventType] && validator.settings[eventType].call(validator, this[0] );*/
 					var eventType = "on" + event.type.replace(/^validate/, "");
-					(self.settings)[eventType] && (self.settings)[eventType].call(self,this);
+					(self.settings)[eventType] && (self.settings)[eventType].call(self, this);
 				}
-				
+
 				this.currentForm
-				   .validateDelegate(":text, :password, :file, select, textarea", "focusin focusout keyup valuechange", delegate)
-				   .validateDelegate(":radio, :checkbox, select, option", "click", delegate);
+					.validateDelegate(":text, :password, :file, select, textarea", "focusin focusout keyup valuechange", delegate)
+					.validateDelegate(":radio, :checkbox, select, option", "click", delegate);
 			},
 			form: function() {
 				this.checkForm();
 				$.extend(this.submitted, this.errorMap);
 				this.invalid = $.extend({}, this.errorMap);
-//				if (!this.valid())
-//					$(this.currentForm).triggerHandler("invalid-form", [this]);
+				//				if (!this.valid())
+				//					$(this.currentForm).triggerHandler("invalid-form", [this]);
 				this.showErrors();
 				return this.valid();
-				
-			/*	$.extend(this.submitted, this.errorMap);
+
+				/*	$.extend(this.submitted, this.errorMap);
 				this.invalid = $.extend({}, this.errorMwap);
 				if (!this.valid())
 					$(this.currentForm).triggerHandler("invalid-form", [this]);
 				this.showErrors();
 				return this.valid();*/
 			},
-			
-			element: function( element ) {
-				element = this.clean( element );
+
+			element: function(element) {
+				element = this.clean(element);
 				this.lastElement = element;
-				this.prepareElement( element );
+				this.prepareElement(element);
 				this.currentElements = $(element);
-				var result = this.check( element );
-				if ( result ) {
+				var result = this.check(element);
+				if (result) {
 					delete this.invalid[element.name];
 				} else {
 					this.invalid[element.name] = true;
 				}
-				if ( !this.numberOfInvalids() ) {
+				if (!this.numberOfInvalids()) {
 					// Hide error containers on last error
-					this.toHide = this.toHide.add( this.containers );
+					this.toHide = this.toHide.add(this.containers);
 				}
 				this.showErrors();
 				return result;
 			},
-			
+
 			showErrors: function(errors) {
-				if(errors) {
+				if (errors) {
 					// add items to error list and map
-					$.extend( this.errorMap, errors );
+					$.extend(this.errorMap, errors);
 					this.errorList = [];
-					for ( var name in errors ) {
+					for (var name in errors) {
 						this.errorList.push({
 							message: errors[name],
 							element: this.findByName(name)[0]
 						});
 					}
 					// remove items from success list
-					this.successList = $.grep( this.successList, function(element) {
+					this.successList = $.grep(this.successList, function(element) {
 						return !(element.name in errors);
 					});
 				}
 				/*this.settings.showErrors
 					? this.settings.showErrors.call( this, this.errorMap, this.errorList )
 					: this.defaultShowErrors();*/
-				if(this.errorList && this.errorList.length > 0){
+				if (this.errorList && this.errorList.length > 0) {
 					this.defaultShowErrors();
-					$.each(this.errorList,function(index,obj){
-		                var item = $(obj.element),parent=item.parents('.input-icon');
-						if(parent.length===0){parent=item.parents('.input-group')}
+					$.each(this.errorList, function(index, obj) {
+						var item = $(obj.element),
+							parent = item.parents('.input-icon');
+						if (parent.length === 0) {
+							parent = item.parents('.input-group')
+						}
 						parent.addClass('has-error has-feedback');
-//		             	if(parent.find('>span.fa-times-circle').length<=0){
-//						   $('<span class="fa fa-times-circle form-control-feedback"></span>').insertAfter(item);
-//						}
-		            });
-				}else{
+						//		             	if(parent.find('>span.fa-times-circle').length<=0){
+						//						   $('<span class="fa fa-times-circle form-control-feedback"></span>').insertAfter(item);
+						//						}
+					});
+				} else {
 					var item = $(this.currentElements);
-					$.each(item,function(index,obj){
-						var parent=$(obj).parents('.input-icon');
-						if(parent.length===0){parent=item.parents('.input-group')}
+					$.each(item, function(index, obj) {
+						var parent = $(obj).parents('.input-icon');
+						if (parent.length === 0) {
+							parent = item.parents('.input-group')
+						}
 						parent.removeClass('has-error has-feedback')
-//						if(parent.find('>span.fa-times-circle').length>0){
-//							parent.find('>span.fa-times-circle').remove();
-//						}
-	 					var toolTip = $(document.body).find('div.tooltip');
-						if(toolTip.length>0){
+						//						if(parent.find('>span.fa-times-circle').length>0){
+						//							parent.find('>span.fa-times-circle').remove();
+						//						}
+						var toolTip = $(document.body).find('div.tooltip');
+						if (toolTip.length > 0) {
 							toolTip.hide();
 						}
-		            });
+					});
 				}
 			},
 
-			defaultShowErrors:function(){
-				 var content = [];
-         	     content.push('<div class="tooltip fade top in">');
-         	     content.push('  <div class="tooltip-arrow"></div>');
-         	     content.push('  <div class="tooltip-inner"></div>');
-         	     content.push('</div>');
-         	     if($(document.body).find('div.tooltip').length<=0){
-             	     $(content.join('')).appendTo($(document.body)).hide();
-         	     };
+			defaultShowErrors: function() {
+				var content = [];
+				content.push('<div class="tooltip fade top in">');
+				content.push('  <div class="tooltip-arrow"></div>');
+				content.push('  <div class="tooltip-inner"></div>');
+				content.push('</div>');
+				if ($(document.body).find('div.tooltip').length <= 0) {
+					$(content.join('')).appendTo($(document.body)).hide();
+				};
 			},
-			
+
 			checkForm: function() {
-			/*	this.prepareForm();
+				/*	this.prepareForm();
 				for ( var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++ ) {
 					this.check( elements[i] );
 				}
 				return this.valid();*/
 				this.prepareForm();
-				for ( var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++ ) {
-					this.check( elements[i] );
+				for (var i = 0, elements = (this.currentElements = this.elements()); elements[i]; i++) {
+					this.check(elements[i]);
 				}
 				return this.valid();
 			},
-			
+
 			elements: function() {
 				var validator = this,
 					rulesCache = {};
 
 				// select all valid inputs inside the form (no submit or reset buttons)
 				return $(this.currentForm)
-				.filter(function() {
-					!this.id && validator.settings.debug && window.console && console.error( "%o has no name assigned", this);
+					.filter(function() {
+						!this.id && validator.settings.debug && window.console && console.error("%o has no name assigned", this);
 
-					// select only the first element for each name, and only those with rules specified
-					 var tempId =  $(this).attr("aeid")||this.id;;
-					if ( tempId in rulesCache || !validator.objectLength($(this).rules()) )
-						return false;
+						// select only the first element for each name, and only those with rules specified
+						var tempId = $(this).attr("aeid") || this.id;;
+						if (tempId in rulesCache || !validator.objectLength($(this).rules()))
+							return false;
 
-					rulesCache[tempId] = true;
-					return true;
-				});
+						rulesCache[tempId] = true;
+						return true;
+					});
 			},
-			
-			clean: function( selector ) {
-				return $( selector )[0];
+
+			clean: function(selector) {
+				return $(selector)[0];
 			},
-			
+
 			reset: function() {
 				this.successList = [];
 				this.errorList = [];
@@ -18130,108 +18158,106 @@ define('ui-validate',function (require, exports, moudles) {
 
 			prepareForm: function() {
 				this.reset();
-//				this.toHide = this.errors().add( this.containers );
+				//				this.toHide = this.errors().add( this.containers );
 			},
-			
-			prepareElement: function( element ) {
+
+			prepareElement: function(element) {
 				this.reset();
-//				this.toHide = this.errorsFor(element);
+				//				this.toHide = this.errorsFor(element);
 			},
-			
-			check: function( element ) {
-//				element = this.clean( element );
+
+			check: function(element) {
+				//				element = this.clean( element );
 
 				// if radio/checkbox, validate first element in group instead
-//				if (this.checkable(element)) {
-//					element = this.findByName( element.name ).not(this.settings.ignore)[0];
-//				}
-				
-//				var rules = '';
-//				if(this.settings.rules){
-//					rules = (this.settings.rules)[$(element).attr("id")];
-//				}
+				//				if (this.checkable(element)) {
+				//					element = this.findByName( element.name ).not(this.settings.ignore)[0];
+				//				}
+
+				//				var rules = '';
+				//				if(this.settings.rules){
+				//					rules = (this.settings.rules)[$(element).attr("id")];
+				//				}
 				var rules = $(element).rules();
 				var dependencyMismatch = false;
-				for (var method in rules ) {
-					var rule = { method: method, parameters: rules[method] };
+				for (var method in rules) {
+					var rule = {
+						method: method,
+						parameters: rules[method]
+					};
 					try {
-						var result = $.validator.methods[method].call( this, element.value.replace(/\r/g, ""), element, rule.parameters );
+						var result = $.validator.methods[method].call(this, element.value.replace(/\r/g, ""), element, rule.parameters);
 
 						// if a method indicates that the field is optional and therefore valid,
 						// don't mark it as valid when there are no other rules
-						if ( result == "dependency-mismatch" ) {
+						if (result == "dependency-mismatch") {
 							dependencyMismatch = true;
 							continue;
 						}
 						dependencyMismatch = false;
 
-						if ( result == "pending" ) {
-							this.toHide = this.toHide.not( this.errorsFor(element) );
+						if (result == "pending") {
+							this.toHide = this.toHide.not(this.errorsFor(element));
 							return;
 						}
 
-						if( !result ) {
-							this.formatAndAdd( element, rule );
+						if (!result) {
+							this.formatAndAdd(element, rule);
 							return false;
 						}
-					} catch(e) {
-						this.settings.debug && window.console && console.log("exception occured when checking element " + element.id
-							 + ", check the '" + rule.method + "' method", e);
+					} catch (e) {
+						this.settings.debug && window.console && console.log("exception occured when checking element " + element.id + ", check the '" + rule.method + "' method", e);
 						throw e;
 					}
 				}
 				if (dependencyMismatch)
 					return;
-				if ( this.objectLength(rules) )
+				if (this.objectLength(rules))
 					this.successList.push(element);
 				return true;
 			},
-			
+
 			// return the custom message for the given element and validation method
 			// specified in the element's "messages" metadata
 			customMetaMessage: function(element, method) {
 				if (!$.metadata)
 					return;
 
-				var meta = this.settings.meta
-					? $(element).metadata()[this.settings.meta]
-					: $(element).metadata();
+				var meta = this.settings.meta ? $(element).metadata()[this.settings.meta] : $(element).metadata();
 
 				return meta && meta.messages && meta.messages[method];
 			},
 
 			// return the custom message for the given element name and validation method
-			customMessage: function( name, method ) {
+			customMessage: function(name, method) {
 				var m = this.settings.messages[name];
-				return m && (m.constructor == String
-					? m
-					: m[method]);
+				return m && (m.constructor == String ? m : m[method]);
 			},
-			
+
 			// return the first defined argument, allowing empty strings
 			findDefined: function() {
-				for(var i = 0; i < arguments.length; i++) {
+				for (var i = 0; i < arguments.length; i++) {
 					if (arguments[i] !== undefined)
 						return arguments[i];
 				}
 				return undefined;
 			},
 
-			defaultMessage: function( element, method) {
+			defaultMessage: function(element, method) {
 				return this.findDefined(
-					this.customMessage( $(element).attr("id"), method ),
-					this.customMetaMessage( element, method ),
+					this.customMessage($(element).attr("id"), method),
+					this.customMetaMessage(element, method),
 					// title is never undefined, so handle empty string as undefined
 					!this.settings.ignoreTitle && undefined,
 					$.validator.messages[method],
 					"<strong>Warning: No message defined for " + $(element).attr("id") + "</strong>"
 				);
 			},
-			
-			formatAndAdd: function( element, rule ) {
-				var message = this.defaultMessage( element, rule.method ),
+
+			formatAndAdd: function(element, rule) {
+				var message = this.defaultMessage(element, rule.method),
 					theregex = /\$?\{(\d+)\}/g;
-				if ( typeof message == "function" ) {
+				if (typeof message == "function") {
 					message = message.call(this, rule.parameters, element);
 				} else if (theregex.test(message)) {
 					message = jQuery.format(message.replace(theregex, '{$1}'), rule.parameters);
@@ -18241,28 +18267,26 @@ define('ui-validate',function (require, exports, moudles) {
 					element: element
 				});
 
-				var tempId = $(element).attr("aeid")||$(element).attr("id");
+				var tempId = $(element).attr("aeid") || $(element).attr("id");
 				this.errorMap[tempId] = message;
 				this.submitted[tempId] = message;
 			},
-			
-			checkable: function( element ) {
+
+			checkable: function(element) {
 				return /radio|checkbox/i.test(element.type);
 			},
 			getLength: function(value, element) {
-				switch( element.nodeName.toLowerCase() ) {
-				case 'select':
-					return $("option:selected", element).length;
-				case 'input':
-					if( this.checkable( element) )
-						return this.findByName(element.name).filter(':checked').length;
+				switch (element.nodeName.toLowerCase()) {
+					case 'select':
+						return $("option:selected", element).length;
+					case 'input':
+						if (this.checkable(element))
+							return this.findByName(element.name).filter(':checked').length;
 				}
 				return value.length;
 			},
 			depend: function(param, element) {
-				return this.dependTypes[typeof param]
-					? this.dependTypes[typeof param](param, element)
-					: true;
+				return this.dependTypes[typeof param] ? this.dependTypes[typeof param](param, element) : true;
 			},
 			dependTypes: {
 				"boolean": function(param, element) {
@@ -18275,17 +18299,17 @@ define('ui-validate',function (require, exports, moudles) {
 					return param(element);
 				}
 			},
-			
+
 			optional: function(element) {
 				return !$.validator.methods.required.call(this, $.trim(element.value), element) && "dependency-mismatch";
 			},
-			
+
 			numberOfInvalids: function() {
 				return this.objectLength(this.invalid);
 			},
-			objectLength: function( obj ) {
+			objectLength: function(obj) {
 				var count = 0;
-				for ( var i in obj )
+				for (var i in obj)
 					count++;
 				return count;
 			},
@@ -18296,25 +18320,26 @@ define('ui-validate',function (require, exports, moudles) {
 				return this.errorList.length;
 			},
 			focusInvalid: function() {
-				if( this.settings.focusInvalid ) {
+				if (this.settings.focusInvalid) {
 					try {
 						$(this.findLastActive() || this.errorList.length && this.errorList[0].element || [])
-						.filter(":visible")
-						.focus()
+							.filter(":visible")
+							.focus()
 						// manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
 						.trigger("focusin");
-						
-						 //START
-						 var toolTip = $(document.body).find('div.tooltip');
-						 toolTip.show().find('div.tooltip-inner').html(this.errorList[0].message);
-						 var span = $(this.errorList[0].element).parent(), inputPos = span.offset();
-						 toolTip.css({
-				             'left': inputPos.left,
-				             'top': inputPos.top + span.outerHeight(),
-							 'z-index':"999999"
-				         });
-						 //END
-					} catch(e) {
+
+						//START
+						var toolTip = $(document.body).find('div.tooltip');
+						toolTip.show().find('div.tooltip-inner').html(this.errorList[0].message);
+						var span = $(this.errorList[0].element).parent(),
+							inputPos = span.offset();
+						toolTip.css({
+							'left': inputPos.left,
+							'top': inputPos.top + span.outerHeight(),
+							'z-index': "999999"
+						});
+						//END
+					} catch (e) {
 						// ignore IE throwing errors when focusing hidden elements
 					}
 				}
@@ -18328,7 +18353,7 @@ define('ui-validate',function (require, exports, moudles) {
 		},
 		// Converts a simple string to a {string: true} rule, e.g., "required" to {required:true}
 		normalizeRule: function(data) {
-			if( typeof data == "string" ) {
+			if (typeof data == "string") {
 				var transformed = {};
 				$.each(data.split(/\s/), function() {
 					transformed[this] = true;
@@ -18337,7 +18362,7 @@ define('ui-validate',function (require, exports, moudles) {
 			}
 			return data;
 		},
-		
+
 		normalizeRules: function(rules, element) {
 			// handle dependency check
 			$.each(rules, function(prop, val) {
@@ -18350,7 +18375,7 @@ define('ui-validate',function (require, exports, moudles) {
 					var keepRule = true;
 					switch (typeof val.depends) {
 						case "string":
-							keepRule = !!$(val.depends, element.form).length;
+							keepRule = !! $(val.depends, element.form).length;
 							break;
 						case "function":
 							keepRule = val.depends.call(element, element);
@@ -18402,15 +18427,29 @@ define('ui-validate',function (require, exports, moudles) {
 
 			return rules;
 		},
-		
+
 		classRuleSettings: {
-			required: {required: true},
-			email: {email: true},
-			url: {url: true},
-			date: {date: true},
-			number: {number: true},
-			digits: {digits: true},
-			creditcard: {creditcard: true}
+			required: {
+				required: true
+			},
+			email: {
+				email: true
+			},
+			url: {
+				url: true
+			},
+			date: {
+				date: true
+			},
+			number: {
+				number: true
+			},
+			digits: {
+				digits: true
+			},
+			creditcard: {
+				creditcard: true
+			}
 		},
 
 		addClassRules: function(className, rules) {
@@ -18418,17 +18457,20 @@ define('ui-validate',function (require, exports, moudles) {
 				this.classRuleSettings[className] = rules :
 				$.extend(this.classRuleSettings, className);
 		},
-		
+
 		metadataRules: function(element) {
 			if (!$.metadata) return {};
 
-		/*	var meta = $.data(element.form, 'validator').settings.meta;
+			/*	var meta = $.data(element.form, 'validator').settings.meta;
 			return meta ?
 				$(element).metadata()[meta] :
 				$(element).metadata({type:'attr',name:'rules'});*/
-			return $(element).metadata({type:'attr',name:'rules'});
+			return $(element).metadata({
+				type: 'attr',
+				name: 'rules'
+			});
 		},
-		
+
 		addMethod: function(name, method, message) {
 			$.validator.methods[name] = method;
 			$.validator.messages[name] = message != undefined ? message : $.validator.messages[name];
@@ -18436,44 +18478,46 @@ define('ui-validate',function (require, exports, moudles) {
 				$.validator.addClassRules(name, $.validator.normalizeRule(name));
 			}
 		},
-		
+
 		methods: {
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/required
 			required: function(value, element, param) {
 				// check if dependency is met
-				if ( !this.depend(param, element) )
+				if (!this.depend(param, element))
 					return "dependency-mismatch";
-				switch( element.nodeName ) {
-				case 'SELECT':
-					// could be an array for select-multiple or a string, both are fine this way
-					var val = $(element).val();
-					return val && val.length > 0;
-				case 'INPUT':
-					if ( this.checkable(element) )
-						return this.getLength(value, element) > 0;
-				default:
-					return $.trim(value).length > 0;
+				switch (element.nodeName) {
+					case 'SELECT':
+						// could be an array for select-multiple or a string, both are fine this way
+						var val = $(element).val();
+						return val && val.length > 0;
+					case 'INPUT':
+						if (this.checkable(element))
+							return this.getLength(value, element) > 0;
+					default:
+						return $.trim(value).length > 0;
 				}
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/remote
 			remote: function(value, element, param) {
-				if ( this.optional(element) )
+				if (this.optional(element))
 					return "dependency-mismatch";
 
 				var previous = this.previousValue(element);
-				if (!this.settings.messages[element.name] )
+				if (!this.settings.messages[element.name])
 					this.settings.messages[element.name] = {};
 				previous.originalMessage = this.settings.messages[element.name].remote;
 				this.settings.messages[element.name].remote = previous.message;
 
-				param = typeof param == "string" && {url:param} || param;
+				param = typeof param == "string" && {
+					url: param
+				} || param;
 
-				if ( this.pending[element.name] ) {
+				if (this.pending[element.name]) {
 					return "pending";
 				}
-				if ( previous.old === value ) {
+				if (previous.old === value) {
 					return previous.valid;
 				}
 
@@ -18491,7 +18535,7 @@ define('ui-validate',function (require, exports, moudles) {
 					success: function(response) {
 						validator.settings.messages[element.name].remote = previous.originalMessage;
 						var valid = response === true;
-						if ( valid ) {
+						if (valid) {
 							var submitted = validator.formSubmitted;
 							validator.prepareElement(element);
 							validator.formSubmitted = submitted;
@@ -18499,7 +18543,7 @@ define('ui-validate',function (require, exports, moudles) {
 							validator.showErrors();
 						} else {
 							var errors = {};
-							var message = response || validator.defaultMessage( element, "remote" );
+							var message = response || validator.defaultMessage(element, "remote");
 							errors[element.name] = previous.message = $.isFunction(message) ? message(value) : message;
 							validator.showErrors(errors);
 						}
@@ -18523,22 +18567,22 @@ define('ui-validate',function (require, exports, moudles) {
 			// http://docs.jquery.com/Plugins/Validation/Methods/rangelength
 			rangelength: function(value, element, param) {
 				var length = this.getLength($.trim(value), element);
-				return ( length >= param[0] && length <= param[1] );
+				return (length >= param[0] && length <= param[1]);
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/min
-			min: function( value, element, param ) {
+			min: function(value, element, param) {
 				return value >= param;
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/max
-			max: function( value, element, param ) {
+			max: function(value, element, param) {
 				return value <= param;
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/range
-			range: function( value, element, param ) {
-				return ( value >= param[0] && value <= param[1] );
+			range: function(value, element, param) {
+				return (value >= param[0] && value <= param[1]);
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/email
@@ -18560,7 +18604,7 @@ define('ui-validate',function (require, exports, moudles) {
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/number
 			number: function(value, element) {
-				return  /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
+				return /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
 			},
 
 			// http://docs.jquery.com/Plugins/Validation/Methods/digits
@@ -18585,37 +18629,38 @@ define('ui-validate',function (require, exports, moudles) {
 			}
 		}
 	});
-//})(jQuery);
+	//})(jQuery);
 });
-				
-;(function($) {
+
+;
+(function($) {
 	// only implement if not provided by jQuery core (since 1.4)
 	// TODO verify if jQuery 1.4's implementation is compatible with older jQuery special-event APIs
-//	if (!jQuery.event.special.focusin && !jQuery.event.special.focusout && document.addEventListener) {
-//		$.each({
-//			focus: 'focusin',
-//			blur: 'focusout'
-//		}, function( original, fix ){
-//			$.event.special[fix] = {
-//				setup:function() {
-//					this.addEventListener( original, handler, true );
-//				},
-//				teardown:function() {
-//					this.removeEventListener( original, handler, true );
-//				},
-//				handler: function(e) {
-//					arguments[0] = $.event.fix(e);
-//					arguments[0].type = fix;
-//					return $.event.handle.apply(this, arguments);
-//				}
-//			};
-//			function handler(e) {
-//				e = $.event.fix(e);
-//				e.type = fix;
-//				return $.event.handle.call(this, e);
-//			}
-//		});
-//	};
+	//	if (!jQuery.event.special.focusin && !jQuery.event.special.focusout && document.addEventListener) {
+	//		$.each({
+	//			focus: 'focusin',
+	//			blur: 'focusout'
+	//		}, function( original, fix ){
+	//			$.event.special[fix] = {
+	//				setup:function() {
+	//					this.addEventListener( original, handler, true );
+	//				},
+	//				teardown:function() {
+	//					this.removeEventListener( original, handler, true );
+	//				},
+	//				handler: function(e) {
+	//					arguments[0] = $.event.fix(e);
+	//					arguments[0].type = fix;
+	//					return $.event.handle.apply(this, arguments);
+	//				}
+	//			};
+	//			function handler(e) {
+	//				e = $.event.fix(e);
+	//				e.type = fix;
+	//				return $.event.handle.call(this, e);
+	//			}
+	//		});
+	//	};
 	$.extend($.fn, {
 		validateDelegate: function(delegate, type, handler) {
 			return this.bind(type, function(event) {
@@ -18629,210 +18674,200 @@ define('ui-validate',function (require, exports, moudles) {
 })(jQuery);
 define('ui-form',function (require, exports, moudles) {
 	"require:nomunge,exports:nomunge,moudles:nomunge";
-	 $.aeWidget('ae.aeForm', {
-		 options:{
-		      /**
-              * aeForm初始化方式，默认通过html来设置参数。传值为js时，则通过js中设置的option来初始化。
-              * @type String
-              * @default 'html'
-              * @example
-              * $('.selector').aeForm({initType : 'js'});
-              */
-             initType : 'html',
-             /**
- 			 * reload时初始化内部的aeType组件,仅处理aeInit为true的组件
- 			 */
- 			 initChildren : true
-		 },
-		 _create:function(){
-			 var self = this,
-			 	options=self.options,
-			 	el=self.element,
+	$.aeWidget('ae.aeForm', {
+		options:{
+			/**
+			 * aeForm初始化方式，默认通过html来设置参数。传值为js时，则通过js中设置的option来初始化。
+			 * @type String
+			 * @default 'html'
+			 * @example
+			 * $('.selector').aeForm({initType : 'js'});
+			 */
+			initType : 'html',
+			/**
+			 * reload时初始化内部的aeType组件,仅处理aeInit为true的组件
+			 */
+			initChildren : true
+		},
+		_create:function(){
+			var self = this,
+				options=self.options,
+				el=self.element,
 				id=el.attr("id");
 			if(id){
 				el.attr("aeId",id);
 			}
-			 if(options.initType=='html'){
-				 self._buildOptions(options,el);
-			 }
-		 },
-		 _init:function(){
-			 
-		 },
-		 _buildOptions:function(options,el){
-			 options.dataField=el.attr("dataField");
-			 options.aeType = el.attr("aeType");
-			 options.initChildren = el.attr("initChildren")=="false" ? false : options.initChildren;
-		 },
-		/**
-         * 设置表格的编辑状态　value = true(可编辑),false(不可编辑)
-         * @name aeForm#setEditSts
-         * @function
-         * @param value:编辑状态
-         * @example
-         * $('#custForm').aeForm('setEditSts',true);
-         *
-         */
-		 setEditSts:function(value){
-			 var el = this.element;
-			 return el.each(function() {
- 				$('input[datafield],textarea[datafield],span[datafield]', this).enable(value);
- 		     });
-		 },
-	   /**
-         * 根据列名设置列的可编辑属性 value = true(可编辑),false(不可编辑)
-         * @name aeForm#setColEditSts
-         * @function
-         * @param dataField:列名,value:编辑状态
-         * @example
-         * $('#custForm').aeForm('setColEditSts',dataField,value);
-         *
-         */
-		 setColEditSts:function(dataField,value){
-			 var areaId = this.element.attr("id");
-		     var els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"']");
-		     els.enable(value);
-		 },
-		/**
-         * 根据列名设置列的隐藏和显示状态 value = true(显示),false(隐藏)
-         * @name aeForm#setColVisibleSts
-         * @function
-         * @param dataField:列名,value:隐藏和显示状态
-         * @example
-         * $('#custForm').aeForm('setColVisibleSts',dataField,value);
-         *
-         */
-		 setColVisibleSts:function(dataField,value){
-			 var areaId = this.element.attr("id");
-		     var els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"']");
-		     els.visible(value);
-		 },
-		/**
-         * 清空字段值
-         * @name aeForm#clear
-         * @function
-         * @param dataField 设置的值表示清空指定字段值，不设置表示清空全部字段值
-         * @example
-         * $('#custForm').aeForm('clear',dataField);
-         *
-         */
-		 clear:function(dataField){
-        	 var el = this.element,
-			 	els,
-				i,
-				dataFields;
+			if(options.initType=='html'){
+				self._buildOptions(options,el);
+			}
+		},
+		_init:function(){
 
-        	 if(typeof dataField === 'undefined' || dataField === ''){
-        		 return el.each(function() {
-        				$('input[dataField],textarea[dataField],span[dataField]', this).clearFields();
-        		 });
-			 }else{
-				 var areaId = el.attr("id");
-				 if(dataField.indexOf(",")>=0){
-					 dataFields = dataField.split(",");
-					 for(i in dataFields){
-						 els=$("#" + areaId + " input[dataField='"+dataFields[i]+"'],#" + areaId + " textarea[dataField='"+dataFields[i]+"'],#" + areaId + " span[dataField='"+dataField+"']");
-					     els.clearFields();
-					 }
-				 }else{
-					 els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"'],#" + areaId + " span[dataField='"+dataField+"']");
-				     els.clearFields();
-				 }
-			 }
-		 },
+		},
+		_buildOptions:function(options,el){
+			options.dataField=el.attr("dataField");
+			options.aeType = el.attr("aeType");
+			options.initChildren = el.attr("initChildren")=="false" ? false : options.initChildren;
+		},
 		/**
-         * 根据列名设置相应表单元素值。
-         * @name aeForm#setValueByField
-         * @function
-         * @param dataField列名,value数据值
-         * @example
-         * $('#custForm').aeForm('setValueByField',dataField,value);
-         *
-         */
-		 setValueByField:function(dataField,value){
-			 var areaId = this.element.attr("id");
-		     var els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"']");
-		     els.setField(value,this.element);
-		 },
+		 * 设置表格的编辑状态　value = true(可编辑),false(不可编辑)
+		 * @name aeForm#setEditSts
+		 * @function
+		 * @param value:编辑状态
+		 * @example
+		 * $('#custForm').aeForm('setEditSts',true);
+		 *
+		 */
+		setEditSts:function(value){
+			var el = this.element;
+			return el.each(function() {
+				$('*[datafield]', this).enable(value);
+			});
+		},
 		/**
-         * 获取指定单元的数据值。
-         * @name aeForm#getValueByField
-         * @function
-         * @param dataField列名
-         * @example
-         * $('#custForm').aeForm('getValueByField',dataField);
-         *
-         */
-		 getValueByField:function(dataField){
-			 var areaId = this.element.attr("id");
-		     var els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"']");
-		     return els.getValue();
-		 },
+		 * 根据列名设置列的可编辑属性 value = true(可编辑),false(不可编辑)
+		 * @name aeForm#setColEditSts
+		 * @function
+		 * @param dataField:列名,value:编辑状态
+		 * @example
+		 * $('#custForm').aeForm('setColEditSts',dataField,value);
+		 *
+		 */
+		setColEditSts:function(dataField,value){
+			var els = $('[datafield="'+dataField+'"]', this.element);
+			els.enable(value);
+		},
 		/**
-         * 获取指定单元的显示值。
-         * @name aeForm#getDisplayTextByField
-         * @function
-         * @param dataField列名
-         * @example
-         * $('#custForm').aeForm('getDisplayTextByField',dataField);
-         *
-         */
-		 getDisplayTextByField:function(dataField){
-			 var areaId = this.element.attr("id");
-		     var els=$("#" + areaId + " input[dataField='"+dataField+"'],#" + areaId + " textarea[dataField='"+dataField+"']");
-		     return els.getDisplayText();
-		 },
+		 * 根据列名设置列的隐藏和显示状态 value = true(显示),false(隐藏)
+		 * @name aeForm#setColVisibleSts
+		 * @function
+		 * @param dataField:列名,value:隐藏和显示状态
+		 * @example
+		 * $('#custForm').aeForm('setColVisibleSts',dataField,value);
+		 *
+		 */
+		setColVisibleSts:function(dataField,value){
+			var els = $('[datafield="'+dataField+'"]',this.element);
+			els.visible(value);
+		},
 		/**
-         * 根据对应的dataField获取表单元素jQuery对象。
-         * @name aeForm#getField
-         * @function
-         * @param dataField
-         * @example
-         */
+		 * 清空字段值
+		 * @name aeForm#clear
+		 * @function
+		 * @param dataField 设置的值表示清空指定字段值，不设置表示清空全部字段值
+		 * @example
+		 * $('#custForm').aeForm('clear',dataField);
+		 *
+		 */
+		clear:function(dataField){
+			var el = this.element, els, i, dataFields;
+			if(typeof dataField === 'undefined' || dataField === ''){
+				return el.each(function() {
+					$('*[dataField]', this).clearFields();
+				});
+			}else{
+				if(dataField.indexOf(",")>=0){
+					dataFields = dataField.split(",");
+					for(i in dataFields){
+						els = $('[datafield="'+dataField[i]+'"]', el);
+						els.clearFields();
+					}
+				}else{
+					els = $('[datafield="'+dataField+'"]', el);
+					els.clearFields();
+				}
+			}
+		},
+		/**
+		 * 根据列名设置相应表单元素值。
+		 * @name aeForm#setValueByField
+		 * @function
+		 * @param dataField列名,value数据值
+		 * @example
+		 * $('#custForm').aeForm('setValueByField',dataField,value);
+		 *
+		 */
+		setValueByField:function(dataField,value){
+			var els = $('[dataField="'+dataField+'"]', this.element);
+			els.setField(value,this.element);
+		},
+		/**
+		 * 获取指定单元的数据值。
+		 * @name aeForm#getValueByField
+		 * @function
+		 * @param dataField列名
+		 * @example
+		 * $('#custForm').aeForm('getValueByField',dataField);
+		 *
+		 */
+		getValueByField:function(dataField){
+			var els = $('[dataField="'+dataField+'"]', this.element);
+			return els.getValue();
+		},
+		/**
+		 * 获取指定单元的显示值。
+		 * @name aeForm#getDisplayTextByField
+		 * @function
+		 * @param dataField列名
+		 * @example
+		 * $('#custForm').aeForm('getDisplayTextByField',dataField);
+		 *
+		 */
+		getDisplayTextByField:function(dataField){
+			var els=$('[datafield="'+dataField+'"]',this.element);
+			return els.getDisplayText();
+		},
+		/**
+		 * 根据对应的dataField获取表单元素jQuery对象。
+		 * @name aeForm#getField
+		 * @function
+		 * @param dataField
+		 * @example
+		 */
 		/* getField:function(dataField){
-			 if(dataField){
-				 var dataField  = dataField.replace(new RegExp(/\./g),'_');
-				 if(/\[\d{1,}\]/g.test(dataField)){
-					 dataField  = dataField.replace(new RegExp(/\[/g),'_').replace(new RegExp(/\]/g),'');
-				 }
-				 return $("#"+this.element.attr("id")+"_"+dataField);
-			 }
+		 if(dataField){
+		 var dataField  = dataField.replace(new RegExp(/\./g),'_');
+		 if(/\[\d{1,}\]/g.test(dataField)){
+		 dataField  = dataField.replace(new RegExp(/\[/g),'_').replace(new RegExp(/\]/g),'');
+		 }
+		 return $("#"+this.element.attr("id")+"_"+dataField);
+		 }
 		 },*/
 		/**
-         * 根据data刷新表单区域。
-         * @name aeForm#reload
-         * @function
-         * @param data
-         * @example
-         */
-		 reload:function(data){
-			 var self = this,$ele = this.element,opts = self.options,children;
-			 if(data){
-				 if(opts.initChildren){
-					 children = $ele.find('*[aeType]');
-					 if(children.length){
-						 $.each(children,function(index,item){
-							 if($(item).attr("aeInit")=="true"){
-								 $(item)[$(item).attr('aeType')]();
-								 $(item).attr('aeInit','false');
-							 }
-						 });
-					 }
-				 }
-				 data = $.aries.common.getDataByDatafield(data,opts.dataField);
-				 return $ele.each(function() {
-					$('input[dataField],textarea[dataField],span[dataField]', this).setField(data,$ele);
-			     });
-			 }
-		 },
+		 * 根据data刷新表单区域。
+		 * @name aeForm#reload
+		 * @function
+		 * @param data
+		 * @example
+		 */
+		reload:function(data){
+			var self = this,$ele = this.element,opts = self.options,children;
+			if(data){
+				if(opts.initChildren){
+					children = $ele.find('*[datafield]');
+					if(children.length){
+						$.each(children,function(index,item){
+							if($(item).attr("aeInit")=="true"){
+								$(item)[$(item).attr('aeType')]();
+								$(item).attr('aeInit','false');
+							}
+						});
+					}
+				}
+				data = $.aries.common.getDataByDatafield(data,opts.dataField);
+				return $ele.each(function() {
+					$('[dataField]', this).setField(data,$ele);
+				});
+			}
+		},
 		/**
-         * 获取表单区域的数据。
-         * @name aeForm#getData
-         * @function
-         * @param
-         * @example
-         */
-		 getData:function(needTrans){
+		 * 获取表单区域的数据。
+		 * @name aeForm#getData
+		 * @function
+		 * @param
+		 * @example
+		 */
+		getData:function(needTrans){
 			var obj = {},returnData = {},dataField = this.options.dataField;
 			this.element.find('[dataField]').each(function(index,item){
 				var dataField = $(item).attr("dataField"),type=$(item).attr("aeType"),val='';
@@ -18850,12 +18885,12 @@ define('ui-form',function (require, exports, moudles) {
 				returnData = JSON.stringify(returnData);
 			}
 			return returnData;
-		 }
-	 });
+		}
+	});
 	$.fn.clearFields = function() {
 		return this.each(function() {
-			var aeType = $.attr(this,"aeType"),id = $.attr(this,"aeId");
-			eval("$(\"#"+id+"\")."+aeType+"('clear');");
+			var aeType = $.attr(this,"aeType");
+			aeType ? $(this)[aeType]('clear') : null;
 		});
 	};
 	$.fn.enable = function(b) {
@@ -18863,9 +18898,12 @@ define('ui-form',function (require, exports, moudles) {
 			b = true;
 		}
 		return this.each(function() {
-			var aeType = $.attr(this,"aeType"),id = $.attr(this,"aeId");
-		    var enable = !b ? "$(\"#"+id+"\")."+aeType+"('enable',false);" : "$(\"#"+id+"\")."+aeType+"('enable',true);";
-			eval(enable);
+			var aeType = $.attr(this,"aeType");
+			if(!b){
+				$(this)[aeType]('enable',false);
+			}else{
+				$(this)[aeType]('enable',true);
+			}
 		});
 	};
 	$.fn.visible = function(b){
@@ -18873,16 +18911,19 @@ define('ui-form',function (require, exports, moudles) {
 			b = true;
 		}
 		return this.each(function() {
-			var aeType = $.attr(this,"aeType"),id = $.attr(this,"aeId");
-		    var enable = !b ? "$(\"#"+id+"\")."+aeType+"('visible',false);" : "$(\"#"+id+"\")."+aeType+"('visible',true);";
-			eval(enable);
+			var aeType = $.attr(this,"aeType");
+			if(!b){
+				$(this)[aeType]('visible',false);
+			}else{
+				$(this)[aeType]('visible',true);
+			}
 		});
 	};
 	$.fn.setField = function(v,el) {
 		return this.each(function() {
 			var value="",objValue=v,
-				id=$.attr(this,"aeId"),
 				type=$.attr(this,"aeType");
+			var $span = $(this);
 
 			if(v && typeof v == 'object'){
 				if($.isArray(v)){
@@ -18895,81 +18936,43 @@ define('ui-form',function (require, exports, moudles) {
 			}else{
 				value = v;
 			}
-			switch(type) {
-				case "aeCombo":
-					el.find("span[id="+id+"]").aeCombo('setValue',value);
-					break;
-				case "aeCalendar":
-					el.find("span[id="+id+"]").aeCalendar('setValue',value);
-					break;
-				case "aeCheckbox":
-					el.find("span[id="+id+"]").aeCheckbox('setValue',value);
-					break;
-				case "aeRadio":
-					el.find("span[id="+id+"]").aeRadio('setValue',value);
-					break;
-				case "aeTextfield":
-					el.find("span[id="+id+"]").aeTextfield('setValue',value);
-					break;
-				case "aeTextpopup":
-					el.find("span[id="+id+"]").aeTextpopup('setValue',value);
-					break;
-				default :
-					if(typeof value === 'undefined' || value === ''){
-						$(this).val('');
-			    	}else{
-			    		$(this).val(value);
-			    	}
-				    break;
+			if(type){
+				$span[type]('setValue',value);
+			}else{
+				if(typeof value === 'undefined' || value === ''){
+					$span.val('');
+				}else{
+					$span.val(value);
+				}
 			}
 		});
 	};
 	$.fn.getValue = function() {
 		var value='';
-	    this.each(function() {
-			var id=$.attr(this,"aeId"),type=$.attr(this,"aeType");
-			switch(type) {
-			case "aeCombo":
-				value = $("#" + id).aeCombo('getValue');
-				break;
-			case "aeCheckbox":
-				value = $("#" + id).aeCheckbox('getValue');
-				break;
-			case "aeRadio":
-				value = $("#" + id).aeRadio('getValue');
-				break;
-			case "aeTextpopup":
-				value = $("#" + id).aeTextpopup('getValue');
-				break;
-			default :
+		this.each(function() {
+			var type=$.attr(this,"aeType");
+			if(type){
+				value = $(this)[type]('getValue');
+			}else{
 				value = $(this).val();
-			    break;
-		  }
+			}
 		});
-	    return value;
+		return value;
 	};
 	$.fn.getDisplayText = function() {
 		var value='';
-	    this.each(function() {
-			var id=$.attr(this,"aeId"),type=$.attr(this,"aeType");
-			switch(type) {
-			case "aeCombo":
-				value = $("#" + id).aeCombo('getDisplayText');
-				break;
-			case "aeCheckbox":
-				value = $("#" + id).aeCheckbox('getValue');
-				break;
-			case "aeRadio":
-				value = $("#" + id).aeRadio('getValue');
-				break;
-			default :
+		this.each(function() {
+			var type=$.attr(this,"aeType");
+			if(type){
+				value = $(this)[type]('getDisplayText');
+			}else{
 				value = $(this).val();
-			    break;
-		  }
+			}
 		});
-	    return value;
+		return value;
 	};
 });
+
 define('ui-progressbar',function (require, exports, moudles) {
 	"require:nomunge,exports:nomunge,moudles:nomunge";
 /*

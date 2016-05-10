@@ -74,15 +74,13 @@ define(function (require, exports, module) {
                     if (!json) return log(task.name + ": 服务器未返回正确的数据");
                     $.Notice.success('数据导入成功');
                     _initTable(null);
-                    console.log("服务器返回:  " + (task.response || ""));
-                    console.log();
                 }
             }
         });
     }
     function _bindEvent() {
         initUploader();
-        $("[data-toggle='tooltip']").tooltip();  
+        $("[data-toggle='tooltip']").tooltip();
         var isEmptyRadio = [{ code: '是', value: '1', checked: 'true' }, { code: '否', value: '0' }];
         jqueryMap.$isEmpty.aeRadio('reload', isEmptyRadio);
         jqueryMap.$no.aeTextfield({});
@@ -125,7 +123,7 @@ define(function (require, exports, module) {
             });
 
         });
-        
+
 
         jqueryMap.$tbody.on('click', 'a.remove', function (e) {
             e.preventDefault();
